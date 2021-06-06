@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/fluentdatetime-sample/bin/Debug/net5.0/fluentdatetime-sample.dll",
+            "program": "${workspaceFolder}/fluentdatetime/bin/Debug/net5.0/fluentdatetime-sample.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/fluentdatetime-sample",
+            "cwd": "${workspaceFolder}/fluentdatetime",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
