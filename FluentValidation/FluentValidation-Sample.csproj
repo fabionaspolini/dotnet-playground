@@ -6,4 +6,8 @@
     <RootNamespace>FluentValidation_Sample</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="10.2.3" />
+  </ItemGroup>
+
 </Project>

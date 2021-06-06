@@ -5,14 +5,30 @@
             // Use IntelliSense to find out which attributes exist for C# debugging
             // Use hover for the description of the existing attributes
             // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
-            "name": ".NET Core Launch (console)",
+            "name": "FluentDateTime",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "build-FluentDateTime",
             // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/FluentDateTime/bin/Debug/net5.0/FluentDateTime-Sample.dll",
             "args": [],
             "cwd": "${workspaceFolder}/FluentDateTime",
+            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            // Use IntelliSense to find out which attributes exist for C# debugging
+            // Use hover for the description of the existing attributes
+            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+            "name": "FluentValidation",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-FluentValidation",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/FluentValidation/bin/Debug/net5.0/FluentValidation-Sample.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/FluentValidation",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
