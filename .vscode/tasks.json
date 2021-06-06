@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/fluentdatetime/fluentdatetime-sample.csproj",
+                "${workspaceFolder}/FluentDateTime-Sample/FluentDateTime-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/fluentdatetime/fluentdatetime-sample.csproj",
+                "${workspaceFolder}/FluentDateTime-Sample/FluentDateTime-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
