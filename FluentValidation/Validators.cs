@@ -29,7 +29,7 @@ namespace FluentValidation_Sample
                 .CidadeIdByPredicate()
                 .WithMessage("'Cidade Id' não encontrada (by Predicate).");
 
-            // Ou validação com Classe implementada CidadeIdValidator
+            // Ou validação com classe implementada CidadeIdValidator
             RuleFor(x => x.CidadeId)
                 .NotEmpty()
                 .CidadeId()
