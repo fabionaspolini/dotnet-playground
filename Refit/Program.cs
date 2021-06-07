@@ -8,6 +8,11 @@ using System.Net.Http;
 using Refit_Sample;
 using System.Threading.Tasks;
 
+// 1 - Exemplo utilizando a API pública da Marvel https://developer.marvel.com/docs
+// 2 - Cadastre-se gratuitamente e obtenha a chave publica e privada para executar este demo https://developer.marvel.com/account
+// 3 - Configure os secrets com as instruções no README.md
+// 4 - A classe modelo de resposta foi gerada automaticamente com o plugin do VS Code https://marketplace.visualstudio.com/items?itemName=quicktype.quicktype
+
 WriteLine(".:: Refit Samples ::.");
 
 var config = new ConfigurationBuilder()
@@ -19,7 +24,8 @@ const string url = "http://gateway.marvel.com";
 var privateKey = config.GetValue<string>("privateKey");
 var publicKey = config.GetValue<string>("publicKey");
 
-
+// Realizando customizações para deserealização de acordo com o código gerado automaticamente e definindo evento global para log de erro.
+// Para log de requisições foi necessário criar a classe "HttpLoggingHandler" para escrever no Console através do HttpClient nativo.
 var httpClient = new HttpClient(new HttpLoggingHandler()) { BaseAddress = new Uri(url) };
 var settings = new RefitSettings
 {
@@ -32,6 +38,7 @@ var settings = new RefitSettings
         return Task.FromResult<Exception>(new Exception(httpResponse.ToString()));
     }
 };
+
 var marvelApi = RestService.For<IMarvelApi>(httpClient, settings);
 var personagens = await marvelApi.GetCharactersAsync(new CharactersRequest(privateKey, publicKey)
 {
