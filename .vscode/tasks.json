@@ -66,25 +66,12 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "publish",
+            "label": "build-FlurlHttp",
             "command": "dotnet",
             "type": "process",
             "args": [
-                "publish",
-                "${workspaceFolder}/FluentDateTime/FluentDateTime-Sample.csproj",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
-            ],
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "watch",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "watch",
-                "run",
-                "${workspaceFolder}/fluentdatetime/fluentdatetime.csproj",
+                "build",
+                "${workspaceFolder}/FlurlHttp/FlurlHttp-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],

@@ -82,9 +82,20 @@
             "stopAtEntry": false
         },
         {
-            "name": ".NET Core Attach",
+            // Use IntelliSense to find out which attributes exist for C# debugging
+            // Use hover for the description of the existing attributes
+            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+            "name": "FlurlHttp",
             "type": "coreclr",
-            "request": "attach"
+            "request": "launch",
+            "preLaunchTask": "build-FlurlHttp",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/FlurlHttp/bin/Debug/net5.0/FlurlHttp-Sample.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/FlurlHttp",
+            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "internalConsole",
+            "stopAtEntry": false
         }
     ]
 }
