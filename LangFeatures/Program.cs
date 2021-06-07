@@ -8,9 +8,15 @@ using Microsoft.Extensions.Logging.Debug;
 
 namespace LangFeatures_Sample
 {
-    class Program : IHostedService
+    [PrimaryConstructor]
+    public partial class Program : IHostedService
     {
-        static void Main(string[] args) => CreateHostBuilder(args).Build().Run();
+        private static IHost _host;
+        static void Main(string[] args)
+        {
+            _host = CreateHostBuilder(args).Build();
+            _host.Run();
+        }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
@@ -36,12 +42,6 @@ namespace LangFeatures_Sample
         private readonly StreamForEach _streamForEach;
         private readonly ILogger<Program> _logger;
 
-        public Program(StreamForEach streamForEach, ILogger<Program> logger)
-        {
-            _streamForEach = streamForEach;
-            _logger = logger;
-        }
-
         public async Task StartAsync(CancellationToken cancellationToken)
         {
             _logger.LogInformation(".:: Language Features Samples ::.");
@@ -49,8 +49,8 @@ namespace LangFeatures_Sample
             await _streamForEach.ExecuteAsync();
             _streamForEach.Execute();
 
-            //WriteLine("Fim");
             _logger.LogInformation("Fim");
+            await _host.StopAsync();
         }
 
         public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;

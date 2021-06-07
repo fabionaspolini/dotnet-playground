@@ -4,7 +4,17 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>LangFeatures_Sample</RootNamespace>
+    <CompilerGeneratedFilesOutputPath>$(MSBuildProjectDirectory)/generated</CompilerGeneratedFilesOutputPath>
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
   </PropertyGroup>
+
+  <Target Name="ExcludeGenerated" BeforeTargets="AssignTargetPaths">
+        <ItemGroup>
+            <Generated Include="generated/**/*.cs" />
+            <Compile Remove="@(Generated)" />
+        </ItemGroup>
+        <Delete Files="@(Generated)" />
+    </Target>
 
   <ItemGroup>
     <PackageReference Include="FluentDateTime" Version="2.0.0" />
@@ -13,6 +23,7 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="5.0.0" />
+    <PackageReference Include="PrimaryConstructor" Version="1.3.2" />
   </ItemGroup>
 
 </Project>
