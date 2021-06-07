@@ -26,8 +26,7 @@ var publicKey = config.GetValue<string>("publicKey");
 // Realizando customizações para deserealização de acordo com o código gerado automaticamente e definindo eventos globais para tratamento de erro e log de requisições
 FlurlHttp.Configure(settings =>
 {
-    var jsonSettings = QuickType.Converter.Settings;
-    settings.JsonSerializer = new NewtonsoftJsonSerializer(jsonSettings);
+    settings.JsonSerializer = new NewtonsoftJsonSerializer(QuickType.Converter.Settings);
     settings.BeforeCall += (FlurlCall call) => WriteLine($"My custom before call event intercept => {call.Request.Url}");
     settings.OnError += (FlurlCall call) => WriteLine($"My custom error event intercept => {call.Exception.GetAllMessages()}");
 });

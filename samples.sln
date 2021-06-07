@@ -7,11 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentValidation", "FluentV
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentDateTime", "FluentDateTime\FluentDateTime-Sample.csproj", "{0A2E1064-EA82-45FD-BEEF-BC92363A8FD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Humanizer-Sample", "Humanizer\Humanizer-Sample.csproj", "{15120ABF-33BF-4A08-8479-10D83A3092F6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Humanizer", "Humanizer\Humanizer-Sample.csproj", "{15120ABF-33BF-4A08-8479-10D83A3092F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LangFeatures-Sample", "LangFeatures\LangFeatures-Sample.csproj", "{FB4E8D44-9168-4CDC-9789-5C8368253B8D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LangFeatures", "LangFeatures\LangFeatures-Sample.csproj", "{FB4E8D44-9168-4CDC-9789-5C8368253B8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlurlHttp-Sample", "FlurlHttp\FlurlHttp-Sample.csproj", "{1A3BA5C3-B6AA-4165-BC62-7DF4936B76CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlurlHttp", "FlurlHttp\FlurlHttp-Sample.csproj", "{1A3BA5C3-B6AA-4165-BC62-7DF4936B76CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Refit", "Refit\Refit-Sample.csproj", "{06AE80A9-FC88-45B9-9163-4AA52AB57F82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -98,6 +100,18 @@ Global
 		{1A3BA5C3-B6AA-4165-BC62-7DF4936B76CF}.Release|x64.Build.0 = Release|Any CPU
 		{1A3BA5C3-B6AA-4165-BC62-7DF4936B76CF}.Release|x86.ActiveCfg = Release|Any CPU
 		{1A3BA5C3-B6AA-4165-BC62-7DF4936B76CF}.Release|x86.Build.0 = Release|Any CPU
+		{06AE80A9-FC88-45B9-9163-4AA52AB57F82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06AE80A9-FC88-45B9-9163-4AA52AB57F82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06AE80A9-FC88-45B9-9163-4AA52AB57F82}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{06AE80A9-FC88-45B9-9163-4AA52AB57F82}.Debug|x64.Build.0 = Debug|Any CPU
+		{06AE80A9-FC88-45B9-9163-4AA52AB57F82}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{06AE80A9-FC88-45B9-9163-4AA52AB57F82}.Debug|x86.Build.0 = Debug|Any CPU
+		{06AE80A9-FC88-45B9-9163-4AA52AB57F82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06AE80A9-FC88-45B9-9163-4AA52AB57F82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06AE80A9-FC88-45B9-9163-4AA52AB57F82}.Release|x64.ActiveCfg = Release|Any CPU
+		{06AE80A9-FC88-45B9-9163-4AA52AB57F82}.Release|x64.Build.0 = Release|Any CPU
+		{06AE80A9-FC88-45B9-9163-4AA52AB57F82}.Release|x86.ActiveCfg = Release|Any CPU
+		{06AE80A9-FC88-45B9-9163-4AA52AB57F82}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
