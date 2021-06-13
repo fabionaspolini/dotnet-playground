@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>{{ Title }}</title>
+</head>
+
+<body>
+    Olá {{ Nome }}.
+    <br />
+    {{#MaiorDeIdade}}
+    <b>Maior de idade!</b>
+    {{/MaiorDeIdade}}
+    {{^MaiorDeIdade}}
+    <b>Menor de idade!</b>
+    {{/MaiorDeIdade}}
+
+    {{#PossuiContatos}}
+    <p>Contato</p>
+    {{#Contatos}}
+    <li>{{.}}</li>
+    {{/Contatos}}
+    {{/PossuiContatos}}
+    {{^PossuiContatos}}
+    <p>Não possui contatos</p>
+    {{/PossuiContatos}}
+</body>
+
+</html>
