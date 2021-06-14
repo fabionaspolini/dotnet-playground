@@ -90,6 +90,18 @@
             "problemMatcher": "$msCompile"
         },
         {
+            "label": "build-NSwagStudio",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/NSwagStudio/NSwagStudio-Sample.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
             "label": "build-Mustache",
             "command": "dotnet",
             "type": "process",
