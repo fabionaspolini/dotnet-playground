@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Refit", "Refit\Refit-Sample
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mustache-Sample", "Mustache\Mustache-Sample.csproj", "{A325627B-86F6-4CC1-83EA-D6ADF0FF4B2E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Liquid-Sample", "Liquid\Liquid-Sample.csproj", "{EB438FF3-02D3-44E6-A572-A60C000C0A54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -126,6 +128,18 @@ Global
 		{A325627B-86F6-4CC1-83EA-D6ADF0FF4B2E}.Release|x64.Build.0 = Release|Any CPU
 		{A325627B-86F6-4CC1-83EA-D6ADF0FF4B2E}.Release|x86.ActiveCfg = Release|Any CPU
 		{A325627B-86F6-4CC1-83EA-D6ADF0FF4B2E}.Release|x86.Build.0 = Release|Any CPU
+		{EB438FF3-02D3-44E6-A572-A60C000C0A54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB438FF3-02D3-44E6-A572-A60C000C0A54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB438FF3-02D3-44E6-A572-A60C000C0A54}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EB438FF3-02D3-44E6-A572-A60C000C0A54}.Debug|x64.Build.0 = Debug|Any CPU
+		{EB438FF3-02D3-44E6-A572-A60C000C0A54}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EB438FF3-02D3-44E6-A572-A60C000C0A54}.Debug|x86.Build.0 = Debug|Any CPU
+		{EB438FF3-02D3-44E6-A572-A60C000C0A54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB438FF3-02D3-44E6-A572-A60C000C0A54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB438FF3-02D3-44E6-A572-A60C000C0A54}.Release|x64.ActiveCfg = Release|Any CPU
+		{EB438FF3-02D3-44E6-A572-A60C000C0A54}.Release|x64.Build.0 = Release|Any CPU
+		{EB438FF3-02D3-44E6-A572-A60C000C0A54}.Release|x86.ActiveCfg = Release|Any CPU
+		{EB438FF3-02D3-44E6-A572-A60C000C0A54}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection

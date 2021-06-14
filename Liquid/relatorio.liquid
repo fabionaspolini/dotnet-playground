@@ -1,0 +1,30 @@
+{% assign data_base = "now" | date:'%s' | minus: 567648000 %}           {% comment %} Data atual menos 18 anos {% endcomment %}
+{% assign data_nascimento = DataNascimento | date: '%s' | minus: 0 %}   {% comment %} Diminuir 0 para converter a string para numero e funcionar no if {% endcomment %}
+
+<!doctype html>
+<html>
+
+<head>
+    <title>{{ Titulo }}</title>
+</head>
+
+<body>
+    Olá {{ Nome }}.
+    <br />
+    {% if data_nascimento <= data_base -%}
+    <b>Maior de idade!</b>
+    {%- else -%}
+    <b>Menor de idade!</b>
+    {%- endif %}
+
+    {% if Contatos.size > 0 -%}
+    <p>Contatos</p>
+    {%- for contato in Contatos %}
+    <li>{{contato}}</li>
+    {%- endfor %}
+    {%- else %}
+    <p>Não possui contatos</p>
+    {%- endif %}
+</body>
+
+</html>

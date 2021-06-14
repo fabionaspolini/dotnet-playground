@@ -14,8 +14,8 @@ var dadosRelatorio = new Relatorio
     Contatos = new() { "Pedro", "Paulo", "José" }
 };
 var template = await File.ReadAllTextAsync(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"../../../relatorio.mustache"), Encoding.UTF8);
-var stubble = new StubbleBuilder().Build();
-var result = await stubble.RenderAsync(template, dadosRelatorio);
+var render = new StubbleBuilder().Build();
+var result = await render.RenderAsync(template, dadosRelatorio);
 WriteLine(result);
 
 class Relatorio
