@@ -19,11 +19,11 @@ namespace LangFeatures_Sample
             Host.CreateDefaultBuilder(args)
                 .ConfigureLogging(logging => logging
                         .ClearProviders()
-                        .AddFilter("Microsoft", LogLevel.Warning)
-                        .AddFilter("System", LogLevel.Debug)
+                        .AddFilter("Microsoft", LogLevel.Error)
+                        .AddFilter("System", LogLevel.Error)
                         .AddFilter("LangFeatures_Sample", LogLevel.Debug)
-                        .AddFilter<DebugLoggerProvider>("Microsoft", LogLevel.Information)
-                        .AddFilter<ConsoleLoggerProvider>("Microsoft", LogLevel.Trace)
+                        .AddFilter<DebugLoggerProvider>("Microsoft", LogLevel.Error)
+                        .AddFilter<ConsoleLoggerProvider>("Microsoft", LogLevel.Error)
                         .AddSimpleConsole(opts =>
                         {
                             opts.IncludeScopes = true;
