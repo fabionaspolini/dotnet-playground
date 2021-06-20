@@ -31,61 +31,49 @@ var config = new ConfigurationBuilder()
 var pessoaCache = new BaseCacheManager<Pessoa>(config);
 
 logger.LogInformation("Get 1" + new string('-', 100));
-var pessoaGet1 = pessoaCache.GetOrAdd("pessoa", key => PessoaFactory.Create(logger));
+var pessoaGet1 = pessoaCache.GetOrAdd("pessoa", key => PessoaFactory.Create(logger)); // Irá criar a Pessoa. Ao executar novamente o demo antes de 2 minutos, obterá do redis.
 logger.LogInformation("Get 2" + new string('-', 100));
-var pessoaGet2 = pessoaCache.GetOrAdd("pessoa", key => PessoaFactory.Create(logger));
+var pessoaGet2 = pessoaCache.GetOrAdd("pessoa", key => PessoaFactory.Create(logger)); // Caso estiver executando pela primeira vez o demo, neste momento que o cache do redis será sincronizado para a memória da RAM. Caso já existi-se o cache na execuçaõ do Get 1, na linha acima estaria armazenando também na memória
 logger.LogInformation("Get 3" + new string('-', 100));
 var pessoaGet3 = pessoaCache.GetOrAdd("pessoa", key => PessoaFactory.Create(logger));
 
 logger.LogInformation("Get 4" + new string('-', 100));
 logger.LogInformation("Delay 3 segundos...");
 await Task.Delay(3000);
-var pessoaGet4 = pessoaCache.GetOrAdd("pessoa", key => PessoaFactory.Create(logger));
+var pessoaGet4 = pessoaCache.GetOrAdd("pessoa", key => PessoaFactory.Create(logger)); // Aqui o cache continuar na memória
 
 logger.LogInformation("Get 5" + new string('-', 100));
 logger.LogInformation("Delay 3 segundos...");
 await Task.Delay(3000);
-var pessoaGet5 = pessoaCache.GetOrAdd("pessoa", key => PessoaFactory.Create(logger));
+var pessoaGet5 = pessoaCache.GetOrAdd("pessoa", key => PessoaFactory.Create(logger)); // Aqui o cache continuar na memória
 
 logger.LogInformation("Get 6" + new string('-', 100));
 logger.LogInformation("Delay 6 segundos...");
 await Task.Delay(6000);
-var pessoaGet6 = pessoaCache.GetOrAdd("pessoa", key => PessoaFactory.Create(logger));
+var pessoaGet6 = pessoaCache.GetOrAdd("pessoa", key => PessoaFactory.Create(logger)); // Aqui o cache já foi removido da memória porque está com a configuração "Slidind" em 5 segundos, mas será obtido do Redis e resincronizado para memória
 
 logger.LogInformation(new string('=', 100));
 logger.LogInformation($"Pessoa: {pessoaGet1.Nome} | {pessoaGet1.DataCadastro}");
 await Task.Delay(1000); // Para dar tempo do ILogger descarregar tudo no console
 
-/*cache.Add("keyA", "valueA");
-cache.Put("keyB", 23);
-cache.Update("keyB", v => Teste.GetValue());
+// Outros exemplos
+logger.LogInformation(new string('=', 100));
+logger.LogInformation("Testes para Add, Put, Update e Remove");
+var cache = new BaseCacheManager<object>(config);
+cache.Add("keyA", "valueA");
+cache.Put("keyB", 41);
+cache.Update("keyB", v => (int)v + 1);
 
-WriteLine("KeyA is " + cache.Get("keyA"));      // should be valueA
-WriteLine("KeyB is " + cache.Get("keyB"));      // should be 42
+logger.LogInformation("KeyA is " + cache.Get("keyA")); // Deve ser valueA
+logger.LogInformation("KeyB is " + cache.Get("keyB")); // Deve ser 42
 cache.Remove("keyA");
 
-WriteLine("KeyA removed? " + (cache.Get("keyA") == null).ToString());
+logger.LogInformation("KeyA removed? " + (cache.Get("keyA") == null));
 
-Thread.Sleep(TimeSpan.FromSeconds(2));
-WriteLine("KeyB is expired? " + (cache.Get("keyB") == null).ToString());
-WriteLine("KeyB is " + cache.Get("keyB"));      // should be 42
+logger.LogInformation("KeyB is expired? " + (cache.Get("keyB") == null));
+logger.LogInformation("KeyB is " + cache.Get("keyB")); // Deve ser 42
 
-var testeC = cache.Get("keyC");
-testeC = cache.Get("keyC");
-
-WriteLine("KeyC: " + cache.GetOrAdd("keyC", (key) => Teste.GetValue(key)));
-WriteLine("KeyC: " + cache.GetOrAdd("keyC", (key) => Teste.GetValue(key)));
-WriteLine("KeyC: " + cache.GetOrAdd("keyC", (key) => Teste.GetValue(key)));
-
-WriteLine("Pessoa: " + cache.GetOrAdd("pessoa", key => PessoaFactory.Create()));
-
-WriteLine("We are done...");*/
-
-public static class Teste
-{
-    public static int GetValue() => 50;
-    public static int GetValue(string key) => 51;
-}
+await Task.Delay(1000); // Para dar tempo do ILogger descarregar tudo no console
 
 public class Pessoa
 {
@@ -109,7 +97,7 @@ public static class PessoaFactory
     }
 }
 
-// Alternativa para configurar e instância cache inline
+// Alternativa para configurar e instânciar cache inline
 /*var pessoaCache = CacheFactory.Build<Pessoa>(settings => settings
     .WithUpdateMode(CacheUpdateMode.Up)
     .WithJsonSerializer()
