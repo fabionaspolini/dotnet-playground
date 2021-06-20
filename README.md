@@ -7,7 +7,7 @@ Maiores detalhes descritos no meu [post](https://fabionaspolini.medium.com/bibli
 ## Biliotecas
 
 - Syntax sugar
-  - [FluenteDateTime](FluenteDateTime)
+  - [FluentDateTime](FluentDateTime)
   - [FluentValidation](FluentValidation)
   - [Humanizer](Humanizer)
 - Dados
