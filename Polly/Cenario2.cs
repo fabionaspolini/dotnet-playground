@@ -27,7 +27,7 @@ namespace Polly_Sample
             //      - sleepDurationProvider: Indica o tempo para aguardar antes da próxima exceção
             //      - onRetry: logamos detalhes da falha.
             var policy = Policy
-                .HandleResult<decimal>(valor => valor < 0) // <<< Validando também o resultado
+                .HandleResult<decimal>(valor => valor < 0) // <<< Validando também o resultado, enquanto a expressão for verdadeira o Polly continuará na politica de Retry
                 .Or<Exception>() // Ou a ocorrência de exceção
                 .WaitAndRetry(5,
                     sleepDurationProvider: tentativa =>
