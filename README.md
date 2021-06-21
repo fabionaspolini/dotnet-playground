@@ -9,7 +9,7 @@ Maiores detalhes descritos no meu [post](https://fabionaspolini.medium.com/bibli
 - Syntax sugar
   - [FluentDateTime](FluentDateTime): Melhorar a experiência de trabalho com datas
   - [Humanizer](Humanizer): Humanizar leitura de unidades de medias
-  - Maestria.Extensions: Métodos de extensões úteis
+  - [Maestria.Extensions](MaestriaExtensions): Métodos de extensões úteis
   - Maestria.FluentCast: Converter valores de tipos primitidos de forma fluente
   - [LangFeatures](LangFeatures): Recursos da linguagem C# / .NET
 - Dados
