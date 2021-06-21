@@ -10,7 +10,7 @@ Maiores detalhes descritos no meu [post](https://fabionaspolini.medium.com/bibli
   - [FluentDateTime](FluentDateTime): Melhorar a experiência de trabalho com datas
   - [Humanizer](Humanizer): Humanizar leitura de unidades de medias
   - [Maestria.Extensions](MaestriaExtensions): Métodos de extensões úteis
-  - Maestria.FluentCast: Converter valores de tipos primitidos de forma fluente
+  - [Maestria.FluentCast](MaestriaFluentCast): Converter valores de tipos primitidos de forma fluente
   - [LangFeatures](LangFeatures): Recursos da linguagem C# / .NET
 - Dados
   - [CacheManager](CacheManager): Pipeline para gerenciamento de cache em memória e Redis
@@ -28,6 +28,8 @@ Maiores detalhes descritos no meu [post](https://fabionaspolini.medium.com/bibli
   - HangFire: Agendamento de tarefas em backgroud
   - Quartz.NET: Agendamento de tarefas em backgroud
   - Worker Service: Execução de tarefas em background sem suporte a agendamento de horários
+- Outras
+  - [Polly](Polly): Resiliência de operações
 - Source Generators
   - Maestria.TypeProviders: Gerador de código a partir de template de arquivo (Excel)
   - PrimaryConstructor: Adicionar construtor padrão na classe para variáveis e propriedades read only
