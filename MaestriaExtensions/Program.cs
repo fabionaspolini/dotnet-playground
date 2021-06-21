@@ -259,7 +259,7 @@ SimpleResult<int> ConverterParaInt(string texto)
 }
 
 WriteLine("=====> Try <=====");
-// O tipo Try<TSuccess, TFailure> ajusta para enriquecimento do dominio, permitindo expressr um função com dois tipos de retornos diferentes para sucesso e falha.
+// O tipo Try<TSuccess, TFailure> serve para enriquecimento do dominio, permitindo expressar uma função com dois tipos de retornos diferentes para sucesso e falha.
 var result = TentarIntegrarPessoa("maestria");
 if (result) // Implicit cast para result.Successfully
 {
@@ -277,6 +277,8 @@ Try<int, string> TentarIntegrarPessoa(string nome)
     try
     {
         // Rotina para integra em sistema externo, se der certo retorna o Id
+        if (nome == "")
+            throw new Exception("Simulação de erro");
         return 10;
     }
     catch (Exception e)
