@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CacheManager", "CacheManage
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaestriaExtensions", "MaestriaExtensions\MaestriaExtensions-Sample.csproj", "{337F3867-1D93-4959-9310-DEC3F79FA8C2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaestriaFluentCast", "MaestriaFluentCast\MaestriaFluentCast-Sample.csproj", "{86A8AC7B-AB66-4558-A208-3A18EEB503C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -182,6 +184,18 @@ Global
 		{337F3867-1D93-4959-9310-DEC3F79FA8C2}.Release|x64.Build.0 = Release|Any CPU
 		{337F3867-1D93-4959-9310-DEC3F79FA8C2}.Release|x86.ActiveCfg = Release|Any CPU
 		{337F3867-1D93-4959-9310-DEC3F79FA8C2}.Release|x86.Build.0 = Release|Any CPU
+		{86A8AC7B-AB66-4558-A208-3A18EEB503C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86A8AC7B-AB66-4558-A208-3A18EEB503C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86A8AC7B-AB66-4558-A208-3A18EEB503C7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{86A8AC7B-AB66-4558-A208-3A18EEB503C7}.Debug|x64.Build.0 = Debug|Any CPU
+		{86A8AC7B-AB66-4558-A208-3A18EEB503C7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{86A8AC7B-AB66-4558-A208-3A18EEB503C7}.Debug|x86.Build.0 = Debug|Any CPU
+		{86A8AC7B-AB66-4558-A208-3A18EEB503C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86A8AC7B-AB66-4558-A208-3A18EEB503C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86A8AC7B-AB66-4558-A208-3A18EEB503C7}.Release|x64.ActiveCfg = Release|Any CPU
+		{86A8AC7B-AB66-4558-A208-3A18EEB503C7}.Release|x64.Build.0 = Release|Any CPU
+		{86A8AC7B-AB66-4558-A208-3A18EEB503C7}.Release|x86.ActiveCfg = Release|Any CPU
+		{86A8AC7B-AB66-4558-A208-3A18EEB503C7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
