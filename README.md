@@ -17,6 +17,7 @@ Maiores detalhes descritos no meu [post](https://fabionaspolini.medium.com/bibli
   - Dapper: Simples ORM pequeno para leitura de dados
   - DapperContrib: Adicionar suporte a escrita no Dapper
   - [FluentValidation](FluentValidation): Validação de dados
+  - ClosedXML: Leitura e escrita de excel independente de softwares instalados na estação de trabalho.
 - HTTP Client
   - [FlurlHttp](FlurlHttp): Acesso a HTTP por sintax fluente
   - [NSwagStudio](NSwagStudio): Geração de código a partir de especificação swagger
