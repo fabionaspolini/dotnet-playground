@@ -1,52 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Console;
+using Microsoft.Extensions.Logging.Debug;
 
 namespace LangFeatures_Sample
 {
-    [PrimaryConstructor]
-    public partial class Program : IHostedService
+    public static class Program
     {
-        private readonly StreamForEach _streamForEach;
-        private readonly ILogger<Program> _logger;
-        private readonly IHost _host;
-
-        public async Task StartAsync(CancellationToken cancellationToken)
+        private static IHost _host;
+        static void Main(string[] args)
         {
-            _logger.LogInformation(".:: Language Features Samples ::.");
-
-            await _streamForEach.ExecuteAsync();
-            //_streamForEach.Execute();
-
-            Tuplas();
-
-            _logger.LogInformation("Fim");
-            await _host.StopAsync();
+            _host = CreateHostBuilder(args).Build();
+            _host.Run();
         }
 
-        public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;
-
-        private void Tuplas()
-        {
-            var dic = new Dictionary<(string topic, string queue), int>();
-            dic.Add((topic: "teste", queue: "1"), 1);
-            dic.Add((topic: "teste", queue: "2"), 2);
-            dic.Add((topic: "teste", queue: "3"), 3);
-            dic.Add((topic: "teste2", queue: "1"), 21);
-            dic.Add((topic: "teste2", queue: "2"), 22);
-            dic.Add((topic: "teste2", queue: "3"), 23);
-
-            if (dic.TryGetValue((topic: "teste", queue: "2"), out var teste))
-                Console.WriteLine("1. Existe");
-
-            if (!dic.TryGetValue((topic: "teste2", queue: "155"), out var teste2))
-                Console.WriteLine("2. Não existe");
-
-            Console.WriteLine($"Teste: {teste}");
-            Console.WriteLine($"Teste2: {teste2}");
-        }
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureLogging(logging => logging
+                        .ClearProviders()
+                        .AddFilter("Microsoft", LogLevel.Error)
+                        .AddFilter("System", LogLevel.Error)
+                        .AddFilter("LangFeatures_Sample", LogLevel.Debug)
+                        .AddFilter<DebugLoggerProvider>("Microsoft", LogLevel.Error)
+                        .AddFilter<ConsoleLoggerProvider>("Microsoft", LogLevel.Error)
+                        .AddSimpleConsole(opts =>
+                        {
+                            opts.IncludeScopes = true;
+                            opts.SingleLine = true;
+                            opts.TimestampFormat = "dd/MM/yyyy HH:mm:ss.fff ";
+                        }))
+                .ConfigureServices((System.Action<HostBuilderContext, IServiceCollection>)((context, services) =>
+                {
+                    ServiceCollectionHostedServiceExtensions.AddHostedService<Principal>(services);
+                    Startup.ConfigureServices(services);
+                }));
     }
 }

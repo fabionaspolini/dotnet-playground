@@ -21,6 +21,23 @@
             }
         },
         {
+            "label": "rebuild",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/samples.sln",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary",
+                "--no-incremental"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": "build",
+            "presentation": {
+                "reveal": "always"
+            }
+        },
+        {
             "label": "build-FluentDateTime",
             "command": "dotnet",
             "type": "process",
