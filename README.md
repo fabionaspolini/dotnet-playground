@@ -32,6 +32,6 @@ Maiores detalhes descritos no meu [post](https://fabionaspolini.medium.com/bibli
 - Outras
   - [Polly](Polly): Resiliência de operações
 - Source Generators
-  - Maestria.TypeProviders: Gerador de código a partir de template de arquivo (Excel)
-  - PrimaryConstructor: Adicionar construtor padrão na classe para variáveis e propriedades read only
-  - DataBuilderGenerator: Adicionar métodos para contrução de classes de dados fluente
+  - [Maestria.TypeProviders](MaestriaTypeProviders): Gerador de código a partir de template de arquivo (Excel)
+  - [PrimaryConstructor](PrimaryConstructor): Adicionar construtor padrão na classe para variáveis e propriedades read only
+  - [DataBuilderGenerator](DataBuilderGenerator): Adicionar métodos para contrução de classes de dados fluente
