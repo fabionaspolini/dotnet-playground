@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>MaestriaTypeProviders_Sample</RootNamespace>
+  </PropertyGroup>
+
+  <!-- Enable source disk file write to correct IDE's works -->
+  <PropertyGroup>
+    <CompilerGeneratedFilesOutputPath>$(MSBuildProjectDirectory)/generated</CompilerGeneratedFilesOutputPath>
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.95.4" />
+    <PackageReference Include="Maestria.FluentCast" Version="1.0.8" />
+    <PackageReference Include="Maestria.TypeProviders" Version="1.0.6" />
+  </ItemGroup>
+
+  <!-- Remove files on build start to solve recreate bug message "alwaready exists" -->
+  <Target Name="ExcludeGenerated" BeforeTargets="AssignTargetPaths">
+    <ItemGroup>
+      <Generated Include="generated/**/*.cs" />
+      <Compile Remove="@(Generated)" />
+    </ItemGroup>
+    <Delete Files="@(Generated)" />
+  </Target>
+
+</Project>

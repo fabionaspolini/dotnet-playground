@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaestriaFluentCast", "Maest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polly", "Polly\Polly-Sample.csproj", "{50896C2E-2887-4ED8-B907-66BBB29E505D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaestriaTypeProviders", "MaestriaTypeProviders\MaestriaTypeProviders-Sample.csproj", "{9D0034ED-2228-427B-BF08-7614C1312E05}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -210,6 +212,18 @@ Global
 		{50896C2E-2887-4ED8-B907-66BBB29E505D}.Release|x64.Build.0 = Release|Any CPU
 		{50896C2E-2887-4ED8-B907-66BBB29E505D}.Release|x86.ActiveCfg = Release|Any CPU
 		{50896C2E-2887-4ED8-B907-66BBB29E505D}.Release|x86.Build.0 = Release|Any CPU
+		{9D0034ED-2228-427B-BF08-7614C1312E05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D0034ED-2228-427B-BF08-7614C1312E05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D0034ED-2228-427B-BF08-7614C1312E05}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9D0034ED-2228-427B-BF08-7614C1312E05}.Debug|x64.Build.0 = Debug|Any CPU
+		{9D0034ED-2228-427B-BF08-7614C1312E05}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9D0034ED-2228-427B-BF08-7614C1312E05}.Debug|x86.Build.0 = Debug|Any CPU
+		{9D0034ED-2228-427B-BF08-7614C1312E05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D0034ED-2228-427B-BF08-7614C1312E05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D0034ED-2228-427B-BF08-7614C1312E05}.Release|x64.ActiveCfg = Release|Any CPU
+		{9D0034ED-2228-427B-BF08-7614C1312E05}.Release|x64.Build.0 = Release|Any CPU
+		{9D0034ED-2228-427B-BF08-7614C1312E05}.Release|x86.ActiveCfg = Release|Any CPU
+		{9D0034ED-2228-427B-BF08-7614C1312E05}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
