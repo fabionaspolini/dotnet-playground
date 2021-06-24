@@ -4,17 +4,22 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>LangFeatures_Sample</RootNamespace>
+  </PropertyGroup>
+
+  <!-- Enable source disk file write to correct IDE's works -->
+  <PropertyGroup>
     <CompilerGeneratedFilesOutputPath>$(MSBuildProjectDirectory)/generated</CompilerGeneratedFilesOutputPath>
     <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
   </PropertyGroup>
 
+  <!-- Remove files on build start to solve recreate bug message "alwaready exists" -->
   <Target Name="ExcludeGenerated" BeforeTargets="AssignTargetPaths">
-        <ItemGroup>
-            <Generated Include="generated/**/*.cs" />
-            <Compile Remove="@(Generated)" />
-        </ItemGroup>
-        <Delete Files="@(Generated)" />
-    </Target>
+    <ItemGroup>
+      <Generated Include="generated/**/*.cs" />
+      <Compile Remove="@(Generated)" />
+    </ItemGroup>
+    <Delete Files="@(Generated)" />
+  </Target>
 
   <ItemGroup>
     <PackageReference Include="FluentDateTime" Version="2.0.0" />
