@@ -224,23 +224,23 @@ WriteLine();
 
 WriteLine("=====> SimpleResult <=====");
 // Os Tipos SimpleResult e SimpleResult<TValue> facilitam para aplicar o conceito de não executar exceptions no domínio da aplicação com seus operadores implicitos.
-var ok = ConverterParaInt("15");
-var fail = ConverterParaInt("");
-var fail2 = ConverterParaInt("aaa");
+var testeConversao1 = ConverterParaInt("15");
+var testeConversao2 = ConverterParaInt("");
+var testeConversao3 = ConverterParaInt("aaa");
 
-if (ok) // Implicit cast para boolean ok.Success
+if (testeConversao1) // Implicit cast para boolean ok.Success
 {
-    int valor = ok; // Implicit cast do valor ok.Value;
+    int valor = testeConversao1; // Implicit cast do valor ok.Value;
     WriteLine($"Valor convertido: {valor}");
 }
 
-if (!fail)
-    Console.WriteLine($"fail.Message: {fail.Message}");
+if (!testeConversao2)
+    WriteLine($"testeConversao2.Message: {testeConversao2.Message}");
 
-if (!fail2)
+if (!testeConversao3)
 {
-    Console.WriteLine($"fail2.Message: {fail2.Message}");
-    Console.WriteLine($"fail2.Exception: {fail2.Exception.GetAllMessages()}");
+    WriteLine($"testeConversao3.Message: {testeConversao3.Message}");
+    WriteLine($"testeConversao3.Exception: {testeConversao3.Exception.GetAllMessages()}");
 }
 WriteLine();
 
