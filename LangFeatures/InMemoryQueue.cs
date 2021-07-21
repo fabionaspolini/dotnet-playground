@@ -27,7 +27,10 @@ namespace LangFeatures_Sample
         {
             var worker = StartConcurrentWorker();
             foreach (var i in Enumerable.Range(1, 10))
+            {
+                _logger.LogInformation($"Enqueuing item {i}");
                 _concurrentQueue.Enqueue(i.ToString());
+            }
         }
 
         private Task StartConcurrentWorker()

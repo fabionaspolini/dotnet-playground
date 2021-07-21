@@ -26,6 +26,7 @@ namespace LangFeatures_Sample
 
             // Tuplas();
 
+            await Task.Delay(1000); // Tempo para flush dos logs no console
             _logger.LogInformation("Fim");
             await _host.StopAsync();
         }
