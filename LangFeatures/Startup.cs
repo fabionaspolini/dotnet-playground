@@ -7,6 +7,7 @@ namespace LangFeatures_Sample
         internal static void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<StreamForEach>();
+            services.AddScoped<InMemoryQueue>();
         }
     }
 }

@@ -10,18 +10,21 @@ namespace LangFeatures_Sample
     [PrimaryConstructor]
     public partial class Principal : IHostedService
     {
+        private readonly IHost _host;
         private readonly StreamForEach _streamForEach;
         private readonly ILogger<Principal> _logger;
-        private readonly IHost _host;
+        private readonly InMemoryQueue _inMemoryQueue;
 
         public async Task StartAsync(CancellationToken cancellationToken)
         {
             _logger.LogInformation(".:: Language Features Samples ::.");
 
-            await _streamForEach.ExecuteAsync();
+            // await _streamForEach.ExecuteAsync();
             //_streamForEach.Execute();
+            // _inMemoryQueue.TestQueue();
+            _inMemoryQueue.TestConcurrentQueue();
 
-            Tuplas();
+            // Tuplas();
 
             _logger.LogInformation("Fim");
             await _host.StopAsync();
