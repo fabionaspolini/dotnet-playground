@@ -14,7 +14,7 @@
 
   <!-- Enable source disk file write to correct IDE's works -->
   <PropertyGroup>
-    <CompilerGeneratedFilesOutputPath>$(MSBuildProjectDirectory)/generated</CompilerGeneratedFilesOutputPath>
+    <CompilerGeneratedFilesOutputPath>$(MSBuildProjectDirectory)/../generated/DataBuilderGenerator_Sample</CompilerGeneratedFilesOutputPath>
     <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
   </PropertyGroup>
 
