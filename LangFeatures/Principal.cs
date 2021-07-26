@@ -28,7 +28,7 @@ namespace LangFeatures_Sample
 
             await Task.Delay(1000); // Tempo para flush dos logs no console
             _logger.LogInformation("Fim");
-            await _host.StopAsync();
+            // await _host.StopAsync();
         }
 
         public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;

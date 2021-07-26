@@ -21,6 +21,5 @@ namespace PrimaryConstructor_Sample
 
         [IncludePrimaryConstructor]
         public EmpresaRepository PropriedadeAdicionada { get; set; }
-
     }
 }
