@@ -3,37 +3,54 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.6.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentValidation", "FluentValidation\FluentValidation-Sample.csproj", "{BA18C2B2-6336-413D-80A1-4659FB5924E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentValidation-Sample", "FluentValidation\FluentValidation-Sample.csproj", "{BA18C2B2-6336-413D-80A1-4659FB5924E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentDateTime", "FluentDateTime\FluentDateTime-Sample.csproj", "{0A2E1064-EA82-45FD-BEEF-BC92363A8FD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentDateTime-Sample", "FluentDateTime\FluentDateTime-Sample.csproj", "{0A2E1064-EA82-45FD-BEEF-BC92363A8FD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Humanizer", "Humanizer\Humanizer-Sample.csproj", "{15120ABF-33BF-4A08-8479-10D83A3092F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Humanizer-Sample", "Humanizer\Humanizer-Sample.csproj", "{15120ABF-33BF-4A08-8479-10D83A3092F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LangFeatures", "LangFeatures\LangFeatures-Sample.csproj", "{FB4E8D44-9168-4CDC-9789-5C8368253B8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LangFeatures-Sample", "LangFeatures\LangFeatures-Sample.csproj", "{FB4E8D44-9168-4CDC-9789-5C8368253B8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlurlHttp", "FlurlHttp\FlurlHttp-Sample.csproj", "{1A3BA5C3-B6AA-4165-BC62-7DF4936B76CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlurlHttp-Sample", "FlurlHttp\FlurlHttp-Sample.csproj", "{1A3BA5C3-B6AA-4165-BC62-7DF4936B76CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Refit", "Refit\Refit-Sample.csproj", "{06AE80A9-FC88-45B9-9163-4AA52AB57F82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Refit-Sample", "Refit\Refit-Sample.csproj", "{06AE80A9-FC88-45B9-9163-4AA52AB57F82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mustache", "Mustache\Mustache-Sample.csproj", "{A325627B-86F6-4CC1-83EA-D6ADF0FF4B2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mustache-Sample", "Mustache\Mustache-Sample.csproj", "{A325627B-86F6-4CC1-83EA-D6ADF0FF4B2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Liquid", "Liquid\Liquid-Sample.csproj", "{EB438FF3-02D3-44E6-A572-A60C000C0A54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Liquid-Sample", "Liquid\Liquid-Sample.csproj", "{EB438FF3-02D3-44E6-A572-A60C000C0A54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSwagStudio", "NSwagStudio\NSwagStudio-Sample.csproj", "{3B656115-804A-429D-93F9-525607E1F984}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSwagStudio-Sample", "NSwagStudio\NSwagStudio-Sample.csproj", "{3B656115-804A-429D-93F9-525607E1F984}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CacheManager", "CacheManager\CacheManager-Sample.csproj", "{70313DF3-B407-4FC7-824B-13C3BFB719DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CacheManager-Sample", "CacheManager\CacheManager-Sample.csproj", "{70313DF3-B407-4FC7-824B-13C3BFB719DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaestriaExtensions", "MaestriaExtensions\MaestriaExtensions-Sample.csproj", "{337F3867-1D93-4959-9310-DEC3F79FA8C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaestriaExtensions-Sample", "MaestriaExtensions\MaestriaExtensions-Sample.csproj", "{337F3867-1D93-4959-9310-DEC3F79FA8C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaestriaFluentCast", "MaestriaFluentCast\MaestriaFluentCast-Sample.csproj", "{86A8AC7B-AB66-4558-A208-3A18EEB503C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaestriaFluentCast-Sample", "MaestriaFluentCast\MaestriaFluentCast-Sample.csproj", "{86A8AC7B-AB66-4558-A208-3A18EEB503C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polly", "Polly\Polly-Sample.csproj", "{50896C2E-2887-4ED8-B907-66BBB29E505D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Polly-Sample", "Polly\Polly-Sample.csproj", "{50896C2E-2887-4ED8-B907-66BBB29E505D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaestriaTypeProviders", "MaestriaTypeProviders\MaestriaTypeProviders-Sample.csproj", "{9D0034ED-2228-427B-BF08-7614C1312E05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaestriaTypeProviders-Sample", "MaestriaTypeProviders\MaestriaTypeProviders-Sample.csproj", "{9D0034ED-2228-427B-BF08-7614C1312E05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimaryConstructor-Sample", "PrimaryConstructor\PrimaryConstructor-Sample.csproj", "{FFB46013-9CE5-44B4-87FA-313767AEC075}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrimaryConstructor-Sample", "PrimaryConstructor\PrimaryConstructor-Sample.csproj", "{FFB46013-9CE5-44B4-87FA-313767AEC075}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBuilderGenerator-Sample", "DataBuilderGenerator\DataBuilderGenerator-Sample.csproj", "{B00F8963-0DD6-49BE-BA8B-3C2121E77105}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBuilderGenerator-Sample", "DataBuilderGenerator\DataBuilderGenerator-Sample.csproj", "{B00F8963-0DD6-49BE-BA8B-3C2121E77105}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2D2C6443-F1B1-46DF-874F-BEFD6C5AEDBB}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Syntax Sugar", "Syntax Sugar", "{EC7CA729-A36C-4C7B-8689-431B062BF0DE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HTTP Client", "HTTP Client", "{4B49AAFF-235A-4D91-BC9F-D51FFEF6D3E5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Template Engine", "Template Engine", "{EDEA9239-750D-46D1-BC49-B63948061B2B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{C81DBC4C-42A2-46FB-9FA4-E92B0491B10A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source generators", "Source generators", "{A17D3E48-A0CD-48F8-B73A-52B36F0C2F9C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Others", "Others", "{FD7F4DC8-9C67-4E66-BD16-9745CDE2C93A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,22 +61,7 @@ Global
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4F4C48CD-27E9-49D8-B27C-98C8A6D0D394}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4F4C48CD-27E9-49D8-B27C-98C8A6D0D394}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4F4C48CD-27E9-49D8-B27C-98C8A6D0D394}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{4F4C48CD-27E9-49D8-B27C-98C8A6D0D394}.Debug|x64.Build.0 = Debug|Any CPU
-		{4F4C48CD-27E9-49D8-B27C-98C8A6D0D394}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{4F4C48CD-27E9-49D8-B27C-98C8A6D0D394}.Debug|x86.Build.0 = Debug|Any CPU
-		{4F4C48CD-27E9-49D8-B27C-98C8A6D0D394}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4F4C48CD-27E9-49D8-B27C-98C8A6D0D394}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4F4C48CD-27E9-49D8-B27C-98C8A6D0D394}.Release|x64.ActiveCfg = Release|Any CPU
-		{4F4C48CD-27E9-49D8-B27C-98C8A6D0D394}.Release|x64.Build.0 = Release|Any CPU
-		{4F4C48CD-27E9-49D8-B27C-98C8A6D0D394}.Release|x86.ActiveCfg = Release|Any CPU
-		{4F4C48CD-27E9-49D8-B27C-98C8A6D0D394}.Release|x86.Build.0 = Release|Any CPU
 		{BA18C2B2-6336-413D-80A1-4659FB5924E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BA18C2B2-6336-413D-80A1-4659FB5924E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA18C2B2-6336-413D-80A1-4659FB5924E7}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -253,6 +255,28 @@ Global
 		{B00F8963-0DD6-49BE-BA8B-3C2121E77105}.Release|x86.ActiveCfg = Release|Any CPU
 		{B00F8963-0DD6-49BE-BA8B-3C2121E77105}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{BA18C2B2-6336-413D-80A1-4659FB5924E7} = {C81DBC4C-42A2-46FB-9FA4-E92B0491B10A}
+		{0A2E1064-EA82-45FD-BEEF-BC92363A8FD9} = {EC7CA729-A36C-4C7B-8689-431B062BF0DE}
+		{15120ABF-33BF-4A08-8479-10D83A3092F6} = {EC7CA729-A36C-4C7B-8689-431B062BF0DE}
+		{FB4E8D44-9168-4CDC-9789-5C8368253B8D} = {FD7F4DC8-9C67-4E66-BD16-9745CDE2C93A}
+		{1A3BA5C3-B6AA-4165-BC62-7DF4936B76CF} = {4B49AAFF-235A-4D91-BC9F-D51FFEF6D3E5}
+		{06AE80A9-FC88-45B9-9163-4AA52AB57F82} = {4B49AAFF-235A-4D91-BC9F-D51FFEF6D3E5}
+		{A325627B-86F6-4CC1-83EA-D6ADF0FF4B2E} = {EDEA9239-750D-46D1-BC49-B63948061B2B}
+		{EB438FF3-02D3-44E6-A572-A60C000C0A54} = {EDEA9239-750D-46D1-BC49-B63948061B2B}
+		{3B656115-804A-429D-93F9-525607E1F984} = {4B49AAFF-235A-4D91-BC9F-D51FFEF6D3E5}
+		{70313DF3-B407-4FC7-824B-13C3BFB719DB} = {C81DBC4C-42A2-46FB-9FA4-E92B0491B10A}
+		{337F3867-1D93-4959-9310-DEC3F79FA8C2} = {EC7CA729-A36C-4C7B-8689-431B062BF0DE}
+		{86A8AC7B-AB66-4558-A208-3A18EEB503C7} = {EC7CA729-A36C-4C7B-8689-431B062BF0DE}
+		{50896C2E-2887-4ED8-B907-66BBB29E505D} = {FD7F4DC8-9C67-4E66-BD16-9745CDE2C93A}
+		{9D0034ED-2228-427B-BF08-7614C1312E05} = {A17D3E48-A0CD-48F8-B73A-52B36F0C2F9C}
+		{FFB46013-9CE5-44B4-87FA-313767AEC075} = {A17D3E48-A0CD-48F8-B73A-52B36F0C2F9C}
+		{B00F8963-0DD6-49BE-BA8B-3C2121E77105} = {A17D3E48-A0CD-48F8-B73A-52B36F0C2F9C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {168EC689-C008-4589-95F0-6030A3264703}
 	EndGlobalSection
 EndGlobal

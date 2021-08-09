@@ -14,17 +14,8 @@
 
   <!-- Enable source disk file write to correct IDE's works -->
   <PropertyGroup>
-    <CompilerGeneratedFilesOutputPath>$(MSBuildProjectDirectory)/../generated/DataBuilderGenerator_Sample</CompilerGeneratedFilesOutputPath>
-    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+    <CompilerGeneratedFilesOutputPath>$(MSBuildProjectDirectory)/../generated/$(MSBuildProjectName)</CompilerGeneratedFilesOutputPath>
+    <EmitCompilerGeneratedFiles>false</EmitCompilerGeneratedFiles>
   </PropertyGroup>
-
-  <!-- Remove files on build start to solve recreate bug message "alwaready exists" -->
-  <Target Name="ExcludeGenerated" BeforeTargets="AssignTargetPaths">
-    <ItemGroup>
-      <Generated Include="generated/**/*.cs" />
-      <Compile Remove="@(Generated)" />
-    </ItemGroup>
-    <Delete Files="@(Generated)" />
-  </Target>
 
 </Project>

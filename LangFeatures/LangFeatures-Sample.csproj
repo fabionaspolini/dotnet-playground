@@ -8,8 +8,8 @@
 
   <!-- Enable source disk file write to correct IDE's works -->
   <PropertyGroup>
-    <CompilerGeneratedFilesOutputPath>$(MSBuildProjectDirectory)/../generated/LangFeatures_Sample</CompilerGeneratedFilesOutputPath>
-    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+    <CompilerGeneratedFilesOutputPath>$(MSBuildProjectDirectory)/../generated/$(MSBuildProjectName)</CompilerGeneratedFilesOutputPath>
+    <EmitCompilerGeneratedFiles>false</EmitCompilerGeneratedFiles>
   </PropertyGroup>
 
   <ItemGroup>
