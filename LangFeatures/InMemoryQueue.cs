@@ -27,7 +27,7 @@ namespace LangFeatures_Sample
 
         public void TestConcurrentQueue()
         {
-            var worker = StartConcurrentWorker();
+            StartConcurrentWorker();
             foreach (var i in Enumerable.Range(1, 10))
             {
                 _logger.LogInformation($"Enqueuing item {i}");

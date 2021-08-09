@@ -37,6 +37,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBuilderGenerator-Sample
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2D2C6443-F1B1-46DF-874F-BEFD6C5AEDBB}"
 	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -51,6 +52,15 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source generators", "Source generators", "{A17D3E48-A0CD-48F8-B73A-52B36F0C2F9C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Others", "Others", "{FD7F4DC8-9C67-4E66-BD16-9745CDE2C93A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logs", "Logs", "{FAD75C27-6A4D-4C6B-B5F0-8E60005D8CEB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NLog-Sample", "NLog\NLog-Sample.csproj", "{89256F64-BFF3-4F52-BF58-49F8C3AE7A7E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{15CFB388-BCAB-4AFB-A4B0-6C5974EBA165}"
+	ProjectSection(SolutionItems) = preProject
+		Docs\Logs.md = Docs\Logs.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -254,6 +264,18 @@ Global
 		{B00F8963-0DD6-49BE-BA8B-3C2121E77105}.Release|x64.Build.0 = Release|Any CPU
 		{B00F8963-0DD6-49BE-BA8B-3C2121E77105}.Release|x86.ActiveCfg = Release|Any CPU
 		{B00F8963-0DD6-49BE-BA8B-3C2121E77105}.Release|x86.Build.0 = Release|Any CPU
+		{89256F64-BFF3-4F52-BF58-49F8C3AE7A7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89256F64-BFF3-4F52-BF58-49F8C3AE7A7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89256F64-BFF3-4F52-BF58-49F8C3AE7A7E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{89256F64-BFF3-4F52-BF58-49F8C3AE7A7E}.Debug|x64.Build.0 = Debug|Any CPU
+		{89256F64-BFF3-4F52-BF58-49F8C3AE7A7E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{89256F64-BFF3-4F52-BF58-49F8C3AE7A7E}.Debug|x86.Build.0 = Debug|Any CPU
+		{89256F64-BFF3-4F52-BF58-49F8C3AE7A7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89256F64-BFF3-4F52-BF58-49F8C3AE7A7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89256F64-BFF3-4F52-BF58-49F8C3AE7A7E}.Release|x64.ActiveCfg = Release|Any CPU
+		{89256F64-BFF3-4F52-BF58-49F8C3AE7A7E}.Release|x64.Build.0 = Release|Any CPU
+		{89256F64-BFF3-4F52-BF58-49F8C3AE7A7E}.Release|x86.ActiveCfg = Release|Any CPU
+		{89256F64-BFF3-4F52-BF58-49F8C3AE7A7E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -275,6 +297,8 @@ Global
 		{9D0034ED-2228-427B-BF08-7614C1312E05} = {A17D3E48-A0CD-48F8-B73A-52B36F0C2F9C}
 		{FFB46013-9CE5-44B4-87FA-313767AEC075} = {A17D3E48-A0CD-48F8-B73A-52B36F0C2F9C}
 		{B00F8963-0DD6-49BE-BA8B-3C2121E77105} = {A17D3E48-A0CD-48F8-B73A-52B36F0C2F9C}
+		{89256F64-BFF3-4F52-BF58-49F8C3AE7A7E} = {FAD75C27-6A4D-4C6B-B5F0-8E60005D8CEB}
+		{15CFB388-BCAB-4AFB-A4B0-6C5974EBA165} = {2D2C6443-F1B1-46DF-874F-BEFD6C5AEDBB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {168EC689-C008-4589-95F0-6030A3264703}

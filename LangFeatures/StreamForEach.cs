@@ -55,7 +55,7 @@ namespace LangFeatures_Sample
             for (int i = 1; i <= 5; i++)
             {
                 yield return $"Retorno {i}";
-                await Task.Delay(1.Seconds());
+                //await Task.Delay(1.Seconds());
             }
         }
 

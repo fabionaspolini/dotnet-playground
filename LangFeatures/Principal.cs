@@ -19,10 +19,10 @@ namespace LangFeatures_Sample
         {
             _logger.LogInformation(".:: Language Features Samples ::.");
 
-            // await _streamForEach.ExecuteAsync();
+            await _streamForEach.ExecuteAsync();
             //_streamForEach.Execute();
-            // _inMemoryQueue.TestQueue();
-            //_inMemoryQueue.TestConcurrentQueue();
+            _inMemoryQueue.TestQueue();
+            _inMemoryQueue.TestConcurrentQueue();
 
             Tuplas.Execute();
             ApplicationPath.Execute();
