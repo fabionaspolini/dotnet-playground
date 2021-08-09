@@ -6,8 +6,8 @@
 | Exclusão de arquivos antigos                          | :heavy_check_mark:    | :-1:                  | :heavy_check_mark:    |
 | Obter nome do método que chamou o log automaticamente | :heavy_check_mark:    | :x:                   | :heavy_check_mark:    |
 | Proxy para Microsoft Logging                          | :heavy_check_mark:    | :heavy_check_mark:    |                       |
-| Facilidade para obter Log Manager                     | :heavy_check_mark:    | :x:                   | :-1:                  |
-| Documentação                                          | :heavy_check_mark:    | :+1:                  | :-1:                  |
+| Facilidade para obter Log Manager                     | :heavy_check_mark:    | :+1:                  | :+1:                  |
+| Documentação                                          | :heavy_check_mark:    | :heavy_check_mark:    | :-1:                  |
 | Flush assincrono                                      | :heavy_check_mark:    | :heavy_check_mark:    | :x:                   |
 
 ## NLog :heart:
