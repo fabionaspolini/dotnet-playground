@@ -1,4 +1,4 @@
-## Nlog :heart:
+## NLog :heart:
 
 - Personalização do layout
 - 93 destinos suportados para log, entre os principais: Console, Arquivo, Elasticsearch, AWS Cloud Watch, Azure.

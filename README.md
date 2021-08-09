@@ -41,4 +41,6 @@ Maiores detalhes descritos no meu [post](https://fabionaspolini.medium.com/bibli
 
 ## Avaliações
 
-- [Logs](docs/Logs.md)
+Nas avaliações de frameworks concorrentes, estará indicado com :heart: a preferência do autor :D
+
+- [Logs](Docs/Logs.md)
