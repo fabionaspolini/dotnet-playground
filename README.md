@@ -43,11 +43,13 @@ Maiores detalhes descritos no meu [post](https://fabionaspolini.medium.com/bibli
 
 Nas avaliações de frameworks concorrentes, estará indicado com :heart: a preferência do autor :smile:
 
-Os marcadores significam:
+Significado dos marcadores:
 
 - :heavy_check_mark: Requisito atendido com excelência
 - :+1: Requisito atendido, mas com dificuldade desnecessária
 - :-1: Requisito não atendido oficialmente, mas com alternativas manuais
 - :x: Requisito não atendido
+
+Categorias:
 
 - [Logs](Docs/Logs.md)
