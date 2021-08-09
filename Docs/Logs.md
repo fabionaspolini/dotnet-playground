@@ -9,6 +9,7 @@
 | Facilidade para obter Log Manager                     | :heavy_check_mark:    | :+1:                  | :+1:                  |
 | Documentação                                          | :heavy_check_mark:    | :heavy_check_mark:    | :-1:                  |
 | Flush assincrono                                      | :heavy_check_mark:    | :heavy_check_mark:    | :x:                   |
+| Personalização layout das mensagens                   | :heavy_check_mark:    | :x:                   | :heavy_check_mark:    |
 
 ## NLog :heart:
 
@@ -36,6 +37,7 @@
 
 ## Log4Net
 
+- :heavy_check_mark: Personalização do layout
 - :-1: Documentação fraca
 - :-1: Não possui log no level Trace por padrão, sendo necessário adicionar Helpers para para simular operação
 - :+1: É possível adicionar informações estruturadas adicionais ao log, mas é necessário limpar manualmente após o descarregamento da mesma e o arquivo de format
