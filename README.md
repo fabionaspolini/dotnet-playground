@@ -41,6 +41,6 @@ Maiores detalhes descritos no meu [post](https://fabionaspolini.medium.com/bibli
 
 ## Avaliações
 
-Nas avaliações de frameworks concorrentes, estará indicado com :heart: a preferência do autor :D
+Nas avaliações de frameworks concorrentes, estará indicado com :heart: a preferência do autor :smiley:
 
 - [Logs](Docs/Logs.md)
