@@ -1,11 +1,12 @@
 ﻿using System;
+using System.IO;
 using static System.Console;
 
 WriteLine(".:: Maestria Type Providers ::.");
 
 // Carregando dados de excel com tipagem forte gerada automaticamente.
 // Para carregar dados o diretório base relativo é o padrão do dotnet, ou seja, de acordo com a execução da aplicação.
-var dadosTemplate = PessoaFactory.Load("./Dados/Pessoa.xlsx");
+var dadosTemplate = PessoaFactory.Load(Path.Combine(AppContext.BaseDirectory, "../../../Dados/Pessoa.xlsx"));
 
 WriteLine($"| {"Id",4} | {"Nome",-20} | {"Nascimento",-10} | {"Cidade",-20} | {"Renda",14} |");
 WriteLine(new string('=', 84));

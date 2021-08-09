@@ -22,9 +22,10 @@ namespace LangFeatures_Sample
             // await _streamForEach.ExecuteAsync();
             //_streamForEach.Execute();
             // _inMemoryQueue.TestQueue();
-            _inMemoryQueue.TestConcurrentQueue();
+            //_inMemoryQueue.TestConcurrentQueue();
 
             // Tuplas();
+            ApplicationPath.Execute();
 
             await Task.Delay(1000); // Tempo para flush dos logs no console
             _logger.LogInformation("Fim");

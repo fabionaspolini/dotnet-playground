@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Maestria.Extensions" Version="2.1.2" />
+    <PackageReference Include="Maestria.Extensions" Version="3.0.1" />
   </ItemGroup>
 
 </Project>

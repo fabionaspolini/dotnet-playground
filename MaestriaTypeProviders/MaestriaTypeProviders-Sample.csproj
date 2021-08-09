@@ -9,7 +9,7 @@
   <ItemGroup>
     <PackageReference Include="ClosedXML" Version="0.95.4" />
     <PackageReference Include="Maestria.FluentCast" Version="1.0.8" />
-    <PackageReference Include="Maestria.TypeProviders" Version="1.0.6" />
+    <PackageReference Include="Maestria.TypeProviders" Version="1.0.7" />
   </ItemGroup>
 
   <!-- Enable source disk file write to correct IDE's works -->
