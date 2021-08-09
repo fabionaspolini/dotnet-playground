@@ -13,7 +13,7 @@ namespace NLogAsMicrosoftProxy_Sample
     {
         static void Main(string[] args)
         {
-            WriteLine(".:: NLog ::.");
+            WriteLine(".:: NLog como proxy para Microsoft Logging ::.");
             var nlogger = LogManager.GetCurrentClassLogger();
             try
             {

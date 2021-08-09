@@ -1,8 +1,9 @@
-| Feature                       | NLog  |
-|-------------------------------|-------|
-| Arquivo com nome diário       | y |
-| Exclusão de arquivos antigos  | y |
-| 
+| Feature                                               | NLog                  | Microsoft |
+|-------------------------------------------------------|-----------------------|-----------|
+| Arquivo com nome diário                               | :heavy_check_mark:    | :-1:      |
+| Exclusão de arquivos antigos                          | :heavy_check_mark:    | :-1:      |
+| Obter nome do método que chamou o log automaticamente | :heavy_check_mark:    | :x:       |
+| Proxy para Microsoft Logging                          | :heavy_check_mark:    | :ok_hand: |
 
 ## NLog :heart:
 
@@ -16,3 +17,8 @@
 - Ferramenta de visualização de logs [NlogViewer](https://github.com/dojo90/NLogViewer)
 - [Lista completa de configurações](https://nlog-project.org/config/?tab=layout-renderers)
  
+
+## Microsoft Logging
+
+- :x: Para obter o nome do método que chamou o log é necessário iniciar um escopo manualmente ```using (_logger.BeginScope(nameof(NomeMethodo)))```
+- :x: Para armazenar em arquivo texto é necessário componentes de terceiros
