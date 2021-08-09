@@ -28,24 +28,10 @@ namespace LangFeatures_Sample
         public void TestConcurrentQueue()
         {
             var worker = StartConcurrentWorker();
-            //foreach (var i in Enumerable.Range(1, 10))
-
-            var i = 1;
-            while (i <= 50)
+            foreach (var i in Enumerable.Range(1, 10))
             {
-                if (_concurrentQueue.Count >= 5)
-                {
-                    _logger.LogInformation($"Sleeping...");
-                    Task.Delay(TimeSpan.FromSeconds(1));
-                    Thread.Sleep(TimeSpan.FromSeconds(1));
-                }
-                else
-                {
-                    _logger.LogInformation($"Enqueuing item {i}");
-                    _concurrentQueue.Enqueue(i.ToString());
-                    Thread.Sleep(TimeSpan.FromMilliseconds(500));
-                    i++;
-                }
+                _logger.LogInformation($"Enqueuing item {i}");
+                _concurrentQueue.Enqueue(i.ToString());
             }
         }
 

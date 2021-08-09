@@ -4,6 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>LangFeatures_Sample</RootNamespace>
+    <CodeAnalysisRuleSet>codeanalysis.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <!-- Enable source disk file write to correct IDE's works -->
@@ -13,6 +14,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="DasMulli.DataBuilderGenerator" Version="2.0.0" />
+    <PackageReference Include="DasMulli.DataBuilderGenerator.Attributes" Version="2.0.0" />
     <PackageReference Include="FluentDateTime" Version="2.0.0" />
     <PackageReference Include="Maestria.Extensions" Version="3.0.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />

@@ -30,10 +30,10 @@ namespace LangFeatures_Sample
                             opts.SingleLine = true;
                             opts.TimestampFormat = "dd/MM/yyyy HH:mm:ss.fff ";
                         }))
-                .ConfigureServices((System.Action<HostBuilderContext, IServiceCollection>)((context, services) =>
+                .ConfigureServices((context, services) =>
                 {
                     ServiceCollectionHostedServiceExtensions.AddHostedService<Principal>(services);
                     Startup.ConfigureServices(services);
-                }));
+                });
     }
 }
