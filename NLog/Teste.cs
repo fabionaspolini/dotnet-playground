@@ -7,9 +7,9 @@ namespace NLog_Sample
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
-        public int ConverterParaInt(string value)
+        public int ConverterParaInt(string value, bool fatal)
         {
-            Logger.Trace("Iniciando");
+            Logger.Trace($"Iniciando conversão. value: {value} | fatal: {fatal}");
             try
             {
                 Logger.Info($"Convertendo {value} para int");
@@ -18,8 +18,16 @@ namespace NLog_Sample
             catch (Exception e)
             {
                 // Usar "Error" quando a exception é capturada mas o processo segue, "Fatal" quando a thread é abortada
-                Logger.Fatal(e, $"Erro ao converter {value} para int");
-                return 0;
+                if (fatal)
+                {
+                    Logger.Fatal(e, $"Erro ao converter {value} para int");
+                    throw;
+                }
+                else
+                {
+                    Logger.Error(e, $"Erro ao converter {value} para int");
+                    return 0;
+                }
             }
             finally
             {
