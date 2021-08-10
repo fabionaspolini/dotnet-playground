@@ -2,12 +2,13 @@
 
 **Legenda marcadores:**
 
+- :heart: Preferência do autor
 - :heavy_check_mark: Requisito atendido com excelência
 - :+1: Requisito atendido oficialmente, mas com deficiências
 - :-1: Requisito não atendido oficialmente, mas com alternativas manuais
 - :x: Requisito não atendido
 
-| Feature                                       | NLog                  | Microsoft             | Log4Net               | Serilog             |
+| Feature                                       | NLog :heart:          | Microsoft             | Log4Net               | Serilog             |
 |-----------------------------------------------|-----------------------|-----------------------|-----------------------|---------------------|
 | Arquivo com nome diário                       | :heavy_check_mark:    | :-1:                  | :heavy_check_mark:    | :heavy_check_mark:  |
 | Exclusão de arquivos antigos                  | :heavy_check_mark:    | :-1:                  | :heavy_check_mark:    | :heavy_check_mark:  |
