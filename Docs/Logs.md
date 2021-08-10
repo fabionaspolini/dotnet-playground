@@ -19,7 +19,7 @@
 | Flush assincrono                              | :heavy_check_mark:    | :heavy_check_mark:    | :x:                   | :heavy_check_mark:  |
 | Personalização layout das mensagens           | :heavy_check_mark:    | :x:                   | :heavy_check_mark:    | :heavy_check_mark:  |
 | Configuração por arquivos                     | :heavy_check_mark:    | :heavy_check_mark:    | :heavy_check_mark:    | :heavy_check_mark:  |
-| Configuração por código                       |                       |                       |                       | :heavy_check_mark:  |
+| Configuração por código                       | :heavy_check_mark:    | :heavy_check_mark:    | :heavy_check_mark:    | :heavy_check_mark:  |
 | Logs estruturados                             |                       |                       |                       | :heavy_check_mark:  |
 
 ## NLog :heart:
