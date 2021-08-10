@@ -1,5 +1,12 @@
 [Voltar](../README.md)
 
+**Legenda marcadores:**
+
+- :heavy_check_mark: Requisito atendido com excelência
+- :+1: Requisito atendido oficialmente, mas com deficiências
+- :-1: Requisito não atendido oficialmente, mas com alternativas manuais
+- :x: Requisito não atendido
+
 | Feature                                       | NLog                  | Microsoft             | Log4Net               | Serilog             |
 |-----------------------------------------------|-----------------------|-----------------------|-----------------------|---------------------|
 | Arquivo com nome diário                       | :heavy_check_mark:    | :-1:                  | :heavy_check_mark:    | :heavy_check_mark:  |
@@ -7,7 +14,7 @@
 | Obter nome do método logando automaticamente  | :heavy_check_mark:    | :x:                   | :heavy_check_mark:    | :-1:                |
 | Proxy para Microsoft Logging                  | :heavy_check_mark:    | :heavy_check_mark:    |                       | :heavy_check_mark:  |
 | Facilidade para obter Log Manager             | :heavy_check_mark:    | :+1:                  | :+1:                  | :heavy_check_mark:  |
-| Documentação                                  | :heavy_check_mark:    | :heavy_check_mark:    | :-1:                  | :heavy_check_mark:  |
+| Documentação                                  | :heavy_check_mark:    | :heavy_check_mark:    | :+1:                  | :heavy_check_mark:  |
 | Flush assincrono                              | :heavy_check_mark:    | :heavy_check_mark:    | :x:                   | :heavy_check_mark:  |
 | Personalização layout das mensagens           | :heavy_check_mark:    | :x:                   | :heavy_check_mark:    | :heavy_check_mark:  |
 | Configuração por arquivos                     | :heavy_check_mark:    | :heavy_check_mark:    | :heavy_check_mark:    | :heavy_check_mark:  |
