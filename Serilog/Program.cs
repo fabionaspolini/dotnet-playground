@@ -23,7 +23,7 @@ namespace Serilog_Sample
                 .WriteTo.File(
                     path: @"C:\Logs\Serilog-Sample.log",
                     outputTemplate: logTemplate,
-                    rollingInterval: RollingInterval.Minute,
+                    rollingInterval: RollingInterval.Day,
                     retainedFileCountLimit: 10,
                     encoding: Encoding.UTF8)
                 .Enrich.With(new ActivityIdEnricher())
@@ -42,6 +42,8 @@ namespace Serilog_Sample
             catch { }
 
             Log.Debug("Exemplo de log com informações adicionais {nome} {user}", "ABC", new { Id = 1, Nome = "Teste" });
+
+            Log.Logger.ForContext<Program>().Information("Exemplo de log salvando nome do método executor");
 
             Log.Verbose("Exemplo Trace");
             Log.Debug("Exemplo Debug");

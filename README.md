@@ -24,16 +24,20 @@ Maiores detalhes descritos no meu [post](https://fabionaspolini.medium.com/bibli
 - Template Engine
   - [Liquid](Liquid): Template com suporte a execução de expressões lógicas
   - [Mustache](Mustache): Template sem suporte a execuções de expressões lógicas
-- Background tasks
-  - HangFire: Agendamento de tarefas em backgroud
-  - Quartz.NET: Agendamento de tarefas em backgroud
-  - Worker Service: Execução de tarefas em background sem suporte a agendamento de horários
 - Source Generators
   - [Maestria.TypeProviders](MaestriaTypeProviders): Gerador de código a partir de template de arquivo (Excel)
   - [PrimaryConstructor](PrimaryConstructor): Adicionar construtor padrão na classe para variáveis e propriedades read only
   - [DataBuilderGenerator](DataBuilderGenerator): Adicionar métodos para contrução de classes de dados fluente
+- Background tasks
+  - HangFire: Agendamento de tarefas em backgroud
+  - Quartz.NET: Agendamento de tarefas em backgroud
+  - Worker Service: Execução de tarefas em background sem suporte a agendamento de horários
 - Logs
-  - [NLog](NLog): Gerenciador de logs
+  - [NLog](NLog)
+  - [NLogAsMicrosoftProxy](NLogAsMicrosoftProxy)
+  - [Log4Net](Log4Net)
+  - [MicrosoftLogging](MicrosoftLogging)
+  - [Serilog](Serilog)
 - Others
   - [LangFeatures](LangFeatures): Recursos da linguagem C# / .NET
   - [Polly](Polly): Resiliência de operações

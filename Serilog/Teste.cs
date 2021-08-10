@@ -30,7 +30,7 @@ namespace Serilog_Sample
             }
             finally
             {
-                Log.Verbose("Finalizando");
+                Log.Logger.ForContext<Teste>().Verbose("Finalizando (Salvando nome do método executor)");
             }
         }
     }
