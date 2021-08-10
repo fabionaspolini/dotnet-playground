@@ -17,7 +17,7 @@
 ## NLog :heart:
 
 - :heavy_check_mark: Personalização do layout
-- :heavy_check_mark: 93 targets suportados para log, entre os principais: Console, Arquivo, RabbitMQ, Redis, Elasticsearch, AWS Cloud Watch, Azure.
+- :heavy_check_mark: 93 targets suportados para log, entre os principais: Console, Arquivo, RabbitMQ, Redis, Elasticsearch, AWS Cloud Watch, Azure ([Fonte](https://nlog-project.org/config/)).
 - :heavy_check_mark: Suporte para logar automaticamente o nome do método que invocou a geração de log através do render [`${callsite}`](https://github.com/NLog/NLog/wiki/Callsite-Layout-Renderer)
 - :heavy_check_mark: Suporte a layout com condicionais através do render [`${when}`](https://github.com/NLog/NLog/wiki/When-Layout-Renderer)
 - :heavy_check_mark: Suporte ao pattern de Correlation Id através do render [`${activityid}`](https://github.com/NLog/NLog/wiki/Trace-Activity-Id-Layout-Renderer). Útil principalmente em aplicações web.
@@ -35,7 +35,8 @@
   - Pela convensão é recomendado informar a própria classe na declaração da variável de log para o trace capturar o nome da mesma ```private readonly ILogger<Teste> _logger```.
   - Geralmente instância por injeção de dependência do construtor
   - Influencia no design das classes dependentes por ser necessário adicionar o argumento no construtor também
- - :x: Não há suporte a inclusão de propriedades estruturadas adicionais
+- :x: Não há suporte a inclusão de propriedades estruturadas adicionais
+- :x: A melhor maneira de adicionar suporte a gravação de arquivos é adicionar o proxy provider para o NLog ou Serilog
 
 ## Log4Net
 
@@ -46,5 +47,7 @@
 
 ## Serilog
 
+- :heavy_check_mark: 95 targets suportados, entre os principais: Console, Arquivo, RabbitMQ, Elasticsearch, AWS Cloud Watch, Azure ([Fonte](https://github.com/serilog/serilog/wiki/Provided-Sinks))
 - :heavy_check_mark: Ótimos recursos para geração de logs estruturados para envio a ferramentas de análise ([Structured Data](https://github.com/serilog/serilog/wiki/Structured-Data))
 - :-1: Para logar automaticamente o nome do método e classes é necessário alternativa manuais em cada escrita ([Exemplo](https://hovermind.com/serilog/class-name-method-name-and-line-number.html)) ou um configuração de LogManager por classe ([Exemplo](https://benfoster.io/blog/serilog-best-practices/))
+- :heavy_check_mark: Fácil configuração
