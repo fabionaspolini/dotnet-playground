@@ -1,15 +1,18 @@
-[Voltar](/README.md)
+[Voltar](../README.md)
 
-| Feature                                               | NLog                  | Microsoft             | Log4Net               |
-|-------------------------------------------------------|-----------------------|-----------------------|-----------------------|
-| Arquivo com nome diário                               | :heavy_check_mark:    | :-1:                  | :heavy_check_mark:    |
-| Exclusão de arquivos antigos                          | :heavy_check_mark:    | :-1:                  | :heavy_check_mark:    |
-| Obter nome do método que chamou o log automaticamente | :heavy_check_mark:    | :x:                   | :heavy_check_mark:    |
-| Proxy para Microsoft Logging                          | :heavy_check_mark:    | :heavy_check_mark:    |                       |
-| Facilidade para obter Log Manager                     | :heavy_check_mark:    | :+1:                  | :+1:                  |
-| Documentação                                          | :heavy_check_mark:    | :heavy_check_mark:    | :-1:                  |
-| Flush assincrono                                      | :heavy_check_mark:    | :heavy_check_mark:    | :x:                   |
-| Personalização layout das mensagens                   | :heavy_check_mark:    | :x:                   | :heavy_check_mark:    |
+| Feature                                       | NLog                  | Microsoft             | Log4Net               | Serilog             |
+|-----------------------------------------------|-----------------------|-----------------------|-----------------------|---------------------|
+| Arquivo com nome diário                       | :heavy_check_mark:    | :-1:                  | :heavy_check_mark:    | :heavy_check_mark:  |
+| Exclusão de arquivos antigos                  | :heavy_check_mark:    | :-1:                  | :heavy_check_mark:    | :heavy_check_mark:  |
+| Obter nome do método logando automaticamente  | :heavy_check_mark:    | :x:                   | :heavy_check_mark:    | :-1:                |
+| Proxy para Microsoft Logging                  | :heavy_check_mark:    | :heavy_check_mark:    |                       | :heavy_check_mark:  |
+| Facilidade para obter Log Manager             | :heavy_check_mark:    | :+1:                  | :+1:                  | :heavy_check_mark:  |
+| Documentação                                  | :heavy_check_mark:    | :heavy_check_mark:    | :-1:                  | :heavy_check_mark:  |
+| Flush assincrono                              | :heavy_check_mark:    | :heavy_check_mark:    | :x:                   | :heavy_check_mark:  |
+| Personalização layout das mensagens           | :heavy_check_mark:    | :x:                   | :heavy_check_mark:    | :heavy_check_mark:  |
+| Configuração por arquivos                     | :heavy_check_mark:    | :heavy_check_mark:    | :heavy_check_mark:    | :heavy_check_mark:  |
+| Configuração por código                       |                       |                       |                       | :heavy_check_mark:  |
+| Logs estruturados                             |                       |                       |                       | :heavy_check_mark:  |
 
 ## NLog :heart:
 
@@ -23,14 +26,13 @@
 - :heavy_check_mark: Ferramenta de visualização de logs [NlogViewer](https://github.com/dojo90/NLogViewer)
 - :heavy_check_mark: Suporte a inclusão de propriedades estruturadas adicionais
 - [Lista completa de configurações](https://nlog-project.org/config/?tab=layout-renderers)
- 
 
 ## Microsoft Logging
 
 - :x: Para obter o nome do método que chamou o log é necessário iniciar um escopo manualmente ```using (_logger.BeginScope(nameof(NomeMethodo)))```
 - :x: Para armazenar em arquivo texto é necessário componentes de terceiros
 - :x: Dificuldade de acesso ao Log Manager
-  - Pela convensão é recomendado informar a própria classe na declaração da variável de log para o trace capturar o nome da mesma ```private readonly ILogger<Teste> _logger```. 
+  - Pela convensão é recomendado informar a própria classe na declaração da variável de log para o trace capturar o nome da mesma ```private readonly ILogger<Teste> _logger```.
   - Geralmente instância por injeção de dependência do construtor
   - Influencia no design das classes dependentes por ser necessário adicionar o argumento no construtor também
  - :x: Não há suporte a inclusão de propriedades estruturadas adicionais
@@ -41,3 +43,8 @@
 - :-1: Documentação fraca
 - :-1: Não possui log no level Trace por padrão, sendo necessário adicionar Helpers para para simular operação
 - :+1: É possível adicionar informações estruturadas adicionais ao log, mas é necessário limpar manualmente após o descarregamento da mesma e o arquivo de format
+
+## Serilog
+
+- :heavy_check_mark: Ótimos recursos para geração de logs estruturados para envio a ferramentas de análise ([Structured Data](https://github.com/serilog/serilog/wiki/Structured-Data))
+- :-1: Para logar automaticamente o nome do método e classes é necessário alternativa manuais em cada escrita ([Exemplo](https://hovermind.com/serilog/class-name-method-name-and-line-number.html)) ou um configuração de LogManager por classe ([Exemplo](https://benfoster.io/blog/serilog-best-practices/))
