@@ -20,7 +20,7 @@
 | Personalização layout das mensagens           | :heavy_check_mark:    | :x:                   | :heavy_check_mark:    | :heavy_check_mark:  |
 | Configuração por arquivos                     | :heavy_check_mark:    | :heavy_check_mark:    | :heavy_check_mark:    | :heavy_check_mark:  |
 | Configuração por código                       | :heavy_check_mark:    | :heavy_check_mark:    | :heavy_check_mark:    | :heavy_check_mark:  |
-| Logs estruturados                             |                       |                       |                       | :heavy_check_mark:  |
+| Logs estruturados                             | :heavy_check_mark:    | :x:                   | :-1:                  | :heavy_check_mark:  |
 
 ## NLog :heart:
 
@@ -33,6 +33,7 @@
 - :heavy_check_mark: Layout diferente por target
 - :heavy_check_mark: Ferramenta de visualização de logs [NlogViewer](https://github.com/dojo90/NLogViewer)
 - :heavy_check_mark: Suporte a inclusão de propriedades estruturadas adicionais
+- :heavy_check_mark: Suporte a logs estruturados com a syntax ao adicionar o identificado entre "{}" na mensagem e indicando o valor como argumentos adicionais da mensagem.
 - [Lista completa de configurações](https://nlog-project.org/config/?tab=layout-renderers)
 
 ## Microsoft Logging

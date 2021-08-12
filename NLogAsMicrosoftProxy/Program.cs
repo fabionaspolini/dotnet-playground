@@ -36,6 +36,8 @@ namespace NLogAsMicrosoftProxy_Sample
                 }
                 catch { }
 
+
+                logger.LogDebug("Exemplo de outro log estruturado {nome} {idade}.", "Exemplo", 25); // Exemplo de log estruturado montando objeto { nome = "Exemplo", idade = 25 }
                 logger.LogTrace("Exemplo Trace");
                 logger.LogDebug("Exemplo Debug");
                 logger.LogInformation("Exemplo Info");

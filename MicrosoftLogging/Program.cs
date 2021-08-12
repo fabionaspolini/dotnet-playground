@@ -35,6 +35,7 @@ namespace MicrosoftLogging_Sample
             }
             catch { }
 
+            logger.LogDebug("Exemplo de outro log estruturado {nome} {idade}.", "Exemplo", 25); // Microsoft Logging não gera informação adicional para log estruturado
             logger.LogTrace("Exemplo Trace");
             logger.LogDebug("Exemplo Debug");
             logger.LogInformation("Exemplo Info");

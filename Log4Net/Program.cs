@@ -30,6 +30,8 @@ namespace Log4Net_Sample
             Logger.Debug("Exemplo de log com informações adicionais");
             log4net.ThreadContext.Properties.Clear();
 
+            // Logger.Debug("Exemplo de outro log estruturado {nome} {idade}.", "Exemplo", 25); // Não há suporte a este layout de log estruturado
+
             Logger.Debug("Não há suporte ao level Trace");
             Logger.Debug("Exemplo Debug");
             Logger.Info("Exemplo Info");

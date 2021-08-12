@@ -29,6 +29,8 @@ namespace NLog_Sample
             logEvent.Properties["MinhaPropriedade3"] = new { Id = 1, Nome = "Teste" };
             Logger.Log(logEvent);
 
+            Logger.Debug("Exemplo de outro log estruturado {nome} {idade}.", "Exemplo", 25); // Exemplo de log estruturado montando objeto { nome = "Exemplo", idade = 25 }
+
             Logger.Trace("Exemplo Trace");
             Logger.Debug("Exemplo Debug");
             Logger.Info("Exemplo Info");
