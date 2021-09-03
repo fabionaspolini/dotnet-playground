@@ -13,9 +13,21 @@ var dadosRelatorio = new Relatorio
     DataNascimento = new DateTime(1989, 01, 01),
     Contatos = new() { "Pedro", "Paulo", "José" }
 };
+
 var template = await File.ReadAllTextAsync(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"../../../relatorio.mustache"), Encoding.UTF8);
 var render = new StubbleBuilder().Build();
 var result = await render.RenderAsync(template, dadosRelatorio);
+WriteLine(result);
+
+//
+var dadosRelatorioAsDictionary = new Dictionary<string, object>()
+{
+    { "Titulo", "Detalhes do cliente"},
+    { "Nome", "Fulano de tal"},
+    { "DataNascimento", new DateTime(1989, 01, 01)},
+    { "Contatos", new List<string>() { "Pedro", "Paulo", "José" } }
+};
+var result2 = await render.RenderAsync(template, dadosRelatorioAsDictionary);
 WriteLine(result);
 
 class Relatorio
