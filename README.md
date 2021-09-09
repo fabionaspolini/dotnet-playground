@@ -32,7 +32,7 @@ Maiores detalhes descritos no meu [post](https://fabionaspolini.medium.com/bibli
   - HangFire: Agendamento de tarefas em backgroud
   - Quartz.NET: Agendamento de tarefas em backgroud
   - Worker Service: Execução de tarefas em background sem suporte a agendamento de horários
-- [Logs](Logs/README.md)
+- [Logs](Logs)
   - [NLog](Logs/NLog)
   - [NLogAsMicrosoftProxy](Logs/NLogAsMicrosoftProxy)
   - [Log4Net](Logs/Log4Net)
