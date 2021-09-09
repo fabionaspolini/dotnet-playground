@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/samples.sln",
+                "${workspaceFolder}/dotnet-playground.sln",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -43,7 +43,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/FluentDateTime/FluentDateTime-Sample.csproj",
+                "${workspaceFolder}/Syntax Sugar/FluentDateTime/FluentDateTime-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -55,7 +55,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/FluentValidation/FluentValidation-Sample.csproj",
+                "${workspaceFolder}/Data/FluentValidation/FluentValidation-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -67,7 +67,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Humanizer/Humanizer-Sample.csproj",
+                "${workspaceFolder}/Syntax Sugar/Humanizer/Humanizer-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -79,7 +79,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/LangFeatures/LangFeatures-Sample.csproj",
+                "${workspaceFolder}/Others/LangFeatures/LangFeatures-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -91,7 +91,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/FlurlHttp/FlurlHttp-Sample.csproj",
+                "${workspaceFolder}/Http Client/FlurlHttp/FlurlHttp-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -103,7 +103,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Refit/Refit-Sample.csproj",
+                "${workspaceFolder}/Http Client/Refit/Refit-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -115,7 +115,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/NSwagStudio/NSwagStudio-Sample.csproj",
+                "${workspaceFolder}/Http Client/NSwagStudio/NSwagStudio-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -127,7 +127,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Mustache/Mustache-Sample.csproj",
+                "${workspaceFolder}/Template Engine/Mustache/Mustache-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -139,7 +139,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Liquid/Liquid-Sample.csproj",
+                "${workspaceFolder}/Template Engine/Liquid/Liquid-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -151,7 +151,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/CacheManager/CacheManager-Sample.csproj",
+                "${workspaceFolder}/Data/CacheManager/CacheManager-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -163,7 +163,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/MaestriaExtensions/MaestriaExtensions-Sample.csproj",
+                "${workspaceFolder}/Syntax Sugar/MaestriaExtensions/MaestriaExtensions-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -175,7 +175,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/MaestriaFluentCast/MaestriaFluentCast-Sample.csproj",
+                "${workspaceFolder}/Syntax Sugar/MaestriaFluentCast/MaestriaFluentCast-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -187,7 +187,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Polly/Polly-Sample.csproj",
+                "${workspaceFolder}/Others/Polly/Polly-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -199,7 +199,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/MaestriaTypeProviders/MaestriaTypeProviders-Sample.csproj",
+                "${workspaceFolder}/Source Generator/MaestriaTypeProviders/MaestriaTypeProviders-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -211,7 +211,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/PrimaryConstructor/PrimaryConstructor-Sample.csproj",
+                "${workspaceFolder}/Source Generator/PrimaryConstructor/PrimaryConstructor-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -223,7 +223,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/DataBuilderGenerator/DataBuilderGenerator-Sample.csproj",
+                "${workspaceFolder}/Source Generator/DataBuilderGenerator/DataBuilderGenerator-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],

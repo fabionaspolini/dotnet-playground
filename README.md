@@ -6,41 +6,41 @@ Maiores detalhes descritos no meu [post](https://fabionaspolini.medium.com/bibli
 
 ## Biliotecas
 
-- Syntax sugar
-  - [FluentDateTime](FluentDateTime): Melhorar a experiência de trabalho com datas
-  - [Humanizer](Humanizer): Humanizar leitura de unidades de medias
-  - [Maestria.Extensions](MaestriaExtensions): Métodos de extensões úteis
-  - [Maestria.FluentCast](MaestriaFluentCast): Converter valores de tipos primitidos de forma fluente
+- Syntax Sugar
+  - [FluentDateTime](Syntax-Sugar/FluentDateTime): Melhorar a experiência de trabalho com datas
+  - [Humanizer](Syntax-Sugar/Humanizer): Humanizar leitura de unidades de medias
+  - [Maestria.Extensions](Syntax-Sugar/MaestriaExtensions): Métodos de extensões úteis
+  - [Maestria.FluentCast](Syntax-Sugar/MaestriaFluentCast): Converter valores de tipos primitidos de forma fluente
 - Data
-  - [CacheManager](CacheManager): Pipeline para gerenciamento de cache em memória e Redis
+  - [CacheManager](Data/CacheManager): Pipeline para gerenciamento de cache em memória e Redis
   - Dapper: Simples ORM pequeno para leitura de dados
   - DapperContrib: Adicionar suporte a escrita no Dapper
-  - [FluentValidation](FluentValidation): Validação de dados
+  - [FluentValidation](Data/FluentValidation): Validação de dados
   - ClosedXML: Leitura e escrita de excel independente de softwares instalados na estação de trabalho.
-- HTTP Client
-  - [FlurlHttp](FlurlHttp): Acesso a HTTP por sintax fluente
-  - [NSwagStudio](NSwagStudio): Geração de código a partir de especificação swagger
-  - [Refit](Refit): Acesso a HTTP por mapeamento de objetos
+- Http Client
+  - [FlurlHttp](Http-Client/FlurlHttp): Acesso a HTTP por sintax fluente
+  - [NSwagStudio](Http-Client/NSwagStudio): Geração de código a partir de especificação swagger
+  - [Refit](Http Client/Refit): Acesso a HTTP por mapeamento de objetos
 - Template Engine
-  - [Liquid](Liquid): Template com suporte a execução de expressões lógicas
-  - [Mustache](Mustache): Template sem suporte a execuções de expressões lógicas
-- Source Generators
-  - [Maestria.TypeProviders](MaestriaTypeProviders): Gerador de código a partir de template de arquivo (Excel)
-  - [PrimaryConstructor](PrimaryConstructor): Adicionar construtor padrão na classe para variáveis e propriedades read only
-  - [DataBuilderGenerator](DataBuilderGenerator): Adicionar métodos para contrução de classes de dados fluente
+  - [Liquid](Template-Engine/Liquid): Template com suporte a execução de expressões lógicas
+  - [Mustache](Template-Engine/Mustache): Template sem suporte a execuções de expressões lógicas
+- Source Generator
+  - [Maestria.TypeProviders](Source-Generator/MaestriaTypeProviders): Gerador de código a partir de template de arquivo (Excel)
+  - [PrimaryConstructor](Source-Generator/PrimaryConstructor): Adicionar construtor padrão na classe para variáveis e propriedades read only
+  - [DataBuilderGenerator](Source-Generator/DataBuilderGenerator): Adicionar métodos para contrução de classes de dados fluente
 - Background tasks
   - HangFire: Agendamento de tarefas em backgroud
   - Quartz.NET: Agendamento de tarefas em backgroud
   - Worker Service: Execução de tarefas em background sem suporte a agendamento de horários
-- Logs
-  - [NLog](NLog)
-  - [NLogAsMicrosoftProxy](NLogAsMicrosoftProxy)
-  - [Log4Net](Log4Net)
-  - [MicrosoftLogging](MicrosoftLogging)
-  - [Serilog](Serilog)
+- [Logs](Logs/README.md)
+  - [NLog](Logs/NLog)
+  - [NLogAsMicrosoftProxy](Logs/NLogAsMicrosoftProxy)
+  - [Log4Net](Logs/Log4Net)
+  - [MicrosoftLogging](Logs/MicrosoftLogging)
+  - [Serilog](Logs/Serilog)
 - Others
-  - [LangFeatures](LangFeatures): Recursos da linguagem C# / .NET
-  - [Polly](Polly): Resiliência de operações
+  - [LangFeatures](Others/LangFeatures): Recursos da linguagem C# / .NET
+  - [Polly](Others/Polly): Resiliência de operações
 
 
 ## Avaliações
@@ -53,7 +53,3 @@ Nas avaliações de frameworks concorrentes, estará indicado com :heart: a pref
 - :+1: Requisito atendido oficialmente, mas com deficiências
 - :-1: Requisito não atendido oficialmente, mas com alternativas manuais
 - :x: Requisito não atendido
-
-**Categorias:**
-
-- [Logs](Docs/Logs.md)

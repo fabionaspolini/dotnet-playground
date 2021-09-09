@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build-FluentDateTime",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/FluentDateTime/bin/Debug/net5.0/FluentDateTime-Sample.dll",
+            "program": "${workspaceFolder}/Syntax Sugar/FluentDateTime/bin/Debug/net5.0/FluentDateTime-Sample.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/FluentDateTime",
+            "cwd": "${workspaceFolder}/Syntax Sugar/FluentDateTime",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
@@ -26,9 +26,9 @@
             "request": "launch",
             "preLaunchTask": "build-FluentValidation",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/FluentValidation/bin/Debug/net5.0/FluentValidation-Sample.dll",
+            "program": "${workspaceFolder}/Data/FluentValidation/bin/Debug/net5.0/FluentValidation-Sample.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/FluentValidation",
+            "cwd": "${workspaceFolder}/Data/FluentValidation",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
@@ -42,9 +42,9 @@
             "request": "launch",
             "preLaunchTask": "build-Humanizer",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/Humanizer/bin/Debug/net5.0/Humanizer-Sample.dll",
+            "program": "${workspaceFolder}/Syntax Sugar/Humanizer/bin/Debug/net5.0/Humanizer-Sample.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/Humanizer",
+            "cwd": "${workspaceFolder}/Syntax Sugar/Humanizer",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
@@ -58,9 +58,9 @@
             "request": "launch",
             "preLaunchTask": "build-LangFeatures",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/LangFeatures/bin/Debug/net5.0/LangFeatures-Sample.dll",
+            "program": "${workspaceFolder}/Others/LangFeatures/bin/Debug/net5.0/LangFeatures-Sample.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/LangFeatures",
+            "cwd": "${workspaceFolder}/Others/LangFeatures",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
@@ -90,9 +90,9 @@
             "request": "launch",
             "preLaunchTask": "build-FlurlHttp",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/FlurlHttp/bin/Debug/net5.0/FlurlHttp-Sample.dll",
+            "program": "${workspaceFolder}/Http Client/FlurlHttp/bin/Debug/net5.0/FlurlHttp-Sample.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/FlurlHttp",
+            "cwd": "${workspaceFolder}/Http Client/FlurlHttp",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
@@ -106,9 +106,9 @@
             "request": "launch",
             "preLaunchTask": "build-Refit",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/Refit/bin/Debug/net5.0/Refit-Sample.dll",
+            "program": "${workspaceFolder}/Http Client/Refit/bin/Debug/net5.0/Refit-Sample.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/Refit",
+            "cwd": "${workspaceFolder}/Http Client/Refit",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
@@ -122,9 +122,9 @@
             "request": "launch",
             "preLaunchTask": "build-NSwagStudio",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/NSwagStudio/bin/Debug/net5.0/NSwagStudio-Sample.dll",
+            "program": "${workspaceFolder}/Http Client/NSwagStudio/bin/Debug/net5.0/NSwagStudio-Sample.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/NSwagStudio",
+            "cwd": "${workspaceFolder}/Http Client/NSwagStudio",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
@@ -138,9 +138,9 @@
             "request": "launch",
             "preLaunchTask": "build-Mustache",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/Mustache/bin/Debug/net5.0/Mustache-Sample.dll",
+            "program": "${workspaceFolder}/Template Engine/Mustache/bin/Debug/net5.0/Mustache-Sample.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/Mustache",
+            "cwd": "${workspaceFolder}/Template Engine/Mustache",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
@@ -154,9 +154,9 @@
             "request": "launch",
             "preLaunchTask": "build-Liquid",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/Liquid/bin/Debug/net5.0/Liquid-Sample.dll",
+            "program": "${workspaceFolder}/Template Engine/Liquid/bin/Debug/net5.0/Liquid-Sample.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/Liquid",
+            "cwd": "${workspaceFolder}/Template Engine/Liquid",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
@@ -170,9 +170,9 @@
             "request": "launch",
             "preLaunchTask": "build-CacheManager",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/CacheManager/bin/Debug/net5.0/CacheManager-Sample.dll",
+            "program": "${workspaceFolder}/Data/CacheManager/bin/Debug/net5.0/CacheManager-Sample.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/CacheManager",
+            "cwd": "${workspaceFolder}/Data/CacheManager",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
@@ -186,9 +186,9 @@
             "request": "launch",
             "preLaunchTask": "build-MaestriaExtensions",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/MaestriaExtensions/bin/Debug/net5.0/MaestriaExtensions-Sample.dll",
+            "program": "${workspaceFolder}/Syntax Sugar/MaestriaExtensions/bin/Debug/net5.0/MaestriaExtensions-Sample.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/MaestriaExtensions",
+            "cwd": "${workspaceFolder}/Syntax Sugar/MaestriaExtensions",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
@@ -202,9 +202,9 @@
             "request": "launch",
             "preLaunchTask": "build-MaestriaFluentCast",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/MaestriaFluentCast/bin/Debug/net5.0/MaestriaFluentCast-Sample.dll",
+            "program": "${workspaceFolder}/Syntax Sugar/MaestriaFluentCast/bin/Debug/net5.0/MaestriaFluentCast-Sample.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/MaestriaFluentCast",
+            "cwd": "${workspaceFolder}/Syntax Sugar/MaestriaFluentCast",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
@@ -218,9 +218,9 @@
             "request": "launch",
             "preLaunchTask": "build-Polly",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/Polly/bin/Debug/net5.0/Polly-Sample.dll",
+            "program": "${workspaceFolder}/Others/Polly/bin/Debug/net5.0/Polly-Sample.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/Polly",
+            "cwd": "${workspaceFolder}/Others/Polly",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
@@ -234,9 +234,9 @@
             "request": "launch",
             "preLaunchTask": "build-MaestriaTypeProviders",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/MaestriaTypeProviders/bin/Debug/net5.0/MaestriaTypeProviders-Sample.dll",
+            "program": "${workspaceFolder}/Source Generator/MaestriaTypeProviders/bin/Debug/net5.0/MaestriaTypeProviders-Sample.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/MaestriaTypeProviders",
+            "cwd": "${workspaceFolder}/Source Generator/MaestriaTypeProviders",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
@@ -250,9 +250,9 @@
             "request": "launch",
             "preLaunchTask": "build-PrimaryConstructor",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/PrimaryConstructor/bin/Debug/net5.0/PrimaryConstructor-Sample.dll",
+            "program": "${workspaceFolder}/Source Generator/PrimaryConstructor/bin/Debug/net5.0/PrimaryConstructor-Sample.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/PrimaryConstructor",
+            "cwd": "${workspaceFolder}/Source Generator/PrimaryConstructor",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
@@ -266,9 +266,9 @@
             "request": "launch",
             "preLaunchTask": "build-DataBuilderGenerator",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/DataBuilderGenerator/bin/Debug/net5.0/DataBuilderGenerator-Sample.dll",
+            "program": "${workspaceFolder}/Source Generator/DataBuilderGenerator/bin/Debug/net5.0/DataBuilderGenerator-Sample.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/DataBuilderGenerator",
+            "cwd": "${workspaceFolder}/Source Generator/DataBuilderGenerator",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
