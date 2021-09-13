@@ -8,6 +8,11 @@ namespace FluentValidation_Sample
     {
         public PessoaValidator()
         {
+            // CascadeMode = CascadeMode.Stop; // Falha rápida. Aborta a validação na primeira falha que ocorrer. Se falhar no camp "Nome", não seguirá adiante.
+            // CascadeMode = CascadeMode.StopOnFirstFailure; // Ocorrerá a validação de todas as regras de campos, mas ao falhar no primeiro critério, não é seguido adiante nas demais regras da propriedade
+            // CascadeMode = CascadeMode.Continue; // Opção padrão, valida todas as regras de propriedades e todos os critérios.
+            // ValidatorOptions.Global.CascadeMode = CascadeMode.Stop; // Para alterar o comportamento global
+
             RuleFor(x => x.Id).NotEmpty();
             RuleFor(x => x.Nome).NotEmpty().Length(3, 60);
             RuleFor(x => x.Email).EmailAddress();
