@@ -1,4 +1,5 @@
 ﻿using System;
+using FluentValidation;
 using static System.Console;
 
 namespace FluentValidation_Sample
@@ -11,6 +12,8 @@ namespace FluentValidation_Sample
         static void Main(string[] args)
         {
             WriteLine(".:: FluentValidation Samples ::.");
+
+            ValidatorOptions.Global.CascadeMode = CascadeMode.StopOnFirstFailure;
 
             var test = new Program();
             test.Validar("Todos os dados em vazios", new Pessoa());

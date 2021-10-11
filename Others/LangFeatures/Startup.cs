@@ -8,6 +8,8 @@ namespace LangFeatures_Sample
         {
             services.AddScoped<StreamForEach>();
             services.AddScoped<InMemoryQueue>();
+            services.AddHostedService<MyBackgroundService>();
+            services.AddHostedService<MyHostedService>();
         }
     }
 }
