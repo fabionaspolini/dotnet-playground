@@ -18,3 +18,10 @@ result.ToString();      // Retorna todos os erros quebrados por linha
 result.ToString(" / ")  // Retorna todos os erros em uma única linha separados por " / "
 result.Errors           // Lista com cada regra que falhou
 ```
+
+## Configuração da validação
+
+CascadeMode = CascadeMode.Stop; // Falha rápida. Aborta a validação na primeira falha que ocorrer. Se falhar no campo "Nome", não seguirá adiante.
+CascadeMode = CascadeMode.StopOnFirstFailure; // Ocorrerá a validação de todas as regras de campos, mas ao falhar no primeiro critério, não é seguido adiante nas demais regras da propriedade
+CascadeMode = CascadeMode.Continue; // Opção padrão, valida todas as regras de propriedades e todos os critérios.
+ValidatorOptions.Global.CascadeMode = CascadeMode.Stop; // Para alterar o comportamento global
