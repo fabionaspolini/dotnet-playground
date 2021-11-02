@@ -21,7 +21,7 @@ result.Errors           // Lista com cada regra que falhou
 
 ## Configuração da validação
 
-CascadeMode = CascadeMode.Stop; // Falha rápida. Aborta a validação na primeira falha que ocorrer. Se falhar no campo "Nome", não seguirá adiante.
-CascadeMode = CascadeMode.StopOnFirstFailure; // Ocorrerá a validação de todas as regras de campos, mas ao falhar no primeiro critério, não é seguido adiante nas demais regras da propriedade
-CascadeMode = CascadeMode.Continue; // Opção padrão, valida todas as regras de propriedades e todos os critérios.
-ValidatorOptions.Global.CascadeMode = CascadeMode.Stop; // Para alterar o comportamento global
+- `CascadeMode = CascadeMode.Stop`: Falha rápida. Aborta a validação na primeira falha que ocorrer. Irá retornar somente um erro no validador.
+- `CascadeMode = CascadeMode.StopOnFirstFailure`: Valida todos as regras de campos, mas irá retornar somente um erro por campo.
+- `CascadeMode = CascadeMode.Continue`:  Opção padrão, valida todas as regras. Poderá retornar mais de um erro por campo.
+- `ValidatorOptions.Global.CascadeMode`: Propriedades para alterar o comportamento global
