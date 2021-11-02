@@ -16,6 +16,7 @@ namespace LangFeatures_Sample
             Console.WriteLine($"Physical location           {AppDomain.CurrentDomain.BaseDirectory}");
             Console.WriteLine($"AppContext.BaseDirectory    {AppContext.BaseDirectory}");
             Console.WriteLine($"Runtime Call                {Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName)}");
+            Console.WriteLine($"MainModule.FileName         {System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName}");
         }
     }
 }
