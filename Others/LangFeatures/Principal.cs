@@ -14,6 +14,7 @@ namespace LangFeatures_Sample
         private readonly StreamForEach _streamForEach;
         private readonly ILogger<Principal> _logger;
         private readonly InMemoryQueue _inMemoryQueue;
+        private readonly Exceptions _exceptions;
 
         public async Task StartAsync(CancellationToken cancellationToken)
         {
@@ -26,9 +27,7 @@ namespace LangFeatures_Sample
 
             // Tuplas.Execute();
             // ApplicationPath.Execute();
-
-            int? teste = null;
-            teste ??= 10;
+            // _exceptions.Execute();
 
             await Task.Delay(1000); // Tempo para flush dos logs no console
             _logger.LogInformation("Fim");
@@ -36,7 +35,5 @@ namespace LangFeatures_Sample
         }
 
         public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;
-
-
     }
 }

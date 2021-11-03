@@ -32,7 +32,6 @@ namespace LangFeatures_Sample
                         }))
                 .ConfigureServices((context, services) =>
                 {
-                    ServiceCollectionHostedServiceExtensions.AddHostedService<Principal>(services);
                     Startup.ConfigureServices(services);
                 });
     }

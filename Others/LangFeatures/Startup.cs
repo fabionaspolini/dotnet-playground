@@ -6,10 +6,13 @@ namespace LangFeatures_Sample
     {
         internal static void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<StreamForEach>();
-            services.AddScoped<InMemoryQueue>();
+            services.AddHostedService<Principal>();
             services.AddHostedService<MyBackgroundService>();
             services.AddHostedService<MyHostedService>();
+
+            services.AddScoped<StreamForEach>();
+            services.AddScoped<InMemoryQueue>();
+            services.AddScoped<Exceptions>();
         }
     }
 }
