@@ -71,12 +71,12 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-LangFeatures",
+            "label": "build-LanguageFeatures",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Others/LangFeatures/LangFeatures-Sample.csproj",
+                "${workspaceFolder}/Language Features/LanguageFeatures-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
-namespace LangFeatures_Sample
+namespace LanguageFeatures_Sample
 {
     [PrimaryConstructor]
     public partial class InMemoryQueue

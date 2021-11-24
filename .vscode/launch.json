@@ -5,6 +5,54 @@
             // Use IntelliSense to find out which attributes exist for C# debugging
             // Use hover for the description of the existing attributes
             // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+            "name": "LanguageFeatures 6.0",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-LanguageFeatures",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/Language Features/bin/Debug/net6.0/LanguageFeatures-Sample.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/Language Features",
+            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            // Use IntelliSense to find out which attributes exist for C# debugging
+            // Use hover for the description of the existing attributes
+            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+            "name": "LanguageFeatures 5.0",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-LanguageFeatures",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/Language Features/bin/Debug/net5.0/LanguageFeatures-Sample.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/Language Features",
+            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            // Use IntelliSense to find out which attributes exist for C# debugging
+            // Use hover for the description of the existing attributes
+            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+            "name": "LanguageFeatures 3.1",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-LanguageFeatures",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/Language Features/bin/Debug/netcoreapp3.1/LanguageFeatures-Sample.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/Language Features",
+            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            // Use IntelliSense to find out which attributes exist for C# debugging
+            // Use hover for the description of the existing attributes
+            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
             "name": "FluentDateTime",
             "type": "coreclr",
             "request": "launch",
@@ -45,38 +93,6 @@
             "program": "${workspaceFolder}/Syntax Sugar/Humanizer/bin/Debug/net5.0/Humanizer-Sample.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Syntax Sugar/Humanizer",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
-            "console": "internalConsole",
-            "stopAtEntry": false
-        },
-        {
-            // Use IntelliSense to find out which attributes exist for C# debugging
-            // Use hover for the description of the existing attributes
-            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
-            "name": "LangFeatures",
-            "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "build-LangFeatures",
-            // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/Others/LangFeatures/bin/Debug/net5.0/LangFeatures-Sample.dll",
-            "args": [],
-            "cwd": "${workspaceFolder}/Others/LangFeatures",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
-            "console": "internalConsole",
-            "stopAtEntry": false
-        },
-        {
-            // Use IntelliSense to find out which attributes exist for C# debugging
-            // Use hover for the description of the existing attributes
-            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
-            "name": "LangFeatures 3.1",
-            "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "build-LangFeatures",
-            // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/LangFeatures/bin/Debug/netcoreapp3.1/LangFeatures-Sample.dll",
-            "args": [],
-            "cwd": "${workspaceFolder}/LangFeatures",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false

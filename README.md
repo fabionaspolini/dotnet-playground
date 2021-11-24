@@ -39,7 +39,7 @@ Maiores detalhes descritos no meu [post](https://fabionaspolini.medium.com/bibli
   - [MicrosoftLogging](Logs/MicrosoftLogging)
   - [Serilog](Logs/Serilog)
 - Others
-  - [LangFeatures](Others/LangFeatures): Recursos da linguagem C# / .NET
+  - [LanguageFeatures](Others/LanguageFeatures): Recursos da linguagem C# / .NET
   - [Polly](Others/Polly): Resiliência de operações
 
 

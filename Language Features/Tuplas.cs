@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LangFeatures_Sample
+namespace LanguageFeatures_Sample
 {
     static class Tuplas
     {

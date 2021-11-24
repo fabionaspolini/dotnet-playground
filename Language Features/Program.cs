@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
 using Microsoft.Extensions.Logging.Debug;
 
-namespace LangFeatures_Sample
+namespace LanguageFeatures_Sample
 {
     public static class Program
     {
@@ -21,7 +21,7 @@ namespace LangFeatures_Sample
                         .ClearProviders()
                         .AddFilter("Microsoft", LogLevel.Error)
                         .AddFilter("System", LogLevel.Error)
-                        .AddFilter("LangFeatures_Sample", LogLevel.Debug)
+                        .AddFilter("LanguageFeatures_Sample", LogLevel.Debug)
                         .AddFilter<DebugLoggerProvider>("Microsoft", LogLevel.Error)
                         .AddFilter<ConsoleLoggerProvider>("Microsoft", LogLevel.Error)
                         .AddSimpleConsole(opts =>

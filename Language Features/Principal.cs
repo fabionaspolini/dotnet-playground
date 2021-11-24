@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace LangFeatures_Sample
+namespace LanguageFeatures_Sample
 {
     [PrimaryConstructor]
     public partial class Principal : IHostedService

@@ -1,6 +1,6 @@
 using System;
 
-namespace LangFeatures_Sample.Immutable
+namespace LanguageFeatures_Sample.Immutable
 {
     public class Tests
     {

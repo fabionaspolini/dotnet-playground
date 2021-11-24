@@ -1,4 +1,4 @@
-namespace LangFeatures_Sample.Immutable
+namespace LanguageFeatures_Sample.Immutable
 {
     /// <summary>
     /// Classe readonly que só pode ter as propriedades atribuida na criação, mas deixando todas as propriedades explicitas no código.

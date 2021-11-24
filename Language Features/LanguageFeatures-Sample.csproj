@@ -4,7 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <LangVersion>10</LangVersion>
-    <RootNamespace>LangFeatures_Sample</RootNamespace>
+    <RootNamespace>LanguageFeatures_Sample</RootNamespace>
     <CodeAnalysisRuleSet>codeanalysis.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
