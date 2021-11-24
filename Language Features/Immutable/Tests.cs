@@ -6,7 +6,7 @@ namespace LanguageFeatures_Sample.Immutable
     {
         public static void Execute()
         {
-            // Classe com propriedades "initilizer"
+            // ----- Classe com propriedades "initilizer" -----
             var pessoa = new PessoaClass
             {
                 Id = 1,
@@ -15,7 +15,7 @@ namespace LanguageFeatures_Sample.Immutable
             pessoa.Imprimir();
             // pessoa.Nome = "aaa"; // Error
 
-            // Classe do tipo "record". Esta possui o método "with" para copiar o objeto
+            // ----- Classe do tipo "record". Esta possui o método "with" para copiar o objeto -----
             var pessoaRecord = new PessoaRecord
             {
                 Id = 1,
@@ -38,6 +38,12 @@ namespace LanguageFeatures_Sample.Immutable
             var pessoaRecord4 = new PessoaRecord(1, "Fábio", "Naspolini");
             pessoaRecord4.Imprimir();
             Console.WriteLine($"pessoaRecord2 == pessoaRecord4 {pessoaRecord2 == pessoaRecord4}");
+
+            // ----- Classe do tipo "record" em uma linha -----
+            var teste = new PessoaRecord2(1, "Fábio", "Naspolini");
+            var teste2 = teste with { Sobrenome = "AAAAAAAA" };
+            teste.Imprimir();
+            teste2.Imprimir();
         }
     }
 }

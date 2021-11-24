@@ -8,7 +8,7 @@ namespace LanguageFeatures_Sample.Immutable
         public int Id { get; init; }
         public string Nome { get; init; }
         public string Sobrenome { get; init; }
-        public void Imprimir() => System.Console.WriteLine($"{Id} - {Nome} {Sobrenome}");
+        public void Imprimir() => System.Console.WriteLine($"PessoaClass => {Id} - {Nome} {Sobrenome}");
     }
 
     public record PessoaRecord
@@ -28,6 +28,14 @@ namespace LanguageFeatures_Sample.Immutable
         public string Nome { get; init; }
         public string Sobrenome { get; init; }
 
-        public void Imprimir() => System.Console.WriteLine($"{Id} - {Nome} {Sobrenome}");
+        public void Imprimir() => System.Console.WriteLine($"PessoaRecord => {Id} - {Nome} {Sobrenome}");
+    }
+
+    public record PessoaRecord2(
+        int Id,
+        string Nome,
+        string Sobrenome)
+    {
+        public void Imprimir() => System.Console.WriteLine($"PessoaRecord2 => {Id} - {Nome} {Sobrenome}");
     }
 }
