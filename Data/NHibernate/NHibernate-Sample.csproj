@@ -8,4 +8,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <!-- <ItemGroup>
+    <DotNetCliToolReference Include="FluentMigrator.DotNet.Cli" Version="3.3.2" />
+  </ItemGroup> -->
+
+  <ItemGroup>
+    <PackageReference Include="FluentMigrator.NHibernate" Version="1.0.0.17" />
+    <PackageReference Include="FluentNHibernate" Version="3.1.0" />
+    <PackageReference Include="NHibernate" Version="5.3.11" />
+    <PackageReference Include="Npgsql" Version="6.0.3" />
+  </ItemGroup>
+
 </Project>
