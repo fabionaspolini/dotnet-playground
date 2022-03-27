@@ -2,322 +2,233 @@
     "version": "0.2.0",
     "configurations": [
         {
-            // Use IntelliSense to find out which attributes exist for C# debugging
-            // Use hover for the description of the existing attributes
-            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
             "name": "LanguageFeatures 6.0",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-LanguageFeatures",
-            // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/Language Features/bin/Debug/net6.0/LanguageFeatures-Sample.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Language Features",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
         },
         {
-            // Use IntelliSense to find out which attributes exist for C# debugging
-            // Use hover for the description of the existing attributes
-            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
             "name": "LanguageFeatures 5.0",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-LanguageFeatures",
-            // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/Language Features/bin/Debug/net5.0/LanguageFeatures-Sample.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Language Features",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
         },
         {
-            // Use IntelliSense to find out which attributes exist for C# debugging
-            // Use hover for the description of the existing attributes
-            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
             "name": "LanguageFeatures 3.1",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-LanguageFeatures",
-            // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/Language Features/bin/Debug/netcoreapp3.1/LanguageFeatures-Sample.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Language Features",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
         },
         {
-            // Use IntelliSense to find out which attributes exist for C# debugging
-            // Use hover for the description of the existing attributes
-            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
             "name": "FluentDateTime",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-FluentDateTime",
-            // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/Syntax Sugar/FluentDateTime/bin/Debug/net5.0/FluentDateTime-Sample.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Syntax Sugar/FluentDateTime",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
         },
         {
-            // Use IntelliSense to find out which attributes exist for C# debugging
-            // Use hover for the description of the existing attributes
-            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
             "name": "FluentValidation",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-FluentValidation",
-            // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/Data/FluentValidation/bin/Debug/net5.0/FluentValidation-Sample.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Data/FluentValidation",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
         },
         {
-            // Use IntelliSense to find out which attributes exist for C# debugging
-            // Use hover for the description of the existing attributes
-            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
             "name": "Humanizer",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-Humanizer",
-            // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/Syntax Sugar/Humanizer/bin/Debug/net5.0/Humanizer-Sample.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Syntax Sugar/Humanizer",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
         },
         {
-            // Use IntelliSense to find out which attributes exist for C# debugging
-            // Use hover for the description of the existing attributes
-            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
             "name": "FlurlHttp",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-FlurlHttp",
-            // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/Http Client/FlurlHttp/bin/Debug/net5.0/FlurlHttp-Sample.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Http Client/FlurlHttp",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
         },
         {
-            // Use IntelliSense to find out which attributes exist for C# debugging
-            // Use hover for the description of the existing attributes
-            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
             "name": "Refit",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-Refit",
-            // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/Http Client/Refit/bin/Debug/net5.0/Refit-Sample.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Http Client/Refit",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
         },
         {
-            // Use IntelliSense to find out which attributes exist for C# debugging
-            // Use hover for the description of the existing attributes
-            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
             "name": "NSwagStudio",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-NSwagStudio",
-            // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/Http Client/NSwagStudio/bin/Debug/net5.0/NSwagStudio-Sample.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Http Client/NSwagStudio",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
         },
         {
-            // Use IntelliSense to find out which attributes exist for C# debugging
-            // Use hover for the description of the existing attributes
-            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
             "name": "Mustache",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-Mustache",
-            // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/Template Engine/Mustache/bin/Debug/net5.0/Mustache-Sample.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Template Engine/Mustache",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
         },
         {
-            // Use IntelliSense to find out which attributes exist for C# debugging
-            // Use hover for the description of the existing attributes
-            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
             "name": "Liquid",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-Liquid",
-            // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/Template Engine/Liquid/bin/Debug/net5.0/Liquid-Sample.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Template Engine/Liquid",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
         },
         {
-            // Use IntelliSense to find out which attributes exist for C# debugging
-            // Use hover for the description of the existing attributes
-            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
             "name": "CacheManager",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-CacheManager",
-            // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/Data/CacheManager/bin/Debug/net5.0/CacheManager-Sample.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Data/CacheManager",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
         },
         {
-            // Use IntelliSense to find out which attributes exist for C# debugging
-            // Use hover for the description of the existing attributes
-            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
             "name": "MaestriaExtensions",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-MaestriaExtensions",
-            // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/Syntax Sugar/MaestriaExtensions/bin/Debug/net5.0/MaestriaExtensions-Sample.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Syntax Sugar/MaestriaExtensions",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
         },
         {
-            // Use IntelliSense to find out which attributes exist for C# debugging
-            // Use hover for the description of the existing attributes
-            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
             "name": "MaestriaFluentCast",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-MaestriaFluentCast",
-            // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/Syntax Sugar/MaestriaFluentCast/bin/Debug/net5.0/MaestriaFluentCast-Sample.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Syntax Sugar/MaestriaFluentCast",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
         },
         {
-            // Use IntelliSense to find out which attributes exist for C# debugging
-            // Use hover for the description of the existing attributes
-            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
             "name": "Polly",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-Polly",
-            // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/Others/Polly/bin/Debug/net5.0/Polly-Sample.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Others/Polly",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
         },
         {
-            // Use IntelliSense to find out which attributes exist for C# debugging
-            // Use hover for the description of the existing attributes
-            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
             "name": "MaestriaTypeProviders",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-MaestriaTypeProviders",
-            // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/Source Generator/MaestriaTypeProviders/bin/Debug/net5.0/MaestriaTypeProviders-Sample.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Source Generator/MaestriaTypeProviders",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
         },
         {
-            // Use IntelliSense to find out which attributes exist for C# debugging
-            // Use hover for the description of the existing attributes
-            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
             "name": "PrimaryConstructor",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-PrimaryConstructor",
-            // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/Source Generator/PrimaryConstructor/bin/Debug/net5.0/PrimaryConstructor-Sample.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Source Generator/PrimaryConstructor",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
         },
         {
-            // Use IntelliSense to find out which attributes exist for C# debugging
-            // Use hover for the description of the existing attributes
-            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
             "name": "DataBuilderGenerator",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-DataBuilderGenerator",
-            // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/Source Generator/DataBuilderGenerator/bin/Debug/net5.0/DataBuilderGenerator-Sample.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Source Generator/DataBuilderGenerator",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
         },
         {
-            // Use IntelliSense to find out which attributes exist for C# debugging
-            // Use hover for the description of the existing attributes
-            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
             "name": "MicrosoftLogging",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-MicrosoftLogging",
-            // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/Logs/MicrosoftLogging/bin/Debug/net5.0/MicrosoftLogging-Sample.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Logs/MicrosoftLogging",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
         },
         {
-            // Use IntelliSense to find out which attributes exist for C# debugging
-            // Use hover for the description of the existing attributes
-            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
             "name": "Quartz",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-Quartz",
-            // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/Scheduler/Quartz/bin/Debug/net5.0/Quartz-Sample.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Scheduler/Quartz",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "Data/NHibernate",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-NHibernate",
+            "program": "${workspaceFolder}/Data/NHibernate/bin/Debug/net6.0/NHibernate-Sample.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/Data/NHibernate",
             "console": "internalConsole",
             "stopAtEntry": false
         }
