@@ -14,16 +14,21 @@ ISessionFactory CreateSessionFactory()
     //     .Where(t => typeof(Pessoa).IsAssignableFrom(t));
 
     return Fluently.Configure()
-        .Database(
-            PostgreSQLConfiguration.PostgreSQL82.ConnectionString(connectionString))
+        .Database(PostgreSQLConfiguration.PostgreSQL82.ConnectionString(connectionString))
         // .Mappings(m => m.AutoMappings.Add(autoMap))
         .Mappings(m => m.FluentMappings.Add<PessoaMap>())
+        .Mappings(m => m.FluentMappings.Add<CidadeMap>())
         .ExposeConfiguration(TreatConfiguration)
         .BuildSessionFactory();
 }
 
 void TreatConfiguration(Configuration configuration)
 {
+    configuration.DataBaseIntegration(x =>
+    {
+        x.LogSqlInConsole = true;
+        x.LogFormattedSql = true;
+    });
     var update = new SchemaUpdate(configuration);
     update.Execute(false, true);
 }
@@ -36,11 +41,16 @@ var SampleId2 = Guid.Parse("978ac6a9-4aa1-4340-8805-f468a3994441");
 var factory = CreateSessionFactory();
 var session = factory.OpenSession();
 
+// Inicializando cidade
+session.SaveOrUpdate(new Cidade(1, "São Paulo"));
+session.SaveOrUpdate(new Cidade(2, "Florianópolis"));
+session.Flush();
+
 // Get by id
 var pessoa1 = session.Get<Pessoa>(SampleId1);
 if (pessoa1 == null)
 {
-    pessoa1 = new Pessoa(SampleId1, "Teste 1", "Teste 1 apelido");
+    pessoa1 = new Pessoa(SampleId1, "Teste 1", "Teste 1 apelido", session.Get<Cidade>(1));
     session.Save(pessoa1);
     session.Flush();
 }
@@ -53,24 +63,53 @@ Console.WriteLine($"Same instance? = {pessoa1 == pessoa1_SecondLoad}"); // Verda
 var pessoa2 = session.Get<Pessoa>(SampleId2);
 if (pessoa2 == null)
 {
-    pessoa2 = new Pessoa(SampleId2, "Teste 2", "Teste 2222");
+    pessoa2 = new Pessoa(SampleId2, "Teste 2", "Teste 2222", new Cidade(2, "Fake")); // Aqui a entidade de cidade não trackeada, não reflete em atualização do no DB
     session.Save(pessoa2);
 }
 else
 {
     pessoa2.Nome = "Pessoa 2 atualizada";
+    pessoa2.Cidade.Nome = "Fake update"; // Assim como no Entity Framework, a entidade Cidade é atualizada com o novo nome
     session.Update(pessoa2);
 }
 session.Flush();
 
 // Query
-var query = session.Query<Pessoa>();
-query = query.Where(x => x.Nome != null);
-var pessoas = query.ToList();
+session.Dispose();
+session = factory.OpenSession();
+var queryResult = session.Query<Pessoa>().Where(x => x.Nome != null).ToArray();
 
-foreach (var item in pessoas)
-    Console.WriteLine($"| {item.Id} | {item.Nome, -20} | {item.Apelido,-20} |");
+foreach (var pessoa in queryResult)
+    Console.WriteLine($"| {pessoa.Id} | {pessoa.Nome,-20} | {pessoa.Apelido,-20} | {pessoa.Cidade.Nome,-20} |"); // Query N+1 para carregamento da entidade Cidade. Se o Id da entidade relacionada já estiver na memória do Session do NHibernate, é reutilizada a instância sem fazer o sql N+1
 
-Console.WriteLine($"Same instance of queryable? = {pessoa1 == pessoas.FirstOrDefault(x => x.Id == SampleId1)}"); // Verdadeiro
+Console.WriteLine($"Same instance of queryable? = {pessoa1 == queryResult.FirstOrDefault(x => x.Id == SampleId1)}"); // Verdadeiro
+
+// Query 2
+session.Dispose();
+session = factory.OpenSession();
+var queryResult2 = session.Query<Pessoa>()
+    .Where(x => x.Nome != null)
+    .Select(x => new
+    {
+        x.Id,
+        x.Nome,
+        CidadeId = x.Cidade.Id,
+        NomeCidade = x.Cidade.Nome
+    }).ToArray(); // SQL gerado com left join
+foreach (var pessoa in queryResult2)
+    Console.WriteLine($"| {pessoa.Id} | {pessoa.Nome,-20} | {pessoa.CidadeId,5} | {pessoa.NomeCidade,-20} |");
+
+// Query 3
+session.Dispose();
+session = factory.OpenSession();
+var queryResult3 = session.QueryOver<Pessoa>()
+    .Where(x => x.Nome != null)
+    .Inner.JoinQueryOver(x => x.Cidade)
+    .List(); // SQL gerado com inner join
+
+foreach (var pessoa in queryResult3)
+    Console.WriteLine($"| {pessoa.Id} | {pessoa.Nome,-20} | {pessoa.Apelido,-20} | {pessoa.Cidade.Nome,-20} |");
+
+Console.WriteLine($"Same instance of queryable? = {pessoa1 == queryResult.FirstOrDefault(x => x.Id == SampleId1)}"); // Verdadeiro
 
 Console.WriteLine("Fim");
