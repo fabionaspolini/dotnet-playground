@@ -1,5 +1,4 @@
-﻿using FluentNHibernate.Automapping;
-using FluentNHibernate.Cfg;
+﻿using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using NHibernate.Cfg;
@@ -74,15 +73,16 @@ else
 }
 session.Flush();
 
-// Query
+var teste = session.Query<Pessoa>().ToArray();
+Console.WriteLine($"Same instance of queryable? = {pessoa1 == teste.FirstOrDefault(x => x.Id == SampleId1)}"); // Verdadeiro
+
+// Query 1
 session.Dispose();
 session = factory.OpenSession();
-var queryResult = session.Query<Pessoa>().Where(x => x.Nome != null).ToArray();
+var queryResult1 = session.Query<Pessoa>().Where(x => x.Nome != null).ToArray(); // Query N+1 para carregamento da entidade Cidade. Se o Id da entidade relacionada já estiver na memória do Session do NHibernate, é reutilizada a instância sem fazer o sql N+1
 
-foreach (var pessoa in queryResult)
-    Console.WriteLine($"| {pessoa.Id} | {pessoa.Nome,-20} | {pessoa.Apelido,-20} | {pessoa.Cidade.Nome,-20} |"); // Query N+1 para carregamento da entidade Cidade. Se o Id da entidade relacionada já estiver na memória do Session do NHibernate, é reutilizada a instância sem fazer o sql N+1
-
-Console.WriteLine($"Same instance of queryable? = {pessoa1 == queryResult.FirstOrDefault(x => x.Id == SampleId1)}"); // Verdadeiro
+foreach (var pessoa in queryResult1)
+    Console.WriteLine($"| {pessoa.Id} | {pessoa.Nome,-20} | {pessoa.Apelido,-20} | {pessoa.Cidade.Nome,-20} |");
 
 // Query 2
 session.Dispose();
@@ -110,6 +110,6 @@ var queryResult3 = session.QueryOver<Pessoa>()
 foreach (var pessoa in queryResult3)
     Console.WriteLine($"| {pessoa.Id} | {pessoa.Nome,-20} | {pessoa.Apelido,-20} | {pessoa.Cidade.Nome,-20} |");
 
-Console.WriteLine($"Same instance of queryable? = {pessoa1 == queryResult.FirstOrDefault(x => x.Id == SampleId1)}"); // Verdadeiro
+Console.WriteLine($"Same instance of queryable? = {pessoa1 == queryResult1.FirstOrDefault(x => x.Id == SampleId1)}"); // Verdadeiro
 
 Console.WriteLine("Fim");
