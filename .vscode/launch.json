@@ -2,6 +2,28 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Command Line Args/CommandLineParser",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-Command Line Args/CommandLineParser",
+            "program": "${workspaceFolder}/Command Line Args/CommandLineParser/bin/Debug/net6.0/CommandLineParser-Sample.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/Command Line Args/CommandLineParser",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "Command Line Args/CommandLineUtils",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-Command Line Args/CommandLineUtils",
+            "program": "${workspaceFolder}/Command Line Args/CommandLineUtils/bin/Debug/net6.0/CommandLineUtils-Sample.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/Command Line Args/CommandLineUtils",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
             "name": "Data/CacheManager",
             "type": "coreclr",
             "request": "launch",

@@ -38,6 +38,30 @@
             }
         },
         {
+            "label": "build-Command Line Args/CommandLineParser",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/Command Line Args/CommandLineParser/CommandLineParser-Sample.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build-Command Line Args/CommandLineUtils",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/Command Line Args/CommandLineUtils/CommandLineUtils-Sample.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
             "label": "build-Data/CacheManager",
             "command": "dotnet",
             "type": "process",
