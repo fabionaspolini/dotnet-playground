@@ -7,8 +7,8 @@ namespace LanguageFeatures_Sample
         internal static void ConfigureServices(IServiceCollection services)
         {
             services.AddHostedService<Principal>();
-            services.AddHostedService<MyBackgroundService>();
-            services.AddHostedService<MyHostedService>();
+            // services.AddHostedService<MyBackgroundService>();
+            // services.AddHostedService<MyHostedService>();
 
             services.AddScoped<StreamForEach>();
             services.AddScoped<InMemoryQueue>();

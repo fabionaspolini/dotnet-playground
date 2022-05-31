@@ -13,7 +13,7 @@ namespace LanguageFeatures_Sample
         private readonly IHost _host;
         // private readonly StreamForEach _streamForEach;
         private readonly ILogger<Principal> _logger;
-        // private readonly InMemoryQueue _inMemoryQueue;
+        private readonly InMemoryQueue _inMemoryQueue;
         // private readonly Exceptions _exceptions;
 
         public async Task StartAsync(CancellationToken cancellationToken)
@@ -23,12 +23,12 @@ namespace LanguageFeatures_Sample
             // await _streamForEach.ExecuteAsync();
             //_streamForEach.Execute();
             // _inMemoryQueue.TestQueue();
-            // _inMemoryQueue.TestConcurrentQueue();
+            _inMemoryQueue.TestConcurrentQueue();
 
             // Tuplas.Execute();
             // ApplicationPath.Execute();
             // _exceptions.Execute();
-            Immutable.Tests.Execute();
+            // Immutable.Tests.Execute();
 
             await Task.Delay(1000); // Tempo para flush dos logs no console
             _logger.LogInformation("Fim");
