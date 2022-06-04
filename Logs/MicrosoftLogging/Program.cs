@@ -56,13 +56,13 @@ namespace MicrosoftLogging_Sample
                    /*loggingBuilder.AddConsole(options =>
                    {
                        options.IncludeScopes = true;
-                       options.TimestampFormat = "dd/MM/yyyy hh:mm:ss.fff ";
+                       options.TimestampFormat = "dd/MM/yyyy HH:mm:ss.fff ";
                    });*/
                    loggingBuilder.AddSimpleConsole(options =>
                    {
                        options.IncludeScopes = true;
                        options.SingleLine = true;
-                       options.TimestampFormat = "dd/MM/yyyy hh:mm:ss.fff ";
+                       options.TimestampFormat = "dd/MM/yyyy HH:mm:ss.fff ";
                    });
                })
                .BuildServiceProvider();
