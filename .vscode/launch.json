@@ -134,6 +134,17 @@
             "stopAtEntry": false
         },
         {
+            "name": "Logs/NLogAsMicrosoftProxy",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-Logs/NLogAsMicrosoftProxy",
+            "program": "${workspaceFolder}/Logs/NLogAsMicrosoftProxy/bin/Debug/net5.0/NLogAsMicrosoftProxy-Sample.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/Logs/NLogAsMicrosoftProxy",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
             "name": "Others/Polly",
             "type": "coreclr",
             "request": "launch",

@@ -159,6 +159,18 @@
             "problemMatcher": "$msCompile"
         },
         {
+            "label": "build-Logs/NLogAsMicrosoftProxy",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/Logs/NLogAsMicrosoftProxy/NLogAsMicrosoftProxy-Sample.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
             "label": "build-Others/Polly",
             "command": "dotnet",
             "type": "process",
