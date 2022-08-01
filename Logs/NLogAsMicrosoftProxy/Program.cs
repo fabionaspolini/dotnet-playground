@@ -45,6 +45,26 @@ namespace NLogAsMicrosoftProxy_Sample
                 logger.LogError("Exemplo Error");
                 logger.LogCritical("Exemplo Fatal");
                 nlogger.Info("Exemplo log acessando diretamente NLog");
+
+                using (logger.BeginScope("Exemplo de escopo (nome={nome}, idade={idade})", "Exemplo", 25))
+                {
+                    try
+                    {
+
+                        logger.LogInformation("Teste");
+                        logger.LogInformation("Teste 2");
+                        using (logger.BeginScope("Exemplo de subescopo (endereco={endereco}, cidade={cidade})", "Rua exemplo", "São Paulo"))
+                        {
+                            logger.LogInformation("Teste 3");
+                            logger.LogInformation("Teste 4");
+                            throw new Exception("Erro exemplo");
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        logger.LogCritical(e, "Erro ao realizar ....");
+                    }
+                }
             }
             catch (Exception e)
             {
@@ -67,7 +87,10 @@ namespace NLogAsMicrosoftProxy_Sample
                    // configure Logging with NLog
                    loggingBuilder.ClearProviders();
                    loggingBuilder.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
-                   loggingBuilder.AddNLog(config);
+                   loggingBuilder.AddNLog(config, new NLogProviderOptions
+                   {
+                       IncludeScopes = true
+                   });
                })
                .BuildServiceProvider();
         }

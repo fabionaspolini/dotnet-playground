@@ -15,29 +15,31 @@ namespace NLogAsMicrosoftProxy_Sample
 
         public int ConverterParaInt(string value, bool fatal)
         {
-            _logger.LogTrace($"Iniciando conversão. value: {value} | fatal: {fatal}"); // Log não estruturado => String concatenada
-            try
+            using (_logger.BeginScope("Convertendo {value} para inteiro (fatal={fatal})", value, fatal))
             {
-                _logger.LogInformation("Convertendo {value} para int", value); // Log estruturado => O framework faz replace de {value} e monta objeto na memória { value = "valor do argumento" }
-                return int.Parse(value);
-            }
-            catch (Exception e)
-            {
-                // Usar "Error" quando a exception é capturada mas o processo segue, "Fatal" quando a thread é abortada
-                if (fatal)
+                _logger.LogTrace($"Iniciando conversão");
+                try
                 {
-                    _logger.LogCritical(e, "Erro ao converter {value} para int", value);
-                    throw;
+                    return int.Parse(value);
                 }
-                else
+                catch (Exception e)
                 {
-                    _logger.LogError(e, "Erro ao converter {value} para int", value);
-                    return 0;
+                    // Usar "Error" quando a exception é capturada mas o processo segue, "Fatal" quando a thread é abortada
+                    if (fatal)
+                    {
+                        _logger.LogCritical(e, $"Erro na conversão");
+                        throw;
+                    }
+                    else
+                    {
+                        _logger.LogError(e, $"Erro na conversão");
+                        return 0;
+                    }
                 }
-            }
-            finally
-            {
-                _logger.LogTrace("Finalizando");
+                finally
+                {
+                    _logger.LogTrace("Finalizando");
+                }
             }
         }
     }
