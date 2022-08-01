@@ -42,6 +42,26 @@ namespace MicrosoftLogging_Sample
             logger.LogWarning("Exemplo Warn");
             logger.LogError("Exemplo Error");
             logger.LogCritical("Exemplo Fatal");
+
+            using (logger.BeginScope("Exemplo de escopo (nome={nome}, idade={idade})", "Exemplo", 25))
+            {
+                try
+                {
+
+                    logger.LogInformation("Teste");
+                    logger.LogInformation("Teste 2");
+                    using (logger.BeginScope("Exemplo de subescopo (endereco={endereco}, cidade={cidade})", "Rua exemplo", "São Paulo"))
+                    {
+                        logger.LogInformation("Teste 3");
+                        logger.LogInformation("Teste 4");
+                        throw new Exception("Erro exemplo");
+                    }
+                }
+                catch (Exception e)
+                {
+                    logger.LogCritical(e, "Erro ao realizar ....");
+                }
+            }
         }
 
         private static IServiceProvider BuildDi(IConfiguration config)
@@ -58,11 +78,15 @@ namespace MicrosoftLogging_Sample
                        options.IncludeScopes = true;
                        options.TimestampFormat = "dd/MM/yyyy HH:mm:ss.fff ";
                    });*/
-                   loggingBuilder.AddSimpleConsole(options =>
+                   /*loggingBuilder.AddSimpleConsole(options =>
                    {
                        options.IncludeScopes = true;
                        options.SingleLine = true;
                        options.TimestampFormat = "dd/MM/yyyy HH:mm:ss.fff ";
+                   });*/
+                   loggingBuilder.AddJsonConsole(x =>
+                   {
+                       x.IncludeScopes = true;
                    });
                })
                .BuildServiceProvider();

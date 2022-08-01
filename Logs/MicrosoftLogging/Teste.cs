@@ -15,12 +15,11 @@ namespace MicrosoftLogging_Sample
 
         public int ConverterParaInt(string value, bool fatal)
         {
-            using (_logger.BeginScope(nameof(ConverterParaInt)))
+            using (_logger.BeginScope("Convertendo {value} para inteiro (fatal={fatal})", value, fatal))
             {
-                _logger.LogTrace($"Iniciando conversão. value: {value} | fatal: {fatal}");
+                _logger.LogTrace($"Iniciando conversão");
                 try
                 {
-                    _logger.LogInformation($"Convertendo {value} para int");
                     return int.Parse(value);
                 }
                 catch (Exception e)
@@ -28,12 +27,12 @@ namespace MicrosoftLogging_Sample
                     // Usar "Error" quando a exception é capturada mas o processo segue, "Fatal" quando a thread é abortada
                     if (fatal)
                     {
-                        _logger.LogCritical(e, $"Erro ao converter {value} para int");
+                        _logger.LogCritical(e, $"Erro na conversão");
                         throw;
                     }
                     else
                     {
-                        _logger.LogError(e, $"Erro ao converter {value} para int");
+                        _logger.LogError(e, $"Erro na conversão");
                         return 0;
                     }
                 }
