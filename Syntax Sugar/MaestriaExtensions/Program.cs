@@ -41,8 +41,8 @@ WriteLine();
 WriteLine("=====> Collection Extensions <=====");
 list.Iterate(item => WriteLine($"Iterate(item): {item}"));
 list.Iterate((item, index) => WriteLine($"Iterate(item, index): {item}, {index}"));
-await list.Iterate(async item => WriteLine($"Async Iterate(item): {item}"));
-await list.Iterate(async (item, index) => WriteLine($"Async Iterate(item, index): {item}, {index}"));
+await list.Iterate(async item => await Console.Out.WriteLineAsync($"Async Iterate(item): {item}"));
+await list.Iterate(async (item, index) => await Console.Out.WriteLineAsync($"Async Iterate(item, index): {item}, {index}"));
 WriteLine();
 
 WriteLine("foreach ... IEnumerable.WithIndex()");
