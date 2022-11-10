@@ -35,6 +35,17 @@
             "stopAtEntry": false
         },
         {
+            "name": "Data/EFCore-ZExtensions",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-Data/EFCore-ZExtensions",
+            "program": "${workspaceFolder}/Data/EFCore-ZExtensions/bin/Debug/net6.0/EFCore-ZExtensions-Sample.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/Data/EFCore-ZExtensions",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
             "name": "Data/FluentValidation",
             "type": "coreclr",
             "request": "launch",

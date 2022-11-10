@@ -1,0 +1,83 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/EFCore-ZExtensions-Sample.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "add migration",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "ef",
+                "migrations",
+                "add",
+                "${input:migrationName}",
+                "--project=./EFCore-ZExtensions-Sample.csproj",
+                "--context=SampleContext",
+                "--output-dir=./Migrations"
+            ],
+            "group": "none",
+            "problemMatcher": []
+        },
+        {
+            "label": "remove last migration",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "ef",
+                "migrations",
+                "Remove",
+                "--project=./EFCore-ZExtensions-Sample.csproj",
+                "--context=SampleContext",
+            ],
+            "group": "none",
+            "problemMatcher": []
+        },
+        {
+            "label": "update database",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "ef",
+                "database",
+                "update",
+                "--project=./EFCore-ZExtensions-Sample.csproj",
+                "--context=SampleContext",
+            ],
+            "group": "none",
+            "problemMatcher": []
+        },
+        {
+            "label": "update database to migration",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "ef",
+                "database",
+                "update",
+                "${input:migrationName}",
+                "--project=EFCore-ZExtensions-Sample.csproj",
+                "--context=SampleContext",
+            ],
+            "group": "none",
+            "problemMatcher": []
+        },
+    ],
+    "inputs": [
+        {
+            "id": "migrationName",
+            "type": "promptString",
+            "description": "Nome do arquivo de migration a criar"
+        }
+    ]
+}

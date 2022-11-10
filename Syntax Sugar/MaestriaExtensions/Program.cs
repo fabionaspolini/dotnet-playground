@@ -9,6 +9,10 @@ using static System.Console;
 
 WriteLine(".:: Maestria Extensions ::.");
 
+string teste = null;
+int? teste2 = null;
+var lower = teste2.Value + 1;
+
 // Variável de apoio
 IEnumerable<int> list = new List<int>() { 10, 20, 30 };
 IEnumerable<int> nullList = null;

@@ -74,6 +74,18 @@
             "problemMatcher": "$msCompile"
         },
         {
+            "label": "build-Data/EFCore-ZExtensions",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/Data/EFCore-ZExtensions/EFCore-ZExtensions-Sample.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
             "label": "build-Data/FluentValidation",
             "command": "dotnet",
             "type": "process",
