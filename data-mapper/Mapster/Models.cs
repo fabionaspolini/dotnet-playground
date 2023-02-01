@@ -1,11 +1,10 @@
-using Mapster;
-
 namespace Mapster_Sample;
 
 public class PersonModel
 {
     public Guid Id { get; set; }
     public string? Name { get; set; }
+    public string? LastName { get; set; }
 }
 
 public class PersonModelReadOnly
@@ -16,8 +15,8 @@ public class PersonModelReadOnly
         Name = name;
     }
 
-    public Guid Id { get; set; }
-    public string Name { get; set; }
+    public Guid Id { get; }
+    public string Name { get; }
 }
 
 public class PersonModelDif
@@ -34,8 +33,8 @@ public class PersonModelDifReadonly
         Nome = nome;
     }
 
-    public Guid Codigo { get; set; }
-    public string Nome { get; set; }
+    public Guid Codigo { get; }
+    public string Nome { get; }
 }
 
 // [Mapper]

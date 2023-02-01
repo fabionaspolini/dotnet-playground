@@ -11,10 +11,19 @@
   <ItemGroup>
     <Generated Include="**\*.g.cs" />
   </ItemGroup>
-  <Target Name="CleanGenerated" >
+  <Target Name="CleanGenerated">
     <Delete Files="@(Generated)" />
   </Target>
-  <Target Name="Mapster" AfterTargets="AfterBuild">
+  <!--<Target Name="Mapster" AfterTargets="AfterBuild">
+    <Delete Files="@(Generated)" />
+    <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet tool restore" />
+    <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet mapster model -a &quot;$(TargetDir)$(ProjectName).dll&quot;" />
+    <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet mapster extension -a &quot;$(TargetDir)$(ProjectName).dll&quot;" />
+    <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet mapster mapper -a &quot;$(TargetDir)$(ProjectName).dll&quot;" />
+  </Target>-->
+
+  <Target Name="Mapster">
+    <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet build" />
     <Delete Files="@(Generated)" />
     <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet tool restore" />
     <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet mapster model -a &quot;$(TargetDir)$(ProjectName).dll&quot;" />

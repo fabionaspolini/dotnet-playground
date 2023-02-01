@@ -57,17 +57,6 @@
             "stopAtEntry": false
         },
         {
-            "name": "data/Mapster",
-            "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "build-data/Mapster",
-            "program": "${workspaceFolder}/data/Mapster/bin/Debug/net6.0/Mapster-Sample.dll",
-            "args": [],
-            "cwd": "${workspaceFolder}/data/Mapster",
-            "console": "internalConsole",
-            "stopAtEntry": false
-        },
-        {
             "name": "data/NHibernate",
             "type": "coreclr",
             "request": "launch",
@@ -75,6 +64,28 @@
             "program": "${workspaceFolder}/data/NHibernate/bin/Debug/net6.0/NHibernate-Sample.dll",
             "args": [],
             "cwd": "${workspaceFolder}/data/NHibernate",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "data-mapper/AutoMapper",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-data-mapper/AutoMapper",
+            "program": "${workspaceFolder}/data-mapper/AutoMapper/bin/Debug/net7.0/AutoMapper-Sample.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/data-mapper/AutoMapper",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "data-mapper/Mapster",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-data-mapper/Mapster",
+            "program": "${workspaceFolder}/data-mapper/Mapster/bin/Debug/net6.0/Mapster-Sample.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/data-mapper/Mapster",
             "console": "internalConsole",
             "stopAtEntry": false
         },
