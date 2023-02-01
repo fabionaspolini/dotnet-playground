@@ -5,48 +5,48 @@ VisualStudioVersion = 16.6.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentValidation-Sample", "Data\FluentValidation\FluentValidation-Sample.csproj", "{BA18C2B2-6336-413D-80A1-4659FB5924E7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentDateTime-Sample", "Syntax Sugar\FluentDateTime\FluentDateTime-Sample.csproj", "{0A2E1064-EA82-45FD-BEEF-BC92363A8FD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentDateTime-Sample", "syntax-sugar\FluentDateTime\FluentDateTime-Sample.csproj", "{0A2E1064-EA82-45FD-BEEF-BC92363A8FD9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Humanizer-Sample", "Syntax Sugar\Humanizer\Humanizer-Sample.csproj", "{15120ABF-33BF-4A08-8479-10D83A3092F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Humanizer-Sample", "syntax-sugar\Humanizer\Humanizer-Sample.csproj", "{15120ABF-33BF-4A08-8479-10D83A3092F6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlurlHttp-Sample", "Http Client\FlurlHttp\FlurlHttp-Sample.csproj", "{1A3BA5C3-B6AA-4165-BC62-7DF4936B76CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlurlHttp-Sample", "http-client\FlurlHttp\FlurlHttp-Sample.csproj", "{1A3BA5C3-B6AA-4165-BC62-7DF4936B76CF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Refit-Sample", "Http Client\Refit\Refit-Sample.csproj", "{06AE80A9-FC88-45B9-9163-4AA52AB57F82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Refit-Sample", "http-client\Refit\Refit-Sample.csproj", "{06AE80A9-FC88-45B9-9163-4AA52AB57F82}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mustache-Sample", "Template Engine\Mustache\Mustache-Sample.csproj", "{A325627B-86F6-4CC1-83EA-D6ADF0FF4B2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mustache-Sample", "template-engine\Mustache\Mustache-Sample.csproj", "{A325627B-86F6-4CC1-83EA-D6ADF0FF4B2E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Liquid-Sample", "Template Engine\Liquid\Liquid-Sample.csproj", "{EB438FF3-02D3-44E6-A572-A60C000C0A54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Liquid-Sample", "template-engine\Liquid\Liquid-Sample.csproj", "{EB438FF3-02D3-44E6-A572-A60C000C0A54}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSwagStudio-Sample", "Http Client\NSwagStudio\NSwagStudio-Sample.csproj", "{3B656115-804A-429D-93F9-525607E1F984}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSwagStudio-Sample", "http-client\NSwagStudio\NSwagStudio-Sample.csproj", "{3B656115-804A-429D-93F9-525607E1F984}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CacheManager-Sample", "Data\CacheManager\CacheManager-Sample.csproj", "{70313DF3-B407-4FC7-824B-13C3BFB719DB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaestriaExtensions-Sample", "Syntax Sugar\MaestriaExtensions\MaestriaExtensions-Sample.csproj", "{337F3867-1D93-4959-9310-DEC3F79FA8C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaestriaExtensions-Sample", "syntax-sugar\MaestriaExtensions\MaestriaExtensions-Sample.csproj", "{337F3867-1D93-4959-9310-DEC3F79FA8C2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaestriaFluentCast-Sample", "Syntax Sugar\MaestriaFluentCast\MaestriaFluentCast-Sample.csproj", "{86A8AC7B-AB66-4558-A208-3A18EEB503C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaestriaFluentCast-Sample", "syntax-sugar\MaestriaFluentCast\MaestriaFluentCast-Sample.csproj", "{86A8AC7B-AB66-4558-A208-3A18EEB503C7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Polly-Sample", "Others\Polly\Polly-Sample.csproj", "{50896C2E-2887-4ED8-B907-66BBB29E505D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaestriaTypeProviders-Sample", "Source Generator\MaestriaTypeProviders\MaestriaTypeProviders-Sample.csproj", "{9D0034ED-2228-427B-BF08-7614C1312E05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaestriaTypeProviders-Sample", "source-generator\MaestriaTypeProviders\MaestriaTypeProviders-Sample.csproj", "{9D0034ED-2228-427B-BF08-7614C1312E05}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrimaryConstructor-Sample", "Source Generator\PrimaryConstructor\PrimaryConstructor-Sample.csproj", "{FFB46013-9CE5-44B4-87FA-313767AEC075}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrimaryConstructor-Sample", "source-generator\PrimaryConstructor\PrimaryConstructor-Sample.csproj", "{FFB46013-9CE5-44B4-87FA-313767AEC075}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBuilderGenerator-Sample", "Source Generator\DataBuilderGenerator\DataBuilderGenerator-Sample.csproj", "{B00F8963-0DD6-49BE-BA8B-3C2121E77105}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBuilderGenerator-Sample", "source-generator\DataBuilderGenerator\DataBuilderGenerator-Sample.csproj", "{B00F8963-0DD6-49BE-BA8B-3C2121E77105}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2D2C6443-F1B1-46DF-874F-BEFD6C5AEDBB}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Syntax Sugar", "Syntax Sugar", "{EC7CA729-A36C-4C7B-8689-431B062BF0DE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "syntax-sugar", "syntax-sugar", "{EC7CA729-A36C-4C7B-8689-431B062BF0DE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Http Client", "Http Client", "{4B49AAFF-235A-4D91-BC9F-D51FFEF6D3E5}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "http-client", "http-client", "{4B49AAFF-235A-4D91-BC9F-D51FFEF6D3E5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Template Engine", "Template Engine", "{EDEA9239-750D-46D1-BC49-B63948061B2B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "template-engine", "template-engine", "{EDEA9239-750D-46D1-BC49-B63948061B2B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{C81DBC4C-42A2-46FB-9FA4-E92B0491B10A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source Generator", "Source Generator", "{A17D3E48-A0CD-48F8-B73A-52B36F0C2F9C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "source-generator", "source-generator", "{A17D3E48-A0CD-48F8-B73A-52B36F0C2F9C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Others", "Others", "{FD7F4DC8-9C67-4E66-BD16-9745CDE2C93A}"
 EndProject
@@ -72,15 +72,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scheduler", "Scheduler", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quartz-Sample", "Scheduler\Quartz\Quartz-Sample.csproj", "{A791365C-04A4-4064-AE95-F4974BB8CB34}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Language Features", "Language Features", "{02A5BB00-4CDA-11EC-B1AD-CF229752EAE8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "language-features", "language-features", "{02A5BB00-4CDA-11EC-B1AD-CF229752EAE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageFeatures-Sample", "Language Features\LanguageFeatures-Sample.csproj", "{324F29FE-2F77-4BC2-9BDC-A2B35D5B1BA9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageFeatures-Sample", "language-features\LanguageFeatures-Sample.csproj", "{324F29FE-2F77-4BC2-9BDC-A2B35D5B1BA9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Command Line Args", "Command Line Args", "{C0023841-3C73-40CE-AE16-F83C512781AE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "command-line-interface", "command-line-interface", "{C0023841-3C73-40CE-AE16-F83C512781AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandLineParser-Sample", "Command Line Args\CommandLineParser\CommandLineParser-Sample.csproj", "{7FEC01F2-B120-4628-90E3-1642BBDEC54B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandLineParser-Sample", "command-line-interface\CommandLineParser\CommandLineParser-Sample.csproj", "{7FEC01F2-B120-4628-90E3-1642BBDEC54B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandLineUtils-Sample", "Command Line Args\CommandLineUtils\CommandLineUtils-Sample.csproj", "{871A5CC1-7014-4B69-96E6-4711509EB077}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandLineUtils-Sample", "command-line-interface\CommandLineUtils\CommandLineUtils-Sample.csproj", "{871A5CC1-7014-4B69-96E6-4711509EB077}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHibernate-Sample", "Data\NHibernate\NHibernate-Sample.csproj", "{3339B372-2CA6-4605-B760-31EF817B2D54}"
 EndProject

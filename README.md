@@ -6,7 +6,7 @@ Maiores detalhes descritos no meu [post](https://fabionaspolini.medium.com/bibli
 
 ## Biliotecas
 
-- Syntax Sugar
+- syntax-sugar
   - [FluentDateTime](Syntax-Sugar/FluentDateTime): Melhorar a experiência de trabalho com datas
   - [Humanizer](Syntax-Sugar/Humanizer): Humanizar leitura de unidades de medias
   - [Maestria.Extensions](Syntax-Sugar/MaestriaExtensions): Métodos de extensões úteis
@@ -17,14 +17,14 @@ Maiores detalhes descritos no meu [post](https://fabionaspolini.medium.com/bibli
   - DapperContrib: Adicionar suporte a escrita no Dapper
   - [FluentValidation](Data/FluentValidation): Validação de dados
   - ClosedXML: Leitura e escrita de excel independente de softwares instalados na estação de trabalho.
-- Http Client
+- http-client
   - [FlurlHttp](Http-Client/FlurlHttp): Acesso a HTTP por sintax fluente
   - [NSwagStudio](Http-Client/NSwagStudio): Geração de código a partir de especificação swagger
-  - [Refit](Http Client/Refit): Acesso a HTTP por mapeamento de objetos
-- Template Engine
+  - [Refit](http-client/Refit): Acesso a HTTP por mapeamento de objetos
+- template-engine
   - [Liquid](Template-Engine/Liquid): Template com suporte a execução de expressões lógicas
   - [Mustache](Template-Engine/Mustache): Template sem suporte a execuções de expressões lógicas
-- Source Generator
+- source-generator
   - [Maestria.TypeProviders](Source-Generator/MaestriaTypeProviders): Gerador de código a partir de template de arquivo (Excel)
   - [PrimaryConstructor](Source-Generator/PrimaryConstructor): Adicionar construtor padrão na classe para variáveis e propriedades read only
   - [DataBuilderGenerator](Source-Generator/DataBuilderGenerator): Adicionar métodos para contrução de classes de dados fluente

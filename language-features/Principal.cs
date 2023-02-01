@@ -18,7 +18,7 @@ namespace LanguageFeatures_Sample
 
         public async Task StartAsync(CancellationToken cancellationToken)
         {
-            _logger.LogInformation(".:: Language Features Samples ::.");
+            _logger.LogInformation(".:: language-features Samples ::.");
 
             // await _streamForEach.ExecuteAsync();
             //_streamForEach.Execute();

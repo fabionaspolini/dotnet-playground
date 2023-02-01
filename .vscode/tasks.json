@@ -38,24 +38,24 @@
             }
         },
         {
-            "label": "build-Command Line Args/CommandLineParser",
+            "label": "build-command-line-interface/CommandLineParser",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Command Line Args/CommandLineParser/CommandLineParser-Sample.csproj",
+                "${workspaceFolder}/command-line-interface/CommandLineParser/CommandLineParser-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-Command Line Args/CommandLineUtils",
+            "label": "build-command-line-interface/CommandLineUtils",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Command Line Args/CommandLineUtils/CommandLineUtils-Sample.csproj",
+                "${workspaceFolder}/command-line-interface/CommandLineUtils/CommandLineUtils-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -110,36 +110,36 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-Http Client/FlurlHttp",
+            "label": "build-http-client/FlurlHttp",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Http Client/FlurlHttp/FlurlHttp-Sample.csproj",
+                "${workspaceFolder}/http-client/FlurlHttp/FlurlHttp-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-Http Client/NSwagStudio",
+            "label": "build-http-client/NSwagStudio",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Http Client/NSwagStudio/NSwagStudio-Sample.csproj",
+                "${workspaceFolder}/http-client/NSwagStudio/NSwagStudio-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-Http Client/Refit",
+            "label": "build-http-client/Refit",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Http Client/Refit/Refit-Sample.csproj",
+                "${workspaceFolder}/http-client/Refit/Refit-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -151,7 +151,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Language Features/LanguageFeatures-Sample.csproj",
+                "${workspaceFolder}/language-features/LanguageFeatures-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -207,108 +207,108 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-Source Generator/DataBuilderGenerator",
+            "label": "build-source-generator/DataBuilderGenerator",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Source Generator/DataBuilderGenerator/DataBuilderGenerator-Sample.csproj",
+                "${workspaceFolder}/source-generator/DataBuilderGenerator/DataBuilderGenerator-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-Source Generator/MaestriaTypeProviders",
+            "label": "build-source-generator/MaestriaTypeProviders",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Source Generator/MaestriaTypeProviders/MaestriaTypeProviders-Sample.csproj",
+                "${workspaceFolder}/source-generator/MaestriaTypeProviders/MaestriaTypeProviders-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-Source Generator/PrimaryConstructor",
+            "label": "build-source-generator/PrimaryConstructor",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Source Generator/PrimaryConstructor/PrimaryConstructor-Sample.csproj",
+                "${workspaceFolder}/source-generator/PrimaryConstructor/PrimaryConstructor-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-Syntax Sugar/FluentDateTime",
+            "label": "build-syntax-sugar/FluentDateTime",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Syntax Sugar/FluentDateTime/FluentDateTime-Sample.csproj",
+                "${workspaceFolder}/syntax-sugar/FluentDateTime/FluentDateTime-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-Syntax Sugar/Humanizer",
+            "label": "build-syntax-sugar/Humanizer",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Syntax Sugar/Humanizer/Humanizer-Sample.csproj",
+                "${workspaceFolder}/syntax-sugar/Humanizer/Humanizer-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-Syntax Sugar/MaestriaExtensions",
+            "label": "build-syntax-sugar/MaestriaExtensions",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Syntax Sugar/MaestriaExtensions/MaestriaExtensions-Sample.csproj",
+                "${workspaceFolder}/syntax-sugar/MaestriaExtensions/MaestriaExtensions-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-Syntax Sugar/MaestriaFluentCast",
+            "label": "build-syntax-sugar/MaestriaFluentCast",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Syntax Sugar/MaestriaFluentCast/MaestriaFluentCast-Sample.csproj",
+                "${workspaceFolder}/syntax-sugar/MaestriaFluentCast/MaestriaFluentCast-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-Template Engine/Mustache",
+            "label": "build-template-engine/Mustache",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Template Engine/Mustache/Mustache-Sample.csproj",
+                "${workspaceFolder}/template-engine/Mustache/Mustache-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-Template Engine/Liquid",
+            "label": "build-template-engine/Liquid",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Template Engine/Liquid/Liquid-Sample.csproj",
+                "${workspaceFolder}/template-engine/Liquid/Liquid-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
