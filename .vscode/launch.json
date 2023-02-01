@@ -57,6 +57,17 @@
             "stopAtEntry": false
         },
         {
+            "name": "data/Mapster",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-data/Mapster",
+            "program": "${workspaceFolder}/data/Mapster/bin/Debug/net7.0/Mapster-Sample.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/data/Mapster",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
             "name": "data/NHibernate",
             "type": "coreclr",
             "request": "launch",

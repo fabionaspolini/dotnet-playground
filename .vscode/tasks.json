@@ -98,6 +98,18 @@
             "problemMatcher": "$msCompile"
         },
         {
+            "label": "build-data/Mapster",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/data/Mapster/Mapster-Sample.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
             "label": "build-data/NHibernate",
             "command": "dotnet",
             "type": "process",
