@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.6.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentValidation-Sample", "Data\FluentValidation\FluentValidation-Sample.csproj", "{BA18C2B2-6336-413D-80A1-4659FB5924E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentValidation-Sample", "data\FluentValidation\FluentValidation-Sample.csproj", "{BA18C2B2-6336-413D-80A1-4659FB5924E7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentDateTime-Sample", "syntax-sugar\FluentDateTime\FluentDateTime-Sample.csproj", "{0A2E1064-EA82-45FD-BEEF-BC92363A8FD9}"
 EndProject
@@ -19,13 +19,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Liquid-Sample", "template-e
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSwagStudio-Sample", "http-client\NSwagStudio\NSwagStudio-Sample.csproj", "{3B656115-804A-429D-93F9-525607E1F984}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CacheManager-Sample", "Data\CacheManager\CacheManager-Sample.csproj", "{70313DF3-B407-4FC7-824B-13C3BFB719DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CacheManager-Sample", "data\CacheManager\CacheManager-Sample.csproj", "{70313DF3-B407-4FC7-824B-13C3BFB719DB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaestriaExtensions-Sample", "syntax-sugar\MaestriaExtensions\MaestriaExtensions-Sample.csproj", "{337F3867-1D93-4959-9310-DEC3F79FA8C2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaestriaFluentCast-Sample", "syntax-sugar\MaestriaFluentCast\MaestriaFluentCast-Sample.csproj", "{86A8AC7B-AB66-4558-A208-3A18EEB503C7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Polly-Sample", "Others\Polly\Polly-Sample.csproj", "{50896C2E-2887-4ED8-B907-66BBB29E505D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Polly-Sample", "others\Polly\Polly-Sample.csproj", "{50896C2E-2887-4ED8-B907-66BBB29E505D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaestriaTypeProviders-Sample", "source-generator\MaestriaTypeProviders\MaestriaTypeProviders-Sample.csproj", "{9D0034ED-2228-427B-BF08-7614C1312E05}"
 EndProject
@@ -44,33 +44,33 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "http-client", "http-client"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "template-engine", "template-engine", "{EDEA9239-750D-46D1-BC49-B63948061B2B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{C81DBC4C-42A2-46FB-9FA4-E92B0491B10A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{C81DBC4C-42A2-46FB-9FA4-E92B0491B10A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "source-generator", "source-generator", "{A17D3E48-A0CD-48F8-B73A-52B36F0C2F9C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Others", "Others", "{FD7F4DC8-9C67-4E66-BD16-9745CDE2C93A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "others", "others", "{FD7F4DC8-9C67-4E66-BD16-9745CDE2C93A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logs", "Logs", "{FAD75C27-6A4D-4C6B-B5F0-8E60005D8CEB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "logs", "logs", "{FAD75C27-6A4D-4C6B-B5F0-8E60005D8CEB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NLog-Sample", "Logs\NLog\NLog-Sample.csproj", "{89256F64-BFF3-4F52-BF58-49F8C3AE7A7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NLog-Sample", "logs\NLog\NLog-Sample.csproj", "{89256F64-BFF3-4F52-BF58-49F8C3AE7A7E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{15CFB388-BCAB-4AFB-A4B0-6C5974EBA165}"
 	ProjectSection(SolutionItems) = preProject
-		Docs\Logs.md = Logs\README.md
+		Docs\Logs.md = logs\README.md
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NLogAsMicrosoftProxy-Sample", "Logs\NLogAsMicrosoftProxy\NLogAsMicrosoftProxy-Sample.csproj", "{183D5399-16D8-44CC-AD7C-65CF45D98CB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NLogAsMicrosoftProxy-Sample", "logs\NLogAsMicrosoftProxy\NLogAsMicrosoftProxy-Sample.csproj", "{183D5399-16D8-44CC-AD7C-65CF45D98CB1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicrosoftLogging-Sample", "Logs\MicrosoftLogging\MicrosoftLogging-Sample.csproj", "{32E37ECF-DFA0-4D5C-89F5-4136B466A322}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicrosoftLogging-Sample", "logs\MicrosoftLogging\MicrosoftLogging-Sample.csproj", "{32E37ECF-DFA0-4D5C-89F5-4136B466A322}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Log4Net-Sample", "Logs\Log4Net\Log4Net-Sample.csproj", "{0B035BEC-7492-4D1D-90FE-FEB6CD681900}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Log4Net-Sample", "logs\Log4Net\Log4Net-Sample.csproj", "{0B035BEC-7492-4D1D-90FE-FEB6CD681900}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serilog-Sample", "Logs\Serilog\Serilog-Sample.csproj", "{73A41427-9EDF-4A24-B145-86BA6799F014}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serilog-Sample", "logs\Serilog\Serilog-Sample.csproj", "{73A41427-9EDF-4A24-B145-86BA6799F014}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scheduler", "Scheduler", "{4FDCC2A0-46DC-11EC-BC3E-AF7DFFB3ECD5}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scheduler", "scheduler", "{4FDCC2A0-46DC-11EC-BC3E-AF7DFFB3ECD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quartz-Sample", "Scheduler\Quartz\Quartz-Sample.csproj", "{A791365C-04A4-4064-AE95-F4974BB8CB34}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quartz-Sample", "scheduler\Quartz\Quartz-Sample.csproj", "{A791365C-04A4-4064-AE95-F4974BB8CB34}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "language-features", "language-features", "{02A5BB00-4CDA-11EC-B1AD-CF229752EAE8}"
 EndProject
@@ -82,9 +82,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandLineParser-Sample", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandLineUtils-Sample", "command-line-interface\CommandLineUtils\CommandLineUtils-Sample.csproj", "{871A5CC1-7014-4B69-96E6-4711509EB077}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHibernate-Sample", "Data\NHibernate\NHibernate-Sample.csproj", "{3339B372-2CA6-4605-B760-31EF817B2D54}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHibernate-Sample", "data\NHibernate\NHibernate-Sample.csproj", "{3339B372-2CA6-4605-B760-31EF817B2D54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore-ZExtensions-Sample", "Data\EFCore-ZExtensions\EFCore-ZExtensions-Sample.csproj", "{FCBE9E0C-EBFA-4293-A880-E68E1ED1C522}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore-ZExtensions-Sample", "data\EFCore-ZExtensions\EFCore-ZExtensions-Sample.csproj", "{FCBE9E0C-EBFA-4293-A880-E68E1ED1C522}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -62,48 +62,48 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-Data/CacheManager",
+            "label": "build-data/CacheManager",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Data/CacheManager/CacheManager-Sample.csproj",
+                "${workspaceFolder}/data/CacheManager/CacheManager-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-Data/EFCore-ZExtensions",
+            "label": "build-data/EFCore-ZExtensions",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Data/EFCore-ZExtensions/EFCore-ZExtensions-Sample.csproj",
+                "${workspaceFolder}/data/EFCore-ZExtensions/EFCore-ZExtensions-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-Data/FluentValidation",
+            "label": "build-data/FluentValidation",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Data/FluentValidation/FluentValidation-Sample.csproj",
+                "${workspaceFolder}/data/FluentValidation/FluentValidation-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-Data/NHibernate",
+            "label": "build-data/NHibernate",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Data/NHibernate/NHibernate-Sample.csproj",
+                "${workspaceFolder}/data/NHibernate/NHibernate-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -159,48 +159,48 @@
             "group": "build"
         },
         {
-            "label": "build-Logs/MicrosoftLogging",
+            "label": "build-logs/MicrosoftLogging",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Logs/MicrosoftLogging/MicrosoftLogging-Sample.csproj",
+                "${workspaceFolder}/logs/MicrosoftLogging/MicrosoftLogging-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-Logs/NLogAsMicrosoftProxy",
+            "label": "build-logs/NLogAsMicrosoftProxy",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Logs/NLogAsMicrosoftProxy/NLogAsMicrosoftProxy-Sample.csproj",
+                "${workspaceFolder}/logs/NLogAsMicrosoftProxy/NLogAsMicrosoftProxy-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-Others/Polly",
+            "label": "build-others/Polly",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Others/Polly/Polly-Sample.csproj",
+                "${workspaceFolder}/others/Polly/Polly-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-Scheduler/Quartz",
+            "label": "build-scheduler/Quartz",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Scheduler/Quartz/Quartz-Sample.csproj",
+                "${workspaceFolder}/scheduler/Quartz/Quartz-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],

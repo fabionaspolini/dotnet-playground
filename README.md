@@ -11,11 +11,11 @@ Maiores detalhes descritos no meu [post](https://fabionaspolini.medium.com/bibli
   - [Humanizer](Syntax-Sugar/Humanizer): Humanizar leitura de unidades de medias
   - [Maestria.Extensions](Syntax-Sugar/MaestriaExtensions): Métodos de extensões úteis
   - [Maestria.FluentCast](Syntax-Sugar/MaestriaFluentCast): Converter valores de tipos primitidos de forma fluente
-- Data
-  - [CacheManager](Data/CacheManager): Pipeline para gerenciamento de cache em memória e Redis
+- data
+  - [CacheManager](data/CacheManager): Pipeline para gerenciamento de cache em memória e Redis
   - Dapper: Simples ORM pequeno para leitura de dados
   - DapperContrib: Adicionar suporte a escrita no Dapper
-  - [FluentValidation](Data/FluentValidation): Validação de dados
+  - [FluentValidation](data/atadataaaFluentValidation): Validação de dados
   - ClosedXML: Leitura e escrita de excel independente de softwares instalados na estação de trabalho.
 - http-client
   - [FlurlHttp](Http-Client/FlurlHttp): Acesso a HTTP por sintax fluente
@@ -32,15 +32,15 @@ Maiores detalhes descritos no meu [post](https://fabionaspolini.medium.com/bibli
   - HangFire: Agendamento de tarefas em backgroud
   - Quartz.NET: Agendamento de tarefas em backgroud
   - Worker Service: Execução de tarefas em background sem suporte a agendamento de horários
-- [Logs](Logs)
-  - [NLog](Logs/NLog)
-  - [NLogAsMicrosoftProxy](Logs/NLogAsMicrosoftProxy)
-  - [Log4Net](Logs/Log4Net)
-  - [MicrosoftLogging](Logs/MicrosoftLogging)
-  - [Serilog](Logs/Serilog)
-- Others
-  - [LanguageFeatures](Others/LanguageFeatures): Recursos da linguagem C# / .NET
-  - [Polly](Others/Polly): Resiliência de operações
+- [logs](logs)
+  - [NLog](logs/NLog)
+  - [NLogAsMicrosoftProxy](logs/NLogAsMicrosoftProxy)
+  - [Log4Net](logs/Log4Net)
+  - [MicrosoftLogging](logs/MicrosoftLogging)
+  - [Serilog](logs/Serilog)
+- others
+  - [LanguageFeatures](others/LanguageFeatures): Recursos da linguagem C# / .NET
+  - [Polly](others/Polly): Resiliência de operações
 
 
 ## Avaliações
