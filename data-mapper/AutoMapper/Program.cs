@@ -21,6 +21,9 @@ var config = new MapperConfiguration(cfg =>
         .ConstructUsing(s => new(s.Id, s.Name))
         .ForAllMembers(otps => otps.Ignore());
 });
+
+config.CompileMappings(); // Compilar mapeamentos no startup da aplicação. Sem isso ocorrerá on-demand.
+
 try
 {
     // Validar configuração para evitar erros de mapeamento em runtime e antecipar a descoberta de incompatbilidades causadas por mudanças no código.
