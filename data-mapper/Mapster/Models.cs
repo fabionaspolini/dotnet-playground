@@ -5,6 +5,7 @@ public class PersonModel
     public Guid Id { get; set; }
     public string? Name { get; set; }
     public string? LastName { get; set; }
+    // public string? Test { get; set; }
 }
 
 public class PersonModelReadOnly

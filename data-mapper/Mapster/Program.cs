@@ -43,6 +43,20 @@ Console.WriteLine($"PersonModelReadOnly     => {personModel.Id}: {personModel.Na
 Console.WriteLine($"PersonModelDif          => {personModelDif.Codigo}: {personModelDif.Nome}");
 Console.WriteLine($"PersonModelDifReadOnly  => {personModelDifReadonly.Codigo}: {personModelDifReadonly.Nome}");
 
+// Mapear por cima de uma instância
+var person2 = new Person(
+    id: Guid.Parse("85246202-282b-48cc-bea8-bab1447f07df"),
+    name: "Fulano de tal",
+    birthDate: DateTime.Now);
+
+// Passei por problema em outr projeto quando havia uma classe destino com propriedade readonly impactar em propriedades writeables, não causava exception mas não fazia certo...causando falsa impressão de sucesso.
+// Não consegui montar o cenário aqui. No outro projeto também estava utilizando a feature em conjunto com injenção de dependência
+person2.Adapt(personModel);
+person2.Adapt(personModelDif);
+
+Console.WriteLine($"[person2] PersonModel    => {personModel.Id}: {personModel.Name}");
+Console.WriteLine($"[person2] PersonModelDif => {personModelDif.Codigo}: {personModelDif.Nome}");
+
 // Feature de geração de código, não obirgatório
 public class CodeGenerationConfig : ICodeGenerationRegister
 {
