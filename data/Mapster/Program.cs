@@ -1,6 +1,8 @@
 ﻿using Mapster;
 using Mapster_Sample;
+using MapsterMapper;
 
+// TypeAdapterConfig.GlobalSettings.RequireExplicitMapping = true;
 TypeAdapterConfig<Person, PersonModelDif>
     .NewConfig()
     .Map(t => t.Codigo, s => s.Id)
@@ -21,20 +23,21 @@ var personModelReadOnly = person.Adapt<PersonModelReadOnly>();
 var personModelDif = person.Adapt<PersonModelDif>();
 var personModelDifReadonly = person.Adapt<PersonModelDifReadonly>();
 
+// var test = person.Adapt<PersonModelTest>();
+
 Console.WriteLine($"PersonModel             => {personModel.Id}: {personModel.Name}");
 Console.WriteLine($"PersonModelReadOnly     => {personModel.Id}: {personModel.Name}");
 Console.WriteLine($"PersonModelDif          => {personModelDif.Codigo}: {personModelDif.Nome}");
 Console.WriteLine($"PersonModelDifReadOnly  => {personModelDifReadonly.Codigo}: {personModelDifReadonly.Nome}");
 
-// public class MyRegister : ICodeGenerationRegister
-// {
-//     public void Register(CodeGenerationConfig config)
-//     {
-//         // config.AdaptTo("[name]Dto")
-//         //     .ForAllTypesInNamespace(Assembly.GetExecutingAssembly(), "Mapster_Sample");
-
-//         config.GenerateMapper("[name]Mapper")
-//                 .ForType<Course>()
-//                 .ForType<Student>();
-//     }
-// }
+public class CodeGenerationConfig : ICodeGenerationRegister
+{
+    public void Register(Mapster.CodeGenerationConfig config)
+    {
+        // Build tasks generate mapping and dto class at model "Models"
+        config.AdaptTo("[name]ModelTest")
+            .ForType<Person>();
+        config.GenerateMapper("[name]MapperTest")
+            .ForType<Person>();
+    }
+}

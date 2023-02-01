@@ -1,3 +1,5 @@
+using Mapster;
+
 namespace Mapster_Sample;
 
 public class PersonModel
@@ -35,3 +37,24 @@ public class PersonModelDifReadonly
     public Guid Codigo { get; set; }
     public string Nome { get; set; }
 }
+
+// [Mapper]
+// public interface IMapperToPersonModel
+// {
+//     //map from POCO to DTO
+//     PersonModel MapToDto(Person entity);
+// }
+
+// [Mapper]
+// public interface IMapperToPersonModelReadOnly
+// {
+//     //map from POCO to DTO
+//     PersonModelReadOnly MapToDto(Person entity);
+// }
+
+// [Mapper]
+// public interface IMapperToPersonModelDif
+// {
+//     //map from POCO to DTO
+//     PersonModelDif MapToDto(Person entity);
+// }

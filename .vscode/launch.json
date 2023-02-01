@@ -61,7 +61,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-data/Mapster",
-            "program": "${workspaceFolder}/data/Mapster/bin/Debug/net7.0/Mapster-Sample.dll",
+            "program": "${workspaceFolder}/data/Mapster/bin/Debug/net6.0/Mapster-Sample.dll",
             "args": [],
             "cwd": "${workspaceFolder}/data/Mapster",
             "console": "internalConsole",

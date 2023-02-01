@@ -1,4 +1,6 @@
+# Custom
 generated
+*.g.*cs
 
 # Created by https://www.toptal.com/developers/gitignore/api/dotnetcore,csharp,visualstudio,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=dotnetcore,csharp,visualstudio,visualstudiocode
