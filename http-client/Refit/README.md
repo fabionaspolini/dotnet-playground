@@ -10,8 +10,8 @@
 - Configure os secrets através dos comando:
 
 ```bash
-dotnet user-secrets set "privateKey" "d484a8f0f81d5ccfa1ca8640827294f5151a4ac8"
-dotnet user-secrets set "publicKey" "1b07df1a3944b57a8d8823c41cfa221b"
+dotnet user-secrets set "privateKey" "<your-private-key>"
+dotnet user-secrets set "publicKey" "<your-public-key>"
 ```
 
 Não sabe como funciona o secrets do dotnet, veja [aqui](https://docs.microsoft.com/pt-br/aspnet/core/security/app-secrets?view=aspnetcore-5.0&tabs=windows#enable-secret-storage).
