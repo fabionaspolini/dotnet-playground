@@ -22,7 +22,6 @@ class Program
             
         using var scope = serviceProvider.CreateScope();
         var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
-            
         try
         {
             var teste = scope.ServiceProvider.GetRequiredService<Teste>();

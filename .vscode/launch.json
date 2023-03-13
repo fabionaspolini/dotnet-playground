@@ -194,7 +194,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-logs/Serilog",
-            "program": "${workspaceFolder}/logs/Serilog/bin/Debug/net5.0/Serilog-Sample.dll",
+            "program": "${workspaceFolder}/logs/Serilog/bin/Debug/net7.0/Serilog-Sample.dll",
             "args": [],
             "cwd": "${workspaceFolder}/logs/Serilog",
             "console": "internalConsole",
