@@ -92,6 +92,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMapper-Sample", "data-m
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mapster-Sample", "data-mapper\Mapster\Mapster-Sample.csproj", "{DC618915-FC83-4108-B7B7-6A19D7C8A3AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerilogAsMicrosoftProxy-Sample", "logs\SerilogAsMicrosoftProxy\SerilogAsMicrosoftProxy-Sample.csproj", "{FB92F1E5-41EF-450B-9B46-582CBBC320F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -438,6 +440,18 @@ Global
 		{DC618915-FC83-4108-B7B7-6A19D7C8A3AA}.Release|x64.Build.0 = Release|Any CPU
 		{DC618915-FC83-4108-B7B7-6A19D7C8A3AA}.Release|x86.ActiveCfg = Release|Any CPU
 		{DC618915-FC83-4108-B7B7-6A19D7C8A3AA}.Release|x86.Build.0 = Release|Any CPU
+		{FB92F1E5-41EF-450B-9B46-582CBBC320F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB92F1E5-41EF-450B-9B46-582CBBC320F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB92F1E5-41EF-450B-9B46-582CBBC320F1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FB92F1E5-41EF-450B-9B46-582CBBC320F1}.Debug|x64.Build.0 = Debug|Any CPU
+		{FB92F1E5-41EF-450B-9B46-582CBBC320F1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FB92F1E5-41EF-450B-9B46-582CBBC320F1}.Debug|x86.Build.0 = Debug|Any CPU
+		{FB92F1E5-41EF-450B-9B46-582CBBC320F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB92F1E5-41EF-450B-9B46-582CBBC320F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB92F1E5-41EF-450B-9B46-582CBBC320F1}.Release|x64.ActiveCfg = Release|Any CPU
+		{FB92F1E5-41EF-450B-9B46-582CBBC320F1}.Release|x64.Build.0 = Release|Any CPU
+		{FB92F1E5-41EF-450B-9B46-582CBBC320F1}.Release|x86.ActiveCfg = Release|Any CPU
+		{FB92F1E5-41EF-450B-9B46-582CBBC320F1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -471,6 +485,7 @@ Global
 		{FCBE9E0C-EBFA-4293-A880-E68E1ED1C522} = {C81DBC4C-42A2-46FB-9FA4-E92B0491B10A}
 		{117AFD3B-73FB-41F3-99F5-DCDD355CF4A2} = {16A3FA93-D130-41CD-9797-FFB5F8F9DD0C}
 		{DC618915-FC83-4108-B7B7-6A19D7C8A3AA} = {16A3FA93-D130-41CD-9797-FFB5F8F9DD0C}
+		{FB92F1E5-41EF-450B-9B46-582CBBC320F1} = {FAD75C27-6A4D-4C6B-B5F0-8E60005D8CEB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {168EC689-C008-4589-95F0-6030A3264703}

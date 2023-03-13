@@ -167,6 +167,17 @@
             "stopAtEntry": false
         },
         {
+            "name": "logs/NLog",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-logs/NLog",
+            "program": "${workspaceFolder}/logs/NLog/bin/Debug/net5.0/NLog-Sample.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/logs/NLog",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
             "name": "logs/NLogAsMicrosoftProxy",
             "type": "coreclr",
             "request": "launch",
@@ -177,6 +188,31 @@
             "console": "internalConsole",
             "stopAtEntry": false
         },
+
+        {
+            "name": "logs/Serilog",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-logs/Serilog",
+            "program": "${workspaceFolder}/logs/Serilog/bin/Debug/net5.0/Serilog-Sample.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/logs/Serilog",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "logs/SerilogAsMicrosoftProxy",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-logs/SerilogAsMicrosoftProxy",
+            "program": "${workspaceFolder}/logs/SerilogAsMicrosoftProxy/bin/Debug/net7.0/SerilogAsMicrosoftProxy-Sample.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/logs/SerilogAsMicrosoftProxy",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+
+
         {
             "name": "others/Polly",
             "type": "coreclr",
