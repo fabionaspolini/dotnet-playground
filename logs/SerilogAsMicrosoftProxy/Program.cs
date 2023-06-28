@@ -15,7 +15,7 @@ class Program
     {
         WriteLine(".:: Serilog como proxy para Microsoft Logging ::.");
         Trace.CorrelationManager.ActivityId = Guid.NewGuid();
-            
+
         const string txtLogTemplate = "{Timestamp:dd/MM/yyyy HH:mm:ss.fff} {Level:u3} [{ActivityId}] [{SourceContext}] {Message:lj}{NewLine}{Exception}";
         Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Verbose()
@@ -33,13 +33,14 @@ class Program
                 rollingInterval: RollingInterval.Day,
                 retainedFileCountLimit: 10,
                 encoding: Encoding.UTF8)
+            .Enrich.With(new ActivityIdEnricher())
             .Enrich.WithCorrelationId()
             .Enrich.FromLogContext()
             .CreateLogger();
-         
+
         var config = new ConfigurationBuilder().Build();
         var serviceProvider = BuildDi(config);
-        
+
         using var scope = serviceProvider.CreateScope();
         var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
         try
