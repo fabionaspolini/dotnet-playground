@@ -1,5 +1,7 @@
 [Voltar](../README.md)
 
+# Benchmark
+
 **Legenda marcadores:**
 
 - :heart: Preferência do autor
@@ -60,3 +62,10 @@
 - :heavy_check_mark: Ótimos recursos para geração de logs estruturados para envio a ferramentas de análise ([Structured Data](https://github.com/serilog/serilog/wiki/Structured-Data))
 - :-1: Para logar automaticamente o nome do método e classes é necessário alternativa manuais em cada escrita ([Exemplo](https://hovermind.com/serilog/class-name-method-name-and-line-number.html)) ou um configuração de LogManager por classe ([Exemplo](https://benfoster.io/blog/serilog-best-practices/))
 - :heavy_check_mark: Fácil configuração
+
+
+# Conceitos
+
+- SpanId:
+- TraceId:
+- ParentId:

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using static System.Console;
 
@@ -27,6 +28,19 @@ namespace MicrosoftLogging_Sample
 
             logger.LogInformation("Iniciando aplicação");
 
+            logger.LogTrace("Exemplo Trace");
+            logger.LogDebug("Exemplo Debug");
+            logger.LogInformation("Exemplo Info");
+            logger.LogWarning("Exemplo Warn");
+            logger.LogError("Exemplo Error");
+            logger.LogCritical("Exemplo Fatal");
+            logger.LogDebug("Exemplo de outro log estruturado {nome} {idade}.", "Exemplo", 25); // Microsoft Logging não gera informação adicional para log estruturado
+
+            using (logger.BeginScope(new List<KeyValuePair<string, object>> { new("TransactionId", Guid.NewGuid()) }))
+            {
+                logger.LogInformation("Teste");
+            }
+
             teste.ConverterParaInt("1", false);
             teste.ConverterParaInt("aaaa", false);
             try
@@ -34,14 +48,6 @@ namespace MicrosoftLogging_Sample
                 teste.ConverterParaInt("bbbb", true);
             }
             catch { }
-
-            logger.LogDebug("Exemplo de outro log estruturado {nome} {idade}.", "Exemplo", 25); // Microsoft Logging não gera informação adicional para log estruturado
-            logger.LogTrace("Exemplo Trace");
-            logger.LogDebug("Exemplo Debug");
-            logger.LogInformation("Exemplo Info");
-            logger.LogWarning("Exemplo Warn");
-            logger.LogError("Exemplo Error");
-            logger.LogCritical("Exemplo Fatal");
 
             using (logger.BeginScope("Exemplo de escopo (nome={nome}, idade={idade})", "Exemplo", 25))
             {
@@ -83,17 +89,17 @@ namespace MicrosoftLogging_Sample
                        options.IncludeScopes = true;
                        options.TimestampFormat = "dd/MM/yyyy HH:mm:ss.fff ";
                    });*/
-                   builder.AddSimpleConsole(options =>
+                   /*builder.AddSimpleConsole(options =>
                    {
                        options.IncludeScopes = true;
                        options.SingleLine = true;
                        options.TimestampFormat = "dd/MM/yyyy HH:mm:ss.fff ";
-                   });
-                   /*builder.AddJsonConsole(x =>
+                   });*/
+                   builder.AddJsonConsole(x =>
                    {
                        x.IncludeScopes = true;
-                       //x.JsonWriterOptions = new() { Indented = false };
-                   });*/
+                       x.JsonWriterOptions = new() { Indented = true };
+                   });
                })
                .BuildServiceProvider();
         }
