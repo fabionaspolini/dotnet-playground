@@ -7,6 +7,8 @@ using static System.Console;
 
 namespace MicrosoftLogging_Sample
 {
+    record class ServiceOptions(string Url, string AccessKey);
+
     class Program
     {
         static void Main(string[] args)
@@ -15,15 +17,13 @@ namespace MicrosoftLogging_Sample
 
             Trace.CorrelationManager.ActivityId = Guid.NewGuid();
 
-            var config = new ConfigurationBuilder()
-                .SetBasePath(System.IO.Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .Build();
-            var serviceProvider = BuildDi(config);
+            var config = BuildConfig();
+            var serviceProvider = BuildServices(config);
 
             using var scope = serviceProvider.CreateScope();
-            var teste = scope.ServiceProvider.GetRequiredService<Teste>();
+
             var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+            var teste = scope.ServiceProvider.GetRequiredService<Teste>();
 
             logger.LogInformation("Iniciando aplicação");
 
@@ -64,29 +64,35 @@ namespace MicrosoftLogging_Sample
             }
         }
 
-        private static IServiceProvider BuildDi(IConfiguration config)
+        private static IConfigurationRoot BuildConfig() => new ConfigurationBuilder()
+            .SetBasePath(System.IO.Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .Build();
+
+        private static IServiceProvider BuildServices(IConfigurationRoot config)
         {
             return new ServiceCollection()
+                .AddSingleton(config)
                .AddScoped<Teste>() // Runner is the custom class
-               .AddLogging(loggingBuilder =>
+               .AddLogging(builder =>
                {
-                   // configure Logging with NLog
-                   loggingBuilder.ClearProviders();
-                   loggingBuilder.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
-                   /*loggingBuilder.AddConsole(options =>
+                   builder.ClearProviders();
+                   builder.AddConfiguration(config.GetSection("Logging"));
+                   /*builder.AddConsole(options =>
                    {
                        options.IncludeScopes = true;
                        options.TimestampFormat = "dd/MM/yyyy HH:mm:ss.fff ";
                    });*/
-                   loggingBuilder.AddSimpleConsole(options =>
+                   builder.AddSimpleConsole(options =>
                    {
                        options.IncludeScopes = true;
                        options.SingleLine = true;
                        options.TimestampFormat = "dd/MM/yyyy HH:mm:ss.fff ";
                    });
-                   /*loggingBuilder.AddJsonConsole(x =>
+                   /*builder.AddJsonConsole(x =>
                    {
                        x.IncludeScopes = true;
+                       //x.JsonWriterOptions = new() { Indented = false };
                    });*/
                })
                .BuildServiceProvider();
