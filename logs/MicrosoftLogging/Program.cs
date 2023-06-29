@@ -46,6 +46,8 @@ namespace MicrosoftLogging_Sample
                 {
                     logger.LogInformation("Teste 2");
                 }
+
+                logger.LogInformation("Teste 3");
             }
 
             teste.ConverterParaInt("1", false);

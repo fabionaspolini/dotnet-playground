@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Encodings.Web;
 using System.Text.Json;
 
 namespace MicrosoftLogging_Sample.MyLogger;
@@ -15,14 +16,19 @@ namespace MicrosoftLogging_Sample.MyLogger;
 
 public class MyLogger : ILogger
 {
+    private static readonly JsonSerializerOptions JsonOptions = new JsonSerializerOptions
+    {
+        Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping // Imprimir caracteres especiais
+    };
+
     private readonly string _categoryName;
+    private readonly IExternalScopeProvider _scopeProvider = new LoggerExternalScopeProvider();
 
     public MyLogger(string categoryName)
     {
         _categoryName = categoryName;
     }
 
-    private readonly IExternalScopeProvider _scopeProvider = new LoggerExternalScopeProvider();
     public IDisposable BeginScope<TState>(TState state) where TState : notnull => _scopeProvider.Push(state);
 
     public bool IsEnabled(LogLevel logLevel) => true;
@@ -48,7 +54,7 @@ public class MyLogger : ILogger
             { "Scopes", scopes },
         };
 
-        var logText = JsonSerializer.Serialize(model);
+        var logText = JsonSerializer.Serialize(model, JsonOptions);
         Console.WriteLine(logText);
     }
 
