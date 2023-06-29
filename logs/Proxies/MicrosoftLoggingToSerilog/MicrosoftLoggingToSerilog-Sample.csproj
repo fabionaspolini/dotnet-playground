@@ -5,7 +5,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RootNamespace>SerilogAsMicrosoftProxy_Sample</RootNamespace>
+    <RootNamespace>MicrosoftLoggingToSerilog_Sample</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

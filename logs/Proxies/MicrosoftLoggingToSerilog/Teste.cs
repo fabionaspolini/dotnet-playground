@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace SerilogAsMicrosoftProxy_Sample;
+namespace MicrosoftLoggingToSerilog_Sample;
 
 class Teste
 {

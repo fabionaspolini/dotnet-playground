@@ -2,7 +2,7 @@
 using Serilog.Events;
 using System.Diagnostics;
 
-namespace SerilogAsMicrosoftProxy_Sample
+namespace MicrosoftLoggingToSerilog_Sample
 {
     class ActivityIdEnricher : ILogEventEnricher
     {

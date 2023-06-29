@@ -1,42 +1,21 @@
-﻿using System.Diagnostics;
-using System.Text;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Serilog;
-using Serilog.Formatting.Json;
+using NLog;
+using NLog.Extensions.Logging;
+using System;
+using System.Diagnostics;
 using static System.Console;
 
-namespace SerilogAsMicrosoftProxy_Sample;
+namespace MicrosoftLoggingToNLog_Sample;
 
 class Program
 {
     static void Main(string[] args)
     {
-        WriteLine(".:: Serilog como proxy para Microsoft Logging ::.");
-        Trace.CorrelationManager.ActivityId = Guid.NewGuid();
+        WriteLine(".:: NLog como proxy para Microsoft Logging ::.");
 
-        const string txtLogTemplate = "{Timestamp:dd/MM/yyyy HH:mm:ss.fff} {Level:u3} [{ActivityId}] [{SourceContext}] {Message:lj}{NewLine}{Exception}";
-        Log.Logger = new LoggerConfiguration()
-            .MinimumLevel.Verbose()
-            .WriteTo.Console(
-                outputTemplate: txtLogTemplate)
-            .WriteTo.File(
-                path: @".\Logs\SerilogAsMicrosoftProxy-Sample.log",
-                outputTemplate: txtLogTemplate,
-                rollingInterval: RollingInterval.Day,
-                retainedFileCountLimit: 10,
-                encoding: Encoding.UTF8)
-            .WriteTo.File(
-                path: @".\Logs\SerilogAsMicrosoftProxy-Sample.json.log",
-                formatter: new JsonFormatter(renderMessage: true),
-                rollingInterval: RollingInterval.Day,
-                retainedFileCountLimit: 10,
-                encoding: Encoding.UTF8)
-            .Enrich.With(new ActivityIdEnricher())
-            .Enrich.WithCorrelationId()
-            .Enrich.FromLogContext()
-            .CreateLogger();
+        Trace.CorrelationManager.ActivityId = Guid.NewGuid();
 
         var config = new ConfigurationBuilder().Build();
         var serviceProvider = BuildDi(config);
@@ -58,14 +37,14 @@ class Program
             catch { }
 
 
-            logger.LogDebug("Exemplo de outro log estruturado {nome} {idade}.", "Exemplo", 25); // Exemplo de log estruturado montando objeto { nome = "Exemplo", idade = 25 }
+            logger.LogDebug("Exemplo de outro log estruturado {nome} {idade}", "Exemplo", 25); // Exemplo de log estruturado montando objeto { nome = "Exemplo", idade = 25 }
             logger.LogTrace("Exemplo Trace");
             logger.LogDebug("Exemplo Debug");
             logger.LogInformation("Exemplo Info");
             logger.LogWarning("Exemplo Warn");
             logger.LogError("Exemplo Error");
             logger.LogCritical("Exemplo Fatal");
-            Log.Information("Exemplo log acessando diretamente Serilog");
+            LogManager.GetCurrentClassLogger().Info("Comparativo de log acessando enviado diretamente para o NLog");
 
             using (logger.BeginScope("Exemplo de escopo (nome={nome}, idade={idade})", "Exemplo", 25))
             {
@@ -89,13 +68,13 @@ class Program
         }
         catch (Exception e)
         {
-            Log.Error(e, "Stopped program because of exception");
+            logger.LogError(e, "Stopped program because of exception");
             throw;
         }
         finally
         {
             // Aguardar flush de todos os logs para o targets
-            Log.CloseAndFlush();
+            LogManager.Shutdown();
         }
     }
 
@@ -105,10 +84,13 @@ class Program
             .AddScoped<Teste>() // Runner is the custom class
             .AddLogging(loggingBuilder =>
             {
-                // configure Logging with Serilog
+                // configure Logging with NLog
                 loggingBuilder.ClearProviders();
                 loggingBuilder.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
-                loggingBuilder.AddSerilog(dispose: true);
+                loggingBuilder.AddNLog(config, new NLogProviderOptions
+                {
+                    IncludeScopes = true
+                });
             })
             .BuildServiceProvider();
     }

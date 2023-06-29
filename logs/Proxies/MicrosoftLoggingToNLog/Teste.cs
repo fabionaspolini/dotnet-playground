@@ -1,8 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
-using System.Threading;
 
-namespace NLogAsMicrosoftProxy_Sample
+namespace NLogToMicrosoftLogging_Sample
 {
     class Teste
     {

@@ -1,25 +1,46 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Diagnostics;
+using System.Text;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using NLog;
-using NLog.Extensions.Logging;
-using System;
-using System.Diagnostics;
+using Serilog;
+using Serilog.Formatting.Json;
 using static System.Console;
 
-namespace NLogAsMicrosoftProxy_Sample;
+namespace MicrosoftLoggingToSerilog_Sample;
 
 class Program
 {
     static void Main(string[] args)
     {
-        WriteLine(".:: NLog como proxy para Microsoft Logging ::.");
-            
+        WriteLine(".:: Serilog como proxy para Microsoft Logging ::.");
         Trace.CorrelationManager.ActivityId = Guid.NewGuid();
-            
+
+        const string txtLogTemplate = "{Timestamp:dd/MM/yyyy HH:mm:ss.fff} {Level:u3} [{ActivityId}] [{SourceContext}] {Message:lj}{NewLine}{Exception}";
+        Log.Logger = new LoggerConfiguration()
+            .MinimumLevel.Verbose()
+            .WriteTo.Console(
+                outputTemplate: txtLogTemplate)
+            .WriteTo.File(
+                path: @".\Logs\SerilogAsMicrosoftProxy-Sample.log",
+                outputTemplate: txtLogTemplate,
+                rollingInterval: RollingInterval.Day,
+                retainedFileCountLimit: 10,
+                encoding: Encoding.UTF8)
+            .WriteTo.File(
+                path: @".\Logs\SerilogAsMicrosoftProxy-Sample.json.log",
+                formatter: new JsonFormatter(renderMessage: true),
+                rollingInterval: RollingInterval.Day,
+                retainedFileCountLimit: 10,
+                encoding: Encoding.UTF8)
+            .Enrich.With(new ActivityIdEnricher())
+            .Enrich.WithCorrelationId()
+            .Enrich.FromLogContext()
+            .CreateLogger();
+
         var config = new ConfigurationBuilder().Build();
         var serviceProvider = BuildDi(config);
-            
+
         using var scope = serviceProvider.CreateScope();
         var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
         try
@@ -37,14 +58,14 @@ class Program
             catch { }
 
 
-            logger.LogDebug("Exemplo de outro log estruturado {nome} {idade}", "Exemplo", 25); // Exemplo de log estruturado montando objeto { nome = "Exemplo", idade = 25 }
+            logger.LogDebug("Exemplo de outro log estruturado {nome} {idade}.", "Exemplo", 25); // Exemplo de log estruturado montando objeto { nome = "Exemplo", idade = 25 }
             logger.LogTrace("Exemplo Trace");
             logger.LogDebug("Exemplo Debug");
             logger.LogInformation("Exemplo Info");
             logger.LogWarning("Exemplo Warn");
             logger.LogError("Exemplo Error");
             logger.LogCritical("Exemplo Fatal");
-            LogManager.GetCurrentClassLogger().Info("Comparativo de log acessando enviado diretamente para o NLog");
+            Log.Information("Exemplo log acessando diretamente Serilog");
 
             using (logger.BeginScope("Exemplo de escopo (nome={nome}, idade={idade})", "Exemplo", 25))
             {
@@ -68,13 +89,13 @@ class Program
         }
         catch (Exception e)
         {
-            logger.LogError(e, "Stopped program because of exception");
+            Log.Error(e, "Stopped program because of exception");
             throw;
         }
         finally
         {
             // Aguardar flush de todos os logs para o targets
-            LogManager.Shutdown();
+            Log.CloseAndFlush();
         }
     }
 
@@ -84,13 +105,10 @@ class Program
             .AddScoped<Teste>() // Runner is the custom class
             .AddLogging(loggingBuilder =>
             {
-                // configure Logging with NLog
+                // configure Logging with Serilog
                 loggingBuilder.ClearProviders();
-                loggingBuilder.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
-                loggingBuilder.AddNLog(config, new NLogProviderOptions
-                {
-                    IncludeScopes = true
-                });
+                loggingBuilder.SetMinimumLevel(LogLevel.Trace);
+                loggingBuilder.AddSerilog(dispose: true);
             })
             .BuildServiceProvider();
     }
