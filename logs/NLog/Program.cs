@@ -9,7 +9,7 @@ class Program
 {
     // Neste exemplo é recuperado a instância do gerenciador de logs através da classe LogManager
     private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
-    
+
     static void Main(string[] args)
     {
         WriteLine(".:: NLog ::.");
@@ -38,13 +38,13 @@ class Program
         Logger.Warn("Exemplo Warn");
         Logger.Error("Exemplo Error");
         Logger.Fatal("Exemplo Fatal");
-        
+
         using (Logger.PushScopeNested("Escopo teste"))
         {
             Logger.Info("Log nivel 1");
             using (Logger.PushScopeNested("Subescopo teste"))
             {
-                Logger.Info("Log nivel 2");
+                Logger.Info("Log nivel 2. Nome: {nome}, Idade: {idade}", "Teste", 30);
             }
         }
 

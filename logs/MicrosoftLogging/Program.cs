@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using MicrosoftLogging_Sample.MyLogger;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -26,22 +27,26 @@ namespace MicrosoftLogging_Sample
             var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
             var teste = scope.ServiceProvider.GetRequiredService<Teste>();
 
-            logger.LogInformation("Iniciando aplicação");
+            //logger.LogInformation("Iniciando aplicação");
 
-            logger.LogTrace("Exemplo Trace");
-            logger.LogDebug("Exemplo Debug");
-            logger.LogInformation("Exemplo Info");
-            logger.LogWarning("Exemplo Warn");
-            logger.LogError("Exemplo Error");
-            logger.LogCritical("Exemplo Fatal");
-            logger.LogDebug("Exemplo de outro log estruturado {nome} {idade}.", "Exemplo", 25); // Microsoft Logging não gera informação adicional para log estruturado
+            //logger.LogTrace("Exemplo Trace");
+            //logger.LogDebug("Exemplo Debug");
+            //logger.LogInformation("Exemplo Info");
+            //logger.LogWarning("Exemplo Warn");
+            //logger.LogError("Exemplo Error");
+            //logger.LogCritical("Exemplo Fatal");
+            //logger.LogDebug("Exemplo de outro log estruturado {nome} {idade}.", "Exemplo", 25); // Microsoft Logging não gera informação adicional para log estruturado
 
             //using (logger.BeginScope(new List<KeyValuePair<string, object>> { new("TransactionId", Guid.NewGuid()) }))
-            //using (logger.BeginScope(new Dictionary<string, object> { { "TransactionId", Guid.NewGuid() } }))
-            using (logger.BeginScope("TransactionId: {TransactionId}", Guid.NewGuid()))
+            using (logger.BeginScope(new Dictionary<string, object> { { "TransactionId", Guid.NewGuid() } })) // Com MyLogger fica bem formatado
+            //using (logger.BeginScope("TransactionId: {TransactionId}", Guid.NewGuid()))
             {
                 logger.LogInformation("Teste");
-                logger.LogInformation("Teste 2");
+
+                using (logger.BeginScope(new Dictionary<string, object> { { "Teste", Guid.NewGuid() } }))
+                {
+                    logger.LogInformation("Teste 2");
+                }
             }
 
             teste.ConverterParaInt("1", false);
@@ -92,17 +97,18 @@ namespace MicrosoftLogging_Sample
                        options.IncludeScopes = true;
                        options.TimestampFormat = "dd/MM/yyyy HH:mm:ss.fff ";
                    });*/
-                   builder.AddSimpleConsole(options =>
+                   /*builder.AddSimpleConsole(options =>
                    {
                        options.IncludeScopes = true;
                        options.SingleLine = true;
                        options.TimestampFormat = "dd/MM/yyyy HH:mm:ss.fff ";
-                   });
+                   });*/
                    /*builder.AddJsonConsole(x =>
                    {
                        x.IncludeScopes = true;
                        x.JsonWriterOptions = new() { Indented = true };
                    });*/
+                   builder.AddMyLogger();
                })
                .BuildServiceProvider();
         }
