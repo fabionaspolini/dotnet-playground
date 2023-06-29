@@ -78,16 +78,16 @@ namespace MicrosoftLogging_Sample
                        options.IncludeScopes = true;
                        options.TimestampFormat = "dd/MM/yyyy HH:mm:ss.fff ";
                    });*/
-                   /*loggingBuilder.AddSimpleConsole(options =>
+                   loggingBuilder.AddSimpleConsole(options =>
                    {
                        options.IncludeScopes = true;
                        options.SingleLine = true;
                        options.TimestampFormat = "dd/MM/yyyy HH:mm:ss.fff ";
-                   });*/
-                   loggingBuilder.AddJsonConsole(x =>
+                   });
+                   /*loggingBuilder.AddJsonConsole(x =>
                    {
                        x.IncludeScopes = true;
-                   });
+                   });*/
                })
                .BuildServiceProvider();
         }
