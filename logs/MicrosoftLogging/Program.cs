@@ -36,9 +36,12 @@ namespace MicrosoftLogging_Sample
             logger.LogCritical("Exemplo Fatal");
             logger.LogDebug("Exemplo de outro log estruturado {nome} {idade}.", "Exemplo", 25); // Microsoft Logging não gera informação adicional para log estruturado
 
-            using (logger.BeginScope(new List<KeyValuePair<string, object>> { new("TransactionId", Guid.NewGuid()) }))
+            //using (logger.BeginScope(new List<KeyValuePair<string, object>> { new("TransactionId", Guid.NewGuid()) }))
+            //using (logger.BeginScope(new Dictionary<string, object> { { "TransactionId", Guid.NewGuid() } }))
+            using (logger.BeginScope("TransactionId: {TransactionId}", Guid.NewGuid()))
             {
                 logger.LogInformation("Teste");
+                logger.LogInformation("Teste 2");
             }
 
             teste.ConverterParaInt("1", false);
@@ -89,17 +92,17 @@ namespace MicrosoftLogging_Sample
                        options.IncludeScopes = true;
                        options.TimestampFormat = "dd/MM/yyyy HH:mm:ss.fff ";
                    });*/
-                   /*builder.AddSimpleConsole(options =>
+                   builder.AddSimpleConsole(options =>
                    {
                        options.IncludeScopes = true;
                        options.SingleLine = true;
                        options.TimestampFormat = "dd/MM/yyyy HH:mm:ss.fff ";
-                   });*/
-                   builder.AddJsonConsole(x =>
+                   });
+                   /*builder.AddJsonConsole(x =>
                    {
                        x.IncludeScopes = true;
                        x.JsonWriterOptions = new() { Indented = true };
-                   });
+                   });*/
                })
                .BuildServiceProvider();
         }
