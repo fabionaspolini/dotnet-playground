@@ -44,12 +44,12 @@ public class MyLogger : ILogger
 
         var model = new Dictionary<string, object?>
         {
-            { "Timestamp", DateTime.Now },
-            { "Level", logLevel.ToString() },
-            { "Message", message.ToString() },
-            { "Logger", _categoryName },
-            { "Properties", properties },
-            { "Scopes", scopes },
+            { "timestamp", DateTime.Now },
+            { "level", logLevel.ToString() },
+            { "message", message.ToString() },
+            { "logger", _categoryName },
+            { "properties", properties },
+            { "scopes", scopes },
         };
 
         var logText = JsonSerializer.Serialize(model, JsonOptions);
