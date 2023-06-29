@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -110,20 +108,4 @@ public class MyLogger : ILogger
 
     private void InternalLogError(Exception ex, string message) =>
         Console.WriteLine($"[{typeof(MyLogger).FullName}] [Error] {message}{Environment.NewLine}{Environment.NewLine}{ex}");
-}
-
-public class MyLoggerProvider : ILoggerProvider
-{
-    public ILogger CreateLogger(string categoryName) => new MyLogger(categoryName);
-
-    public void Dispose() { }
-}
-
-public static class MyLoggerExtensions
-{
-    public static ILoggingBuilder AddMyLogger(this ILoggingBuilder builder)
-    {
-        builder.Services.TryAddEnumerable(ServiceDescriptor.Singleton<ILoggerProvider, MyLoggerProvider>());
-        return builder;
-    }
 }
