@@ -4,23 +4,14 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace MicrosoftLogging_Sample.MyLogger;
 
+// https://learn.microsoft.com/en-us/dotnet/core/extensions/custom-logging-provider
 // https://www.treinaweb.com.br/blog/criando-um-provider-customizado-para-o-microsoft-extensions-logging
-
-public record MyLogModel(
-    DateTime Timestamp,
-    [property: JsonConverter(typeof(JsonStringEnumConverter))] LogLevel Level,
-    string Message,
-    string Logger,
-    Dictionary<string, object?>? Properties,
-    IEnumerable<string> Scopes);
 
 public class MyLogger : ILogger
 {
@@ -31,12 +22,12 @@ public class MyLogger : ILogger
         _categoryName = categoryName;
     }
 
-    private IExternalScopeProvider _scopeProvider = new LoggerExternalScopeProvider();
+    private readonly IExternalScopeProvider _scopeProvider = new LoggerExternalScopeProvider();
     public IDisposable BeginScope<TState>(TState state) where TState : notnull => _scopeProvider.Push(state);
 
     public bool IsEnabled(LogLevel logLevel) => true;
 
-    public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
+    public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)
     {
         var message = new StringBuilder(formatter(state, exception));
         if (exception != null)
@@ -45,28 +36,30 @@ public class MyLogger : ILogger
                 .Append(Environment.NewLine)
                 .Append(exception.ToString());
 
-        var (properties, scopes) = GetProperties(state, formatter);
+        var (properties, scopes) = GetPropertiesAndScopes(state);
 
-        var model = new MyLogModel(
-            Timestamp: DateTime.Now,
-            Level: logLevel,
-            Message: message.ToString(),
-            Logger: _categoryName,
-            Properties: properties,
-            Scopes: scopes);
+        var model = new Dictionary<string, object?>
+        {
+            { "Timestamp", DateTime.Now },
+            { "Level", logLevel.ToString() },
+            { "Message", message.ToString() },
+            { "Logger", _categoryName },
+            { "Properties", properties },
+            { "Scopes", scopes },
+        };
 
         var logText = JsonSerializer.Serialize(model);
         Console.WriteLine(logText);
     }
 
     /// <summary>
-    /// Gerar dicionário com propriedades adicionais injetadas na mensagem e nos scopes
+    /// Gerar dicionário com propriedades adicionais injetadas na mensagem e nos scopes + mensagens formatadas dos scopes
     /// </summary>
     /// <returns></returns>
-    private (Dictionary<string, object?>? Properties, IEnumerable<string> Scopes) GetProperties<TState>(TState state, Func<TState, Exception, string> formatter)
+    private (Dictionary<string, object?>? Properties, IEnumerable<string>? Scopes) GetPropertiesAndScopes<TState>(TState state)
     {
         Dictionary<string, object?> properties;
-        var scopedMessages = new List<string>();
+        var messages = new List<string>();
 
         if (state is IEnumerable<KeyValuePair<string, object?>> stateItems)
         {
@@ -81,12 +74,6 @@ public class MyLogger : ILogger
         {
             if (scope is IEnumerable<KeyValuePair<string, object?>> stateItems)
             {
-                //var originalFormat = stateItems.FirstOrDefault("{OriginalFormat}");
-                //if (originalFormat != null)
-                //{
-                //    var scopedMessage = formatter();
-                //}
-
                 var scopeProperties = stateItems
                     .Where(x => x.Key != "{OriginalFormat}")
                     .ToDictionary(x => x.Key, x => x.Value);
@@ -97,16 +84,27 @@ public class MyLogger : ILogger
                 // Se for dicionário é porque o usuário iniciou um scope sem texto
                 if (scope != null && scope is not IDictionary)
                 {
-                    var scopedMessage = scope.ToString()!;
-                    scopedMessages.Add(scopedMessage);
+                    try
+                    {
+                        var scopedMessage = scope.ToString()!;
+                        messages.Add(scopedMessage);
+                    }
+                    catch (Exception ex)
+                    {
+                        InternalLogError(ex, "Erro ao gerar mensagem de scope.");
+                    }
                 }
             }
         }, default(TState));
 
-        return (properties, scopedMessages);
+        return (
+            Properties: properties.Any() ? properties : null,
+            Scopes: messages.Any() ? messages : null);
     }
-}
 
+    private void InternalLogError(Exception ex, string message) =>
+        Console.WriteLine($"[{typeof(MyLogger).FullName}] [Error] {message}{Environment.NewLine}{Environment.NewLine}{ex}");
+}
 
 public class MyLoggerProvider : ILoggerProvider
 {

@@ -27,19 +27,18 @@ namespace MicrosoftLogging_Sample
             var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
             var teste = scope.ServiceProvider.GetRequiredService<Teste>();
 
-            //logger.LogInformation("Iniciando aplicação");
+            logger.LogInformation("Iniciando aplicação");
 
-            //logger.LogTrace("Exemplo Trace");
-            //logger.LogDebug("Exemplo Debug");
-            //logger.LogInformation("Exemplo Info");
-            //logger.LogWarning("Exemplo Warn");
-            //logger.LogError("Exemplo Error");
-            //logger.LogCritical("Exemplo Fatal");
-            //logger.LogDebug("Exemplo de outro log estruturado {nome} {idade}.", "Exemplo", 25); // Microsoft Logging não gera informação adicional para log estruturado
+            logger.LogTrace("Exemplo Trace");
+            logger.LogDebug("Exemplo Debug");
+            logger.LogInformation("Exemplo Info");
+            logger.LogWarning("Exemplo Warn");
+            logger.LogError("Exemplo Error");
+            logger.LogCritical("Exemplo Fatal");
+            logger.LogDebug("Exemplo de outro log estruturado {nome} {idade}.", "Exemplo", 25); // Microsoft Logging não gera informação adicional para log estruturado
 
-            //using (logger.BeginScope(new List<KeyValuePair<string, object>> { new("TransactionId", Guid.NewGuid()) }))
-            using (logger.BeginScope(new Dictionary<string, object> { { "TransactionId", Guid.NewGuid() } })) // Com MyLogger fica bem formatado
             //using (logger.BeginScope("TransactionId: {TransactionId}", Guid.NewGuid()))
+            using (logger.BeginScope(new Dictionary<string, object> { { "TransactionId", Guid.NewGuid() } })) // Com MyLogger fica bem formatado
             {
                 logger.LogInformation("Teste");
 
