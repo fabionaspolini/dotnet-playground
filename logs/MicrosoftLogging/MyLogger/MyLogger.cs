@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
+using System.Diagnostics;
 
 namespace MicrosoftLogging_Sample.MyLogger;
 
@@ -101,12 +104,39 @@ public class MyLogger : ILogger
             }
         }, default(TState));
 
+        if (Activity.Current != null)
+            AddActivityTagsToProperties(Activity.Current);
+
         return (
             Properties: properties.Any() ? properties : null,
             Scopes: messages.Any() ? messages : null);
+
+        void AddActivityTagsToProperties(Activity activity)
+        {
+            foreach (var (key, value) in activity.Tags)
+                properties.TryAdd(key, value);
+            if (activity.Parent != null)
+                AddActivityTagsToProperties(activity.Parent);
+        }
     }
 
     private void InternalLogError(Exception ex, string message) =>
         Console.WriteLine($"[{typeof(MyLogger).FullName}] [Error] {message}{Environment.NewLine}{Environment.NewLine}{ex}");
+}
+
+public class MyLoggerProvider : ILoggerProvider
+{
+    public ILogger CreateLogger(string categoryName) => new MyLogger(categoryName);
+
+    public void Dispose() { }
+}
+
+public static class MyLoggerExtensions
+{
+    public static ILoggingBuilder AddMyLogger(this ILoggingBuilder builder)
+    {
+        builder.Services.TryAddEnumerable(ServiceDescriptor.Singleton<ILoggerProvider, MyLoggerProvider>());
+        return builder;
+    }
 }
 
