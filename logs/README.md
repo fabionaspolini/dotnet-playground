@@ -1,6 +1,6 @@
 [Voltar](../README.md)
 
-# Benchmark
+## Benchmark
 
 **Legenda marcadores:**
 
@@ -24,7 +24,7 @@
 | Configuração por código                       | :heavy_check_mark:    | :heavy_check_mark:    | :heavy_check_mark:    | :heavy_check_mark:  |
 | Logs estruturados                             | :heavy_check_mark:    | :x:                   | :-1:                  | :heavy_check_mark:  |
 
-## NLog :heart:
+### NLog :heart:
 
 - :heavy_check_mark: Personalização do layout
 - :heavy_check_mark: 93 targets suportados para log, entre os principais: Console, Arquivo, RabbitMQ, Redis, Elasticsearch, AWS Cloud Watch, Azure ([Fonte](https://nlog-project.org/config/)).
@@ -38,7 +38,7 @@
 - :heavy_check_mark: Suporte a logs estruturados com a syntax ao adicionar o identificado entre "{}" na mensagem e indicando o valor como argumentos adicionais da mensagem.
 - [Lista completa de configurações](https://nlog-project.org/config/?tab=layout-renderers)
 
-## Microsoft Logging
+### Microsoft Logging
 
 - :x: Para obter o nome do método que chamou o log é necessário iniciar um escopo manualmente ```using (_logger.BeginScope(nameof(NomeMethodo)))```
 - :x: Para armazenar em arquivo texto é necessário componentes de terceiros
@@ -49,14 +49,14 @@
 - :x: Não há suporte a inclusão de propriedades estruturadas adicionais
 - :x: A melhor maneira de adicionar suporte a gravação de arquivos é adicionar o proxy provider para o NLog ou Serilog
 
-## Log4Net
+### Log4Net
 
 - :heavy_check_mark: Personalização do layout
 - :-1: Documentação fraca
 - :-1: Não possui log no level Trace por padrão, sendo necessário adicionar Helpers para para simular operação
 - :+1: É possível adicionar informações estruturadas adicionais ao log, mas é necessário limpar manualmente após o descarregamento da mesma e o arquivo de format
 
-## Serilog
+### Serilog
 
 - :heavy_check_mark: 95 targets suportados, entre os principais: Console, Arquivo, RabbitMQ, Elasticsearch, AWS Cloud Watch, Azure ([Fonte](https://github.com/serilog/serilog/wiki/Provided-Sinks))
 - :heavy_check_mark: Ótimos recursos para geração de logs estruturados para envio a ferramentas de análise ([Structured Data](https://github.com/serilog/serilog/wiki/Structured-Data))
@@ -64,8 +64,23 @@
 - :heavy_check_mark: Fácil configuração
 
 
-# Conceitos
+## Visão geral
 
-- SpanId:
-- TraceId:
-- ParentId:
+
+### Activity
+
+A classe `System.Diagnostics.Activity` serve para mapear ciclo de vidas dos processos (Tracing).
+
+- SpanId: Representa cada Activity criada individualmente.
+- TraceId: Representa o processo completo em execução.
+- TraceStateString: Para compartilhamento em header http. Isolado por activity.
+
+Propriedades estáticas:
+
+- Activity.Current: Retornar activity atual
+
+Materiais sobre trace distribuído W3C
+
+- https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.activity.tracestatestring?view=net-7.0
+- https://w3c.github.io/trace-context/
+- https://jimmybogard.com/building-end-to-end-diagnostics-and-tracing-a-primer-trace-context/

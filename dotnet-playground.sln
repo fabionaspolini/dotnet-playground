@@ -35,6 +35,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2D2C6443-F1B1-46DF-874F-BEFD6C5AEDBB}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "syntax-sugar", "syntax-sugar", "{EC7CA729-A36C-4C7B-8689-431B062BF0DE}"
@@ -50,6 +51,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "others", "others", "{FD7F4DC8-9C67-4E66-BD16-9745CDE2C93A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "logs", "logs", "{FAD75C27-6A4D-4C6B-B5F0-8E60005D8CEB}"
+	ProjectSection(SolutionItems) = preProject
+		logs\README.md = logs\README.md
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NLog-Sample", "logs\NLog\NLog-Sample.csproj", "{89256F64-BFF3-4F52-BF58-49F8C3AE7A7E}"
 EndProject

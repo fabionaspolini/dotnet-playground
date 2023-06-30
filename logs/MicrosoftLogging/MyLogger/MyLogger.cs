@@ -109,3 +109,4 @@ public class MyLogger : ILogger
     private void InternalLogError(Exception ex, string message) =>
         Console.WriteLine($"[{typeof(MyLogger).FullName}] [Error] {message}{Environment.NewLine}{Environment.NewLine}{ex}");
 }
+

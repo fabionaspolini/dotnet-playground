@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace MicrosoftLoggingWebApi.Controllers;
 
@@ -21,6 +22,8 @@ public class WeatherForecastController : ControllerBase
     [HttpGet(Name = "GetWeatherForecast")]
     public IEnumerable<WeatherForecast> Get()
     {
+        var act = Activity.Current;
+
         _logger.LogInformation("Get teste");
         _logger.LogInformation("Get teste 2");
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast

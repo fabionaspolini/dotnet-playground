@@ -5,6 +5,7 @@ using MicrosoftLogging_Sample.MyLogger;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading;
 using static System.Console;
 
 namespace MicrosoftLogging_Sample
@@ -77,6 +78,28 @@ namespace MicrosoftLogging_Sample
                     logger.LogCritical(e, "Erro ao realizar ....");
                 }
             }
+
+            // Gerar TraceId com new Activity("....").
+            // Cada activity gerada possui SpanId diferente, mas o mesmo TraceId
+            var activity = new Activity("Atividade de início do processo");
+            activity.Start();
+            activity.AddBaggage("CorrelationId Baggage", Guid.NewGuid().ToString()); // Adiciona uma mensagem no scope de log como string. Child Activities levam esse dado.
+            activity.AddTag("CorrelationId Tag", Guid.NewGuid().ToString()); // Adiciona um elemento no scope de log como se fosse um logger.BeginScope(). Isolado por Activity
+            activity.SetCustomProperty("custom property", "aaaaaaaaa"); // Não loga no console.
+            //activity.TraceStateString = "Teste"; // Compartilha no trace distribuido
+            logger.LogInformation("Iniciando processo");
+
+            var activity2 = new Activity("Atividade para sub-processo");
+            activity2.Start();
+            activity2.AddBaggage("Baggage act 2", "teste"); // Irá concatenar com o dado da primeira activity
+            activity2.AddTag("Tag act 2", "teste"); // Isolado por activity
+            logger.LogInformation("Executando sub-processo");
+
+            activity2.Stop();
+            logger.LogInformation("Activity 2 stoped");
+
+            activity.Stop();
+            logger.LogInformation("Activity 1 stoped");
         }
 
         private static IConfigurationRoot BuildConfig() => new ConfigurationBuilder()
@@ -88,29 +111,36 @@ namespace MicrosoftLogging_Sample
         {
             return new ServiceCollection()
                 .AddSingleton(config)
-               .AddScoped<Teste>() // Runner is the custom class
-               .AddLogging(builder =>
-               {
-                   builder.ClearProviders();
-                   builder.AddConfiguration(config.GetSection("Logging"));
-                   /*builder.AddConsole(options =>
-                   {
-                       options.IncludeScopes = true;
-                       options.TimestampFormat = "dd/MM/yyyy HH:mm:ss.fff ";
-                   });*/
-                   /*builder.AddSimpleConsole(options =>
-                   {
-                       options.IncludeScopes = true;
-                       options.SingleLine = true;
-                       options.TimestampFormat = "dd/MM/yyyy HH:mm:ss.fff ";
-                   });*/
-                   /*builder.AddJsonConsole(x =>
-                   {
-                       x.IncludeScopes = true;
-                       x.JsonWriterOptions = new() { Indented = true };
-                   });*/
-                   builder.AddMyLogger();
-               })
+                .AddScoped<Teste>() // Runner is the custom class
+                .AddLogging(builder =>
+                {
+                    builder.ClearProviders();
+                    builder.AddConfiguration(config.GetSection("Logging"));
+                    builder.Configure(x =>
+                    {
+                        // Adicionar scope no log com o traceId gerado com new Activity("...")
+                        x.ActivityTrackingOptions = ActivityTrackingOptions.SpanId | ActivityTrackingOptions.TraceId | ActivityTrackingOptions.ParentId |
+                            ActivityTrackingOptions.TraceState | ActivityTrackingOptions.Tags | ActivityTrackingOptions.Baggage;
+                    });
+
+                    /*builder.AddConsole(options =>
+                    {
+                        options.IncludeScopes = true;
+                        options.TimestampFormat = "dd/MM/yyyy HH:mm:ss.fff ";
+                    });*/
+                    /*builder.AddSimpleConsole(options =>
+                    {
+                        options.IncludeScopes = true;
+                        options.SingleLine = true;
+                        options.TimestampFormat = "dd/MM/yyyy HH:mm:ss.fff ";
+                    });*/
+                    builder.AddJsonConsole(x =>
+                    {
+                        x.IncludeScopes = true;
+                        x.JsonWriterOptions = new() { Indented = true };
+                    });
+                    //builder.AddMyLogger();
+                })
                .BuildServiceProvider();
         }
     }
