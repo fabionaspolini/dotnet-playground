@@ -5,6 +5,7 @@ using MicrosoftLogging_Sample.MyLogger;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Text.Encodings.Web;
 using System.Threading;
 using static System.Console;
 
@@ -36,7 +37,8 @@ namespace MicrosoftLogging_Sample
             logger.LogWarning("Exemplo Warn");
             logger.LogError("Exemplo Error");
             logger.LogCritical("Exemplo Fatal");
-            logger.LogDebug("Exemplo de outro log estruturado {nome} {idade}.", "Exemplo", 25); // Microsoft Logging não gera informação adicional para log estruturado
+            logger.LogDebug("Exemplo de outro log estruturado {Nome} {Idade}.", "Exemplo", 25); // Microsoft Logging não gera informação adicional para log estruturado
+            logger.LogInformation(10, "Teste com EventId");
 
             //using (logger.BeginScope("TransactionId: {TransactionId}", Guid.NewGuid()))
             using (logger.BeginScope(new Dictionary<string, object> { { "TransactionId", Guid.NewGuid() } })) // Com MyLogger fica bem formatado
@@ -46,6 +48,9 @@ namespace MicrosoftLogging_Sample
                 using (logger.BeginScope(new Dictionary<string, object> { { "Teste", Guid.NewGuid() } }))
                 {
                     logger.LogInformation("Teste 2");
+                    logger.LogInformation("Teste com variável {Nome}", "Fulano");
+                    using (logger.BeginScope("Scope apenas texto"))
+                        logger.LogInformation("Teste com scope apenas texto");
                 }
 
                 logger.LogInformation("Teste 3");
@@ -59,14 +64,14 @@ namespace MicrosoftLogging_Sample
             }
             catch { }
 
-            using (logger.BeginScope("Exemplo de escopo (nome={nome}, idade={idade})", "Exemplo", 25))
+            using (logger.BeginScope("Exemplo de escopo (nome={Nome}, idade={Idade})", "Exemplo", 25))
             {
                 try
                 {
 
                     logger.LogInformation("Teste");
                     logger.LogInformation("Teste 2");
-                    using (logger.BeginScope("Exemplo de subescopo (endereco={endereco}, cidade={cidade})", "Rua exemplo", "São Paulo"))
+                    using (logger.BeginScope("Exemplo de subescopo (endereco={Endereco}, cidade={Cidade})", "Rua exemplo", "São Paulo"))
                     {
                         logger.LogInformation("Teste 3");
                         logger.LogInformation("Teste 4");
@@ -87,8 +92,8 @@ namespace MicrosoftLogging_Sample
                 var activity = new Activity("Atividade de início do processo");
                 activity.Start();
                 //activity.ActivityTraceFlags = ActivityTraceFlags.Recorded;
-                activity.AddBaggage("CorrelationId Baggage", Guid.NewGuid().ToString()); // Adiciona uma mensagem no scope de log como string. Child Activities levam esse dado.
-                activity.AddTag("CorrelationId Tag", Guid.NewGuid().ToString()); // Adiciona um elemento no scope de log como se fosse um logger.BeginScope(). Isolado por Activity
+                activity.AddBaggage("Baggage Act 1", Guid.NewGuid().ToString()); // Adiciona uma mensagem no scope de log como string. Child Activities levam esse dado.
+                activity.AddTag("Tag Act 1", Guid.NewGuid().ToString()); // Adiciona um elemento no scope de log como se fosse um logger.BeginScope(). Logger padrão imprime apenas as tags da Activity corrente.
                 activity.SetCustomProperty("custom property", "aaaaaaaaa"); // Não loga no console.
                                                                             //activity.TraceStateString = "Teste"; // Compartilha no trace distribuido
                 logger.LogInformation("Iniciando processo");
@@ -99,9 +104,9 @@ namespace MicrosoftLogging_Sample
 
                     var activity2 = new Activity("Atividade para sub-processo");
                     activity2.Start();
-                    activity2.AddBaggage("Baggage act 2", "teste"); // Irá concatenar com o dado da primeira activity
-                    activity2.AddTag("Tag act 2", "teste"); // Isolado por activity
-                    logger.LogInformation("Executando sub-processo");
+                    activity2.AddBaggage("Baggage Act 2", "teste"); // Irá concatenar com o dado da primeira activity
+                    activity2.AddTag("Tag Act 2", "teste");
+                    logger.LogInformation("Executando sub-processo"); // Console logger padrão imprime apenas tag da Activity 2. O customizado imprime todos.
 
 
                     activity2.Stop();
@@ -130,8 +135,7 @@ namespace MicrosoftLogging_Sample
                     builder.Configure(x =>
                     {
                         // Adicionar scope no log com o traceId gerado com new Activity("...")
-                        x.ActivityTrackingOptions = ActivityTrackingOptions.SpanId | ActivityTrackingOptions.TraceId | ActivityTrackingOptions.ParentId |
-                            ActivityTrackingOptions.TraceState | ActivityTrackingOptions.Tags | ActivityTrackingOptions.Baggage;
+                        x.ActivityTrackingOptions = ActivityTrackingOptions.SpanId | ActivityTrackingOptions.TraceId | ActivityTrackingOptions.Tags | ActivityTrackingOptions.Baggage;
                     });
 
                     /*builder.AddConsole(options =>
@@ -145,16 +149,20 @@ namespace MicrosoftLogging_Sample
                         options.SingleLine = true;
                         options.TimestampFormat = "dd/MM/yyyy HH:mm:ss.fff ";
                     });*/
-                    /*builder.AddJsonConsole(x =>
+                    builder.AddJsonConsole(x =>
                     {
                         x.IncludeScopes = true;
                         x.JsonWriterOptions = new() { Indented = true };
-                    });*/
+                    });
                     //builder.AddMyLogger();
                     builder.AddMyJsonFormatterConsole(x =>
                     {
                         x.IncludeScopes = true;
-                        x.JsonWriterOptions = new() { Indented = true };
+                        x.JsonWriterOptions = new()
+                        {
+                            Indented = true,
+                            Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+                        };
                     });
                 })
                .BuildServiceProvider();

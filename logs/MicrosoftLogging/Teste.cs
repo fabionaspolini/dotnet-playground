@@ -14,7 +14,7 @@ class Teste
 
     public int ConverterParaInt(string value, bool fatal)
     {
-        using (_logger.BeginScope("Convertendo {value} para inteiro (fatal={fatal})", value, fatal))
+        using (_logger.BeginScope("Convertendo {Value} para inteiro (fatal={Fatal})", value, fatal))
         {
             _logger.LogTrace($"Iniciando conversão");
             try

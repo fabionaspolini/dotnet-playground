@@ -1,0 +1,190 @@
+-- variaveis
+{
+    "EventId": 0,
+    "LogLevel": "Debug",
+    "Category": "MicrosoftLogging_Sample.Program",
+    "Message": "Exemplo de outro log estruturado Exemplo 25.",
+    "State": {
+      "Message": "Exemplo de outro log estruturado Exemplo 25.",
+      "nome": "Exemplo",
+      "idade": 25,
+      "{OriginalFormat}": "Exemplo de outro log estruturado {nome} {idade}."
+    },
+    "Scopes": []
+  }
+
+-- scope
+{
+    "EventId": 0,
+    "LogLevel": "Information",
+    "Category": "MicrosoftLogging_Sample.Program",
+    "Message": "Teste 4",
+    "State": {
+      "Message": "Teste 4",
+      "{OriginalFormat}": "Teste 4"
+    },
+    "Scopes": [
+      {
+        "Message": "Exemplo de escopo (nome=Exemplo, idade=25)",
+        "nome": "Exemplo",
+        "idade": 25,
+        "{OriginalFormat}": "Exemplo de escopo (nome={nome}, idade={idade})"
+      },
+      {
+        "Message": "Exemplo de subescopo (endereco=Rua exemplo, cidade=S\u00E3o Paulo)",
+        "endereco": "Rua exemplo",
+        "cidade": "S\u00E3o Paulo",
+        "{OriginalFormat}": "Exemplo de subescopo (endereco={endereco}, cidade={cidade})"
+      }
+    ]
+  }
+  {
+    "EventId": 0,
+    "LogLevel": "Critical",
+    "Category": "MicrosoftLogging_Sample.Program",
+    "Message": "Erro ao realizar ....",
+    "Exception": "System.Exception: Erro exemplo\r\n   at MicrosoftLogging_Sample.Program.Main(String[] args) in C:\\Sources\\Samples\\dotnet-playground\\logs\\MicrosoftLogging\\Program.cs:line 73",
+    "State": {
+      "Message": "Erro ao realizar ....",
+      "{OriginalFormat}": "Erro ao realizar ...."
+    },
+    "Scopes": [
+      {
+        "Message": "Exemplo de escopo (nome=Exemplo, idade=25)",
+        "nome": "Exemplo",
+        "idade": 25,
+        "{OriginalFormat}": "Exemplo de escopo (nome={nome}, idade={idade})"
+      }
+    ]
+  }
+
+
+-- Com activity
+{
+    "EventId": 0,
+    "LogLevel": "Information",
+    "Category": "MicrosoftLogging_Sample.Program",
+    "Message": "Iniciando processo",
+    "State": {
+      "Message": "Iniciando processo",
+      "{OriginalFormat}": "Iniciando processo"
+    },
+    "Scopes": [
+      {
+        "Message": "SpanId:e22db66e479e3b06, TraceId:4bba2674ce96a0bc03470f22da2a934e, ParentId:0000000000000000, TraceState:",
+        "SpanId": "e22db66e479e3b06",
+        "TraceId": "4bba2674ce96a0bc03470f22da2a934e",
+        "ParentId": "0000000000000000",
+        "TraceState": null
+      },
+      {
+        "Message": "CorrelationId Tag:b7dddfeb-20ed-4612-8d15-7af70065c47c",
+        "CorrelationId Tag": "b7dddfeb-20ed-4612-8d15-7af70065c47c"
+      },
+      "CorrelationId Baggage:c77a222d-d599-4f3a-8c1f-a62675ed3def",
+      "Iniciando scope antes da acivity"
+    ]
+  }
+  {
+    "EventId": 0,
+    "LogLevel": "Information",
+    "Category": "MicrosoftLogging_Sample.Program",
+    "Message": "Scope message - 1",
+    "State": {
+      "Message": "Scope message - 1",
+      "{OriginalFormat}": "Scope message - 1"
+    },
+    "Scopes": [
+      {
+        "Message": "SpanId:e22db66e479e3b06, TraceId:4bba2674ce96a0bc03470f22da2a934e, ParentId:0000000000000000, TraceState:",
+        "SpanId": "e22db66e479e3b06",
+        "TraceId": "4bba2674ce96a0bc03470f22da2a934e",
+        "ParentId": "0000000000000000",
+        "TraceState": null
+      },
+      {
+        "Message": "CorrelationId Tag:b7dddfeb-20ed-4612-8d15-7af70065c47c",
+        "CorrelationId Tag": "b7dddfeb-20ed-4612-8d15-7af70065c47c"
+      },
+      "CorrelationId Baggage:c77a222d-d599-4f3a-8c1f-a62675ed3def",
+      "Iniciando scope antes da acivity",
+      {
+        "Message": "Iniciando scope dentro do sub-processo: ScopeSubProcessId: 2f8f6275-f63c-4212-a29e-1c673926556a",
+        "ScopeSubProcessId": "2f8f6275-f63c-4212-a29e-1c673926556a",
+        "{OriginalFormat}": "Iniciando scope dentro do sub-processo: ScopeSubProcessId: {ScopeSubProcessId}"
+      }
+    ]
+  }
+  {
+    "EventId": 0,
+    "LogLevel": "Information",
+    "Category": "MicrosoftLogging_Sample.Program",
+    "Message": "Executando sub-processo",
+    "State": {
+      "Message": "Executando sub-processo",
+      "{OriginalFormat}": "Executando sub-processo"
+    },
+    "Scopes": [
+      {
+        "Message": "SpanId:9792825355fd925d, TraceId:4bba2674ce96a0bc03470f22da2a934e, ParentId:e22db66e479e3b06, TraceState:",
+        "SpanId": "9792825355fd925d",
+        "TraceId": "4bba2674ce96a0bc03470f22da2a934e",
+        "ParentId": "e22db66e479e3b06",
+        "TraceState": null
+      },
+      {
+        "Message": "Tag act 2:teste",
+        "Tag act 2": "teste"
+      },
+      "Baggage act 2:teste, CorrelationId Baggage:c77a222d-d599-4f3a-8c1f-a62675ed3def",
+      "Iniciando scope antes da acivity",
+      {
+        "Message": "Iniciando scope dentro do sub-processo: ScopeSubProcessId: 2f8f6275-f63c-4212-a29e-1c673926556a",
+        "ScopeSubProcessId": "2f8f6275-f63c-4212-a29e-1c673926556a",
+        "{OriginalFormat}": "Iniciando scope dentro do sub-processo: ScopeSubProcessId: {ScopeSubProcessId}"
+      }
+    ]
+  }
+  {
+    "EventId": 0,
+    "LogLevel": "Information",
+    "Category": "MicrosoftLogging_Sample.Program",
+    "Message": "Activity 2 stoped",
+    "State": {
+      "Message": "Activity 2 stoped",
+      "{OriginalFormat}": "Activity 2 stoped"
+    },
+    "Scopes": [
+      {
+        "Message": "SpanId:e22db66e479e3b06, TraceId:4bba2674ce96a0bc03470f22da2a934e, ParentId:0000000000000000, TraceState:",
+        "SpanId": "e22db66e479e3b06",
+        "TraceId": "4bba2674ce96a0bc03470f22da2a934e",
+        "ParentId": "0000000000000000",
+        "TraceState": null
+      },
+      {
+        "Message": "CorrelationId Tag:b7dddfeb-20ed-4612-8d15-7af70065c47c",
+        "CorrelationId Tag": "b7dddfeb-20ed-4612-8d15-7af70065c47c"
+      },
+      "CorrelationId Baggage:c77a222d-d599-4f3a-8c1f-a62675ed3def",
+      "Iniciando scope antes da acivity",
+      {
+        "Message": "Iniciando scope dentro do sub-processo: ScopeSubProcessId: 2f8f6275-f63c-4212-a29e-1c673926556a",
+        "ScopeSubProcessId": "2f8f6275-f63c-4212-a29e-1c673926556a",
+        "{OriginalFormat}": "Iniciando scope dentro do sub-processo: ScopeSubProcessId: {ScopeSubProcessId}"
+      }
+    ]
+  }
+  {
+    "EventId": 0,
+    "LogLevel": "Information",
+    "Category": "MicrosoftLogging_Sample.Program",
+    "Message": "Activity 1 stoped",
+    "State": {
+      "Message": "Activity 1 stoped",
+      "{OriginalFormat}": "Activity 1 stoped"
+    },
+    "Scopes": [
+      "Iniciando scope antes da acivity"
+    ]
+  }

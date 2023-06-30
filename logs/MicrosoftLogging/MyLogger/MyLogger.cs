@@ -105,18 +105,18 @@ public class MyLogger : ILogger
         }, default(TState));
 
         if (Activity.Current != null)
-            AddActivityTagsToProperties(Activity.Current);
+            AddActivityTagsToProperties(Activity.Current, properties);
 
         return (
             Properties: properties.Any() ? properties : null,
             Scopes: messages.Any() ? messages : null);
 
-        void AddActivityTagsToProperties(Activity activity)
+        static void AddActivityTagsToProperties(Activity activity, Dictionary<string, object?> properties)
         {
             foreach (var (key, value) in activity.Tags)
                 properties.TryAdd(key, value);
             if (activity.Parent != null)
-                AddActivityTagsToProperties(activity.Parent);
+                AddActivityTagsToProperties(activity.Parent, properties);
         }
     }
 
