@@ -23,11 +23,12 @@ namespace MicrosoftLogging_Sample.MyLogger
 
     public class MyConsoleLoggerFormatter : ConsoleFormatter, IDisposable
     {
+        public const string FormatterName = "MyConsoleLoggerFormatter";
         private const string OriginalFormatKeyName = "{OriginalFormat}";
         private readonly IDisposable? _optionsReloadToken;
 
         public MyConsoleLoggerFormatter(IOptionsMonitor<JsonConsoleFormatterOptions> options)
-            : base("MyConsoleLoggerFormatter")
+            : base(FormatterName)
         {
             ReloadLoggerOptions(options.CurrentValue);
             _optionsReloadToken = options.OnChange(ReloadLoggerOptions);
@@ -68,6 +69,7 @@ namespace MicrosoftLogging_Sample.MyLogger
 
                     WriteEnvironmentInformation(writer, scopeProvider, logEntry);
                     WriteScopeInformation(writer, scopeProvider);
+                    WriteEllapsedTimeInformation(writer, scopeProvider);
 
                     writer.WriteEndObject();
                     writer.Flush();
@@ -150,6 +152,25 @@ namespace MicrosoftLogging_Sample.MyLogger
                         state.WriteStringValue(ToInvariantString(scope));
                 }, writer);
                 writer.WriteEndArray();
+            }
+        }
+
+        private void WriteEllapsedTimeInformation(Utf8JsonWriter writer, IExternalScopeProvider? scopeProvider)
+        {
+            var activity = Activity.Current;
+            if (activity != null)
+            {
+                //writer.WriteString("ElapsedTime", (DateTime.UtcNow - activity.StartTimeUtc).ToString());
+                writer.WriteStartObject("ElapsedTimes");
+                while (activity != null)
+                {
+                    if (activity.Parent == null)
+                        writer.WriteString("Total", (DateTime.UtcNow - activity.StartTimeUtc).ToString());
+                    else
+                        writer.WriteString(activity.OperationName, (DateTime.UtcNow - activity.StartTimeUtc).ToString());
+                    activity = activity.Parent;
+                }
+                writer.WriteEndObject();
             }
         }
 
@@ -239,7 +260,7 @@ namespace Microsoft.Extensions.Logging
         /// <param name="configure">A delegate to configure the <see cref="ConsoleLogger"/> options for the built-in json log formatter.</param>
         public static ILoggingBuilder AddMyJsonFormatterConsole(this ILoggingBuilder builder, Action<JsonConsoleFormatterOptions> configure)
         {
-            builder.AddConsole(opts => opts.FormatterName = "MyConsoleLoggerFormatter");
+            builder.AddConsole(opts => opts.FormatterName = MyConsoleLoggerFormatter.FormatterName);
             builder.AddConsoleFormatter<MyConsoleLoggerFormatter, JsonConsoleFormatterOptions>(configure);
             return builder;
             //return builder.AddConsoleWithFormatter<JsonConsoleFormatterOptions>(ConsoleFormatterNames.Json, configure);

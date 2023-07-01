@@ -97,6 +97,7 @@ namespace MicrosoftLogging_Sample
                 activity.SetCustomProperty("custom property", "aaaaaaaaa"); // Não loga no console.
                                                                             //activity.TraceStateString = "Teste"; // Compartilha no trace distribuido
                 logger.LogInformation("Iniciando processo");
+                Thread.Sleep(1000);
 
                 using (logger.BeginScope("Iniciando scope dentro do sub-processo: ScopeSubProcessId: {ScopeSubProcessId}", Guid.NewGuid()))
                 {
@@ -116,6 +117,8 @@ namespace MicrosoftLogging_Sample
                 activity.Stop();
                 logger.LogInformation("Activity 1 stoped");
             }
+
+            logger.LogInformation("Fim");
         }
 
         private static IConfigurationRoot BuildConfig() => new ConfigurationBuilder()
@@ -158,6 +161,7 @@ namespace MicrosoftLogging_Sample
                     builder.AddMyJsonFormatterConsole(x =>
                     {
                         x.IncludeScopes = true;
+                        x.TimestampFormat = "O";
                         x.JsonWriterOptions = new()
                         {
                             Indented = true,
