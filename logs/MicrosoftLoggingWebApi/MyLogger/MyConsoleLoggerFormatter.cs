@@ -111,15 +111,16 @@ namespace MicrosoftLoggingWebApi_Sample.MyLogger
                         WriteItem(writer, item);
 
             // Variáveis nos scopes e na tags da activity current
-            scopeProvider?.ForEachScope((scope, state) =>
-            {
-                if (scope is IEnumerable<KeyValuePair<string, object?>> scopeItems && scopeItems.Any())
+            if (FormatterOptions.IncludeScopes && scopeProvider != null)
+                scopeProvider.ForEachScope((scope, state) =>
                 {
-                    foreach (var item in scopeItems)
-                        if (!IsOriginalFormatKey(item.Key))
-                            WriteItem(writer, item);
-                }
-            }, writer);
+                    if (scope is IEnumerable<KeyValuePair<string, object?>> scopeItems && scopeItems.Any())
+                    {
+                        foreach (var item in scopeItems)
+                            if (!IsOriginalFormatKey(item.Key))
+                                WriteItem(writer, item);
+                    }
+                }, writer);
 
             // Tags das activities parent
             var activity = Activity.Current?.Parent;
@@ -260,10 +261,16 @@ namespace Microsoft.Extensions.Logging
         /// <param name="configure">A delegate to configure the <see cref="ConsoleLogger"/> options for the built-in json log formatter.</param>
         public static ILoggingBuilder AddMyJsonFormatterConsole(this ILoggingBuilder builder, Action<JsonConsoleFormatterOptions> configure)
         {
-            builder.AddConsole(opts => opts.FormatterName = MyConsoleLoggerFormatter.FormatterName);
+            //builder.AddConsole(opts => opts.FormatterName = MyConsoleLoggerFormatter.FormatterName);
             builder.AddConsoleFormatter<MyConsoleLoggerFormatter, JsonConsoleFormatterOptions>(configure);
             return builder;
             //return builder.AddConsoleWithFormatter<JsonConsoleFormatterOptions>(ConsoleFormatterNames.Json, configure);
+        }
+
+        public static ILoggingBuilder AddMyJsonFormatterConsole(this ILoggingBuilder builder)
+        {
+            builder.AddConsoleFormatter<MyConsoleLoggerFormatter, JsonConsoleFormatterOptions>();
+            return builder;
         }
     }
 }

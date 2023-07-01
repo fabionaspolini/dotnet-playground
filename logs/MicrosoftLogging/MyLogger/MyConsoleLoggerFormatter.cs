@@ -111,15 +111,16 @@ namespace MicrosoftLogging_Sample.MyLogger
                         WriteItem(writer, item);
 
             // Variáveis nos scopes e na tags da activity current
-            scopeProvider?.ForEachScope((scope, state) =>
-            {
-                if (scope is IEnumerable<KeyValuePair<string, object?>> scopeItems && scopeItems.Any())
+            if (FormatterOptions.IncludeScopes && scopeProvider != null)
+                scopeProvider.ForEachScope((scope, state) =>
                 {
-                    foreach (var item in scopeItems)
-                        if (!IsOriginalFormatKey(item.Key))
-                            WriteItem(writer, item);
-                }
-            }, writer);
+                    if (scope is IEnumerable<KeyValuePair<string, object?>> scopeItems && scopeItems.Any())
+                    {
+                        foreach (var item in scopeItems)
+                            if (!IsOriginalFormatKey(item.Key))
+                                WriteItem(writer, item);
+                    }
+                }, writer);
 
             // Tags das activities parent
             var activity = Activity.Current?.Parent;

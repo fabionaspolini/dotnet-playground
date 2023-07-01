@@ -14,7 +14,7 @@ builder.Logging.Configure(opts => opts.ActivityTrackingOptions = ActivityTrackin
 //    x.IncludeScopes = true;
 //    x.JsonWriterOptions = new() { Indented = true };
 //});
-builder.Logging.AddMyJsonFormatterConsole(x =>
+/*builder.Logging.AddMyJsonFormatterConsole(x =>
 {
     x.IncludeScopes = true;
     x.TimestampFormat = "O";
@@ -23,7 +23,8 @@ builder.Logging.AddMyJsonFormatterConsole(x =>
         Indented = true,
         Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
     };
-});
+});*/
+builder.Logging.AddMyJsonFormatterConsole();
 
 // Add services to the container.
 
