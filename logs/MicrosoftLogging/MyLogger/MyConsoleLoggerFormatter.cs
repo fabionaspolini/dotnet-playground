@@ -67,7 +67,7 @@ namespace MicrosoftLogging_Sample.MyLogger
                     writer.WriteString("Message", message);
                     writer.WriteString("Logger", category);
 
-                    WriteEnvironmentInformation(writer, scopeProvider, logEntry);
+                    WriteStateInformation(writer, scopeProvider, logEntry);
                     WriteScopeInformation(writer, scopeProvider);
                     WriteEllapsedTimeInformation(writer, scopeProvider);
 
@@ -100,9 +100,9 @@ namespace MicrosoftLogging_Sample.MyLogger
             };
         }
 
-        private void WriteEnvironmentInformation<TState>(Utf8JsonWriter writer, IExternalScopeProvider? scopeProvider, LogEntry<TState> logEntry)
+        private void WriteStateInformation<TState>(Utf8JsonWriter writer, IExternalScopeProvider? scopeProvider, LogEntry<TState> logEntry)
         {
-            writer.WriteStartObject("Envs");
+            writer.WriteStartObject("State");
 
             // Variáveis da mensagem sendo logada
             if (logEntry.State is IEnumerable<KeyValuePair<string, object?>> stateItems && stateItems.Any())
@@ -265,6 +265,12 @@ namespace Microsoft.Extensions.Logging
             builder.AddConsoleFormatter<MyConsoleLoggerFormatter, JsonConsoleFormatterOptions>(configure);
             return builder;
             //return builder.AddConsoleWithFormatter<JsonConsoleFormatterOptions>(ConsoleFormatterNames.Json, configure);
+        }
+
+        public static ILoggingBuilder AddMyJsonFormatterConsole(this ILoggingBuilder builder)
+        {
+            builder.AddConsoleFormatter<MyConsoleLoggerFormatter, JsonConsoleFormatterOptions>();
+            return builder;
         }
     }
 }

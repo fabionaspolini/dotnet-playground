@@ -8,8 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="..\MicrosoftLogging\MyLogger\MyConsoleLoggerFormatter.cs" Link="MyLogger\MyConsoleLoggerFormatter.cs" />
+    <Compile Include="..\MicrosoftLogging\MyLogger\MyConsoleLoggerFormatterHelpers.cs" Link="MyLogger\MyConsoleLoggerFormatterHelpers.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.7" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="MyLogger\" />
   </ItemGroup>
 
 </Project>
