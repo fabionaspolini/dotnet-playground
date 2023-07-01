@@ -126,20 +126,19 @@ namespace MicrosoftLogging_Sample
             .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
             .Build();
 
-        private static IServiceProvider BuildServices(IConfigurationRoot config)
-        {
-            return new ServiceCollection()
+        private static IServiceProvider BuildServices(IConfigurationRoot config) => new ServiceCollection()
                 .AddSingleton(config)
                 .AddScoped<Teste>() // Runner is the custom class
                 .AddLogging(builder =>
                 {
                     builder.ClearProviders();
                     builder.AddConfiguration(config.GetSection("Logging"));
-                    builder.Configure(x =>
-                    {
-                        // Adicionar scope no log com o traceId gerado com new Activity("...")
-                        x.ActivityTrackingOptions = ActivityTrackingOptions.SpanId | ActivityTrackingOptions.TraceId | ActivityTrackingOptions.Tags | ActivityTrackingOptions.Baggage;
-                    });
+
+                    // Adicionar scope no log com o traceId gerado com new Activity("...")
+                    builder.Configure(x => x.ActivityTrackingOptions = ActivityTrackingOptions.SpanId |
+                        ActivityTrackingOptions.TraceId |
+                        ActivityTrackingOptions.Tags |
+                        ActivityTrackingOptions.Baggage);
 
                     /*builder.AddConsole(options =>
                     {
@@ -152,11 +151,11 @@ namespace MicrosoftLogging_Sample
                         options.SingleLine = true;
                         options.TimestampFormat = "dd/MM/yyyy HH:mm:ss.fff ";
                     });*/
-                    builder.AddJsonConsole(x =>
+                    /*builder.AddJsonConsole(x =>
                     {
                         x.IncludeScopes = true;
                         x.JsonWriterOptions = new() { Indented = true };
-                    });
+                    });*/
                     //builder.AddMyLogger();
                     builder.AddMyJsonFormatterConsole(x =>
                     {
@@ -170,6 +169,5 @@ namespace MicrosoftLogging_Sample
                     });
                 })
                .BuildServiceProvider();
-        }
     }
 }

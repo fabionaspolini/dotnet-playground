@@ -1,9 +1,27 @@
+using System.Text.Encodings.Web;
+
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Logging.AddJsonConsole(x =>
+// Adicionar scope no log com o traceId gerado com new Activity("...")
+builder.Logging.Configure(opts => opts.ActivityTrackingOptions = ActivityTrackingOptions.SpanId |
+    ActivityTrackingOptions.TraceId |
+    ActivityTrackingOptions.Tags |
+    ActivityTrackingOptions.Baggage);
+
+//builder.Logging.AddJsonConsole(x =>
+//{
+//    x.IncludeScopes = true;
+//    x.JsonWriterOptions = new() { Indented = true };
+//});
+builder.Logging.AddMyJsonFormatterConsole(x =>
 {
     x.IncludeScopes = true;
-    x.JsonWriterOptions = new() { Indented = true };
+    x.TimestampFormat = "O";
+    x.JsonWriterOptions = new()
+    {
+        Indented = true,
+        Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+    };
 });
 
 // Add services to the container.

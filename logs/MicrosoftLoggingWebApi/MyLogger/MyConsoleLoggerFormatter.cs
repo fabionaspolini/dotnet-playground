@@ -161,7 +161,7 @@ namespace MicrosoftLogging_Sample.MyLogger
             if (activity != null)
             {
                 //writer.WriteString("ElapsedTime", (DateTime.UtcNow - activity.StartTimeUtc).ToString());
-                writer.WriteStartObject("ElapsedTimes");
+                writer.WriteStartObject("ElapsedMs");
                 while (activity != null)
                 {
                     if (activity.Parent == null)
