@@ -22,10 +22,17 @@ public class WeatherForecastController : ControllerBase
     [HttpGet(Name = "GetWeatherForecast")]
     public IEnumerable<WeatherForecast> Get()
     {
-        var act = Activity.Current;
+        var currentAct = Activity.Current;
 
-        _logger.LogInformation("Get teste");
-        _logger.LogInformation("Get teste 2");
+        _logger.LogInformation("Teste");
+        _logger.LogInformation("Teste 2");
+        var act = new Activity("Sub atividade");
+        act.Start();
+        _logger.LogInformation("Teste 3");
+        act.Stop();
+
+
+
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
             Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
