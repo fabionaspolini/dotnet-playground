@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Adicionar scope no log com o traceId gerado com new Activity("...")
 builder.Logging.Configure(opts => opts.ActivityTrackingOptions = ActivityTrackingOptions.SpanId |
     ActivityTrackingOptions.TraceId |
+    ActivityTrackingOptions.ParentId |
     ActivityTrackingOptions.Tags |
     ActivityTrackingOptions.Baggage);
 

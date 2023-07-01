@@ -10,12 +10,12 @@ using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Text;
 using System;
-using MicrosoftLogging_Sample.MyLogger;
 using System.Linq;
 using System.Diagnostics;
 using System.Xml;
+using MicrosoftLoggingWebApi_Sample.MyLogger;
 
-namespace MicrosoftLogging_Sample.MyLogger
+namespace MicrosoftLoggingWebApi_Sample.MyLogger
 {
 
     // Exemplo baseado no código do formatter sealed Microsoft.Extensions.Logging.Console.JsonConsoleFormatter

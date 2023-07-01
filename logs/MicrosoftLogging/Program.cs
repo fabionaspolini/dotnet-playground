@@ -137,6 +137,7 @@ namespace MicrosoftLogging_Sample
                     // Adicionar scope no log com o traceId gerado com new Activity("...")
                     builder.Configure(x => x.ActivityTrackingOptions = ActivityTrackingOptions.SpanId |
                         ActivityTrackingOptions.TraceId |
+                        ActivityTrackingOptions.ParentId |
                         ActivityTrackingOptions.Tags |
                         ActivityTrackingOptions.Baggage);
 

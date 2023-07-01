@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace MicrosoftLoggingWebApi.Controllers;
+namespace MicrosoftLoggingWebApi_Sample.Controllers;
 
 [ApiController]
 [Route("[controller]")]
@@ -13,22 +13,29 @@ public class WeatherForecastController : ControllerBase
     };
 
     private readonly ILogger<WeatherForecastController> _logger;
+    private readonly ILogger _payloadLogger;
 
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    public WeatherForecastController(ILogger<WeatherForecastController> logger, ILoggerFactory loggerFactory)
     {
         _logger = logger;
+        _payloadLogger = loggerFactory.CreateLogger("Payloads.HttpIn");
     }
 
     [HttpGet(Name = "GetWeatherForecast")]
     public IEnumerable<WeatherForecast> Get()
     {
+        _payloadLogger.LogInformation("Payload log 1");
+
         var currentAct = Activity.Current;
 
         _logger.LogInformation("Teste");
         _logger.LogInformation("Teste 2");
+
+        //_payloadLogger.
         var act = new Activity("Sub atividade");
         act.Start();
         _logger.LogInformation("Teste 3");
+
         act.Stop();
 
 
