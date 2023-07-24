@@ -30,7 +30,7 @@ Console.WriteLine("OK");
 Console.WriteLine("Gravando...");
 await db.StringSetAsync($"Pessoa:1", "Fulano", TimeSpan.FromSeconds(15), flags: CommandFlags.FireAndForget); // Com FireForget, não ocorrerá erro mesmo que não consiga gravar
 
-Thread.Sleep(15000);
+// Thread.Sleep(15000); // Para simular eventos de queda do servidor após conexão
 
 await db.StringSetAsync($"Pessoa:2", "Ciclano", TimeSpan.FromSeconds(15));
 await db.StringSetAsync($"Pessoa:3", "Beltrano", TimeSpan.FromSeconds(15));
