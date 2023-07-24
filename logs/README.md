@@ -1,3 +1,13 @@
+# Logs
+
+- [Benchmark](#benchmark)
+  - [NLog :heart:](#nlog-heart)
+  - [Microsoft Logging](#microsoft-logging)
+  - [Log4Net](#log4net)
+  - [Serilog](#serilog)
+- [Visão geral](#visão-geral)
+  - [Activity](#activity)
+
 [Voltar](../README.md)
 
 ## Benchmark

@@ -1,5 +1,21 @@
 # .NET Samples
 
+- [Visão geral](#visão-geral)
+- [Biliotecas](#biliotecas)
+  - [background-jobs](#background-jobs)
+  - [data](#data)
+  - [data-mapper](#data-mapper)
+  - [http-client](#http-client)
+  - [logs](#logs)
+  - [others](#others)
+  - [syntax-sugar](#syntax-sugar)
+  - [source-generator](#source-generator)
+  - [template-engine](#template-engine)
+- [Avaliações](#avaliações)
+- [Contribuindo](#contribuindo)
+
+## Visão geral
+
 Repositório com pequenos exemplos de configurações e uso de bibliotecas úteis para C# / .NET.
 
 Maiores detalhes descritos no meu [post](https://fabionaspolini.medium.com/bibliotecas-para-incrementar-a-produtividade-em-c-net-52749e9329d3).
@@ -71,3 +87,15 @@ Nas avaliações de frameworks concorrentes, estará indicado com :heart: a pref
 - :+1: Requisito atendido oficialmente, mas com deficiências
 - :-1: Requisito não atendido oficialmente, mas com alternativas manuais
 - :x: Requisito não atendido
+
+## Contribuindo
+
+Criar projeto dentro da pasta adequada ao assunto:
+
+```bash
+# Layout
+dotnet new console -n <Nome_Exemplo>Playground -o <Nome_Exemplo>
+
+# Exemplo
+dotnet new console -n BasicRedisPlayground -o Basic
+```
