@@ -94,8 +94,8 @@ Criar projeto dentro da pasta adequada ao assunto:
 
 ```bash
 # Layout
-dotnet new console -n <Nome_Exemplo>Playground -o <Nome_Exemplo>
+dotnet new console -n <Nome_Exemplo>Sample -o <Nome_Exemplo>
 
 # Exemplo
-dotnet new console -n BasicRedisPlayground -o Basic
+dotnet new console -n BasicRedisSample -o Basic
 ```

@@ -4,13 +4,34 @@ Console.WriteLine(".:: Redis Playground - Basic ::.");
 
 // https://stackexchange.github.io/StackExchange.Redis/Basics
 
-Console.Write("Conectando...");
+Console.WriteLine("Conectando...");
 var redis = ConnectionMultiplexer.Connect("localhost"); // Utilizar como singleton
+redis.ErrorMessage += (object? sender, RedisErrorEventArgs e) =>
+{
+    Console.WriteLine("Redis error: " + e.Message);
+};
+redis.InternalError += (object? sender, InternalErrorEventArgs e) =>
+{
+    Console.WriteLine("Redis internal error: " + e.Exception?.ToString());
+};
+redis.ConnectionFailed += (object? sender, ConnectionFailedEventArgs e) =>
+{
+    // Se derrubar o Redis após o GetDatabase(), irá cair nesse controle de exceção
+    Console.WriteLine($"Redis connection failed [{e} - {e.FailureType}]: {e.Exception}");
+};
+redis.ConnectionRestored += (object? sender, ConnectionFailedEventArgs e) =>
+{
+    Console.WriteLine($"Redis connection restored [{e}]");
+};
+
 var db = redis.GetDatabase(0);
 Console.WriteLine("OK");
 
-Console.Write("Gravando...");
+Console.WriteLine("Gravando...");
 await db.StringSetAsync($"Pessoa:1", "Fulano", TimeSpan.FromSeconds(15), flags: CommandFlags.FireAndForget); // Com FireForget, não ocorrerá erro mesmo que não consiga gravar
+
+Thread.Sleep(15000);
+
 await db.StringSetAsync($"Pessoa:2", "Ciclano", TimeSpan.FromSeconds(15));
 await db.StringSetAsync($"Pessoa:3", "Beltrano", TimeSpan.FromSeconds(15));
 await db.StringSetAsync($"Pessoa:1", "Fulano de tal", TimeSpan.FromSeconds(15), when: When.NotExists); // Atribuir valor somente se não existir a chave
@@ -22,6 +43,7 @@ var pessoa = await db.StringGetAsync("Pessoa:1", CommandFlags.PreferReplica); //
 Console.WriteLine($"Pessoa 1: {pessoa}");
 var pessoa99999 = await db.StringGetAsync("Pessoa:99999");
 Console.WriteLine(pessoa99999.HasValue ? pessoa99999 : "Pessoa 99999 null");
+Console.WriteLine("OK");
 Console.WriteLine();
 
 // ##### Contadores início #####
@@ -54,6 +76,7 @@ Console.WriteLine();
 var rank = await db.SortedSetRankAsync("MeuContadorSorted", "Info3", Order.Descending);
 Console.WriteLine($"Rank of MeuContadorSorted.Info3: {rank}");
 
+Console.WriteLine("OK");
 Console.WriteLine();
 
 // ##### Contadores fim #####
