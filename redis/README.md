@@ -12,3 +12,4 @@
 	- ZSet / Sorted: Contador double ordenado descrescente
 	- Hash: Contator com chave/valor interno (Equivalente a um dicionário)
 	- Simple: Chave/Valor simples
+- Multi thread safe compartilhando a mesma conexão
