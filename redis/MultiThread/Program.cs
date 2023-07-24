@@ -1,6 +1,5 @@
 ﻿using StackExchange.Redis;
 using System.Diagnostics;
-using System.Threading.Tasks;
 
 Console.WriteLine(".:: Redis Playground - Multi Thread ::.");
 
@@ -45,7 +44,7 @@ var tasks = new[]
     StartWorkerTask(5, db),
     StartWorkerTask(6, db)
 };
-Task.WaitAll(tasks);
+Task.WaitAll(tasks); // Multi thread seguro com a mesma conexão
 
 var total = tasks.Sum(t => t.Result);
 
@@ -55,7 +54,7 @@ Console.WriteLine($"Total: {total:N0}");
 Console.WriteLine();
 Console.WriteLine("Fim");
 
-Task<int> StartWorkerTask(int taskId, IDatabase db) => Task.Run(() =>
+Task<int> StartWorkerTask(int taskId, IDatabase db) => Task.Run(async () =>
 {
     var watch = Stopwatch.StartNew();
     var time = TimeSpan.FromSeconds(10);
@@ -63,8 +62,8 @@ Task<int> StartWorkerTask(int taskId, IDatabase db) => Task.Run(() =>
     while (watch.Elapsed < time)
     {
         //await db.StringSetAsync(RedisKey, "Teste");
-        //var result = await db.StringGetAsync(RedisKey);
         var result = db.StringGet(RedisKey);
+        //var result = await db.StringGetAsync(RedisKey, flags: CommandFlags.FireAndForget);
         count++;
         if (count % 5_000 == 0)
             Console.WriteLine($"Task {taskId}: {count:N0} - {watch.Elapsed}");
