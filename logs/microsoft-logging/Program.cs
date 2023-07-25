@@ -154,7 +154,7 @@ namespace MicrosoftLoggingPlayground
                     /*builder.AddJsonConsole(x =>
                     {
                         x.IncludeScopes = true;
-                        x.JsonWriterOptions = new() { Indented = true };
+                        x.JsonWriterOptions = new() { Indented = true }; // Indentação causa muita queda de performance
                     });*/
                     //builder.AddMyLogger();
                     builder.AddMyJsonFormatterConsole(x =>
@@ -163,7 +163,7 @@ namespace MicrosoftLoggingPlayground
                         x.TimestampFormat = "O";
                         x.JsonWriterOptions = new()
                         {
-                            Indented = true,
+                            Indented = true, // Indentação causa muita queda de performance
                             Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
                         };
                     });
