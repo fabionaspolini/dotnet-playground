@@ -60,16 +60,16 @@ Maiores detalhes descritos no meu [post](https://fabionaspolini.medium.com/bibli
 
 ### syntax-sugar
 
-- [FluentDateTime](Syntax-Sugar/FluentDateTime): Melhorar a experiência de trabalho com datas
+- [fluent-date-time](Syntax-Sugar/fluent-date-time): Melhorar a experiência de trabalho com datas
 - [Humanizer](Syntax-Sugar/Humanizer): Humanizar leitura de unidades de medias
 - [Maestria.Extensions](Syntax-Sugar/MaestriaExtensions): Métodos de extensões úteis
 - [Maestria.FluentCast](Syntax-Sugar/MaestriaFluentCast): Converter valores de tipos primitidos de forma fluente
 
 ### source-generator
 
-- [Maestria.TypeProviders](Source-Generator/MaestriaTypeProviders): Gerador de código a partir de template de arquivo (Excel)
-- [PrimaryConstructor](Source-Generator/PrimaryConstructor): Adicionar construtor padrão na classe para variáveis e propriedades read only
-- [DataBuilderGenerator](Source-Generator/DataBuilderGenerator): Adicionar métodos para contrução de classes de dados fluente
+- [Maestria.TypeProviders](Source-Generator/maestria-type-providers): Gerador de código a partir de template de arquivo (Excel)
+- [primary-constructor](Source-Generator/primary-constructor): Adicionar construtor padrão na classe para variáveis e propriedades read only
+- [data-builder-generator](Source-Generator/data-builder-generator): Adicionar métodos para contrução de classes de dados fluente
 
 ### template-engine
 

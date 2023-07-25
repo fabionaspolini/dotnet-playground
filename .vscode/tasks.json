@@ -267,48 +267,48 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-source-generator/DataBuilderGenerator",
+            "label": "build-source-generator/data-builder-generator",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/source-generator/DataBuilderGenerator/DataBuilderGenerator-Sample.csproj",
+                "${workspaceFolder}/source-generator/data-builder-generator/data-builder-generator-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-source-generator/MaestriaTypeProviders",
+            "label": "build-source-generator/maestria-type-providers",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/source-generator/MaestriaTypeProviders/MaestriaTypeProviders-Sample.csproj",
+                "${workspaceFolder}/source-generator/maestria-type-providers/maestria-type-providers-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-source-generator/PrimaryConstructor",
+            "label": "build-source-generator/primary-constructor",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/source-generator/PrimaryConstructor/PrimaryConstructor-Sample.csproj",
+                "${workspaceFolder}/source-generator/primary-constructor/primary-constructor-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-syntax-sugar/FluentDateTime",
+            "label": "build-syntax-sugar/fluent-date-time",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/syntax-sugar/FluentDateTime/FluentDateTime-Sample.csproj",
+                "${workspaceFolder}/syntax-sugar/fluent-date-time/fluent-date-time-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],

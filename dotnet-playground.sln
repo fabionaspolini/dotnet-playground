@@ -98,13 +98,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fluent-validation-playgroun
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "native-features-playground", "language-features\native-features-playground.csproj", "{95D9B6C7-1A5D-49F2-A5B7-4562FD0534FB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "data-builder-generator-playground", "source-generator\DataBuilderGenerator\data-builder-generator-playground.csproj", "{79DE4D00-0DB0-4DAE-9606-6DDBC692AA24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "data-builder-generator-playground", "source-generator\data-builder-generator\data-builder-generator-playground.csproj", "{79DE4D00-0DB0-4DAE-9606-6DDBC692AA24}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "maestria-type-providers-playground", "source-generator\MaestriaTypeProviders\maestria-type-providers-playground.csproj", "{13A614F9-6617-40FC-8A5B-86E900A7F248}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "maestria-type-providers-playground", "source-generator\maestria-type-providers\maestria-type-providers-playground.csproj", "{13A614F9-6617-40FC-8A5B-86E900A7F248}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "primary-constructor-playground", "source-generator\PrimaryConstructor\primary-constructor-playground.csproj", "{2265A324-3E0D-4A1E-A89D-B8D9CCA6BCF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "primary-constructor-playground", "source-generator\primary-constructor\primary-constructor-playground.csproj", "{2265A324-3E0D-4A1E-A89D-B8D9CCA6BCF5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fluent-date-time-playground", "syntax-sugar\FluentDateTime\fluent-date-time-playground.csproj", "{692B2495-5385-47CC-8290-04F682EF9077}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fluent-date-time-playground", "syntax-sugar\fluent-date-time\fluent-date-time-playground.csproj", "{692B2495-5385-47CC-8290-04F682EF9077}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
