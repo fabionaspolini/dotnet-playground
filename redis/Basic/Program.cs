@@ -46,6 +46,8 @@ Console.WriteLine(pessoa99999.HasValue ? pessoa99999 : "Pessoa 99999 null");
 Console.WriteLine("OK");
 Console.WriteLine();
 
+await db.HashSetAsync("MeuHash", new HashEntry[] { new("Id", 1), new("Nome", "Fulano") });
+
 // ##### Contadores início #####
 
 Console.WriteLine("Contadores...");
