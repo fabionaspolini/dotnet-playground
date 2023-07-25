@@ -134,36 +134,36 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-http-client/FlurlHttp",
+            "label": "build-http-client/flurl-http",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/http-client/FlurlHttp/FlurlHttp-Sample.csproj",
+                "${workspaceFolder}/http-client/flurl-http/flurl-http-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-http-client/NSwagStudio",
+            "label": "build-http-client/nswag-studio",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/http-client/NSwagStudio/NSwagStudio-Sample.csproj",
+                "${workspaceFolder}/http-client/nswag-studio/nswag-studio-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-http-client/Refit",
+            "label": "build-http-client/refit",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/http-client/Refit/Refit-Sample.csproj",
+                "${workspaceFolder}/http-client/refit/refit-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],

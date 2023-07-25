@@ -43,9 +43,9 @@ Maiores detalhes descritos no meu [post](https://fabionaspolini.medium.com/bibli
 
 ### http-client
 
-- [FlurlHttp](Http-Client/FlurlHttp): Acesso a HTTP por sintax fluente
-- [NSwagStudio](Http-Client/NSwagStudio): Geração de código a partir de especificação swagger
-- [Refit](http-client/Refit): Acesso a HTTP por mapeamento de objetos
+- [flurl-http](Http-Client/flurl-http): Acesso a HTTP por sintax fluente
+- [nswag-studio](Http-Client/nswag-studio): Geração de código a partir de especificação swagger
+- [refit](http-client/refit): Acesso a HTTP por mapeamento de objetos
 
 ### [logs](logs)
 - [NLog](logs/NLog)

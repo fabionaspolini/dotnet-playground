@@ -4,13 +4,13 @@ VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "humanizer-playground", "syntax-sugar\Humanizer\humanizer-playground.csproj", "{15120ABF-33BF-4A08-8479-10D83A3092F6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "flurl-http-playground", "http-client\FlurlHttp\flurl-http-playground.csproj", "{1A3BA5C3-B6AA-4165-BC62-7DF4936B76CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "flurl-http-playground", "http-client\flurl-http\flurl-http-playground.csproj", "{1A3BA5C3-B6AA-4165-BC62-7DF4936B76CF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mustache-playground", "template-engine\Mustache\mustache-playground.csproj", "{A325627B-86F6-4CC1-83EA-D6ADF0FF4B2E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "liquid-playground", "template-engine\Liquid\liquid-playground.csproj", "{EB438FF3-02D3-44E6-A572-A60C000C0A54}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nswag-studio-playground", "http-client\NSwagStudio\nswag-studio-playground.csproj", "{3B656115-804A-429D-93F9-525607E1F984}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nswag-studio-playground", "http-client\nswag-studio\nswag-studio-playground.csproj", "{3B656115-804A-429D-93F9-525607E1F984}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cache-manager-playground", "data\cache-manager\cache-manager-playground.csproj", "{70313DF3-B407-4FC7-824B-13C3BFB719DB}"
 EndProject
@@ -92,7 +92,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multi-thread-redis-playgrou
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "postgresql-benchmark-playground", "data\postgresql-benchmark\postgresql-benchmark-playground.csproj", "{5C2D30C6-EAB7-46E0-B58D-B715E209D729}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "refit-playground", "http-client\Refit\refit-playground.csproj", "{1E0E16ED-1128-4D12-AB46-CA7DD1742499}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "refit-playground", "http-client\refit\refit-playground.csproj", "{1E0E16ED-1128-4D12-AB46-CA7DD1742499}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fluent-validation-playground", "data\fluent-validation\fluent-validation-playground.csproj", "{C1912089-218B-48D4-B3A9-7D6BD8E5AEDC}"
 EndProject
