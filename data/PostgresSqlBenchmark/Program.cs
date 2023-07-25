@@ -4,33 +4,25 @@ using System.Diagnostics;
 
 Console.WriteLine(".:: PostgreSQL Playground - Benchmark ::.");
 
+TimeSpan TotalTestTime = TimeSpan.FromSeconds(10);
+
 Console.WriteLine("Iniciando tasks...");
+var tasks = new List<Task<int>>();
+foreach (var i in Enumerable.Range(1, 10))
+    tasks.Add(StartWorkerTask(i));
 
-//var tasks = new[] { StartWorkerTask(1) };
-//var tasks = new[] { StartWorkerTask(1), StartWorkerTask(2) };
-
-var tasks = new[]
-{
-    StartWorkerTask(1),
-    StartWorkerTask(2),
-    StartWorkerTask(3),
-    StartWorkerTask(4),
-    StartWorkerTask(5),
-    StartWorkerTask(6),
-};
-
-Task.WaitAll(tasks);
-
-var total = tasks.Sum(t => t.Result);
+Task.WaitAll(tasks.ToArray());
+var totalOperations = tasks.Sum(t => t.Result);
 
 Console.WriteLine();
-Console.WriteLine($"Total: {total:N0}");
+Console.WriteLine($"Total: {totalOperations:N0} - {totalOperations / TotalTestTime.TotalSeconds:N1} op/sec");
 
 Console.WriteLine();
 Console.WriteLine("Fim");
 
 Task<int> StartWorkerTask(int taskId) => Task.Run(async () =>
 {
+    // PostgreSQL não suporta multiplos comandos por conexão, sendo necessário abrir uma connection em cada thread.
     var conn = new NpgsqlConnection("Server=127.0.0.1;Port=5432;Database=teste;User Id=postgres;Password=123456;");
     await conn.OpenAsync();
 
