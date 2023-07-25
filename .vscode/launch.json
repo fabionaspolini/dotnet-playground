@@ -214,13 +214,13 @@
 
 
         {
-            "name": "others/Polly",
+            "name": "others/polly",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build-others/Polly",
-            "program": "${workspaceFolder}/others/Polly/bin/Debug/net5.0/Polly-Sample.dll",
+            "preLaunchTask": "build-others/polly",
+            "program": "${workspaceFolder}/others/polly/bin/Debug/net5.0/polly-Sample.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/others/Polly",
+            "cwd": "${workspaceFolder}/others/polly",
             "console": "internalConsole",
             "stopAtEntry": false
         },

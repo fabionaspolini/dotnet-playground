@@ -56,7 +56,7 @@ Maiores detalhes descritos no meu [post](https://fabionaspolini.medium.com/bibli
 
 ### others
 - [LanguageFeatures](others/LanguageFeatures): Recursos da linguagem C# / .NET
-- [Polly](others/Polly): Resiliência de operações
+- [polly](others/polly): Resiliência de operações
 
 ### syntax-sugar
 

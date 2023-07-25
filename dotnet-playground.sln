@@ -18,7 +18,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "maestria-extensions-playgro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "maestria-fluent-cast-playground", "syntax-sugar\MaestriaFluentCast\maestria-fluent-cast-playground.csproj", "{86A8AC7B-AB66-4558-A208-3A18EEB503C7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "polly-playground", "others\Polly\polly-playground.csproj", "{50896C2E-2887-4ED8-B907-66BBB29E505D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "polly-playground", "others\polly\polly-playground.csproj", "{50896C2E-2887-4ED8-B907-66BBB29E505D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2D2C6443-F1B1-46DF-874F-BEFD6C5AEDBB}"
 	ProjectSection(SolutionItems) = preProject
@@ -86,9 +86,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "redis", "redis", "{C7150475
 		redis\README.md = redis\README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "basic-redis-playground", "redis\Basic\basic-redis-playground.csproj", "{BE981402-3796-4448-B26E-463D13684770}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "basic-redis-playground", "redis\basic\basic-redis-playground.csproj", "{BE981402-3796-4448-B26E-463D13684770}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multi-thread-redis-playground", "redis\MultiThread\multi-thread-redis-playground.csproj", "{5827494C-8D7E-4C2C-BB7A-97A00B871804}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multi-thread-redis-playground", "redis\multi-thread\multi-thread-redis-playground.csproj", "{5827494C-8D7E-4C2C-BB7A-97A00B871804}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "postgresql-benchmark-playground", "data\postgresql-benchmark\postgresql-benchmark-playground.csproj", "{5C2D30C6-EAB7-46E0-B58D-B715E209D729}"
 EndProject
