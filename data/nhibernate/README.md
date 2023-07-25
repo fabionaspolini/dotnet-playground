@@ -1,2 +1,2 @@
-# NHibernate Sample
+# nhibernate Sample
 

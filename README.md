@@ -38,7 +38,7 @@ Maiores detalhes descritos no meu [post](https://fabionaspolini.medium.com/bibli
 
 ### data-mapper
 
-- [AutoMapper](data-mapper/AutoMapper)
+- [auto-mapper](data-mapper/auto-mapper)
 - [Mapster](data-mapper/Mapster)
 
 ### http-client

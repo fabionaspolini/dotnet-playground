@@ -57,24 +57,24 @@
             "stopAtEntry": false
         },
         {
-            "name": "data/NHibernate",
+            "name": "data/nhibernate",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build-data/NHibernate",
-            "program": "${workspaceFolder}/data/NHibernate/bin/Debug/net6.0/NHibernate-Sample.dll",
+            "preLaunchTask": "build-data/nhibernate",
+            "program": "${workspaceFolder}/data/nhibernate/bin/Debug/net6.0/nhibernate-Sample.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/data/NHibernate",
+            "cwd": "${workspaceFolder}/data/nhibernate",
             "console": "internalConsole",
             "stopAtEntry": false
         },
         {
-            "name": "data-mapper/AutoMapper",
+            "name": "data-mapper/auto-mapper",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build-data-mapper/AutoMapper",
-            "program": "${workspaceFolder}/data-mapper/AutoMapper/bin/Debug/net7.0/AutoMapper-Sample.dll",
+            "preLaunchTask": "build-data-mapper/auto-mapper",
+            "program": "${workspaceFolder}/data-mapper/auto-mapper/bin/Debug/net7.0/auto-mapper-Sample.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/data-mapper/AutoMapper",
+            "cwd": "${workspaceFolder}/data-mapper/auto-mapper",
             "console": "internalConsole",
             "stopAtEntry": false
         },

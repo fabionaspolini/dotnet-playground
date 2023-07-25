@@ -63,13 +63,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "command-line-parser-playgro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "command-line-utils-playground", "command-line-interface\command-line-utils\command-line-utils-playground.csproj", "{871A5CC1-7014-4B69-96E6-4711509EB077}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nhibernate-playground", "data\NHibernate\nhibernate-playground.csproj", "{3339B372-2CA6-4605-B760-31EF817B2D54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nhibernate-playground", "data\nhibernate\nhibernate-playground.csproj", "{3339B372-2CA6-4605-B760-31EF817B2D54}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "efcore-zextensions-playground", "data\EFCore-ZExtensions\efcore-zextensions-playground.csproj", "{FCBE9E0C-EBFA-4293-A880-E68E1ED1C522}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data-mapper", "data-mapper", "{16A3FA93-D130-41CD-9797-FFB5F8F9DD0C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "auto-mapper-playground", "data-mapper\AutoMapper\auto-mapper-playground.csproj", "{117AFD3B-73FB-41F3-99F5-DCDD355CF4A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "auto-mapper-playground", "data-mapper\auto-mapper\auto-mapper-playground.csproj", "{117AFD3B-73FB-41F3-99F5-DCDD355CF4A2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mapster-playground", "data-mapper\Mapster\mapster-playground.csproj", "{DC618915-FC83-4108-B7B7-6A19D7C8A3AA}"
 EndProject
@@ -90,7 +90,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "basic-redis-playground", "r
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multi-thread-redis-playground", "redis\MultiThread\multi-thread-redis-playground.csproj", "{5827494C-8D7E-4C2C-BB7A-97A00B871804}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "postgresql-benchmark-playground", "data\PostgresSqlBenchmark\postgresql-benchmark-playground.csproj", "{5C2D30C6-EAB7-46E0-B58D-B715E209D729}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "postgresql-benchmark-playground", "data\postgresql-benchmark\postgresql-benchmark-playground.csproj", "{5C2D30C6-EAB7-46E0-B58D-B715E209D729}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "refit-playground", "http-client\Refit\refit-playground.csproj", "{1E0E16ED-1128-4D12-AB46-CA7DD1742499}"
 EndProject

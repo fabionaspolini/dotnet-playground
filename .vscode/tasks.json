@@ -98,24 +98,24 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-data/NHibernate",
+            "label": "build-data/nhibernate",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/data/NHibernate/NHibernate-Sample.csproj",
+                "${workspaceFolder}/data/nhibernate/nhibernate-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-data-mapper/AutoMapper",
+            "label": "build-data-mapper/auto-mapper",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/data-mapper/AutoMapper/AutoMapper-Sample.csproj",
+                "${workspaceFolder}/data-mapper/auto-mapper/auto-mapper-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
