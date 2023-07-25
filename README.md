@@ -61,9 +61,9 @@ Maiores detalhes descritos no meu [post](https://fabionaspolini.medium.com/bibli
 ### syntax-sugar
 
 - [fluent-date-time](Syntax-Sugar/fluent-date-time): Melhorar a experiência de trabalho com datas
-- [Humanizer](Syntax-Sugar/Humanizer): Humanizar leitura de unidades de medias
-- [Maestria.Extensions](Syntax-Sugar/MaestriaExtensions): Métodos de extensões úteis
-- [Maestria.FluentCast](Syntax-Sugar/MaestriaFluentCast): Converter valores de tipos primitidos de forma fluente
+- [humanizer](Syntax-Sugar/humanizer): Humanizar leitura de unidades de medias
+- [Maestria.Extensions](Syntax-Sugar/maestria-extensions): Métodos de extensões úteis
+- [Maestria.FluentCast](Syntax-Sugar/maestria-fluent-cast): Converter valores de tipos primitidos de forma fluente
 
 ### source-generator
 

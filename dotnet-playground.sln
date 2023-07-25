@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "humanizer-playground", "syntax-sugar\Humanizer\humanizer-playground.csproj", "{15120ABF-33BF-4A08-8479-10D83A3092F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "humanizer-playground", "syntax-sugar\humanizer\humanizer-playground.csproj", "{15120ABF-33BF-4A08-8479-10D83A3092F6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "flurl-http-playground", "http-client\flurl-http\flurl-http-playground.csproj", "{1A3BA5C3-B6AA-4165-BC62-7DF4936B76CF}"
 EndProject
@@ -14,9 +14,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nswag-studio-playground", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cache-manager-playground", "data\cache-manager\cache-manager-playground.csproj", "{70313DF3-B407-4FC7-824B-13C3BFB719DB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "maestria-extensions-playground", "syntax-sugar\MaestriaExtensions\maestria-extensions-playground.csproj", "{337F3867-1D93-4959-9310-DEC3F79FA8C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "maestria-extensions-playground", "syntax-sugar\maestria-extensions\maestria-extensions-playground.csproj", "{337F3867-1D93-4959-9310-DEC3F79FA8C2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "maestria-fluent-cast-playground", "syntax-sugar\MaestriaFluentCast\maestria-fluent-cast-playground.csproj", "{86A8AC7B-AB66-4558-A208-3A18EEB503C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "maestria-fluent-cast-playground", "syntax-sugar\maestria-fluent-cast\maestria-fluent-cast-playground.csproj", "{86A8AC7B-AB66-4558-A208-3A18EEB503C7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "polly-playground", "others\polly\polly-playground.csproj", "{50896C2E-2887-4ED8-B907-66BBB29E505D}"
 EndProject

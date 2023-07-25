@@ -315,36 +315,36 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-syntax-sugar/Humanizer",
+            "label": "build-syntax-sugar/humanizer",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/syntax-sugar/Humanizer/Humanizer-Sample.csproj",
+                "${workspaceFolder}/syntax-sugar/humanizer/humanizer-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-syntax-sugar/MaestriaExtensions",
+            "label": "build-syntax-sugar/maestria-extensions",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/syntax-sugar/MaestriaExtensions/MaestriaExtensions-Sample.csproj",
+                "${workspaceFolder}/syntax-sugar/maestria-extensions/maestria-extensions-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-syntax-sugar/MaestriaFluentCast",
+            "label": "build-syntax-sugar/maestria-fluent-cast",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/syntax-sugar/MaestriaFluentCast/MaestriaFluentCast-Sample.csproj",
+                "${workspaceFolder}/syntax-sugar/maestria-fluent-cast/maestria-fluent-cast-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
