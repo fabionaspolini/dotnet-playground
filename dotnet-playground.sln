@@ -53,7 +53,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serilog-Sample", "logs\Seri
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scheduler", "scheduler", "{4FDCC2A0-46DC-11EC-BC3E-AF7DFFB3ECD5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "quartz-playground", "scheduler\Quartz\quartz-playground.csproj", "{A791365C-04A4-4064-AE95-F4974BB8CB34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "quartz-playground", "scheduler\quartz\quartz-playground.csproj", "{A791365C-04A4-4064-AE95-F4974BB8CB34}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "native-features", "native-features", "{02A5BB00-4CDA-11EC-B1AD-CF229752EAE8}"
 EndProject

@@ -25,7 +25,7 @@ Maiores detalhes descritos no meu [post](https://fabionaspolini.medium.com/bibli
 ### background-jobs
 
 - HangFire: Agendamento de tarefas em backgroud
-- Quartz.NET: Agendamento de tarefas em backgroud
+- quartz.NET: Agendamento de tarefas em backgroud
 - Worker Service: Execução de tarefas em background sem suporte a agendamento de horários
 
 ### data

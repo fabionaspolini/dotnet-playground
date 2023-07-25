@@ -225,13 +225,13 @@
             "stopAtEntry": false
         },
         {
-            "name": "scheduler/Quartz",
+            "name": "scheduler/quartz",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build-scheduler/Quartz",
-            "program": "${workspaceFolder}/scheduler/Quartz/bin/Debug/net5.0/Quartz-Sample.dll",
+            "preLaunchTask": "build-scheduler/quartz",
+            "program": "${workspaceFolder}/scheduler/quartz/bin/Debug/net5.0/quartz-Sample.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/scheduler/Quartz",
+            "cwd": "${workspaceFolder}/scheduler/quartz",
             "console": "internalConsole",
             "stopAtEntry": false
         },

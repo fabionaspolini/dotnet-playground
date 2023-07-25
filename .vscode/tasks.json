@@ -255,12 +255,12 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-scheduler/Quartz",
+            "label": "build-scheduler/quartz",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/scheduler/Quartz/Quartz-Sample.csproj",
+                "${workspaceFolder}/scheduler/quartz/quartz-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
