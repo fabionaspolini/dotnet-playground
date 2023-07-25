@@ -13,4 +13,5 @@
 	- Hash: Contator com chave/valor interno (Equivalente a um dicionário)
 	- Simple: Chave/Valor simples
 - Conexão Thread safe, pode ser compartilhando a mesma conexão entre threads distintas
-- Quando há muita operação assincrona (valores gigantes de burst test > 10.000 ops/sec, pode travar descarregamento de fila)
+- Quando há muita operação assincrona (FireAndForget), pode travar descarregamento de fila).
+	- Os testes funcionaram bem até 420 mil operações por segundo.

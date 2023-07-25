@@ -94,9 +94,10 @@ Task<int> StartWorkerTask(int taskId, IDatabase db) => Task.Run(async () =>
             Console.WriteLine($"Task {taskId}: {count:N0} - {watch.Elapsed}");
 
             // No teste de carga a fila do "Fire and Forget" estoura sem ter um espaço para descarregamento.
-            // Com 10 threads e 50ms de delay a cada 5k registros, foi possível atingir a taxa de 749.973,3 op/sec (74.593,4 op/sec/thread)
+            // Com 10 threads e 50ms de delay a cada 5k registros, foi possível atingir a taxa de 749.973,3 op/sec (74.593,4 op/sec/thread).
+            // Os testes funcionaram bem até 420 mil operações por segundo.
             if (FireAndForgetTest)
-                await Task.Delay(50);
+                await Task.Delay(100);
         }
     }
     watch.Stop();
