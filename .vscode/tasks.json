@@ -183,12 +183,12 @@
             "group": "build"
         },
         {
-            "label": "build-logs/MicrosoftLogging",
+            "label": "build-logs/microsoft-logging",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/logs/MicrosoftLogging/MicrosoftLogging-Sample.csproj",
+                "${workspaceFolder}/logs/microsoft-logging/microsoft-logging-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],

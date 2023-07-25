@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\MicrosoftLogging\MyLogger\MyConsoleLoggerFormatter.cs" Link="MyLogger\MyConsoleLoggerFormatter.cs" />
-    <Compile Include="..\MicrosoftLogging\MyLogger\MyConsoleLoggerFormatterHelpers.cs" Link="MyLogger\MyConsoleLoggerFormatterHelpers.cs" />
+    <Compile Include="..\microsoft-logging\MyLogger\MyConsoleLoggerFormatter.cs" Link="MyLogger\MyConsoleLoggerFormatter.cs" />
+    <Compile Include="..\microsoft-logging\MyLogger\MyConsoleLoggerFormatterHelpers.cs" Link="MyLogger\MyConsoleLoggerFormatterHelpers.cs" />
   </ItemGroup>
 
   <ItemGroup>

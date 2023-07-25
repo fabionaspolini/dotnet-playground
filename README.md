@@ -50,8 +50,8 @@ Maiores detalhes descritos no meu [post](https://fabionaspolini.medium.com/bibli
 ### [logs](logs)
 - [NLog](logs/NLog)
 - [NLogAsMicrosoftProxy](logs/NLogAsMicrosoftProxy)
-- [Log4Net](logs/Log4Net)
-- [MicrosoftLogging](logs/MicrosoftLogging)
+- [log4net](logs/log4net)
+- [microsoft-logging](logs/microsoft-logging)
 - [Serilog](logs/Serilog)
 
 ### others

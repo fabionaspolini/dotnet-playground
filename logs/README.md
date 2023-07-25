@@ -3,7 +3,7 @@
 - [Benchmark](#benchmark)
   - [NLog :heart:](#nlog-heart)
   - [Microsoft Logging](#microsoft-logging)
-  - [Log4Net](#log4net)
+  - [log4net](#log4net)
   - [Serilog](#serilog)
 - [Visão geral](#visão-geral)
   - [Activity](#activity)
@@ -20,7 +20,7 @@
 - :-1: Requisito não atendido oficialmente, mas com alternativas manuais
 - :x: Requisito não atendido
 
-| Feature                                       | NLog :heart:          | Microsoft             | Log4Net               | Serilog             |
+| Feature                                       | NLog :heart:          | Microsoft             | log4net               | Serilog             |
 |-----------------------------------------------|-----------------------|-----------------------|-----------------------|---------------------|
 | Arquivo com nome diário                       | :heavy_check_mark:    | :-1:                  | :heavy_check_mark:    | :heavy_check_mark:  |
 | Exclusão de arquivos antigos                  | :heavy_check_mark:    | :-1:                  | :heavy_check_mark:    | :heavy_check_mark:  |
@@ -59,7 +59,7 @@
 - :x: Não há suporte a inclusão de propriedades estruturadas adicionais
 - :x: A melhor maneira de adicionar suporte a gravação de arquivos é adicionar o proxy provider para o NLog ou Serilog
 
-### Log4Net
+### log4net
 
 - :heavy_check_mark: Personalização do layout
 - :-1: Documentação fraca

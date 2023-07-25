@@ -156,13 +156,13 @@
             "stopAtEntry": false
         },
         {
-            "name": "logs/MicrosoftLogging",
+            "name": "logs/microsoft-logging",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build-logs/MicrosoftLogging",
-            "program": "${workspaceFolder}/logs/MicrosoftLogging/bin/Debug/net5.0/MicrosoftLogging-Sample.dll",
+            "preLaunchTask": "build-logs/microsoft-logging",
+            "program": "${workspaceFolder}/logs/microsoft-logging/bin/Debug/net5.0/microsoft-logging-Sample.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/logs/MicrosoftLogging",
+            "cwd": "${workspaceFolder}/logs/microsoft-logging",
             "console": "internalConsole",
             "stopAtEntry": false
         },

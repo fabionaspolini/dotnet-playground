@@ -2,7 +2,7 @@
 {
     "EventId": 0,
     "LogLevel": "Debug",
-    "Category": "MicrosoftLogging_Sample.Program",
+    "Category": "microsoft-logging_Sample.Program",
     "Message": "Exemplo de outro log estruturado Exemplo 25.",
     "State": {
       "Message": "Exemplo de outro log estruturado Exemplo 25.",
@@ -17,7 +17,7 @@
 {
     "EventId": 0,
     "LogLevel": "Information",
-    "Category": "MicrosoftLogging_Sample.Program",
+    "Category": "microsoft-logging_Sample.Program",
     "Message": "Teste 4",
     "State": {
       "Message": "Teste 4",
@@ -41,9 +41,9 @@
   {
     "EventId": 0,
     "LogLevel": "Critical",
-    "Category": "MicrosoftLogging_Sample.Program",
+    "Category": "microsoft-logging_Sample.Program",
     "Message": "Erro ao realizar ....",
-    "Exception": "System.Exception: Erro exemplo\r\n   at MicrosoftLogging_Sample.Program.Main(String[] args) in C:\\Sources\\Samples\\dotnet-playground\\logs\\MicrosoftLogging\\Program.cs:line 73",
+    "Exception": "System.Exception: Erro exemplo\r\n   at microsoft-logging_Sample.Program.Main(String[] args) in C:\\Sources\\Samples\\dotnet-playground\\logs\\microsoft-logging\\Program.cs:line 73",
     "State": {
       "Message": "Erro ao realizar ....",
       "{OriginalFormat}": "Erro ao realizar ...."
@@ -63,7 +63,7 @@
 {
     "EventId": 0,
     "LogLevel": "Information",
-    "Category": "MicrosoftLogging_Sample.Program",
+    "Category": "microsoft-logging_Sample.Program",
     "Message": "Iniciando processo",
     "State": {
       "Message": "Iniciando processo",
@@ -88,7 +88,7 @@
   {
     "EventId": 0,
     "LogLevel": "Information",
-    "Category": "MicrosoftLogging_Sample.Program",
+    "Category": "microsoft-logging_Sample.Program",
     "Message": "Scope message - 1",
     "State": {
       "Message": "Scope message - 1",
@@ -118,7 +118,7 @@
   {
     "EventId": 0,
     "LogLevel": "Information",
-    "Category": "MicrosoftLogging_Sample.Program",
+    "Category": "microsoft-logging_Sample.Program",
     "Message": "Executando sub-processo",
     "State": {
       "Message": "Executando sub-processo",
@@ -148,7 +148,7 @@
   {
     "EventId": 0,
     "LogLevel": "Information",
-    "Category": "MicrosoftLogging_Sample.Program",
+    "Category": "microsoft-logging_Sample.Program",
     "Message": "Activity 2 stoped",
     "State": {
       "Message": "Activity 2 stoped",
@@ -178,7 +178,7 @@
   {
     "EventId": 0,
     "LogLevel": "Information",
-    "Category": "MicrosoftLogging_Sample.Program",
+    "Category": "microsoft-logging_Sample.Program",
     "Message": "Activity 1 stoped",
     "State": {
       "Message": "Activity 1 stoped",
