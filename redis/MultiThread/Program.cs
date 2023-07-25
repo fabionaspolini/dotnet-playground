@@ -45,7 +45,7 @@ foreach (var i in Enumerable.Range(1, Threads))
     tasks.Add(StartWorkerTask(i, db));
 
 Task.WaitAll(tasks.ToArray());
-var totalOperations = tasks.Sum(t => t.Result);
+var totalOperations = tasks.Sum(x => x.Result);
 
 Console.WriteLine();
 Console.WriteLine($"Total: {totalOperations:N0} - {totalOperations / TotalTestTime.TotalSeconds:N1} op/sec");
@@ -54,7 +54,7 @@ var redisCounters = redis.GetCounters();
 if (FireAndForgetTest)
     Console.WriteLine($"Wait flushing memory queue ({redisCounters.Interactive.SentItemsAwaitingResponse:N0} itens)...");
 
-db.HashIncrement(RedisKey, "fim", 1, CommandFlags.FireAndForget);
+db.HashIncrement(RedisKey, "total", tasks.Sum(x => x.Result), CommandFlags.FireAndForget);
 SpinWait.SpinUntil(() => redisCounters.Interactive.SentItemsAwaitingResponse == 0, TimeSpan.FromSeconds(60)); // Nem sempre funciona, com muitas mensagens as vezes trava aqui
 
 Console.WriteLine();
@@ -94,6 +94,6 @@ Task<int> StartWorkerTask(int taskId, IDatabase db) => Task.Run(async () =>
         }
     }
     watch.Stop();
-    Console.WriteLine($"Task {taskId}: {count:N0} - {watch.Elapsed} - {count / watch.Elapsed.TotalSeconds:N1} - Fim");
+    Console.WriteLine($"Task {taskId}: {count:N0} - {watch.Elapsed} - {count / watch.Elapsed.TotalSeconds:N1} op/sec - Fim");
     return count;
 });

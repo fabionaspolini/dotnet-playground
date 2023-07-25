@@ -5,14 +5,15 @@ using System.Diagnostics;
 Console.WriteLine(".:: PostgreSQL Playground - Benchmark ::.");
 
 TimeSpan TotalTestTime = TimeSpan.FromSeconds(10);
+const int Threads = 10;
 
 Console.WriteLine("Iniciando tasks...");
 var tasks = new List<Task<int>>();
-foreach (var i in Enumerable.Range(1, 10))
+foreach (var i in Enumerable.Range(1, Threads))
     tasks.Add(StartWorkerTask(i));
 
 Task.WaitAll(tasks.ToArray());
-var totalOperations = tasks.Sum(t => t.Result);
+var totalOperations = tasks.Sum(x => x.Result);
 
 Console.WriteLine();
 Console.WriteLine($"Total: {totalOperations:N0} - {totalOperations / TotalTestTime.TotalSeconds:N1} op/sec");
@@ -37,7 +38,7 @@ Task<int> StartWorkerTask(int taskId) => Task.Run(async () =>
             Console.WriteLine($"Task {taskId}: {count:N0} - {watch.Elapsed}");
     }
     watch.Stop();
-    Console.WriteLine($"Task {taskId}: {count:N0} - {watch.Elapsed} - Fim");
+    Console.WriteLine($"Task {taskId}: {count:N0} - {watch.Elapsed} - {count / watch.Elapsed.TotalSeconds:N1} op/sec - Fim");
     return count;
 });
 
