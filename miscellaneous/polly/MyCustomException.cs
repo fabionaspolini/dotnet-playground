@@ -1,6 +1,6 @@
 using System;
 
-namespace Polly_Sample
+namespace PollyPlayground
 {
     public class MyCustomException : Exception
 {

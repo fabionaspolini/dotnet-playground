@@ -1,7 +1,7 @@
 ﻿using log4net;
 using System;
 
-namespace Log4Net_Sample
+namespace Log4NetPlayground
 {
     class Teste
     {

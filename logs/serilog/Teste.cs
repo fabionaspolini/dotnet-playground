@@ -1,8 +1,7 @@
 ﻿using Serilog;
 using System;
-using System.Threading;
 
-namespace Serilog_Sample
+namespace SerilogPlayground
 {
     class Teste
     {

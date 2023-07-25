@@ -4,7 +4,7 @@ using static System.Console;
 Console.WriteLine(".:: Primary Constructor ::.");
 
 // Lib não suporta classes top level statements
-namespace PrimaryConstructor_Sample
+namespace PrimaryConstructorPlayground
 {
     class PessoaRepository { }
 

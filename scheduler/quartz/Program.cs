@@ -3,7 +3,7 @@ using System;
 using Quartz;
 using Quartz.Impl;
 
-namespace Quartz_Sample;
+namespace QuartzPlayground;
 
 class Program
 {

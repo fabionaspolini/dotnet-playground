@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 
-namespace LanguageFeatures_Sample
+namespace LanguageFeaturesPlayground
 {
     public static class Startup
     {

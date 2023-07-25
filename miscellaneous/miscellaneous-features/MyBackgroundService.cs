@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 
-namespace LanguageFeatures_Sample
+namespace LanguageFeaturesPlayground
 {
     public class MyBackgroundService : BackgroundService
     {

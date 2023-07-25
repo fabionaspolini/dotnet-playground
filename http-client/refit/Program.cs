@@ -5,8 +5,8 @@ using QuickType;
 using Microsoft.Extensions.Configuration;
 using Refit;
 using System.Net.Http;
-using Refit_Sample;
 using System.Threading.Tasks;
+using RefitPlayground;
 
 // 1 - Exemplo utilizando a API pública da Marvel https://developer.marvel.com/docs
 // 2 - Cadastre-se gratuitamente e obtenha a chave publica e privada para executar este demo https://developer.marvel.com/account

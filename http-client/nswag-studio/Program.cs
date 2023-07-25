@@ -1,4 +1,4 @@
-﻿using NSwagStudio_Sample;
+﻿using NSwagStudioPlayground;
 using System.Net.Http;
 using static System.Console;
 

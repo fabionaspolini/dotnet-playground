@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace NLog_Sample
+namespace NLogPlayground
 {
     class Teste
     {

@@ -1,4 +1,4 @@
-﻿using Polly_Sample;
+﻿using PollyPlayground;
 using static System.Console;
 
 WriteLine(".:: Polly ::.");

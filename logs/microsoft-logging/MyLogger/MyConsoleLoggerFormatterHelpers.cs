@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 // Classes sealeds do dotnet runtime
 
-namespace MicrosoftLogging_Sample.MyLogger
+namespace MicrosoftLoggingPlayground.MyLogger
 {
     internal sealed class PooledByteBufferWriter : IBufferWriter<byte>, IDisposable
     {

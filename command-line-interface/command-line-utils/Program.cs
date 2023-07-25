@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using McMaster.Extensions.CommandLineUtils;
 
-namespace SubcommandSample
+namespace CommandLineUtilsPlayground
 {
     public class Program
     {
@@ -49,16 +49,16 @@ namespace SubcommandSample
             return 1;
         }
 
-       /* public override List<string> CreateArgs()
-        {
-            var args = new List<string>();
-            if (GitDir != null)
-            {
-                args.Add("--git-dir=" + GitDir);
-            }
+        /* public override List<string> CreateArgs()
+         {
+             var args = new List<string>();
+             if (GitDir != null)
+             {
+                 args.Add("--git-dir=" + GitDir);
+             }
 
-            return args;
-        }*/
+             return args;
+         }*/
 
         private static string GetVersion()
             => typeof(Git).Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion;

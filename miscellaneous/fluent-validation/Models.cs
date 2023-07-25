@@ -1,6 +1,6 @@
 using System;
 
-namespace FluentValidation_Sample
+namespace FluentValidationPlayground
 {
     enum TipoPessoa
     {

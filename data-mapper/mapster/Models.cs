@@ -1,4 +1,4 @@
-namespace Mapster_Sample;
+namespace MapsterPlayground;
 
 public class PersonModel
 {

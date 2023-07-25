@@ -1,6 +1,6 @@
 ﻿using System;
 using DasMulli.DataBuilderGenerator;
-using DataBuilderGenerator_Sample;
+using DataBuilderGeneratorPlayground;
 using static System.Console;
 
 WriteLine(".:: Data Builder Generator ::.");
@@ -21,7 +21,7 @@ WriteLine($"Pessoa 1: {pessoa1.GetFullName()}");
 WriteLine($"Pessoa 2: {pessoa2.GetFullName()}");
 WriteLine($"Pessoa 3: {pessoa3.GetFullName()}");
 
-namespace DataBuilderGenerator_Sample
+namespace DataBuilderGeneratorPlayground
 {
     [GenerateDataBuilder]
     public class Person

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
 
-namespace MicrosoftLoggingToNLog_Sample
+namespace MicrosoftLoggingToNLogPlayground
 {
     class Teste
     {

@@ -3,11 +3,10 @@ using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Text;
-using System.Threading;
 using Serilog.Formatting.Json;
 using static System.Console;
 
-namespace Serilog_Sample;
+namespace SerilogPlayground;
 
 class Program
 {
@@ -15,7 +14,7 @@ class Program
     {
         WriteLine(".:: Serilog ::.");
         Trace.CorrelationManager.ActivityId = Guid.NewGuid();
-        
+
         const string txtLogTemplate = "{Timestamp:dd/MM/yyyy HH:mm:ss.fff} {Level:u3} [{ActivityId}] [{SourceContext}] {Message:lj}{NewLine}{Exception}";
         Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Verbose()

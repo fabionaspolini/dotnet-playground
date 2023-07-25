@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net7.0</TargetFramework>
-    <RootNamespace>Serilog_Sample</RootNamespace>
+    <RootNamespace>SerilogPlayground</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

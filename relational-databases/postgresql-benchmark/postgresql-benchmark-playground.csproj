@@ -5,7 +5,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RootNamespace>PostgreSqlBenchmark_Sample</RootNamespace>
+    <RootNamespace>PostgreSqlBenchmarkPlayground</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

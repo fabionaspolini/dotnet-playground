@@ -2,7 +2,7 @@
 using Serilog.Events;
 using System.Diagnostics;
 
-namespace Serilog_Sample
+namespace SerilogPlayground
 {
     class ActivityIdEnricher : ILogEventEnricher
     {

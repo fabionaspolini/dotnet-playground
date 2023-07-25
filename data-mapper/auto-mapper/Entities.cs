@@ -1,6 +1,6 @@
 using System;
 
-namespace AutoMapper_Sample;
+namespace AutoMapperPlayground;
 
 public class Person
 {

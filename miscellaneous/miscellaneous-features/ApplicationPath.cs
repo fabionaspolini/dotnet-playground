@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LanguageFeatures_Sample
+namespace LanguageFeaturesPlayground
 {
     static class ApplicationPath
     {

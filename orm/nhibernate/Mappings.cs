@@ -1,6 +1,7 @@
 using FluentNHibernate.Mapping;
+using NHibernatePlayground;
 
-namespace NHibernate_Sample;
+namespace NHibernatePlayground;
 
 public class PessoaMap : ClassMap<Pessoa>
 {

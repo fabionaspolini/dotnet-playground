@@ -1,7 +1,7 @@
 using System;
 using Microsoft.Extensions.Logging;
 
-namespace LanguageFeatures_Sample
+namespace LanguageFeaturesPlayground
 {
     public class Exceptions
     {

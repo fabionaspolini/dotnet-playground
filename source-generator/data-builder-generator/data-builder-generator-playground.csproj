@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>DataBuilderGenerator_Sample</RootNamespace>
+    <RootNamespace>DataBuilderGeneratorPlayground</RootNamespace>
     <!-- <Nullable>Enable</Nullable> -->
   </PropertyGroup>
 

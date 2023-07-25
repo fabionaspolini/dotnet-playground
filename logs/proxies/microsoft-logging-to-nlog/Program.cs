@@ -7,7 +7,7 @@ using System;
 using System.Diagnostics;
 using static System.Console;
 
-namespace MicrosoftLoggingToNLog_Sample;
+namespace MicrosoftLoggingToNLogPlayground;
 
 class Program
 {

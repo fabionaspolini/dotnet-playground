@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>Liquid_Sample</RootNamespace>
+    <RootNamespace>LiquidPlayground</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

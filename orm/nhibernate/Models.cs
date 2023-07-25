@@ -1,4 +1,4 @@
-namespace NHibernate_Sample;
+namespace NHibernatePlayground;
 
 public class Pessoa
 {

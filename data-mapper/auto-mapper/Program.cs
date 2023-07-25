@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using AutoMapper_Sample;
+using AutoMapperPlayground;
 
 var config = new MapperConfiguration(cfg =>
 {

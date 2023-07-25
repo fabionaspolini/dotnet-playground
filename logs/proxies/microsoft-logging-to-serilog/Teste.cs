@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace MicrosoftLoggingToSerilog_Sample;
+namespace MicrosoftLoggingToSerilogPlayground;
 
 class Teste
 {

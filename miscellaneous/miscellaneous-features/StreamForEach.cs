@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using FluentDate;
 using Microsoft.Extensions.Logging;
 
-namespace LanguageFeatures_Sample
+namespace LanguageFeaturesPlayground
 {
     public class StreamForEach
     {

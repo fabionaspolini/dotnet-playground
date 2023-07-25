@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace MicrosoftLoggingWebApi_Sample.Controllers;
+namespace MicrosoftLoggingWebApiPlayground.Controllers;
 
 [ApiController]
 [Route("[controller]")]

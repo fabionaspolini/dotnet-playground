@@ -1,5 +1,5 @@
 ﻿using Mapster;
-using Mapster_Sample;
+using MapsterPlayground;
 
 // Obrigar que todos os mapeamentos estejam registrados
 TypeAdapterConfig.GlobalSettings.RequireExplicitMapping = true;

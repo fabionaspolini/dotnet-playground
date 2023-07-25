@@ -2,7 +2,7 @@
 using FluentValidation;
 using static System.Console;
 
-namespace FluentValidation_Sample
+namespace FluentValidationPlayground
 {
     class Program
     {

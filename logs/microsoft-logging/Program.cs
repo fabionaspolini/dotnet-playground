@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using MicrosoftLogging_Sample.MyLogger;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,7 +8,7 @@ using System.Text.Encodings.Web;
 using System.Threading;
 using static System.Console;
 
-namespace MicrosoftLogging_Sample
+namespace MicrosoftLoggingPlayground
 {
     record class ServiceOptions(string Url, string AccessKey);
 

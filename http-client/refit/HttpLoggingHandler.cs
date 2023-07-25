@@ -7,7 +7,7 @@ using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Refit_Sample
+namespace RefitPlayground
 {
     public class HttpLoggingHandler : DelegatingHandler
     {
@@ -60,7 +60,7 @@ namespace Refit_Sample
 
             var resp = response;
 
-            Debug.WriteLine($"{msg} {req.RequestUri.Scheme.ToUpper()}/{resp.Version} {(int) resp.StatusCode} {resp.ReasonPhrase}");
+            Debug.WriteLine($"{msg} {req.RequestUri.Scheme.ToUpper()}/{resp.Version} {(int)resp.StatusCode} {resp.ReasonPhrase}");
 
             foreach (var header in resp.Headers)
             {
@@ -83,13 +83,13 @@ namespace Refit_Sample
                     Debug.WriteLine($"{msg} {string.Join("", result.Cast<char>().Take(256))}...");
                 }
             }
-            
+
             Debug.WriteLine($"{msg} Duration: {DateTime.Now - start}");
             Debug.WriteLine($"{msg}==========Response End==========");
             return response;
         }
 
-        readonly string[] types = {"html", "text", "xml", "json", "txt", "x-www-form-urlencoded"};
+        readonly string[] types = { "html", "text", "xml", "json", "txt", "x-www-form-urlencoded" };
 
         private bool IsTextBasedContentType(HttpHeaders headers)
         {

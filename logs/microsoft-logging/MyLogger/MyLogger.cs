@@ -10,7 +10,7 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Diagnostics;
 
-namespace MicrosoftLogging_Sample.MyLogger;
+namespace MicrosoftLoggingPlayground.MyLogger;
 
 // https://learn.microsoft.com/en-us/dotnet/core/extensions/custom-logging-provider
 // https://www.treinaweb.com.br/blog/criando-um-provider-customizado-para-o-microsoft-extensions-logging

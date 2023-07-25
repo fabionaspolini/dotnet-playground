@@ -5,7 +5,7 @@ using static System.Console;
 
 [assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config")]
 
-namespace Log4Net_Sample
+namespace Log4NetPlayground
 {
     class Program
     {
@@ -24,11 +24,11 @@ namespace Log4Net_Sample
             }
             catch { }
 
-            log4net.ThreadContext.Properties["MinhaPropriedade"] = "ABC";
-            log4net.ThreadContext.Properties["MinhaPropriedade2"] = "DEF";
-            log4net.ThreadContext.Properties["MinhaPropriedade3"] = new { Id = 1, Nome = "Teste" };
+            ThreadContext.Properties["MinhaPropriedade"] = "ABC";
+            ThreadContext.Properties["MinhaPropriedade2"] = "DEF";
+            ThreadContext.Properties["MinhaPropriedade3"] = new { Id = 1, Nome = "Teste" };
             Logger.Debug("Exemplo de log com informações adicionais");
-            log4net.ThreadContext.Properties.Clear();
+            ThreadContext.Properties.Clear();
 
             // Logger.Debug("Exemplo de outro log estruturado {nome} {idade}.", "Exemplo", 25); // Não há suporte a este layout de log estruturado
 

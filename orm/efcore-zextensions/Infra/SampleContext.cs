@@ -1,8 +1,8 @@
-﻿using EFCore_ZExtensions_Sample.Entities;
-using EFCore_ZExtensions_Sample.Infra.Mappings;
+﻿using EFCore_ZExtensionsPlayground.Entities;
+using EFCore_ZExtensionsPlayground.Infra.Mappings;
 using Microsoft.EntityFrameworkCore;
 
-namespace EFCore_ZExtensions_Sample.Infra;
+namespace EFCore_ZExtensionsPlayground.Infra;
 
 public class SampleContext : DbContext
 {

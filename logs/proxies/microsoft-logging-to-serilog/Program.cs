@@ -7,7 +7,7 @@ using Serilog;
 using Serilog.Formatting.Json;
 using static System.Console;
 
-namespace MicrosoftLoggingToSerilog_Sample;
+namespace MicrosoftLoggingToSerilogPlayground;
 
 class Program
 {

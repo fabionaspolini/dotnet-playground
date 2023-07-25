@@ -1,4 +1,4 @@
-namespace MicrosoftLoggingWebApi_Sample;
+namespace MicrosoftLoggingWebApiPlayground;
 
 public class WeatherForecast
 {

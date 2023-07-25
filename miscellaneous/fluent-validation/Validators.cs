@@ -2,7 +2,7 @@ using System.Linq;
 using FluentValidation;
 using FluentValidation.Validators;
 
-namespace FluentValidation_Sample
+namespace FluentValidationPlayground
 {
     class PessoaValidator : AbstractValidator<Pessoa>
     {

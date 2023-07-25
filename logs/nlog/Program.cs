@@ -3,7 +3,7 @@ using System;
 using System.Diagnostics;
 using static System.Console;
 
-namespace NLog_Sample;
+namespace NLogPlayground;
 
 class Program
 {

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>FluentValidation_Sample</RootNamespace>
+    <RootNamespace>FluentValidationPlayground</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

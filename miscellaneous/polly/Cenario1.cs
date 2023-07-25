@@ -2,7 +2,7 @@ using System;
 using Polly;
 using static System.Console;
 
-namespace Polly_Sample
+namespace PollyPlayground
 {
     public static class Cenario1
     {

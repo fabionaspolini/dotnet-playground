@@ -3,7 +3,8 @@ using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
-using NHibernate_Sample;
+using NHibernatePlayground;
+using NHibernatePlayground;
 
 ISessionFactory CreateSessionFactory()
 {

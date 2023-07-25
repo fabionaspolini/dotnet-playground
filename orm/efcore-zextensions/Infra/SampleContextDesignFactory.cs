@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace EFCore_ZExtensions_Sample.Infra;
+namespace EFCore_ZExtensionsPlayground.Infra;
 
 /// <summary>
 /// Fábrica para suportar CLI para criar e aplicar migrations, não utilizada em tempo de execução
