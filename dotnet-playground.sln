@@ -43,13 +43,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "logs", "logs", "{FAD75C27-6
 		logs\README.md = logs\README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NLog-Sample", "logs\NLog\NLog-Sample.csproj", "{89256F64-BFF3-4F52-BF58-49F8C3AE7A7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nlog-playground", "logs\NLog\nlog-playground.csproj", "{89256F64-BFF3-4F52-BF58-49F8C3AE7A7E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "microsoft-logging-Sample", "logs\microsoft-logging\microsoft-logging-Sample.csproj", "{32E37ECF-DFA0-4D5C-89F5-4136B466A322}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "microsoft-logging-playground", "logs\microsoft-logging\microsoft-logging-playground.csproj", "{32E37ECF-DFA0-4D5C-89F5-4136B466A322}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "log4net-Sample", "logs\log4net\log4net-Sample.csproj", "{0B035BEC-7492-4D1D-90FE-FEB6CD681900}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "log4net-playgroud", "logs\log4net\log4net-playgroud.csproj", "{0B035BEC-7492-4D1D-90FE-FEB6CD681900}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serilog-Sample", "logs\Serilog\Serilog-Sample.csproj", "{73A41427-9EDF-4A24-B145-86BA6799F014}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "serilog-playground", "logs\Serilog\serilog-playground.csproj", "{73A41427-9EDF-4A24-B145-86BA6799F014}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scheduler", "scheduler", "{4FDCC2A0-46DC-11EC-BC3E-AF7DFFB3ECD5}"
 EndProject
@@ -73,7 +73,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "auto-mapper-playground", "d
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mapster-playground", "data-mapper\Mapster\mapster-playground.csproj", "{DC618915-FC83-4108-B7B7-6A19D7C8A3AA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "microsoft-logging-web-api-Sample", "logs\microsoft-logging-web-api\microsoft-logging-web-api-Sample.csproj", "{4D6B23C5-CB86-4D8B-8C7F-847E2067D733}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "microsoft-logging-web-api-playground", "logs\microsoft-logging-web-api\microsoft-logging-web-api-playground.csproj", "{4D6B23C5-CB86-4D8B-8C7F-847E2067D733}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "redis", "redis", "{C7150475-976A-4735-A547-6E709C701190}"
 	ProjectSection(SolutionItems) = preProject
@@ -90,7 +90,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "refit-playground", "http-cl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fluent-validation-playground", "data\fluent-validation\fluent-validation-playground.csproj", "{C1912089-218B-48D4-B3A9-7D6BD8E5AEDC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "native-features-playground", "native-features\language-features\native-features-playground.csproj", "{95D9B6C7-1A5D-49F2-A5B7-4562FD0534FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "miscellaneous-features-playground", "native-features\miscellaneous-features\miscellaneous-features-playground.csproj", "{95D9B6C7-1A5D-49F2-A5B7-4562FD0534FB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "data-builder-generator-playground", "source-generator\data-builder-generator\data-builder-generator-playground.csproj", "{79DE4D00-0DB0-4DAE-9606-6DDBC692AA24}"
 EndProject
