@@ -9,7 +9,7 @@
 - Validadores personalizados:
     - Predicate Validator: `RuleFor(x => x.Pets).Must(list => list.Count < 10).WithMessage("The list must contain fewer than 10 items")`;
         - Neste caso podem ser feitos extensions methods para facilitar o uso.
-    - Também é possível criar placeholder personalizados para incluir na mensagem de validação, veja na [documentação](https://docs.fluentvalidation.net/en/latest/custom-validators.html#custom-message-placeholders).
+    - Também é possível criar placeholder personalizados para incluir na mensagem de validação, veja na [documentação](https://docs.fluent-validation.net/en/latest/custom-validators.html#custom-message-placeholders).
 
 ```csharp
 var result = pessoaValidator.Validate(pessoa);

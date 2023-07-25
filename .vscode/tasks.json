@@ -38,36 +38,36 @@
             }
         },
         {
-            "label": "build-command-line-interface/CommandLineParser",
+            "label": "build-command-line-interface/command-line-parser",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/command-line-interface/CommandLineParser/CommandLineParser-Sample.csproj",
+                "${workspaceFolder}/command-line-interface/command-line-parser/command-line-parser-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-command-line-interface/CommandLineUtils",
+            "label": "build-command-line-interface/command-line-utils",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/command-line-interface/CommandLineUtils/CommandLineUtils-Sample.csproj",
+                "${workspaceFolder}/command-line-interface/command-line-utils/command-line-utils-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-data/CacheManager",
+            "label": "build-data/cache-manager",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/data/CacheManager/CacheManager-Sample.csproj",
+                "${workspaceFolder}/data/cache-manager/cache-manager-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -86,12 +86,12 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-data/FluentValidation",
+            "label": "build-data/fluent-validation",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/data/FluentValidation/FluentValidation-Sample.csproj",
+                "${workspaceFolder}/data/fluent-validation/fluent-validation-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],

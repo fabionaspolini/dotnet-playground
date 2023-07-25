@@ -12,7 +12,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "liquid-playground", "templa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nswag-studio-playground", "http-client\NSwagStudio\nswag-studio-playground.csproj", "{3B656115-804A-429D-93F9-525607E1F984}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cache-manager-playground", "data\CacheManager\cache-manager-playground.csproj", "{70313DF3-B407-4FC7-824B-13C3BFB719DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cache-manager-playground", "data\cache-manager\cache-manager-playground.csproj", "{70313DF3-B407-4FC7-824B-13C3BFB719DB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "maestria-extensions-playground", "syntax-sugar\MaestriaExtensions\maestria-extensions-playground.csproj", "{337F3867-1D93-4959-9310-DEC3F79FA8C2}"
 EndProject
@@ -59,9 +59,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "native-features", "native-f
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "command-line-interface", "command-line-interface", "{C0023841-3C73-40CE-AE16-F83C512781AE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "command-line-parser-playground", "command-line-interface\CommandLineParser\command-line-parser-playground.csproj", "{7FEC01F2-B120-4628-90E3-1642BBDEC54B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "command-line-parser-playground", "command-line-interface\command-line-parser\command-line-parser-playground.csproj", "{7FEC01F2-B120-4628-90E3-1642BBDEC54B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "command-line-utils-playground", "command-line-interface\CommandLineUtils\command-line-utils-playground.csproj", "{871A5CC1-7014-4B69-96E6-4711509EB077}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "command-line-utils-playground", "command-line-interface\command-line-utils\command-line-utils-playground.csproj", "{871A5CC1-7014-4B69-96E6-4711509EB077}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nhibernate-playground", "data\NHibernate\nhibernate-playground.csproj", "{3339B372-2CA6-4605-B760-31EF817B2D54}"
 EndProject
@@ -94,7 +94,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "postgresql-benchmark-playgr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "refit-playground", "http-client\Refit\refit-playground.csproj", "{1E0E16ED-1128-4D12-AB46-CA7DD1742499}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fluent-validation-playground", "data\FluentValidation\fluent-validation-playground.csproj", "{C1912089-218B-48D4-B3A9-7D6BD8E5AEDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fluent-validation-playground", "data\fluent-validation\fluent-validation-playground.csproj", "{C1912089-218B-48D4-B3A9-7D6BD8E5AEDC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "native-features-playground", "language-features\native-features-playground.csproj", "{95D9B6C7-1A5D-49F2-A5B7-4562FD0534FB}"
 EndProject

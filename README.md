@@ -30,10 +30,10 @@ Maiores detalhes descritos no meu [post](https://fabionaspolini.medium.com/bibli
 
 ### data
 
-- [CacheManager](data/CacheManager): Pipeline para gerenciamento de cache em memória e Redis
+- [cache-manager](data/cache-manager): Pipeline para gerenciamento de cache em memória e Redis
 - Dapper: Simples ORM pequeno para leitura de dados
 - DapperContrib: Adicionar suporte a escrita no Dapper
-- [FluentValidation](data/atadataaaFluentValidation): Validação de dados
+- [fluent-validation](data/atadataaafluent-validation): Validação de dados
 - ClosedXML: Leitura e escrita de excel independente de softwares instalados na estação de trabalho.
 
 ### data-mapper
