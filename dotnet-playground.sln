@@ -96,7 +96,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "refit-playground", "http-cl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fluent-validation-playground", "data\fluent-validation\fluent-validation-playground.csproj", "{C1912089-218B-48D4-B3A9-7D6BD8E5AEDC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "native-features-playground", "language-features\native-features-playground.csproj", "{95D9B6C7-1A5D-49F2-A5B7-4562FD0534FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "native-features-playground", "native-features\language-features\native-features-playground.csproj", "{95D9B6C7-1A5D-49F2-A5B7-4562FD0534FB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "data-builder-generator-playground", "source-generator\data-builder-generator\data-builder-generator-playground.csproj", "{79DE4D00-0DB0-4DAE-9606-6DDBC692AA24}"
 EndProject

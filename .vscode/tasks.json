@@ -175,7 +175,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/language-features/LanguageFeatures-Sample.csproj",
+                "${workspaceFolder}/native-features\language-features/LanguageFeatures-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
