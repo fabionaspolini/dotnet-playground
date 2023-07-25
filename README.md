@@ -7,7 +7,7 @@
   - [data-mapper](#data-mapper)
   - [http-client](#http-client)
   - [logs](#logs)
-  - [others](#others)
+  - [miscellaneous](#miscellaneous)
   - [syntax-sugar](#syntax-sugar)
   - [source-generator](#source-generator)
   - [template-engine](#template-engine)
@@ -54,9 +54,9 @@ Maiores detalhes descritos no meu [post](https://fabionaspolini.medium.com/bibli
 - [microsoft-logging](logs/microsoft-logging)
 - [Serilog](logs/Serilog)
 
-### others
-- [LanguageFeatures](others/LanguageFeatures): Recursos da linguagem C# / .NET
-- [polly](others/polly): Resiliência de operações
+### miscellaneous
+- [LanguageFeatures](miscellaneous/LanguageFeatures): Recursos da linguagem C# / .NET
+- [polly](miscellaneous/polly): Resiliência de operações
 
 ### syntax-sugar
 

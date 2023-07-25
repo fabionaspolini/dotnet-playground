@@ -243,12 +243,12 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-others/polly",
+            "label": "build-miscellaneous/polly",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/others/polly/polly-Sample.csproj",
+                "${workspaceFolder}/miscellaneous/polly/polly-Sample.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],

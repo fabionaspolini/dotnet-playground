@@ -4,8 +4,10 @@ using System.Diagnostics;
 
 Console.WriteLine(".:: PostgreSQL Playground - Benchmark ::.");
 
+// Calibração do teste
 TimeSpan TotalTestTime = TimeSpan.FromSeconds(10);
 const int Threads = 10;
+// --
 
 Console.WriteLine("Iniciando tasks...");
 var tasks = new List<Task<int>>();
