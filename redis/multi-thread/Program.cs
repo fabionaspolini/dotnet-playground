@@ -5,6 +5,12 @@ using System.Threading.Tasks;
 Console.WriteLine(".:: Redis Playground - Multi Thread ::.");
 
 Console.WriteLine("Conectando...");
+
+// Prevenção para ThreadPool não dar preferência para excecutar callback do usuário, penalizando consultas.
+// Utilização de acordo com o SynchronizationContext da sua aplicação (Web, Desktop, Console, etc).
+// https://stackexchange.github.io/StackExchange.Redis/ThreadTheft
+// ConnectionMultiplexer.SetFeatureFlag("preventthreadtheft", true);
+
 using var redis = ConnectionMultiplexer.Connect("localhost"); // Utilizar como singleton
 redis.StormLogThreshold = 1_000_000;
 redis.ErrorMessage += (object? sender, RedisErrorEventArgs e) =>
