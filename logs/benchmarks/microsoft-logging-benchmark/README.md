@@ -1,7 +1,10 @@
 ﻿# microsoft-logging-benchmark-playground
 
+## Testes sem High-performance
 
-## MyJsonConsole -> SimpleLog (ShortRunJob) -> ActivityTrackingOptions: SpanId, TraceId, ParentId, Tags, Baggage
+Teste sem otimização para [alta performance do Microsoft Logging](https://learn.microsoft.com/en-us/dotnet/core/extensions/high-performance-logging).
+
+### MyJson -> SimpleLog (ShortRunJob) -> ActivityTrackingOptions: SpanId, TraceId, ParentId, Tags, Baggage + LogLevel: Information
 
 |    Method | LoggerProvider | Scopes | Activity |     Mean |    Error |  StdDev |  StdErr |      Min |       Q1 |   Median |       Q3 |      Max |    Op/s |
 |---------- |--------------- |------- |--------- |---------:|---------:|--------:|--------:|---------:|---------:|---------:|---------:|---------:|--------:|
@@ -10,7 +13,7 @@
 | SimpleLog |         MyJson |   True |    False | 156.6 μs | 19.74 μs | 1.08 μs | 0.62 μs | 156.0 μs | 156.0 μs | 156.1 μs | 157.0 μs | 157.9 μs | 6,383.9 |
 | SimpleLog |         MyJson |   True |     True | 198.5 μs | 11.68 μs | 0.64 μs | 0.37 μs | 198.1 μs | 198.1 μs | 198.1 μs | 198.7 μs | 199.2 μs | 5,038.7 |
 
-## SimpleConsole -> All tests (ShortRunJob) -> ActivityTrackingOptions: SpanId, TraceId, ParentId, Tags, Baggage
+### SimpleConsole -> All tests (ShortRunJob) -> ActivityTrackingOptions: SpanId, TraceId, ParentId, Tags, Baggage + LogLevel: Information
 
 |          Method | LoggerProvider | Scopes | Activity |     Mean |     Error |   StdDev |  StdErr |      Min |       Q1 |   Median |       Q3 |      Max |    Op/s |
 |---------------- |--------------- |------- |--------- |---------:|----------:|---------:|--------:|---------:|---------:|---------:|---------:|---------:|--------:|
@@ -30,7 +33,7 @@
 
 
 
-## MyJson -> All tests (ShortRunJob) -> ActivityTrackingOptions: SpanId, TraceId, ParentId, Tags, Baggage
+### MyJson -> All tests (ShortRunJob) -> ActivityTrackingOptions: SpanId, TraceId, ParentId, Tags, Baggage + LogLevel: Information
 
 Este é cenário esperado para executar por padrão na aplicação.
 
@@ -49,7 +52,7 @@ Este é cenário esperado para executar por padrão na aplicação.
 |  OneTemplateLog |         MyJson |   True |     True | 211.6 μs | 45.40 μs | 2.49 μs | 1.44 μs | 208.7 μs | 210.7 μs | 212.7 μs | 213.0 μs | 213.3 μs | 4,726.0 |
 | FiveTemplateLog |         MyJson |   True |     True | 227.3 μs | 33.40 μs | 1.83 μs | 1.06 μs | 225.6 μs | 226.3 μs | 227.0 μs | 228.1 μs | 229.2 μs | 4,400.2 |
 
-## MyJson -> All tests (ShortRunJob) -> ActivityTrackingOptions: None
+### MyJson -> All tests (ShortRunJob) -> ActivityTrackingOptions: None + LogLevel: Information
 
 Teste desabilitando o recurso que adiciona informações da activity ao log.  
 O resultado efetivo de todos os casos de testes com `Activity=true` é um log sem os dados adicionais das tags e baggages.
@@ -69,7 +72,7 @@ O resultado efetivo de todos os casos de testes com `Activity=true` é um log se
 |  OneTemplateLog |         MyJson |   True |     True | 177.7 μs | 67.91 μs | 3.72 μs | 2.15 μs | 175.3 μs | 175.6 μs | 175.8 μs | 178.9 μs | 182.0 μs | 5,627.4 |
 | FiveTemplateLog |         MyJson |   True |     True | 178.5 μs | 57.63 μs | 3.16 μs | 1.82 μs | 176.5 μs | 176.7 μs | 176.9 μs | 179.5 μs | 182.1 μs | 5,602.0 |
 
-## MyJson -> All tests (ShortRunJob) -> ActivityTrackingOptions: SpanId, TraceId, ParentId, Tags, Baggage + LogLevel: Warning
+### MyJson -> All tests (ShortRunJob) -> ActivityTrackingOptions: SpanId, TraceId, ParentId, Tags, Baggage + LogLevel: Warning
 
 Teste completo da feature, porem adicionando filtro de log level para não imprimir no console nenhum log information.
 
@@ -88,7 +91,7 @@ Teste completo da feature, porem adicionando filtro de log level para não impri
 |  OneTemplateLog |         MyJson |   True |     True | 389.56 ns | 163.180 ns |  8.944 ns | 5.164 ns | 379.66 ns | 385.81 ns | 391.95 ns | 394.51 ns | 397.06 ns |  2,567,003.1 |
 | FiveTemplateLog |         MyJson |   True |     True | 436.59 ns | 107.971 ns |  5.918 ns | 3.417 ns | 429.78 ns | 434.64 ns | 439.51 ns | 440.00 ns | 440.49 ns |  2,290,465.5 |
 
-## SimpleConsole -> All tests (ShortRunJob) -> ActivityTrackingOptions: SpanId, TraceId, ParentId, Tags, Baggage + LogLevel: Warning
+### SimpleConsole -> All tests (ShortRunJob) -> ActivityTrackingOptions: SpanId, TraceId, ParentId, Tags, Baggage + LogLevel: Warning
 
 Teste completo da feature, porem adicionando filtro de log level para não imprimir no console nenhum log information.
 
@@ -107,9 +110,7 @@ Teste completo da feature, porem adicionando filtro de log level para não impri
 |  OneTemplateLog |  SimpleConsole |   True |     True | 416.55 ns | 162.944 ns |  8.932 ns | 5.157 ns | 406.33 ns | 413.39 ns | 420.44 ns | 421.66 ns | 422.87 ns |  2,400,682.0 |
 | FiveTemplateLog |  SimpleConsole |   True |     True | 480.77 ns | 151.594 ns |  8.309 ns | 4.797 ns | 472.19 ns | 476.76 ns | 481.32 ns | 485.05 ns | 488.78 ns |  2,080,016.5 |
 
-
-
-## All providers -> All tests (ShortRunJob)
+### All providers -> All tests (ShortRunJob) -> ActivityTrackingOptions: SpanId, TraceId, ParentId, Tags, Baggage + LogLevel: Information
 
 |          Method | LoggerProvider | Scopes | Activity |     Mean |     Error |  StdDev |  StdErr |      Min |       Q1 |   Median |       Q3 |      Max |    Op/s |
 |---------------- |--------------- |------- |--------- |---------:|----------:|--------:|--------:|---------:|---------:|---------:|---------:|---------:|--------:|
@@ -163,13 +164,68 @@ Teste completo da feature, porem adicionando filtro de log level para não impri
 | FiveTemplateLog |         MyJson |   True |     True | 222.7 μs |   5.76 μs | 0.32 μs | 0.18 μs | 222.4 μs | 222.6 μs | 222.7 μs | 222.9 μs | 223.1 μs | 4,489.7 |
 
 
+## Testes com High-performance
+
+Teste sem otimização para [alta performance do Microsoft Logging](https://learn.microsoft.com/en-us/dotnet/core/extensions/high-performance-logging).
+
+### ActivityTrackingOptions: SpanId, TraceId, ParentId, Tags, Baggage + LogLevel: Information
+
+Sem grandes benefícios quando todo log do código é gerado (Cenário sem filtros por log level).
+
+|                  Method | LoggerProvider | Scopes | Activity |     Mean |    Error |  StdDev |  StdErr |      Min |       Q1 |   Median |       Q3 |      Max |    Op/s |
+|------------------------ |--------------- |------- |--------- |---------:|---------:|--------:|--------:|---------:|---------:|---------:|---------:|---------:|--------:|
+|         **FiveTemplateLog** |  **SimpleConsole** |  **False** |    **False** | **104.0 μs** | **29.05 μs** | **1.59 μs** | **0.92 μs** | **102.3 μs** | **103.2 μs** | **104.0 μs** | **104.8 μs** | **105.5 μs** | **9,619.4** |
+| FiveTemplateLogHighPerf |  SimpleConsole |  False |    False | 105.8 μs | 20.64 μs | 1.13 μs | 0.65 μs | 105.1 μs | 105.1 μs | 105.2 μs | 106.1 μs | 107.1 μs | 9,454.8 |
+|         **FiveTemplateLog** |  **SimpleConsole** |  **False** |     **True** | **142.7 μs** | **22.36 μs** | **1.23 μs** | **0.71 μs** | **141.8 μs** | **142.0 μs** | **142.2 μs** | **143.1 μs** | **144.1 μs** | **7,008.0** |
+| FiveTemplateLogHighPerf |  SimpleConsole |  False |     True | 143.1 μs |  4.09 μs | 0.22 μs | 0.13 μs | 142.8 μs | 143.0 μs | 143.1 μs | 143.2 μs | 143.3 μs | 6,988.8 |
+|         **FiveTemplateLog** |  **SimpleConsole** |   **True** |    **False** | **121.0 μs** | **18.01 μs** | **0.99 μs** | **0.57 μs** | **119.9 μs** | **120.7 μs** | **121.4 μs** | **121.6 μs** | **121.7 μs** | **8,263.3** |
+| FiveTemplateLogHighPerf |  SimpleConsole |   True |    False | 122.6 μs |  9.05 μs | 0.50 μs | 0.29 μs | 122.1 μs | 122.4 μs | 122.7 μs | 122.9 μs | 123.0 μs | 8,155.6 |
+|         **FiveTemplateLog** |  **SimpleConsole** |   **True** |     **True** | **175.9 μs** | **51.31 μs** | **2.81 μs** | **1.62 μs** | **173.7 μs** | **174.3 μs** | **174.9 μs** | **177.0 μs** | **179.1 μs** | **5,685.0** |
+| FiveTemplateLogHighPerf |  SimpleConsole |   True |     True | 176.7 μs | 38.08 μs | 2.09 μs | 1.21 μs | 174.5 μs | 175.7 μs | 176.8 μs | 177.7 μs | 178.6 μs | 5,660.7 |
+
+
+|                  Method | LoggerProvider | Scopes | Activity |     Mean |    Error |  StdDev |  StdErr |      Min |       Q1 |   Median |       Q3 |      Max |    Op/s |
+|------------------------ |--------------- |------- |--------- |---------:|---------:|--------:|--------:|---------:|---------:|---------:|---------:|---------:|--------:|
+|         **FiveTemplateLog** |         **MyJson** |  **False** |    **False** | **164.6 μs** | **33.59 μs** | **1.84 μs** | **1.06 μs** | **162.8 μs** | **163.7 μs** | **164.6 μs** | **165.5 μs** | **166.5 μs** | **6,074.6** |
+| FiveTemplateLogHighPerf |         MyJson |  False |    False | 169.7 μs | 35.62 μs | 1.95 μs | 1.13 μs | 168.3 μs | 168.6 μs | 168.9 μs | 170.4 μs | 171.9 μs | 5,892.7 |
+|         **FiveTemplateLog** |         **MyJson** |  **False** |     **True** | **202.1 μs** | **21.61 μs** | **1.18 μs** | **0.68 μs** | **201.3 μs** | **201.4 μs** | **201.4 μs** | **202.4 μs** | **203.4 μs** | **4,949.2** |
+| FiveTemplateLogHighPerf |         MyJson |  False |     True | 197.2 μs | 30.10 μs | 1.65 μs | 0.95 μs | 195.5 μs | 196.4 μs | 197.4 μs | 198.1 μs | 198.8 μs | 5,070.2 |
+|         **FiveTemplateLog** |         **MyJson** |   **True** |    **False** | **177.3 μs** | **11.92 μs** | **0.65 μs** | **0.38 μs** | **176.8 μs** | **176.9 μs** | **177.0 μs** | **177.5 μs** | **178.1 μs** | **5,640.0** |
+| FiveTemplateLogHighPerf |         MyJson |   True |    False | 182.2 μs | 10.15 μs | 0.56 μs | 0.32 μs | 181.5 μs | 182.0 μs | 182.4 μs | 182.5 μs | 182.6 μs | 5,489.5 |
+|         **FiveTemplateLog** |         **MyJson** |   **True** |     **True** | **240.7 μs** | **98.61 μs** | **5.40 μs** | **3.12 μs** | **236.5 μs** | **237.7 μs** | **238.9 μs** | **242.8 μs** | **246.8 μs** | **4,154.2** |
+| FiveTemplateLogHighPerf |         MyJson |   True |     True | 245.8 μs | 27.78 μs | 1.52 μs | 0.88 μs | 244.9 μs | 245.0 μs | 245.0 μs | 246.3 μs | 247.6 μs | 4,067.8 |
+
+
+### ActivityTrackingOptions: SpanId, TraceId, ParentId, Tags, Baggage + LogLevel: Warning
+
+Grandes benefícios quando há muito log para ser ignorado (Cenário de produção com filtro de log level)
+
+|                  Method | LoggerProvider | Scopes | Activity |       Mean |      Error |     StdDev |    StdErr |        Min |         Q1 |     Median |         Q3 |        Max |          Op/s |
+|------------------------ |--------------- |------- |--------- |-----------:|-----------:|-----------:|----------:|-----------:|-----------:|-----------:|-----------:|-----------:|--------------:|
+|         **FiveTemplateLog** |  **SimpleConsole** |  **False** |    **False** |  **89.713 ns** |   **7.248 ns** |  **0.3973 ns** | **0.2294 ns** |  **89.267 ns** |  **89.554 ns** |  **89.841 ns** |  **89.936 ns** |  **90.030 ns** |  **11,146,692.0** |
+| FiveTemplateLogHighPerf |  SimpleConsole |  False |    False |   8.318 ns |   3.652 ns |  0.2002 ns | 0.1156 ns |   8.117 ns |   8.219 ns |   8.320 ns |   8.419 ns |   8.518 ns | 120,217,983.2 |
+|         **FiveTemplateLog** |  **SimpleConsole** |  **False** |     **True** | **345.081 ns** | **311.112 ns** | **17.0531 ns** | **9.8456 ns** | **326.058 ns** | **338.122 ns** | **350.187 ns** | **354.592 ns** | **358.998 ns** |   **2,897,870.9** |
+| FiveTemplateLogHighPerf |  SimpleConsole |  False |     True | 246.407 ns |  33.366 ns |  1.8289 ns | 1.0559 ns | 244.314 ns | 245.764 ns | 247.213 ns | 247.454 ns | 247.695 ns |   4,058,321.8 |
+|         **FiveTemplateLog** |  **SimpleConsole** |   **True** |    **False** | **149.970 ns** |  **25.584 ns** |  **1.4023 ns** | **0.8096 ns** | **148.365 ns** | **149.477 ns** | **150.589 ns** | **150.773 ns** | **150.956 ns** |   **6,668,004.2** |
+| FiveTemplateLogHighPerf |  SimpleConsole |   True |    False |  62.356 ns |   2.630 ns |  0.1442 ns | 0.0832 ns |  62.192 ns |  62.301 ns |  62.409 ns |  62.437 ns |  62.465 ns |  16,037,037.2 |
+|         **FiveTemplateLog** |  **SimpleConsole** |   **True** |     **True** | **435.766 ns** | **166.862 ns** |  **9.1463 ns** | **5.2806 ns** | **425.900 ns** | **431.668 ns** | **437.437 ns** | **440.699 ns** | **443.962 ns** |   **2,294,808.7** |
+| FiveTemplateLogHighPerf |  SimpleConsole |   True |     True | 372.813 ns |  45.101 ns |  2.4721 ns | 1.4273 ns | 369.973 ns | 371.980 ns | 373.988 ns | 374.233 ns | 374.479 ns |   2,682,309.0 |
+
+
+|                  Method | LoggerProvider | Scopes | Activity |       Mean |      Error |    StdDev |    StdErr |        Min |         Q1 |     Median |         Q3 |        Max |          Op/s |
+|------------------------ |--------------- |------- |--------- |-----------:|-----------:|----------:|----------:|-----------:|-----------:|-----------:|-----------:|-----------:|--------------:|
+|         **FiveTemplateLog** |         **MyJson** |  **False** |    **False** |  **89.637 ns** |  **16.520 ns** | **0.9055 ns** | **0.5228 ns** |  **89.053 ns** |  **89.116 ns** |  **89.179 ns** |  **89.930 ns** |  **90.680 ns** |  **11,156,062.5** |
+| FiveTemplateLogHighPerf |         MyJson |  False |    False |   8.122 ns |   2.540 ns | 0.1392 ns | 0.0804 ns |   8.020 ns |   8.043 ns |   8.065 ns |   8.173 ns |   8.281 ns | 123,122,690.9 |
+|         **FiveTemplateLog** |         **MyJson** |  **False** |     **True** | **326.348 ns** | **101.773 ns** | **5.5785 ns** | **3.2208 ns** | **319.975 ns** | **324.346 ns** | **328.717 ns** | **329.534 ns** | **330.350 ns** |   **3,064,218.0** |
+| FiveTemplateLogHighPerf |         MyJson |  False |     True | 235.956 ns | 151.530 ns | 8.3059 ns | 4.7954 ns | 228.913 ns | 231.376 ns | 233.840 ns | 239.478 ns | 245.116 ns |   4,238,075.8 |
+|         **FiveTemplateLog** |         **MyJson** |   **True** |    **False** | **152.551 ns** |  **20.108 ns** | **1.1022 ns** | **0.6364 ns** | **151.789 ns** | **151.919 ns** | **152.050 ns** | **152.932 ns** | **153.815 ns** |   **6,555,171.2** |
+| FiveTemplateLogHighPerf |         MyJson |   True |    False |  63.733 ns |  35.337 ns | 1.9369 ns | 1.1183 ns |  62.112 ns |  62.661 ns |  63.210 ns |  64.544 ns |  65.878 ns |  15,690,342.3 |
+|         **FiveTemplateLog** |         **MyJson** |   **True** |     **True** | **477.752 ns** | **161.896 ns** | **8.8740 ns** | **5.1234 ns** | **467.755 ns** | **474.279 ns** | **480.802 ns** | **482.750 ns** | **484.698 ns** |   **2,093,137.4** |
+| FiveTemplateLogHighPerf |         MyJson |   True |     True | 344.051 ns |  36.086 ns | 1.9780 ns | 1.1420 ns | 342.415 ns | 342.952 ns | 343.489 ns | 344.869 ns | 346.249 ns |   2,906,544.9 |
+
 ## Legenda
 
 ```
-// * Warnings *
-Environment
-  Summary -> Benchmark was executed with attached debugger
-
 // * Legends *
   LoggerProvider : Value of the 'LoggerProvider' parameter
   Scopes         : Value of the 'Scopes' parameter

@@ -8,7 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text.Encodings.Web;
-using static System.Formats.Asn1.AsnWriter;
 
 public class Program
 {
@@ -39,7 +38,7 @@ public class LoggingBenchmark
     private ILogger<LoggingBenchmark> _logger;
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
-    [Params(LoggerProvider.SimpleConsole)]
+    [Params(LoggerProvider.MyJson)]
     //[Params(LoggerProvider.Console, LoggerProvider.SimpleConsole, LoggerProvider.Json, LoggerProvider.MyJson)]
     public LoggerProvider LoggerProvider;
 
@@ -49,11 +48,17 @@ public class LoggingBenchmark
     [Params(false, true)]
     public bool Activity;
 
+    private static readonly Action<ILogger, string, int, string, string, string, Exception?> _fiveTemaplteLogHighPerformanceLog = LoggerMessage.Define<string, int, string, string, string>(
+        LogLevel.Information,
+        new EventId(1, nameof(LoggingBenchmark)),
+        "Nome: {Nome}, Idade: {Idade}, Cidade: {Cidade}, Estado: {Estado}, Pais: {Pais}");
+
     [GlobalSetup]
     public void Setup()
     {
         var services = Startup.BuildServices(LoggerProvider);
         _logger = services.GetRequiredService<ILogger<LoggingBenchmark>>();
+
     }
 
     [Benchmark]
@@ -88,6 +93,18 @@ public class LoggingBenchmark
 
         _logger.LogInformation("Nome: {Nome}, Idade: {Idade}, Cidade: {Cidade}, Estado: {Estado}, Pais: {Pais}",
             "Fulano", 10, "Sao Paulo", "SP", "Brasil");
+
+        DisposeScope(ref scope);
+        DisposeActivity(ref activity);
+    }
+
+    //[Benchmark]
+    public void FiveTemplateLogHighPerf()
+    {
+        var activity = Activity ? StartActivity() : null;
+        var scope = Scopes ? _logger.BeginScope(_scopeInformationValues) : null;
+
+        _fiveTemaplteLogHighPerformanceLog(_logger, "Fulano", 10, "Sao Paulo", "SP", "Brasil", null);
 
         DisposeScope(ref scope);
         DisposeActivity(ref activity);
@@ -143,7 +160,7 @@ public static class Startup
             {
                 builder.ClearProviders();
                 builder.AddConfiguration(Configuration.GetSection("Logging"));
-                builder.SetMinimumLevel(LogLevel.Warning);
+                builder.SetMinimumLevel(LogLevel.Information);
 
                 // Adicionar scope no log com o traceId gerado com new Activity("...")
                 builder.Configure(x => x.ActivityTrackingOptions = ActivityTrackingOptions.SpanId |
