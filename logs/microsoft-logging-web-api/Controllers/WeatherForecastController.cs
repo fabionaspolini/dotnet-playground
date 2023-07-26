@@ -34,10 +34,10 @@ public class WeatherForecastController : ControllerBase
         //_payloadLogger.
         var act = new Activity("Sub atividade");
         act.Start();
+        act.AddTag("Act tag", 999);
         _logger.LogInformation("Teste 3");
 
         act.Stop();
-
 
 
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
