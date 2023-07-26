@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\microsoft-logging\MyLogger\MyConsoleLoggerFormatter.cs" Link="MyLogger\MyConsoleLoggerFormatter.cs" />
-    <Compile Include="..\microsoft-logging\MyLogger\MyConsoleLoggerFormatterHelpers.cs" Link="MyLogger\MyConsoleLoggerFormatterHelpers.cs" />
+    <Compile Include="..\microsoft-logging\MyJsonConsoleFormatter\MyJsonConsoleFormatter.cs" Link="MyJsonConsoleFormatter\MyJsonConsoleFormatter.cs" />
+    <Compile Include="..\microsoft-logging\MyJsonConsoleFormatter\MyJsonConsoleFormatterHelpers.cs" Link="MyJsonConsoleFormatter\MyJsonConsoleFormatterHelpers.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -12,21 +12,21 @@ using System.Text;
 using System;
 using System.Linq;
 using System.Diagnostics;
-using MicrosoftLoggingPlayground.MyLogger;
+using MicrosoftLoggingPlayground.MyJsonConsoleLoggerFormat;
 
-namespace MicrosoftLoggingPlayground.MyLogger
+namespace MicrosoftLoggingPlayground.MyJsonConsoleLoggerFormat
 {
 
     // Exemplo baseado no código do formatter sealed Microsoft.Extensions.Logging.Console.JsonConsoleFormatter
     // https://github.com/dotnet/runtime/blob/main/src/libraries/Microsoft.Extensions.Logging.Console/src/JsonConsoleFormatter.cs
 
-    public class MyConsoleLoggerFormatter : ConsoleFormatter, IDisposable
+    public class MyJsonConsoleFormatter : ConsoleFormatter, IDisposable
     {
-        public const string FormatterName = "MyConsoleLoggerFormatter";
+        public const string FormatterName = "MyJsonConsole";
         private const string OriginalFormatKeyName = "{OriginalFormat}";
         private readonly IDisposable? _optionsReloadToken;
 
-        public MyConsoleLoggerFormatter(IOptionsMonitor<JsonConsoleFormatterOptions> options)
+        public MyJsonConsoleFormatter(IOptionsMonitor<JsonConsoleFormatterOptions> options)
             : base(FormatterName)
         {
             ReloadLoggerOptions(options.CurrentValue);
@@ -251,7 +251,7 @@ namespace MicrosoftLoggingPlayground.MyLogger
 namespace Microsoft.Extensions.Logging
 {
 
-    public static class MyConsoleLoggerFormatterExtensions
+    public static class MyJsonConsoleFormatterExtensions
     {
         /// <summary>
         /// Add and configure a console log formatter named 'json' to the factory.
@@ -260,15 +260,15 @@ namespace Microsoft.Extensions.Logging
         /// <param name="configure">A delegate to configure the <see cref="ConsoleLogger"/> options for the built-in json log formatter.</param>
         public static ILoggingBuilder AddMyJsonFormatterConsole(this ILoggingBuilder builder, Action<JsonConsoleFormatterOptions> configure)
         {
-            builder.AddConsole(opts => opts.FormatterName = MyConsoleLoggerFormatter.FormatterName);
-            builder.AddConsoleFormatter<MyConsoleLoggerFormatter, JsonConsoleFormatterOptions>(configure);
+            builder.AddConsole(opts => opts.FormatterName = MyJsonConsoleFormatter.FormatterName);
+            builder.AddConsoleFormatter<MyJsonConsoleFormatter, JsonConsoleFormatterOptions>(configure);
             return builder;
             //return builder.AddConsoleWithFormatter<JsonConsoleFormatterOptions>(ConsoleFormatterNames.Json, configure);
         }
 
         public static ILoggingBuilder AddMyJsonFormatterConsole(this ILoggingBuilder builder)
         {
-            builder.AddConsoleFormatter<MyConsoleLoggerFormatter, JsonConsoleFormatterOptions>();
+            builder.AddConsoleFormatter<MyJsonConsoleFormatter, JsonConsoleFormatterOptions>();
             return builder;
         }
     }
