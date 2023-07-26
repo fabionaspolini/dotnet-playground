@@ -10,11 +10,15 @@ builder.Logging.Configure(opts => opts.ActivityTrackingOptions = ActivityTrackin
     ActivityTrackingOptions.Tags |
     ActivityTrackingOptions.Baggage);
 
-//builder.Logging.AddJsonConsole(x =>
-//{
-//    x.IncludeScopes = true;
-//    x.JsonWriterOptions = new() { Indented = true };
-//});
+/*builder.Logging.AddJsonConsole(x =>
+{
+    x.IncludeScopes = true;
+    x.JsonWriterOptions = new()
+    {
+        Indented = true, // Indentação causa muita queda de performance
+        Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+    };
+});*/
 /*builder.Logging.AddMyJsonFormatterConsole(x =>
 {
     x.IncludeScopes = true;

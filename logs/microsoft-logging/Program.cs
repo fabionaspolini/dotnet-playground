@@ -154,7 +154,11 @@ namespace MicrosoftLoggingPlayground
                     /*builder.AddJsonConsole(x =>
                     {
                         x.IncludeScopes = true;
-                        x.JsonWriterOptions = new() { Indented = true }; // Indentação causa muita queda de performance
+                        x.JsonWriterOptions = new()
+                        {
+                            Indented = true, // Indentação causa muita queda de performance
+                            Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+                        };
                     });*/
                     //builder.AddMyLogger();
                     builder.AddMyJsonFormatterConsole(x =>

@@ -1,105 +1,156 @@
 ﻿using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Configs;
-using BenchmarkDotNet.Environments;
 using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Running;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Security.Cryptography;
 using System.Text.Encodings.Web;
-using System.Threading;
-using static System.Console;
 
-namespace MicrosoftLoggingPlayground
+public class Program
 {
-    [SimpleJob(RuntimeMoniker.Net70)]
-    [RPlotExporter]
-    public class Md5VsSha256
+    public static void Main(string[] args)
     {
-        private SHA256 sha256 = SHA256.Create();
-        private MD5 md5 = MD5.Create();
-        private byte[]? data;
+        Console.WriteLine(".:: Microsoft Logging - Benchmark ::.");
+        //Trace.CorrelationManager.ActivityId = Guid.NewGuid();
 
-        [Params(1000, 10000)]
-        public int N;
+        //BenchmarkRunner.Run(typeof(Program).Assembly);
 
-        [GlobalSetup]
-        public void Setup()
-        {
-            data = new byte[N];
-            new Random(42).NextBytes(data);
-        }
+        //BenchmarkRunner.Run<ConsoleBenchmark>();
+        //BenchmarkRunner.Run<SimpleConsoleBenchmark>();
+        //BenchmarkRunner.Run<JsonBenchmark>();
+        //BenchmarkRunner.Run<MyJsonBenchmark>();
 
-        [Benchmark]
-        public byte[] Sha256() => sha256.ComputeHash(data!);
+        BenchmarkRunner.Run(new Type[] {
+            typeof(ConsoleBenchmark),
+            typeof(SimpleConsoleBenchmark),
+            typeof(JsonBenchmark),
+            typeof(MyJsonBenchmark),
+        });
+    }
+}
 
-        [Benchmark]
-        public byte[] Md5() => md5.ComputeHash(data!);
+// ShortRunJob / SimpleJob
+[ShortRunJob(RuntimeMoniker.Net70), AllStatisticsColumn, RPlotExporter]
+//[SimpleJob(RuntimeMoniker.Net70)]
+//[RPlotExporter]
+public class ConsoleBenchmark : LoggingBenchmarkBase<ConsoleBenchmark>
+{
+    protected override IServiceProvider CreateServiceProvider() => Startup.BuildServices(LoggerProvider.Console);
+}
+
+[ShortRunJob(RuntimeMoniker.Net70), AllStatisticsColumn, RPlotExporter]
+public class SimpleConsoleBenchmark : LoggingBenchmarkBase<SimpleConsoleBenchmark>
+{
+    protected override IServiceProvider CreateServiceProvider() => Startup.BuildServices(LoggerProvider.SimpleConsole);
+}
+
+[ShortRunJob(RuntimeMoniker.Net70), AllStatisticsColumn, RPlotExporter]
+public class JsonBenchmark : LoggingBenchmarkBase<JsonBenchmark>
+{
+    protected override IServiceProvider CreateServiceProvider() => Startup.BuildServices(LoggerProvider.JsonConsole);
+}
+
+[ShortRunJob(RuntimeMoniker.Net70), AllStatisticsColumn, RPlotExporter]
+public class MyJsonBenchmark : LoggingBenchmarkBase<MyJsonBenchmark>
+{
+    protected override IServiceProvider CreateServiceProvider() => Startup.BuildServices(LoggerProvider.MyJsonConsole);
+}
+
+public abstract class LoggingBenchmarkBase<TLoggerCategory>
+{
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+    private ILogger<TLoggerCategory> _logger;
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+
+    protected abstract IServiceProvider CreateServiceProvider();
+
+    [GlobalSetup]
+    public void Setup()
+    {
+        var services = CreateServiceProvider();
+        _logger = services.GetRequiredService<ILogger<TLoggerCategory>>();
     }
 
-    class Program
+    [Benchmark]
+    public void SimpleLog() => _logger.LogInformation(
+        "Nome: Fulano, Idade: 10, Cidade: São Paulo, Estado: SP, Pais: Brasil");
+
+    [Benchmark]
+    public void OneTemplateLog() => _logger.LogInformation(
+        "Nome: {Nome}", "Fulano, Idade: 10, Cidade: São Paulo, Estado: SP, Pais: Brasil");
+
+    [Benchmark]
+    public void FiveTemplateLog() => _logger.LogInformation(
+        "Nome: {Nome}, Idade: {Idade}, Cidade: {Cidade}, Estado: {Estado}, Pais: {Pais}",
+        "Fulano", 10, "São Paulo", "SP", "Brasil");
+}
+
+public enum LoggerProvider
+{
+    Console,
+    SimpleConsole,
+    JsonConsole,
+    MyJsonConsole
+}
+
+public static class Startup
+{
+    public static IConfigurationRoot Configuration { get; }
+
+    static Startup()
     {
-        static void Main(string[] args)
-        {
-            WriteLine(".:: Microsoft Logging - Benchmark ::.");
+        Configuration = BuildConfig();
+    }
 
-            Trace.CorrelationManager.ActivityId = Guid.NewGuid();
+    private static IConfigurationRoot BuildConfig() => new ConfigurationBuilder()
+        .SetBasePath(System.IO.Directory.GetCurrentDirectory())
+        .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+        .Build();
 
-            var config = BuildConfig();
-            var serviceProvider = BuildServices(config);
+    public static IServiceProvider BuildServices(LoggerProvider loggerProvider)
+        => new ServiceCollection()
+            .AddSingleton(Configuration)
+            .AddLogging(builder =>
+            {
+                builder.ClearProviders();
+                builder.AddConfiguration(Configuration.GetSection("Logging"));
+                builder.SetMinimumLevel(LogLevel.Information);
 
-            using var scope = serviceProvider.CreateScope();
+                // Adicionar scope no log com o traceId gerado com new Activity("...")
+                builder.Configure(x => x.ActivityTrackingOptions = ActivityTrackingOptions.SpanId |
+                    ActivityTrackingOptions.TraceId |
+                    ActivityTrackingOptions.ParentId |
+                    ActivityTrackingOptions.Tags |
+                    ActivityTrackingOptions.Baggage);
 
-            var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
-
-            logger.LogInformation("Iniciando aplicação");
-
-
-            var summary = BenchmarkRunner.Run(typeof(Program).Assembly);
-
-            logger.LogInformation("Fim");
-        }
-
-        private static IConfigurationRoot BuildConfig() => new ConfigurationBuilder()
-            .SetBasePath(System.IO.Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-            .Build();
-
-        private static IServiceProvider BuildServices(IConfigurationRoot config) => new ServiceCollection()
-                .AddSingleton(config)
-                .AddLogging(builder =>
-                {
-                    builder.ClearProviders();
-                    builder.AddConfiguration(config.GetSection("Logging"));
-
-                    // Adicionar scope no log com o traceId gerado com new Activity("...")
-                    builder.Configure(x => x.ActivityTrackingOptions = ActivityTrackingOptions.SpanId |
-                        ActivityTrackingOptions.TraceId |
-                        ActivityTrackingOptions.ParentId |
-                        ActivityTrackingOptions.Tags |
-                        ActivityTrackingOptions.Baggage);
-
-                    /*builder.AddConsole(options =>
+                if (loggerProvider == LoggerProvider.Console)
+                    builder.AddConsole(options =>
                     {
                         options.IncludeScopes = true;
                         options.TimestampFormat = "dd/MM/yyyy HH:mm:ss.fff ";
-                    });*/
-                    /*builder.AddSimpleConsole(options =>
+                    });
+
+                if (loggerProvider == LoggerProvider.SimpleConsole)
+                    builder.AddSimpleConsole(options =>
                     {
                         options.IncludeScopes = true;
                         options.SingleLine = true;
                         options.TimestampFormat = "dd/MM/yyyy HH:mm:ss.fff ";
-                    });*/
-                    /*builder.AddJsonConsole(x =>
+                    });
+
+                if (loggerProvider == LoggerProvider.JsonConsole)
+                    builder.AddJsonConsole(x =>
                     {
                         x.IncludeScopes = true;
-                        x.JsonWriterOptions = new() { Indented = true }; // Indentação causa muita queda de performance
-                    });*/
-                    //builder.AddMyLogger();
+                        x.JsonWriterOptions = new()
+                        {
+                            Indented = false, // Indentação causa muita queda de performance
+                            Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+                        };
+                    });
+
+                if (loggerProvider == LoggerProvider.MyJsonConsole)
                     builder.AddMyJsonFormatterConsole(x =>
                     {
                         x.IncludeScopes = true;
@@ -110,7 +161,6 @@ namespace MicrosoftLoggingPlayground
                             Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
                         };
                     });
-                })
-               .BuildServiceProvider();
-    }
+            })
+           .BuildServiceProvider();
 }
