@@ -5,7 +5,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text.Encodings.Web;
+using static System.Formats.Asn1.AsnWriter;
 
 public class Program
 {
@@ -14,84 +17,109 @@ public class Program
         Console.WriteLine(".:: Microsoft Logging - Benchmark ::.");
         //Trace.CorrelationManager.ActivityId = Guid.NewGuid();
 
-        //BenchmarkRunner.Run(typeof(Program).Assembly);
-
-        //BenchmarkRunner.Run<ConsoleBenchmark>();
-        //BenchmarkRunner.Run<SimpleConsoleBenchmark>();
-        //BenchmarkRunner.Run<JsonBenchmark>();
-        //BenchmarkRunner.Run<MyJsonBenchmark>();
-
-        BenchmarkRunner.Run(new Type[] {
-            typeof(ConsoleBenchmark),
-            typeof(SimpleConsoleBenchmark),
-            typeof(JsonBenchmark),
-            typeof(MyJsonBenchmark),
-        });
+        BenchmarkRunner.Run<LoggingBenchmark>();
     }
 }
 
+
 // ShortRunJob / SimpleJob
 [ShortRunJob(RuntimeMoniker.Net70), AllStatisticsColumn, RPlotExporter]
-//[SimpleJob(RuntimeMoniker.Net70)]
+//[SimpleJob(RuntimeMoniker.Net70), AllStatisticsColumn, RPlotExporter]
 //[RPlotExporter]
-public class ConsoleBenchmark : LoggingBenchmarkBase<ConsoleBenchmark>
+public class LoggingBenchmark
 {
-    protected override IServiceProvider CreateServiceProvider() => Startup.BuildServices(LoggerProvider.Console);
-}
+    private static readonly Dictionary<string, object> ScopeInformationValues = new()
+    {
+        { "Empresa", "Teste" },
+        { "Filial", "Matriz" },
+        { "Cnpj", "000000000000000" }
+    };
 
-[ShortRunJob(RuntimeMoniker.Net70), AllStatisticsColumn, RPlotExporter]
-public class SimpleConsoleBenchmark : LoggingBenchmarkBase<SimpleConsoleBenchmark>
-{
-    protected override IServiceProvider CreateServiceProvider() => Startup.BuildServices(LoggerProvider.SimpleConsole);
-}
-
-[ShortRunJob(RuntimeMoniker.Net70), AllStatisticsColumn, RPlotExporter]
-public class JsonBenchmark : LoggingBenchmarkBase<JsonBenchmark>
-{
-    protected override IServiceProvider CreateServiceProvider() => Startup.BuildServices(LoggerProvider.JsonConsole);
-}
-
-[ShortRunJob(RuntimeMoniker.Net70), AllStatisticsColumn, RPlotExporter]
-public class MyJsonBenchmark : LoggingBenchmarkBase<MyJsonBenchmark>
-{
-    protected override IServiceProvider CreateServiceProvider() => Startup.BuildServices(LoggerProvider.MyJsonConsole);
-}
-
-public abstract class LoggingBenchmarkBase<TLoggerCategory>
-{
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-    private ILogger<TLoggerCategory> _logger;
+    private ILogger<LoggingBenchmark> _logger;
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
-    protected abstract IServiceProvider CreateServiceProvider();
+    [Params(LoggerProvider.MyJson)]
+    //[Params(LoggerProvider.Console, LoggerProvider.SimpleConsole, LoggerProvider.Json, LoggerProvider.MyJson)]
+    public LoggerProvider LoggerProvider;
+
+    [Params(false, true)]
+    public bool Scopes;
+
+    [Params(false, true)]
+    public bool Activity;
 
     [GlobalSetup]
     public void Setup()
     {
-        var services = CreateServiceProvider();
-        _logger = services.GetRequiredService<ILogger<TLoggerCategory>>();
+        var services = Startup.BuildServices(LoggerProvider);
+        _logger = services.GetRequiredService<ILogger<LoggingBenchmark>>();
     }
 
     [Benchmark]
-    public void SimpleLog() => _logger.LogInformation(
-        "Nome: Fulano, Idade: 10, Cidade: São Paulo, Estado: SP, Pais: Brasil");
+    public void SimpleLog()
+    {
+        var activity = Activity ? StartActivity() : null;
+        var scope = Scopes ? _logger.BeginScope(ScopeInformationValues) : null;
+
+        _logger.LogInformation("Nome: Fulano, Idade: 10, Cidade: Sao Paulo, Estado: SP, Pais: Brasil");
+
+        DisposeScope(ref scope);
+        DisposeActivity(ref activity);
+    }
 
     [Benchmark]
-    public void OneTemplateLog() => _logger.LogInformation(
-        "Nome: {Nome}", "Fulano, Idade: 10, Cidade: São Paulo, Estado: SP, Pais: Brasil");
+    public void OneTemplateLog()
+    {
+        var activity = Activity ? StartActivity() : null;
+        var scope = Scopes ? _logger.BeginScope(ScopeInformationValues) : null;
+
+        _logger.LogInformation("Nome: {Nome}", "Fulano, Idade: 10, Cidade: Sao Paulo, Estado: SP, Pais: Brasil");
+
+        DisposeScope(ref scope);
+        DisposeActivity(ref activity);
+    }
 
     [Benchmark]
-    public void FiveTemplateLog() => _logger.LogInformation(
-        "Nome: {Nome}, Idade: {Idade}, Cidade: {Cidade}, Estado: {Estado}, Pais: {Pais}",
-        "Fulano", 10, "São Paulo", "SP", "Brasil");
+    public void FiveTemplateLog()
+    {
+        var activity = Activity ? StartActivity() : null;
+        var scope = Scopes ? _logger.BeginScope(ScopeInformationValues) : null;
+
+        _logger.LogInformation("Nome: {Nome}, Idade: {Idade}, Cidade: {Cidade}, Estado: {Estado}, Pais: {Pais}",
+            "Fulano", 10, "Sao Paulo", "SP", "Brasil");
+
+        DisposeScope(ref scope);
+        DisposeActivity(ref activity);
+    }
+
+    private void DisposeScope(ref IDisposable? scope) => scope?.Dispose();
+
+    private Activity StartActivity()
+    {
+        var result = new Activity("Operação de testes");
+        result.Start();
+        result.AddTag("Act tag 1", "Teste");
+        result.AddTag("Act tag 2", 999);
+        return result;
+    }
+
+    private void DisposeActivity(ref Activity? activity)
+    {
+        if (activity != null)
+        {
+            activity.Stop();
+            activity.Dispose();
+        }
+    }
 }
 
 public enum LoggerProvider
 {
     Console,
     SimpleConsole,
-    JsonConsole,
-    MyJsonConsole
+    Json,
+    MyJson
 }
 
 public static class Startup
@@ -139,7 +167,7 @@ public static class Startup
                         options.TimestampFormat = "dd/MM/yyyy HH:mm:ss.fff ";
                     });
 
-                if (loggerProvider == LoggerProvider.JsonConsole)
+                if (loggerProvider == LoggerProvider.Json)
                     builder.AddJsonConsole(x =>
                     {
                         x.IncludeScopes = true;
@@ -150,7 +178,7 @@ public static class Startup
                         };
                     });
 
-                if (loggerProvider == LoggerProvider.MyJsonConsole)
+                if (loggerProvider == LoggerProvider.MyJson)
                     builder.AddMyJsonFormatterConsole(x =>
                     {
                         x.IncludeScopes = true;
