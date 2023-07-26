@@ -10,7 +10,25 @@
 | SimpleLog |         MyJson |   True |    False | 156.6 μs | 19.74 μs | 1.08 μs | 0.62 μs | 156.0 μs | 156.0 μs | 156.1 μs | 157.0 μs | 157.9 μs | 6,383.9 |
 | SimpleLog |         MyJson |   True |     True | 198.5 μs | 11.68 μs | 0.64 μs | 0.37 μs | 198.1 μs | 198.1 μs | 198.1 μs | 198.7 μs | 199.2 μs | 5,038.7 |
 
-## MyJsonConsole -> All tests (ShortRunJob)
+## SimpleConsole -> All tests (ShortRunJob)
+
+|          Method | LoggerProvider | Scopes | Activity |     Mean |     Error |   StdDev |  StdErr |      Min |       Q1 |   Median |       Q3 |      Max |    Op/s |
+|---------------- |--------------- |------- |--------- |---------:|----------:|---------:|--------:|---------:|---------:|---------:|---------:|---------:|--------:|
+|       **SimpleLog** |  **SimpleConsole** |  **False** |    **False** | **100.6 μs** |   **4.97 μs** |  **0.27 μs** | **0.16 μs** | **100.4 μs** | **100.5 μs** | **100.6 μs** | **100.7 μs** | **100.9 μs** | **9,938.0** |
+|  OneTemplateLog |  SimpleConsole |  False |    False | 101.1 μs |   5.54 μs |  0.30 μs | 0.18 μs | 100.9 μs | 100.9 μs | 101.0 μs | 101.2 μs | 101.4 μs | 9,890.0 |
+| FiveTemplateLog |  SimpleConsole |  False |    False | 103.1 μs |  35.44 μs |  1.94 μs | 1.12 μs | 100.9 μs | 102.5 μs | 104.1 μs | 104.2 μs | 104.4 μs | 9,697.4 |
+|       **SimpleLog** |  **SimpleConsole** |  **False** |     **True** | **136.9 μs** |  **21.19 μs** |  **1.16 μs** | **0.67 μs** | **135.5 μs** | **136.4 μs** | **137.3 μs** | **137.5 μs** | **137.7 μs** | **7,306.6** |
+|  OneTemplateLog |  SimpleConsole |  False |     True | 137.8 μs |  45.35 μs |  2.49 μs | 1.44 μs | 136.1 μs | 136.3 μs | 136.6 μs | 138.6 μs | 140.6 μs | 7,259.4 |
+| FiveTemplateLog |  SimpleConsole |  False |     True | 136.7 μs |   7.89 μs |  0.43 μs | 0.25 μs | 136.2 μs | 136.6 μs | 136.9 μs | 137.0 μs | 137.0 μs | 7,314.0 |
+|       **SimpleLog** |  **SimpleConsole** |   **True** |    **False** | **123.7 μs** |  **18.98 μs** |  **1.04 μs** | **0.60 μs** | **122.6 μs** | **123.2 μs** | **123.8 μs** | **124.2 μs** | **124.7 μs** | **8,084.6** |
+|  OneTemplateLog |  SimpleConsole |   True |    False | 127.2 μs |  16.88 μs |  0.92 μs | 0.53 μs | 126.4 μs | 126.6 μs | 126.9 μs | 127.5 μs | 128.2 μs | 7,864.4 |
+| FiveTemplateLog |  SimpleConsole |   True |    False | 126.5 μs |   9.11 μs |  0.50 μs | 0.29 μs | 126.1 μs | 126.2 μs | 126.4 μs | 126.7 μs | 127.0 μs | 7,905.7 |
+|       **SimpleLog** |  **SimpleConsole** |   **True** |     **True** | **170.2 μs** |  **49.45 μs** |  **2.71 μs** | **1.56 μs** | **168.1 μs** | **168.7 μs** | **169.2 μs** | **171.2 μs** | **173.3 μs** | **5,875.6** |
+|  OneTemplateLog |  SimpleConsole |   True |     True | 171.7 μs |  11.57 μs |  0.63 μs | 0.37 μs | 171.0 μs | 171.4 μs | 171.8 μs | 172.0 μs | 172.3 μs | 5,825.1 |
+| FiveTemplateLog |  SimpleConsole |   True |     True | 179.1 μs | 192.64 μs | 10.56 μs | 6.10 μs | 172.4 μs | 173.0 μs | 173.6 μs | 182.4 μs | 191.3 μs | 5,583.9 |
+
+
+## MyJson -> All tests (ShortRunJob)
 
 |          Method | LoggerProvider | Scopes | Activity |     Mean |    Error |  StdDev |  StdErr |      Min |       Q1 |   Median |       Q3 |      Max |    Op/s |
 |---------------- |--------------- |------- |--------- |---------:|---------:|--------:|--------:|---------:|---------:|---------:|---------:|---------:|--------:|
