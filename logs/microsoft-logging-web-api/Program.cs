@@ -9,6 +9,7 @@ builder.Logging.Configure(opts => opts.ActivityTrackingOptions = ActivityTrackin
     ActivityTrackingOptions.ParentId |
     ActivityTrackingOptions.Tags |
     ActivityTrackingOptions.Baggage);
+//builder.Logging.Configure(opts => opts.ActivityTrackingOptions = ActivityTrackingOptions.None);
 
 /*builder.Logging.AddJsonConsole(x =>
 {
