@@ -1,7 +1,7 @@
 ﻿# microsoft-logging-benchmark-playground
 
 
-## MyJsonConsole -> SimpleLog (ShortRunJob)
+## MyJsonConsole -> SimpleLog (ShortRunJob) -> ActivityTrackingOptions: SpanId, TraceId, ParentId, Tags, Baggage
 
 |    Method | LoggerProvider | Scopes | Activity |     Mean |    Error |  StdDev |  StdErr |      Min |       Q1 |   Median |       Q3 |      Max |    Op/s |
 |---------- |--------------- |------- |--------- |---------:|---------:|--------:|--------:|---------:|---------:|---------:|---------:|---------:|--------:|
@@ -10,7 +10,7 @@
 | SimpleLog |         MyJson |   True |    False | 156.6 μs | 19.74 μs | 1.08 μs | 0.62 μs | 156.0 μs | 156.0 μs | 156.1 μs | 157.0 μs | 157.9 μs | 6,383.9 |
 | SimpleLog |         MyJson |   True |     True | 198.5 μs | 11.68 μs | 0.64 μs | 0.37 μs | 198.1 μs | 198.1 μs | 198.1 μs | 198.7 μs | 199.2 μs | 5,038.7 |
 
-## SimpleConsole -> All tests (ShortRunJob)
+## SimpleConsole -> All tests (ShortRunJob) -> ActivityTrackingOptions: SpanId, TraceId, ParentId, Tags, Baggage
 
 |          Method | LoggerProvider | Scopes | Activity |     Mean |     Error |   StdDev |  StdErr |      Min |       Q1 |   Median |       Q3 |      Max |    Op/s |
 |---------------- |--------------- |------- |--------- |---------:|----------:|---------:|--------:|---------:|---------:|---------:|---------:|---------:|--------:|
@@ -28,7 +28,11 @@
 | FiveTemplateLog |  SimpleConsole |   True |     True | 179.1 μs | 192.64 μs | 10.56 μs | 6.10 μs | 172.4 μs | 173.0 μs | 173.6 μs | 182.4 μs | 191.3 μs | 5,583.9 |
 
 
-## MyJson -> All tests (ShortRunJob)
+
+
+## MyJson -> All tests (ShortRunJob) -> ActivityTrackingOptions: SpanId, TraceId, ParentId, Tags, Baggage
+
+Este é cenário esperado para executar por padrão na aplicação.
 
 |          Method | LoggerProvider | Scopes | Activity |     Mean |    Error |  StdDev |  StdErr |      Min |       Q1 |   Median |       Q3 |      Max |    Op/s |
 |---------------- |--------------- |------- |--------- |---------:|---------:|--------:|--------:|---------:|---------:|---------:|---------:|---------:|--------:|
@@ -44,6 +48,66 @@
 |       **SimpleLog** |         **MyJson** |   **True** |     **True** | **199.7 μs** | **12.46 μs** | **0.68 μs** | **0.39 μs** | **199.0 μs** | **199.4 μs** | **199.7 μs** | **200.1 μs** | **200.4 μs** | **5,006.7** |
 |  OneTemplateLog |         MyJson |   True |     True | 211.6 μs | 45.40 μs | 2.49 μs | 1.44 μs | 208.7 μs | 210.7 μs | 212.7 μs | 213.0 μs | 213.3 μs | 4,726.0 |
 | FiveTemplateLog |         MyJson |   True |     True | 227.3 μs | 33.40 μs | 1.83 μs | 1.06 μs | 225.6 μs | 226.3 μs | 227.0 μs | 228.1 μs | 229.2 μs | 4,400.2 |
+
+## MyJson -> All tests (ShortRunJob) -> ActivityTrackingOptions: None
+
+Teste desabilitando o recurso que adiciona informações da activity ao log.  
+O resultado efetivo de todos os casos de testes com `Activity=true` é um log sem os dados adicionais das tags e baggages.
+
+|          Method | LoggerProvider | Scopes | Activity |     Mean |    Error |  StdDev |  StdErr |      Min |       Q1 |   Median |       Q3 |      Max |    Op/s |
+|---------------- |--------------- |------- |--------- |---------:|---------:|--------:|--------:|---------:|---------:|---------:|---------:|---------:|--------:|
+|       **SimpleLog** |         **MyJson** |  **False** |    **False** | **120.1 μs** | **24.49 μs** | **1.34 μs** | **0.78 μs** | **118.6 μs** | **119.5 μs** | **120.4 μs** | **120.8 μs** | **121.2 μs** | **8,326.4** |
+|  OneTemplateLog |         MyJson |  False |    False | 158.8 μs |  9.22 μs | 0.51 μs | 0.29 μs | 158.4 μs | 158.5 μs | 158.6 μs | 159.0 μs | 159.3 μs | 6,298.4 |
+| FiveTemplateLog |         MyJson |  False |    False | 164.4 μs | 81.26 μs | 4.45 μs | 2.57 μs | 160.8 μs | 161.9 μs | 163.1 μs | 166.2 μs | 169.4 μs | 6,081.4 |
+|       **SimpleLog** |         **MyJson** |  **False** |     **True** | **138.8 μs** | **60.08 μs** | **3.29 μs** | **1.90 μs** | **135.7 μs** | **137.1 μs** | **138.4 μs** | **140.3 μs** | **142.3 μs** | **7,205.1** |
+|  OneTemplateLog |         MyJson |  False |     True | 166.6 μs | 34.06 μs | 1.87 μs | 1.08 μs | 164.8 μs | 165.7 μs | 166.6 μs | 167.5 μs | 168.5 μs | 6,001.7 |
+| FiveTemplateLog |         MyJson |  False |     True | 170.4 μs | 53.81 μs | 2.95 μs | 1.70 μs | 167.2 μs | 169.1 μs | 170.9 μs | 172.0 μs | 173.0 μs | 5,869.3 |
+|       **SimpleLog** |         **MyJson** |   **True** |    **False** | **159.1 μs** | **45.43 μs** | **2.49 μs** | **1.44 μs** | **156.9 μs** | **157.8 μs** | **158.7 μs** | **160.3 μs** | **161.8 μs** | **6,283.6** |
+|  OneTemplateLog |         MyJson |   True |    False | 172.1 μs | 46.35 μs | 2.54 μs | 1.47 μs | 169.2 μs | 171.3 μs | 173.5 μs | 173.6 μs | 173.6 μs | 5,810.9 |
+| FiveTemplateLog |         MyJson |   True |    False | 174.1 μs | 22.59 μs | 1.24 μs | 0.72 μs | 172.8 μs | 173.6 μs | 174.4 μs | 174.8 μs | 175.2 μs | 5,743.0 |
+|       **SimpleLog** |         **MyJson** |   **True** |     **True** | **164.5 μs** | **45.94 μs** | **2.52 μs** | **1.45 μs** | **162.7 μs** | **163.1 μs** | **163.6 μs** | **165.5 μs** | **167.4 μs** | **6,077.6** |
+|  OneTemplateLog |         MyJson |   True |     True | 177.7 μs | 67.91 μs | 3.72 μs | 2.15 μs | 175.3 μs | 175.6 μs | 175.8 μs | 178.9 μs | 182.0 μs | 5,627.4 |
+| FiveTemplateLog |         MyJson |   True |     True | 178.5 μs | 57.63 μs | 3.16 μs | 1.82 μs | 176.5 μs | 176.7 μs | 176.9 μs | 179.5 μs | 182.1 μs | 5,602.0 |
+
+## MyJson -> All tests (ShortRunJob) -> ActivityTrackingOptions: SpanId, TraceId, ParentId, Tags, Baggage + LogLevel: Warning
+
+Teste completo da feature, porem adicionando filtro de log level para não imprimir no console nenhum log information.
+
+|          Method | LoggerProvider | Scopes | Activity |      Mean |      Error |    StdDev |   StdErr |       Min |        Q1 |    Median |        Q3 |       Max |         Op/s |
+|---------------- |--------------- |------- |--------- |----------:|-----------:|----------:|---------:|----------:|----------:|----------:|----------:|----------:|-------------:|
+|       **SimpleLog** |         **MyJson** |  **False** |    **False** |  **22.03 ns** |   **3.812 ns** |  **0.209 ns** | **0.121 ns** |  **21.86 ns** |  **21.92 ns** |  **21.97 ns** |  **22.12 ns** |  **22.27 ns** | **45,387,865.5** |
+|  OneTemplateLog |         MyJson |  False |    False |  48.47 ns |   3.620 ns |  0.198 ns | 0.115 ns |  48.29 ns |  48.37 ns |  48.45 ns |  48.57 ns |  48.68 ns | 20,629,465.8 |
+| FiveTemplateLog |         MyJson |  False |    False |  89.76 ns |   8.277 ns |  0.454 ns | 0.262 ns |  89.24 ns |  89.63 ns |  90.02 ns |  90.03 ns |  90.03 ns | 11,140,312.3 |
+|       **SimpleLog** |         **MyJson** |  **False** |     **True** | **264.76 ns** |  **97.824 ns** |  **5.362 ns** | **3.096 ns** | **258.58 ns** | **263.01 ns** | **267.43 ns** | **267.84 ns** | **268.25 ns** |  **3,777,045.9** |
+|  OneTemplateLog |         MyJson |  False |     True | 280.97 ns | 191.724 ns | 10.509 ns | 6.067 ns | 268.92 ns | 277.32 ns | 285.72 ns | 286.99 ns | 288.26 ns |  3,559,091.6 |
+| FiveTemplateLog |         MyJson |  False |     True | 323.13 ns |  31.414 ns |  1.722 ns | 0.994 ns | 321.35 ns | 322.31 ns | 323.26 ns | 324.03 ns | 324.79 ns |  3,094,687.2 |
+|       **SimpleLog** |         **MyJson** |   **True** |    **False** |  **78.45 ns** |  **51.805 ns** |  **2.840 ns** | **1.639 ns** |  **76.24 ns** |  **76.85 ns** |  **77.47 ns** |  **79.56 ns** |  **81.65 ns** | **12,746,458.6** |
+|  OneTemplateLog |         MyJson |   True |    False | 100.32 ns |  11.255 ns |  0.617 ns | 0.356 ns |  99.69 ns | 100.02 ns | 100.34 ns | 100.63 ns | 100.92 ns |  9,968,312.0 |
+| FiveTemplateLog |         MyJson |   True |    False | 148.32 ns |  40.779 ns |  2.235 ns | 1.291 ns | 145.74 ns | 147.64 ns | 149.53 ns | 149.61 ns | 149.68 ns |  6,742,245.2 |
+|       **SimpleLog** |         **MyJson** |   **True** |     **True** | **381.42 ns** | **159.158 ns** |  **8.724 ns** | **5.037 ns** | **371.39 ns** | **378.50 ns** | **385.61 ns** | **386.43 ns** | **387.25 ns** |  **2,621,794.3** |
+|  OneTemplateLog |         MyJson |   True |     True | 389.56 ns | 163.180 ns |  8.944 ns | 5.164 ns | 379.66 ns | 385.81 ns | 391.95 ns | 394.51 ns | 397.06 ns |  2,567,003.1 |
+| FiveTemplateLog |         MyJson |   True |     True | 436.59 ns | 107.971 ns |  5.918 ns | 3.417 ns | 429.78 ns | 434.64 ns | 439.51 ns | 440.00 ns | 440.49 ns |  2,290,465.5 |
+
+## SimpleConsole -> All tests (ShortRunJob) -> ActivityTrackingOptions: SpanId, TraceId, ParentId, Tags, Baggage + LogLevel: Warning
+
+Teste completo da feature, porem adicionando filtro de log level para não imprimir no console nenhum log information.
+
+|          Method | LoggerProvider | Scopes | Activity |      Mean |      Error |    StdDev |   StdErr |       Min |        Q1 |    Median |        Q3 |       Max |         Op/s |
+|---------------- |--------------- |------- |--------- |----------:|-----------:|----------:|---------:|----------:|----------:|----------:|----------:|----------:|-------------:|
+|       **SimpleLog** |  **SimpleConsole** |  **False** |    **False** |  **21.67 ns** |   **1.309 ns** |  **0.072 ns** | **0.041 ns** |  **21.61 ns** |  **21.63 ns** |  **21.66 ns** |  **21.70 ns** |  **21.75 ns** | **46,140,352.9** |
+|  OneTemplateLog |  SimpleConsole |  False |    False |  44.87 ns |   7.246 ns |  0.397 ns | 0.229 ns |  44.55 ns |  44.64 ns |  44.73 ns |  45.02 ns |  45.31 ns | 22,288,982.8 |
+| FiveTemplateLog |  SimpleConsole |  False |    False |  87.84 ns |   4.120 ns |  0.226 ns | 0.130 ns |  87.64 ns |  87.72 ns |  87.81 ns |  87.95 ns |  88.08 ns | 11,383,820.3 |
+|       **SimpleLog** |  **SimpleConsole** |  **False** |     **True** | **259.37 ns** | **101.627 ns** |  **5.571 ns** | **3.216 ns** | **252.94 ns** | **257.69 ns** | **262.44 ns** | **262.58 ns** | **262.72 ns** |  **3,855,532.0** |
+|  OneTemplateLog |  SimpleConsole |  False |     True | 292.96 ns | 123.003 ns |  6.742 ns | 3.893 ns | 286.07 ns | 289.67 ns | 293.27 ns | 296.41 ns | 299.55 ns |  3,413,391.5 |
+| FiveTemplateLog |  SimpleConsole |  False |     True | 340.00 ns | 185.092 ns | 10.146 ns | 5.858 ns | 328.68 ns | 335.86 ns | 343.04 ns | 345.66 ns | 348.27 ns |  2,941,212.7 |
+|       **SimpleLog** |  **SimpleConsole** |   **True** |    **False** |  **79.43 ns** |  **14.113 ns** |  **0.774 ns** | **0.447 ns** |  **78.55 ns** |  **79.15 ns** |  **79.76 ns** |  **79.87 ns** |  **79.99 ns** | **12,589,428.3** |
+|  OneTemplateLog |  SimpleConsole |   True |    False | 102.49 ns |  11.290 ns |  0.619 ns | 0.357 ns | 101.85 ns | 102.20 ns | 102.54 ns | 102.81 ns | 103.08 ns |  9,756,966.6 |
+| FiveTemplateLog |  SimpleConsole |   True |    False | 150.96 ns |  24.709 ns |  1.354 ns | 0.782 ns | 149.52 ns | 150.33 ns | 151.14 ns | 151.68 ns | 152.21 ns |  6,624,294.0 |
+|       **SimpleLog** |  **SimpleConsole** |   **True** |     **True** | **347.33 ns** | **132.539 ns** |  **7.265 ns** | **4.194 ns** | **339.00 ns** | **344.81 ns** | **350.62 ns** | **351.49 ns** | **352.36 ns** |  **2,879,144.6** |
+|  OneTemplateLog |  SimpleConsole |   True |     True | 416.55 ns | 162.944 ns |  8.932 ns | 5.157 ns | 406.33 ns | 413.39 ns | 420.44 ns | 421.66 ns | 422.87 ns |  2,400,682.0 |
+| FiveTemplateLog |  SimpleConsole |   True |     True | 480.77 ns | 151.594 ns |  8.309 ns | 4.797 ns | 472.19 ns | 476.76 ns | 481.32 ns | 485.05 ns | 488.78 ns |  2,080,016.5 |
+
+
 
 ## All providers -> All tests (ShortRunJob)
 

@@ -28,7 +28,7 @@ public class Program
 //[RPlotExporter]
 public class LoggingBenchmark
 {
-    private static readonly Dictionary<string, object> ScopeInformationValues = new()
+    private static readonly Dictionary<string, object> _scopeInformationValues = new()
     {
         { "Empresa", "Teste" },
         { "Filial", "Matriz" },
@@ -39,7 +39,7 @@ public class LoggingBenchmark
     private ILogger<LoggingBenchmark> _logger;
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
-    [Params(LoggerProvider.MyJson)]
+    [Params(LoggerProvider.SimpleConsole)]
     //[Params(LoggerProvider.Console, LoggerProvider.SimpleConsole, LoggerProvider.Json, LoggerProvider.MyJson)]
     public LoggerProvider LoggerProvider;
 
@@ -60,7 +60,7 @@ public class LoggingBenchmark
     public void SimpleLog()
     {
         var activity = Activity ? StartActivity() : null;
-        var scope = Scopes ? _logger.BeginScope(ScopeInformationValues) : null;
+        var scope = Scopes ? _logger.BeginScope(_scopeInformationValues) : null;
 
         _logger.LogInformation("Nome: Fulano, Idade: 10, Cidade: Sao Paulo, Estado: SP, Pais: Brasil");
 
@@ -72,7 +72,7 @@ public class LoggingBenchmark
     public void OneTemplateLog()
     {
         var activity = Activity ? StartActivity() : null;
-        var scope = Scopes ? _logger.BeginScope(ScopeInformationValues) : null;
+        var scope = Scopes ? _logger.BeginScope(_scopeInformationValues) : null;
 
         _logger.LogInformation("Nome: {Nome}", "Fulano, Idade: 10, Cidade: Sao Paulo, Estado: SP, Pais: Brasil");
 
@@ -84,7 +84,7 @@ public class LoggingBenchmark
     public void FiveTemplateLog()
     {
         var activity = Activity ? StartActivity() : null;
-        var scope = Scopes ? _logger.BeginScope(ScopeInformationValues) : null;
+        var scope = Scopes ? _logger.BeginScope(_scopeInformationValues) : null;
 
         _logger.LogInformation("Nome: {Nome}, Idade: {Idade}, Cidade: {Cidade}, Estado: {Estado}, Pais: {Pais}",
             "Fulano", 10, "Sao Paulo", "SP", "Brasil");
@@ -143,7 +143,7 @@ public static class Startup
             {
                 builder.ClearProviders();
                 builder.AddConfiguration(Configuration.GetSection("Logging"));
-                builder.SetMinimumLevel(LogLevel.Information);
+                builder.SetMinimumLevel(LogLevel.Warning);
 
                 // Adicionar scope no log com o traceId gerado com new Activity("...")
                 builder.Configure(x => x.ActivityTrackingOptions = ActivityTrackingOptions.SpanId |
@@ -151,6 +151,7 @@ public static class Startup
                     ActivityTrackingOptions.ParentId |
                     ActivityTrackingOptions.Tags |
                     ActivityTrackingOptions.Baggage);
+                //builder.Configure(x => x.ActivityTrackingOptions = ActivityTrackingOptions.None);
 
                 if (loggerProvider == LoggerProvider.Console)
                     builder.AddConsole(options =>
