@@ -26,16 +26,18 @@ public class WeatherForecastController : ControllerBase
     {
         _payloadLogger.LogInformation("Payload log 1");
 
-        var currentAct = Activity.Current;
-
         _logger.LogInformation("Teste");
-        _logger.LogInformation("Teste 2");
+
+        using (_logger.BeginScope("Meu scope {ScopeId}", Guid.NewGuid()))
+        {
+            _logger.LogInformation("Log in scope");
+        }
 
         //_payloadLogger.
         var act = new Activity("Sub atividade");
         act.Start();
         act.AddTag("Act tag", 999);
-        _logger.LogInformation("Teste 3");
+        _logger.LogInformation("Log in sub activity");
 
         act.Stop();
 
