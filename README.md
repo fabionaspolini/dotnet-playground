@@ -100,4 +100,4 @@ dotnet new console -n <nome-exemplo>-playground -o <nome-exemplo>
 dotnet new console -n BasicRedisPlayground -o Basic
 ```
 
-2. Ajustar RootNamespace do csproj para PascalCase ("NomeExemplo").
+2. Ajustar RootNamespace do csproj para PascalCase ("NomeExemploPlayground").
