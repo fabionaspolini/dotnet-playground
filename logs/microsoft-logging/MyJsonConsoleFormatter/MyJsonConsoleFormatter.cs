@@ -35,7 +35,6 @@ namespace MicrosoftLoggingPlayground.MyJsonConsoleLoggerFormat
 
         public override void Write<TState>(in LogEntry<TState> logEntry, IExternalScopeProvider? scopeProvider, TextWriter textWriter)
         {
-            //Thread.Sleep(2000); // Descarga do log no stdout é sincrona
             string message = logEntry.Formatter(logEntry.State, logEntry.Exception);
             if (logEntry.Exception == null && message == null)
             {

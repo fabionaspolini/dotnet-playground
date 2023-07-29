@@ -37,6 +37,7 @@ public class WeatherForecastController : ControllerBase
         var act = new Activity("Sub atividade");
         act.Start();
         act.AddTag("Act tag", 999);
+        act.AddBaggage("Baggage info", "xxx");
         _logger.LogInformation("Log in sub activity");
 
         act.Stop();

@@ -28,7 +28,7 @@
 | Proxy para Microsoft Logging                  | :heavy_check_mark:    | :heavy_check_mark:    |                       | :heavy_check_mark:  |
 | Facilidade para obter Log Manager             | :heavy_check_mark:    | :+1:                  | :+1:                  | :heavy_check_mark:  |
 | Documentação                                  | :heavy_check_mark:    | :heavy_check_mark:    | :+1:                  | :heavy_check_mark:  |
-| Flush assincrono                              | :heavy_check_mark:    | :heavy_check_mark:    | :x:                   | :heavy_check_mark:  |
+| Flush assincrono                              | :heavy_check_mark:    | :-1:					| :x:                   | :heavy_check_mark:  |
 | Personalização layout das mensagens           | :heavy_check_mark:    | :x:                   | :heavy_check_mark:    | :heavy_check_mark:  |
 | Configuração por arquivos                     | :heavy_check_mark:    | :heavy_check_mark:    | :heavy_check_mark:    | :heavy_check_mark:  |
 | Configuração por código                       | :heavy_check_mark:    | :heavy_check_mark:    | :heavy_check_mark:    | :heavy_check_mark:  |
@@ -59,6 +59,10 @@
 - :x: Não há suporte a inclusão de propriedades estruturadas adicionais
 - :x: A melhor maneira de adicionar suporte a gravação de arquivos é adicionar o proxy provider para o NLog ou Serilog
 
+O Microsoft Logging não oferece muitos recursos nativos, basicamente entrega log no stdout e deve ser utilizado com outros frameworks para integrar com outros providers (file, elastic, splunk, etc).  
+Ele basicamente é um abstração pequena e leve entregue por padrão junto com a linguagem.
+
+
 ### log4net
 
 - :heavy_check_mark: Personalização do layout
@@ -81,9 +85,14 @@
 
 A classe `System.Diagnostics.Activity` serve para mapear ciclo de vidas dos processos (Tracing).
 
+Propriedades descarregadas anexa ao log de acordo com configurações de `ActivityTrackingOptions` do log builder.
+
+
 - SpanId: Representa cada Activity criada individualmente.
 - TraceId: Representa o processo completo em execução.
 - TraceStateString: Para compartilhamento em header http. Isolado por activity.
+- Tags: Valores para descarregar no state do log
+- Baggage: Valores para descarregar como scope de log
 
 Propriedades estáticas:
 
