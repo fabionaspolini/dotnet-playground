@@ -91,8 +91,8 @@ Propriedades descarregadas anexa ao log de acordo com configurações de `Activi
 - SpanId: Representa cada Activity criada individualmente.
 - TraceId: Representa o processo completo em execução.
 - TraceStateString: Para compartilhamento em header http. Isolado por activity.
-- Tags: Valores para descarregar no state do log
-- Baggage: Valores para descarregar como scope de log
+- Tags: Valores para descarregar no state do log (MyJsonConsoleFormatter descarrega da activity atual + pais).
+- Baggage: Valores para descarregar como scope de log (MyJsonConsoleFormatter descarrega apenas da activity atual).
 
 Propriedades estáticas:
 

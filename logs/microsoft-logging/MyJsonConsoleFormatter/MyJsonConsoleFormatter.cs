@@ -99,6 +99,13 @@ namespace MicrosoftLoggingPlayground.MyJsonConsoleLoggerFormat
             };
         }
 
+        /// <summary>
+        /// Adicionar state da mensagem sendo logada + tags da activity atual + tags das activities pai
+        /// </summary>
+        /// <typeparam name="TState"></typeparam>
+        /// <param name="writer"></param>
+        /// <param name="scopeProvider"></param>
+        /// <param name="logEntry"></param>
         private void WriteStateInformation<TState>(Utf8JsonWriter writer, IExternalScopeProvider? scopeProvider, LogEntry<TState> logEntry)
         {
             writer.WriteStartObject("State");
@@ -134,6 +141,11 @@ namespace MicrosoftLoggingPlayground.MyJsonConsoleLoggerFormat
             writer.WriteEndObject();
         }
 
+        /// <summary>
+        /// Adicionar scopes de logging + baggage da activity atual
+        /// </summary>
+        /// <param name="writer"></param>
+        /// <param name="scopeProvider"></param>
         private void WriteScopeInformation(Utf8JsonWriter writer, IExternalScopeProvider? scopeProvider)
         {
             // - Scopes com mensagens textuais. Dicionários são ignorados.
@@ -155,6 +167,11 @@ namespace MicrosoftLoggingPlayground.MyJsonConsoleLoggerFormat
             }
         }
 
+        /// <summary>
+        /// Adicionar tempo decorrido das ativities. A ativity root é logada como "Total".
+        /// </summary>
+        /// <param name="writer"></param>
+        /// <param name="scopeProvider"></param>
         private void WriteEllapsedTimeInformation(Utf8JsonWriter writer, IExternalScopeProvider? scopeProvider)
         {
             var activity = Activity.Current;
