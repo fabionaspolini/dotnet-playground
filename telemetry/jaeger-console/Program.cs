@@ -1,53 +1,112 @@
-﻿// NÃO FUNCIONA
-
-using Jaeger.Reporters;
+﻿using Jaeger.Reporters;
 using Jaeger.Samplers;
 using Jaeger;
 using Microsoft.Extensions.Logging;
-using Jaeger.Senders;
 using Jaeger.Senders.Thrift;
+using System.Diagnostics;
 
 Console.WriteLine(".:: Jaeger ::.");
+const string ServiceName = "jaeger-console-app-playground";
 
 var loggerFactory = LoggerFactory.Create(builder => builder
     .SetMinimumLevel(LogLevel.Information)
     .AddConsole());
 var logger = loggerFactory.CreateLogger<Program>();
-var serviceName = "jaeger-console-app-playground";
 
-
-//Configuration.SenderConfiguration.DefaultSenderResolver = new SenderResolver(loggerFactory)
-//    .RegisterSenderFactory<ThriftSenderFactory>();
-
-//Configuration config = new Configuration(serviceName, loggerFactory);
-//.WithSampler(...)   // optional, defaults to RemoteControlledSampler with HttpSamplingManager on localhost:5778
-//.WithReporter(...); // optional, defaults to RemoteReporter with UdpSender on localhost:6831 when ThriftSenderFactory is registered
-
-//var reporter = new LoggingReporter(loggerFactory);
-var reporter = new SenderResolver(loggerFactory);
-var sampler = new ConstSampler(true);
-var tracer = new Tracer.Builder(serviceName)
+var reporter = new RemoteReporter.Builder()
     .WithLoggerFactory(loggerFactory)
-    //.WithReporter(reporter)
-    .WithSampler(sampler)
+    .WithSender(new HttpSender("http://localhost:14268/api/traces"))
     .Build();
 
-ExecuteAction();
-Thread.Sleep(250);
-ExecuteAction();
+var sampler = new ConstSampler(true);
 
-Thread.Sleep(5000);
+using var tracer = new Tracer.Builder(ServiceName)
+    .WithLoggerFactory(loggerFactory)
+    .WithSampler(sampler)
+    .WithReporter(reporter)
+    .Build();
 
-void ExecuteAction()
+//Calcular(10, 2, "somar");
+//Calcular(15, 3, "subtrair");
+
+var lote1 = Task.Run(() =>
 {
-    var operationName = "Job::teste";
-    var builder = tracer
-        .BuildSpan(operationName)
-        .WithTag("id", Guid.NewGuid().ToString());
-    //var builder = config.GetTracer().BuildSpan(operationName).WithTag("id", Guid.NewGuid().ToString());
-    var span = builder.Start();
+    Trace.CorrelationManager.ActivityId = Guid.NewGuid();
+    using (tracer.BuildSpan("lote-operacoes").StartActive())
+    {
+        tracer.ActiveSpan.SetBaggageItem("lote-id", "1");
+        var task = Task.Run(() => Calcular(5, 6, "somar"));
+        Calcular(2, 3, "somar");
+        Calcular(5, 3, "subtrair");
+        task.Wait();
+    }
+});
+
+var lote2 = Task.Run(() =>
+{
+    Trace.CorrelationManager.ActivityId = Guid.NewGuid();
+    using (tracer.BuildSpan("lote-operacoes").StartActive())
+    {
+        tracer.ActiveSpan.SetBaggageItem("lote-id", "2");
+        var task = Task.Run(() => Calcular(10, 12, "somar"));
+        Calcular(4, 6, "somar");
+        Calcular(10, 6, "subtrair");
+        task.Wait();
+    }
+});
+
+lote1.Wait();
+lote2.Wait();
+
+void Calcular(int a, int b, string op)
+{
+    const string operationName = "calcular";
+    using var activity = tracer.BuildSpan(operationName)
+        .WithTag(nameof(a), a)
+        .WithTag(nameof(b), b)
+        .WithTag(nameof(op), op)
+        .StartActive();
     logger.LogInformation("Iniciando...");
-    Thread.Sleep(500);
+
+
+    var result = op switch
+    {
+        "somar" => Somar(a, b),
+        "subtrair" => Subtrair(a, b),
+        _ => throw new ArgumentOutOfRangeException($"Operação não suportada: {op}")
+    };
+    activity.Span.SetTag("resultado", result);
+
     logger.LogInformation("Concluído");
-    span.Finish();
+}
+
+int Somar(int a, int b)
+{
+    var span = tracer.BuildSpan("somar").Start();
+    try
+    {
+        span.SetBaggageItem("teste", "aaa");
+        span.SetBaggageItem("teste-2", "bbb");
+        Thread.Sleep(Random.Shared.Next(50, 500));
+        span.Log("mensagem de log");
+        return a + b;
+    }
+    finally
+    {
+        span.Finish();
+    }
+}
+
+int Subtrair(int a, int b)
+{
+    var span = tracer.BuildSpan("subtrair").Start();
+    try
+    {
+        Thread.Sleep(Random.Shared.Next(50, 500));
+        return a - b;
+    }
+    finally
+    {
+        span.Finish();
+    }
 }

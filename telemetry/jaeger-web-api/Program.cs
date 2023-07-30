@@ -4,6 +4,8 @@ using Jaeger.Senders;
 using Jaeger;
 using OpenTracing.Util;
 using OpenTracing;
+using Jaeger.Reporters;
+using OpenTracing.Contrib.NetCore.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +21,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddOpenTracing();
 
 // Adds the Jaeger Tracer.
-builder.Services.AddSingleton<ITracer>(serviceProvider =>
+/*builder.Services.AddSingleton<ITracer>(serviceProvider =>
 {
     var serviceName = serviceProvider.GetRequiredService<IWebHostEnvironment>().ApplicationName;
     var loggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
@@ -38,7 +40,25 @@ builder.Services.AddSingleton<ITracer>(serviceProvider =>
     GlobalTracer.Register(tracer);
 
     return tracer;
+});*/
+
+builder.Services.AddSingleton<ITracer>(sp =>
+{
+    var serviceName = sp.GetRequiredService<IWebHostEnvironment>().ApplicationName;
+    var loggerFactory = sp.GetRequiredService<ILoggerFactory>();
+    var reporter = new RemoteReporter.Builder().WithLoggerFactory(loggerFactory).WithSender(new UdpSender())
+        .Build();
+    var tracer = new Tracer.Builder(serviceName)
+        // The constant sampler reports every span.
+        .WithSampler(new ConstSampler(true))
+        // LoggingReporter prints every reported span to the logging framework.
+        .WithReporter(reporter)
+        .Build();
+    return tracer;
 });
+
+builder.Services.Configure<HttpHandlerDiagnosticOptions>(options =>
+    options.OperationNameResolver = request => $"{request.Method.Method}: {request?.RequestUri?.AbsoluteUri}");
 
 var app = builder.Build();
 

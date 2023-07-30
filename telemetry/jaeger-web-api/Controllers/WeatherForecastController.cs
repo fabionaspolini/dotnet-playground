@@ -25,21 +25,20 @@ public class WeatherForecastController : ControllerBase
     [HttpGet(Name = "GetWeatherForecast")]
     public IEnumerable<WeatherForecast> Get()
     {
-        var span = _tracer.BuildSpan("Teste").Start();
-        //using var activity = DiagnosticsConfig.ActivitySource.StartActivity("SayHello");
-        //activity?.SetTag("foo", 1);
-        //activity?.SetTag("bar", "Hello, World!");
-        //activity?.SetTag("baz", new int[] { 1, 2, 3 });
+        var actionName = ControllerContext.ActionDescriptor.DisplayName;
+        using var scope = _tracer.BuildSpan(actionName).StartActive(true);
+
 
         _logger.LogInformation("Teste");
         Thread.Sleep(100);
-        span.Finish();
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+
+        var result = Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
             Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
             TemperatureC = Random.Shared.Next(-20, 55),
             Summary = Summaries[Random.Shared.Next(Summaries.Length)]
         })
         .ToArray();
+        return result;
     }
 }
