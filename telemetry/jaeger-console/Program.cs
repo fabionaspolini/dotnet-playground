@@ -18,11 +18,9 @@ var reporter = new RemoteReporter.Builder()
     .WithSender(new HttpSender("http://localhost:14268/api/traces"))
     .Build();
 
-var sampler = new ConstSampler(true);
-
 using var tracer = new Tracer.Builder(ServiceName)
     .WithLoggerFactory(loggerFactory)
-    .WithSampler(sampler)
+    .WithSampler(new ConstSampler(true))
     .WithReporter(reporter)
     .Build();
 
