@@ -10,10 +10,8 @@
 
   <ItemGroup>
     <PackageReference Include="Jaeger" Version="1.0.3" />
-    <PackageReference Include="Jaeger.Senders.Thrift" Version="1.0.3" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
-    <PackageReference Include="OpenTracing.Contrib.NetCore" Version="0.9.0" />
   </ItemGroup>
 
 </Project>
