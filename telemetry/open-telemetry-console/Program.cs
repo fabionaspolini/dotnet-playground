@@ -12,6 +12,15 @@ const string ServiceVersion = "1.0.0";
 
 var loggerFactory = LoggerFactory.Create(builder => builder
     .SetMinimumLevel(LogLevel.Information)
+    /*.Configure(x => x.ActivityTrackingOptions = ActivityTrackingOptions.SpanId |
+                        ActivityTrackingOptions.TraceId |
+                        ActivityTrackingOptions.ParentId |
+                        ActivityTrackingOptions.Tags |
+                        ActivityTrackingOptions.Baggage)
+    .AddJsonConsole(opts =>
+    {
+        opts.IncludeScopes = true;
+    }));*/
     .AddConsole());
 
 var _logger = loggerFactory.CreateLogger<Program>();
@@ -25,6 +34,7 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
     .SetSampler(new AlwaysOnSampler())
     // 4317 -> Collector: accept OpenTelemetry Protocol (OTLP) over gRPC, if enabled
     .AddOtlpExporter(opts => opts.Endpoint = new Uri("http://localhost:4317"))
+    //.AddZipkinExporter(opts => opts.Endpoint = new Uri("http://localhost:9511"))
     .AddConsoleExporter()
     .Build()!;
 
@@ -36,6 +46,18 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
 //     //exporter.Endpoint = new Uri("http://localhost14268:/api/traces");
 // })
 
+
+// Tracing com objetos da Library OpenTelemetry.
+// Internamente iniciam a Activity nativa do .net core, apenas possuem outros nomes de propriedades para os mesmo objetivos.
+/*var tracer = tracerProvider.GetTracer(ServiceName, ServiceVersion);
+using (var tempSpan = tracer.StartActiveSpan("temp-span"))
+{
+    var teste = Activity.Current;
+    using (var subspan1 = tracer.StartActiveSpan("temp-sub-span-1")) ;
+    _logger.LogInformation("Temp span");
+    using (var subspan2 = tracer.StartActiveSpan("temp-sub-span-2")) ;
+}*/
+
 ActivitySource _myActivitySource = new ActivitySource(ServiceName, ServiceVersion);
 
 try
@@ -43,7 +65,7 @@ try
     //Calcular(10, 2, "somar");
     //Calcular(15, 3, "subtrair");
     //Calcular(15, 3, "teste");
-    await CalcularEmLote(simulateError: false);
+    await CalcularEmLote(simulateError: true);
     await ConsultarCep("01153000"); // ok
     await ConsultarCep("01153988"); // status: 200, erro: true
     await ConsultarCep("011539xx"); // status: 400
@@ -52,6 +74,8 @@ catch (Exception) { }
 
 tracerProvider.ForceFlush();
 tracerProvider.Shutdown();
+
+Thread.Sleep(1000);
 
 
 // ----- Http Client -----
@@ -67,7 +91,7 @@ async Task ConsultarCep(string cep)
             var body = (await response.Content.ReadFromJsonAsync<CepResponse>())!;
 
             if (body.erro)
-                span?.SetStatus(Status.Error);
+                span?.SetStatus(ActivityStatusCode.Error);
             else
             {
                 _logger.LogInformation($"Cidade: {body.localidade}");
@@ -75,11 +99,12 @@ async Task ConsultarCep(string cep)
             }
         }
         else
-            span?.SetStatus(Status.Error);
+            span?.SetStatus(ActivityStatusCode.Error);
     }
     catch (Exception ex)
     {
-        span?.SetStatus(Status.Error.WithDescription(ex.Message));
+        span?.SetStatus(ActivityStatusCode.Error, ex.Message);
+        span?.RecordException(ex);
     }
 }
 
@@ -100,7 +125,8 @@ Task CalcularEmLote(bool simulateError) => Task.Run(() =>
     }
     catch (Exception ex)
     {
-        span.SetStatus(Status.Error.WithDescription(ex.Message));
+        span?.SetStatus(ActivityStatusCode.Error, ex.Message);
+        span?.RecordException(ex); // Salvar na seção "logs" do Jaeger (events OTLP)
         //throw;
     }
 });
@@ -121,7 +147,7 @@ void Calcular(int a, int b, string op)
         {
             "somar" => Somar(a, b),
             "subtrair" => Subtrair(a, b),
-            _ => throw new ArgumentOutOfRangeException($"Operação não suportada: {op}")
+            _ => throw new ArgumentOutOfRangeException(nameof(op), $"Operação não suportada: {op}")
         };
         span.SetTag("resultado", result);
         span.SetStatus(Status.Ok);
@@ -130,8 +156,9 @@ void Calcular(int a, int b, string op)
     catch (Exception ex)
     {
         _logger.LogCritical(ex, "Erro ao calcular");
-        //span.SetStatus(Status.Error);
-        span.SetStatus(Status.Error.WithDescription(ex.Message));
+        //span.SetStatus(ActivityStatusCode.Error);
+        span.SetStatus(ActivityStatusCode.Error, ex.Message);
+        span?.RecordException(ex);
         throw;
     }
 }

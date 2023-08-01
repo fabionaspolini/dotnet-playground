@@ -61,3 +61,7 @@ docker run \
   jaegertracing/example-hotrod:latest \
   all
 ```
+
+docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
+
+docker run --rm -d -p 9511:9411 --name zipkin openzipkin/zipkin

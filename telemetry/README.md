@@ -6,7 +6,7 @@
 ## Ferramentas
 
 - [Jaeger](https://www.jaegertracing.io/): Jaeger: open source, end-to-end distributed tracing ([JAEGER.md](JAEGER.md)).
-- [SigNoz](https://signoz.io): Open Source Observability with Traces, Logs and Metrics in a single pane.
+- [SigNoz](https://signoz.io): Open Source Observability with Traces, Logs and Metrics in a single pane ([SIGNOZ.md](SIGNOZ.md)). 
 
 ### Terminologia
 
