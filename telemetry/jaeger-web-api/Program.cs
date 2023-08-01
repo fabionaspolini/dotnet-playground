@@ -7,6 +7,11 @@ using OpenTracing;
 using Jaeger.Reporters;
 using OpenTracing.Contrib.NetCore.Configuration;
 
+// #######################################################
+// #####   NÃO USAR ESTE CÓDIGO PARA NOVOS PROJETO   #####
+// #####   UTILIZE SDK DO OPEN TELEMETRY             #####
+// #######################################################
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

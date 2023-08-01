@@ -5,6 +5,11 @@ using Microsoft.Extensions.Logging;
 using Jaeger.Senders.Thrift;
 using System.Diagnostics;
 
+// #######################################################
+// #####   NÃO USAR ESTE CÓDIGO PARA NOVOS PROJETO   #####
+// #####   UTILIZE SDK DO OPEN TELEMETRY             #####
+// #######################################################
+
 Console.WriteLine(".:: Jaeger ::.");
 const string ServiceName = "jaeger-console-app-playground";
 
