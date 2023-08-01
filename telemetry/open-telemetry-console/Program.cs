@@ -15,15 +15,18 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
         .AddService(serviceName: ServiceName, serviceVersion: "1.0.0"))
     .AddHttpClientInstrumentation()
     .SetSampler(new AlwaysOnSampler())
-    /*.AddJaegerExporter(exporter =>
-    {
-        exporter.AgentHost = "localhost";
-        exporter.AgentPort = 14268;
-        //exporter.Endpoint = new Uri("http://localhost:14268/api/traces");
-    })*/
-    .AddOtlpExporter(opts => opts.Endpoint = new Uri("http://localhost:4317")) // 4317 -> accept OpenTelemetry Protocol (OTLP) over gRPC, if enabled
+    // 4317 -> Collector: accept OpenTelemetry Protocol (OTLP) over gRPC, if enabled
+    .AddOtlpExporter(opts => opts.Endpoint = new Uri("http://localhost:4317"))
     .AddConsoleExporter()
     .Build()!;
+
+// OpenTelemetry.Exporter.Jaeger: Exportação para agent Jaeger é depreciada. Dê preferência ao padrão OTLP (Open Telemetry Protocol).
+//.AddJaegerExporter(exporter =>
+// {
+//     exporter.AgentHost = "localhost";
+//     exporter.AgentPort = 6831;
+//     //exporter.Endpoint = new Uri("http://localhost14268:/api/traces");
+// })
 
 //var tracer = TracerProvider.Default.GetTracer(ServiceName);
 var tracer = tracerProvider.GetTracer(ServiceName);
