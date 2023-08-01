@@ -2,10 +2,8 @@
 using OpenTelemetry;
 using OpenTelemetry.Trace;
 using System.Diagnostics;
-using System.Net;
-using System.Net.Http;
 using Microsoft.Extensions.Logging;
-using System.Reflection.Metadata.Ecma335;
+using System.Net.Http.Json;
 
 Console.WriteLine(".:: Open Telemetry ::.");
 
@@ -15,7 +13,9 @@ const string ServiceVersion = "1.0.0";
 var loggerFactory = LoggerFactory.Create(builder => builder
     .SetMinimumLevel(LogLevel.Information)
     .AddConsole());
-var logger = loggerFactory.CreateLogger<Program>();
+
+var _logger = loggerFactory.CreateLogger<Program>();
+var _httpClient = new HttpClient()!;
 
 using var tracerProvider = Sdk.CreateTracerProviderBuilder()
     .AddSource(ServiceName)
@@ -36,60 +36,17 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
 //     //exporter.Endpoint = new Uri("http://localhost14268:/api/traces");
 // })
 
-//var tracer = TracerProvider.Default.GetTracer(ServiceName);
-//var tracer = tracerProvider.GetTracer(ServiceName, ServiceVersion);
-ActivitySource MyActivitySource = new ActivitySource(ServiceName, ServiceVersion);
-
-using var client = new HttpClient();
-//using var activitySource = new ActivitySource(ServiceName, "1.0.0");
-
-/*var tracer = tracerProvider.GetTracer(ServiceName, "1.0.0");
-var rootSpan = tracer.StartActiveSpan("teste");
-rootSpan.SetAttribute("aaa", "xxx");
-rootSpan.AddEvent("teste eventoooo");
-rootSpan.Dispose();*/
-
-//while (true)
-/*{
-    using var activity = activitySource.StartActivity("Teste", ActivityKind.Server);
-    activity?.SetTag("meu-id", Guid.NewGuid().ToString());
-
-    var html = await client.GetStringAsync("https://example.com/");
-
-    activity.Stop();
-    activity?.Dispose();
-
-    Console.WriteLine("Pressione qualquer tecla para novo teste...");
-    Console.ReadLine();
-}*/
-
-/*
-using (var activity2 = MyActivitySource.StartActivity("SayHello")!)
-using (var activity = MyActivitySource.StartActivity("aaaa"))
-//using (var activity = new Activity("aaaa"))
-{
-    activity.SetParentId(activity2.Id);
-    var teste = activity.Context;
-    activity.Start();
-    activity.SetTag("foo", 1);
-    activity.SetTag("bar", "Hello, World!");
-    activity.SetTag("baz", new int[] { 1, 2, 3 });
-    activity.SetStatus(ActivityStatusCode.Ok);
-
-}*/
-
-/*using (var span = tracerProvider.GetTracer(ServiceName).StartActiveSpan("teste"))
-{
-    span.SetAttribute("aaa", 45);
-    var html = await client.GetStringAsync("https://example.com/");
-}*/
+ActivitySource _myActivitySource = new ActivitySource(ServiceName, ServiceVersion);
 
 try
 {
     //Calcular(10, 2, "somar");
     //Calcular(15, 3, "subtrair");
     //Calcular(15, 3, "teste");
-    CalcularEmLote(simulateError: true).Wait();
+    await CalcularEmLote(simulateError: false);
+    await ConsultarCep("01153000"); // ok
+    await ConsultarCep("01153988"); // status: 200, erro: true
+    await ConsultarCep("011539xx"); // status: 400
 }
 catch (Exception) { }
 
@@ -97,11 +54,40 @@ tracerProvider.ForceFlush();
 tracerProvider.Shutdown();
 
 
-// ----- Métodos -----
+// ----- Http Client -----
+async Task ConsultarCep(string cep)
+{
+    using var span = _myActivitySource.StartActivity("consultar-cep");
+    try
+    {
+        //var response = await httpClient.GetAsync($"https://viacep.com.br/ws/{cep}/json/");
+        var response = await _httpClient.GetAsync($"https://viacep.com.br/ws/{cep}/json/");
+        if (response.IsSuccessStatusCode)
+        {
+            var body = (await response.Content.ReadFromJsonAsync<CepResponse>())!;
+
+            if (body.erro)
+                span?.SetStatus(Status.Error);
+            else
+            {
+                _logger.LogInformation($"Cidade: {body.localidade}");
+                span?.SetStatus(Status.Ok);
+            }
+        }
+        else
+            span?.SetStatus(Status.Error);
+    }
+    catch (Exception ex)
+    {
+        span?.SetStatus(Status.Error.WithDescription(ex.Message));
+    }
+}
+
+// ----- Cálculos -----
 
 Task CalcularEmLote(bool simulateError) => Task.Run(() =>
 {
-    using var span = MyActivitySource.StartActivity("lote-operacoes");
+    using var span = _myActivitySource.StartActivity("lote-operacoes");
     try
     {
         var task = Task.Run(() => Calcular(5, 6, "somar"));
@@ -112,16 +98,16 @@ Task CalcularEmLote(bool simulateError) => Task.Run(() =>
         task.Wait();
         span.SetStatus(Status.Ok);
     }
-    catch (Exception e)
+    catch (Exception ex)
     {
-        span.SetStatus(Status.Error.WithDescription(e.Message));
+        span.SetStatus(Status.Error.WithDescription(ex.Message));
         //throw;
     }
 });
 
 void Calcular(int a, int b, string op)
 {
-    using var span = MyActivitySource.StartActivity("calcular")!;
+    using var span = _myActivitySource.StartActivity("calcular")!;
     try
     {
         span.SetTag(nameof(a), a);
@@ -129,7 +115,7 @@ void Calcular(int a, int b, string op)
         span.SetTag(nameof(b), b);
         span.AddBaggage("root-baggage", "xxxxxxxxx");
 
-        logger.LogInformation("Iniciando...");
+        _logger.LogInformation("Iniciando...");
 
         var result = op switch
         {
@@ -139,11 +125,11 @@ void Calcular(int a, int b, string op)
         };
         span.SetTag("resultado", result);
         span.SetStatus(Status.Ok);
-        logger.LogInformation("Concluído");
+        _logger.LogInformation("Concluído");
     }
     catch (Exception ex)
     {
-        logger.LogCritical(ex, "Erro ao calcular");
+        _logger.LogCritical(ex, "Erro ao calcular");
         //span.SetStatus(Status.Error);
         span.SetStatus(Status.Error.WithDescription(ex.Message));
         throw;
@@ -152,7 +138,7 @@ void Calcular(int a, int b, string op)
 
 int Somar(int a, int b)
 {
-    using var span = MyActivitySource.StartActivity("somar")!;
+    using var span = _myActivitySource.StartActivity("somar")!;
 
     // Baggage não é armazenado pelo collector e não será exibido na interface do Jaeger (https://opentelemetry.io/docs/specs/status/#baggage)
     // Baggages de spans pais são acessíveis aqui, mas o que é adicionado aqui não volta para o pai.
@@ -166,7 +152,7 @@ int Somar(int a, int b)
 
 int Subtrair(int a, int b)
 {
-    using var span = MyActivitySource.StartActivity("subtrair")!;
+    using var span = _myActivitySource.StartActivity("subtrair")!;
     Thread.Sleep(Random.Shared.Next(50, 500));
     span.SetStatus(Status.Ok);
     return a - b;
