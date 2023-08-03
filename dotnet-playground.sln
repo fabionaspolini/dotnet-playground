@@ -127,6 +127,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "open-telemetry-console-play
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "open-telemetry-web-api-playground", "telemetry\open-telemetry-web-api\open-telemetry-web-api-playground.csproj", "{571E2B7D-0D76-441F-AB46-736E79680562}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "grpc", "grpc", "{FB5443C3-0FCB-446F-BA10-0780B31C0316}"
+	ProjectSection(SolutionItems) = preProject
+		grpc\README.md = grpc\README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "basic-grpc-server-playground", "grpc\basic-grpc-server\basic-grpc-server-playground.csproj", "{19521C65-D155-41BC-B01D-541D2563EE8E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "basic-grpc-client-playground", "grpc\basic-grpc-client\basic-grpc-client-playground.csproj", "{7F2FA598-36ED-427A-9F16-692D4C3B909D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -593,6 +602,30 @@ Global
 		{571E2B7D-0D76-441F-AB46-736E79680562}.Release|x64.Build.0 = Release|Any CPU
 		{571E2B7D-0D76-441F-AB46-736E79680562}.Release|x86.ActiveCfg = Release|Any CPU
 		{571E2B7D-0D76-441F-AB46-736E79680562}.Release|x86.Build.0 = Release|Any CPU
+		{19521C65-D155-41BC-B01D-541D2563EE8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19521C65-D155-41BC-B01D-541D2563EE8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19521C65-D155-41BC-B01D-541D2563EE8E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{19521C65-D155-41BC-B01D-541D2563EE8E}.Debug|x64.Build.0 = Debug|Any CPU
+		{19521C65-D155-41BC-B01D-541D2563EE8E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{19521C65-D155-41BC-B01D-541D2563EE8E}.Debug|x86.Build.0 = Debug|Any CPU
+		{19521C65-D155-41BC-B01D-541D2563EE8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19521C65-D155-41BC-B01D-541D2563EE8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19521C65-D155-41BC-B01D-541D2563EE8E}.Release|x64.ActiveCfg = Release|Any CPU
+		{19521C65-D155-41BC-B01D-541D2563EE8E}.Release|x64.Build.0 = Release|Any CPU
+		{19521C65-D155-41BC-B01D-541D2563EE8E}.Release|x86.ActiveCfg = Release|Any CPU
+		{19521C65-D155-41BC-B01D-541D2563EE8E}.Release|x86.Build.0 = Release|Any CPU
+		{7F2FA598-36ED-427A-9F16-692D4C3B909D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F2FA598-36ED-427A-9F16-692D4C3B909D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F2FA598-36ED-427A-9F16-692D4C3B909D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7F2FA598-36ED-427A-9F16-692D4C3B909D}.Debug|x64.Build.0 = Debug|Any CPU
+		{7F2FA598-36ED-427A-9F16-692D4C3B909D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7F2FA598-36ED-427A-9F16-692D4C3B909D}.Debug|x86.Build.0 = Debug|Any CPU
+		{7F2FA598-36ED-427A-9F16-692D4C3B909D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F2FA598-36ED-427A-9F16-692D4C3B909D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F2FA598-36ED-427A-9F16-692D4C3B909D}.Release|x64.ActiveCfg = Release|Any CPU
+		{7F2FA598-36ED-427A-9F16-692D4C3B909D}.Release|x64.Build.0 = Release|Any CPU
+		{7F2FA598-36ED-427A-9F16-692D4C3B909D}.Release|x86.ActiveCfg = Release|Any CPU
+		{7F2FA598-36ED-427A-9F16-692D4C3B909D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -638,6 +671,8 @@ Global
 		{3A901C6A-35D5-442A-8058-A200F7A35FB4} = {EAC9F6F0-2E5B-48B6-8AE9-8627E1455372}
 		{A47E4687-D5E3-435B-AD0B-4C780A09494B} = {EAC9F6F0-2E5B-48B6-8AE9-8627E1455372}
 		{571E2B7D-0D76-441F-AB46-736E79680562} = {EAC9F6F0-2E5B-48B6-8AE9-8627E1455372}
+		{19521C65-D155-41BC-B01D-541D2563EE8E} = {FB5443C3-0FCB-446F-BA10-0780B31C0316}
+		{7F2FA598-36ED-427A-9F16-692D4C3B909D} = {FB5443C3-0FCB-446F-BA10-0780B31C0316}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {168EC689-C008-4589-95F0-6030A3264703}
