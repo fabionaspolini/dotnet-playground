@@ -23,3 +23,6 @@
 - [Getting Started OpenTracing](https://opentelemetry.io/docs/instrumentation/net/getting-started/)
 - [Cart sample](https://opentelemetry.io/docs/demo/services/cart/)
 - `OpenTelemetry.Trace.SemanticConventions`: Classe com convensões padrões
+- Padrões para ingestão dos headers no tracing distribuido (RabbitMQ, Kafka e atividade em geral que não possui instrumentações nativas)
+	- [Projeto .net](https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/examples/MicroserviceExample)
+	- [Convenções de headers](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/messaging.md#span-name)
