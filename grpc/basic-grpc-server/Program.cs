@@ -1,4 +1,5 @@
 using BasicGrpcServerPlayground.Services;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,12 +9,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddGrpc();
 
-//builder.WebHost.ConfigureKestrel(options =>
-//{
-//    var http2 = options.Limits.Http2;
-//    http2.InitialConnectionWindowSize = 1024 * 1024 * 2; // 2 MB
-//    http2.InitialStreamWindowSize = 1024 * 1024; // 1 MB
-//});
+// https://learn.microsoft.com/en-us/aspnet/core/grpc/aspnetcore?view=aspnetcore-7.0&tabs=visual-studio
+/*builder.WebHost.ConfigureKestrel(options =>
+{
+    //var http2 = options.Limits.Http2;
+    //http2.InitialConnectionWindowSize = 1024 * 1024 * 2; // 2 MB
+    //http2.InitialStreamWindowSize = 1024 * 1024; // 1 MB
+    //options.Listen()
+});*/
 
 var app = builder.Build();
 
