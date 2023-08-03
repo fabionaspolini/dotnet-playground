@@ -26,12 +26,10 @@ public class WeatherForecastController : ControllerBase
     [HttpGet(Name = "GetWeatherForecast")]
     public async Task<IEnumerable<WeatherForecast>> GetAsync()
     {
-        //using var activity = DiagnosticsConfig.ActivitySource.StartActivity("SayHello");
-        //activity?.SetTag("foo", 1);
-        //activity?.SetTag("bar", "Hello, World!");
-        //activity?.SetTag("baz", new int[] { 1, 2, 3 });
-
-        var teste = Activity.Current;
+        //using var activity = DiagnosticsConfig.ActivitySource.StartActivity("SayHello")!;
+        //activity.SetTag("foo", 1);
+        //activity.SetTag("bar", "Hello, World!");
+        //activity.SetTag("baz", new int[] { 1, 2, 3 });
 
         _logger.LogInformation("Teste");
 
