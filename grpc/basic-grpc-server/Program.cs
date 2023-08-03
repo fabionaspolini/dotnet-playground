@@ -8,6 +8,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddGrpc();
 
+//builder.WebHost.ConfigureKestrel(options =>
+//{
+//    var http2 = options.Limits.Http2;
+//    http2.InitialConnectionWindowSize = 1024 * 1024 * 2; // 2 MB
+//    http2.InitialStreamWindowSize = 1024 * 1024; // 1 MB
+//});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
