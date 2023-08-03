@@ -1,4 +1,4 @@
-namespace jaeger_playground;
+namespace OpenTelemetryWebApiPlayground;
 
 public class WeatherForecast
 {

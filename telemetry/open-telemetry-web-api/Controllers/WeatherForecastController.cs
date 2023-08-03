@@ -1,7 +1,4 @@
-using jaeger_playground;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using System.Net.Http;
 
 namespace OpenTelemetryWebApiPlayground.Controllers;
 
