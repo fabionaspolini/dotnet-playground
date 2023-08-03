@@ -33,6 +33,8 @@ public class WeatherForecastController : ControllerBase
 
         _logger.LogInformation("Teste");
 
+        //throw new Exception("Fake exception");
+
         var html = await _httpClient.GetStringAsync("https://example.com/");
         var html2 = await _httpClient.GetStringAsync("https://example.com/");
 

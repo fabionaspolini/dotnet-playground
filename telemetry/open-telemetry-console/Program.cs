@@ -4,11 +4,17 @@ using OpenTelemetry.Trace;
 using System.Diagnostics;
 using Microsoft.Extensions.Logging;
 using System.Net.Http.Json;
+using Npgsql;
+using System.Security.Cryptography;
+using OpenTelemetryConsolePlayground;
+using Microsoft.EntityFrameworkCore;
 
 Console.WriteLine(".:: Open Telemetry ::.");
 
 const string ServiceName = "open-telemetry-console-playground";
 const string ServiceVersion = "1.0.0";
+
+const string ConnectionString = "Server=127.0.0.1;Port=5432;Database=teste;User Id=postgres;Password=123456;";
 
 var loggerFactory = LoggerFactory.Create(builder => builder
     .SetMinimumLevel(LogLevel.Information)
@@ -23,14 +29,22 @@ var loggerFactory = LoggerFactory.Create(builder => builder
     }));*/
     .AddConsole());
 
-var _logger = loggerFactory.CreateLogger<Program>();
+ILogger<Program> _logger = loggerFactory.CreateLogger<Program>();
 HttpClient _httpClient = new HttpClient();
 
 using var tracerProvider = Sdk.CreateTracerProviderBuilder()
     .AddSource(ServiceName)
     .SetResourceBuilder(ResourceBuilder.CreateDefault()
         .AddService(serviceName: ServiceName, serviceVersion: ServiceVersion))
-    .AddHttpClientInstrumentation()
+    .AddHttpClientInstrumentation(opts => opts.RecordException = true)
+    .AddNpgsql()
+    .AddEntityFrameworkCoreInstrumentation(x =>
+    {
+        // Instrumentação do EF não oferece muita informação, apenas a query executada.
+        // A instrumentação do DbConnection com Npgsql oferece isso e um pouco mais. Não precisa usar os dois.
+        x.SetDbStatementForText = true;
+        x.EnrichWithIDbCommand = (act, cmd) => act.DisplayName = "EF " + act.DisplayName;
+    })
     .SetSampler(new AlwaysOnSampler())
     // 4317 -> Collector: accept OpenTelemetry Protocol (OTLP) over gRPC, if enabled
     .AddOtlpExporter(opts => opts.Endpoint = new Uri("http://localhost:4317"))
@@ -59,24 +73,95 @@ using (var tempSpan = tracer.StartActiveSpan("temp-span"))
 }*/
 
 ActivitySource _myActivitySource = new ActivitySource(ServiceName, ServiceVersion);
-
-try
+using (var rootSpan = _myActivitySource.StartActivity("execute")) // Somente para agrupar todas as childs da execução do app num span raiz
 {
-    //Calcular(10, 2, "somar");
-    //Calcular(15, 3, "subtrair");
-    //Calcular(15, 3, "teste");
-    //await CalcularEmLote(simulateError: true);
-    //await ConsultarCep("01153000"); // ok
-    //await ConsultarCep("01153988"); // status: 200, erro: true
-    //await ConsultarCep("011539xx"); // status: 400
-    await ConsultarWeatherForecast();
-}
-catch (Exception) { }
+    try
+    {
+        const bool simultaneo = false;
+        if (simultaneo)
+        {
+            // --- Execução simultânea ---
+            var tasks = new List<Task>
+            {
+                CalcularEmLote(simulateException: false),
+                ConsultarCep("01153000"), // ok
+                ConsultarCep("01153988"), // status: 200, erro: true
+                ConsultarCep("011539xx"), // status: 400
+                ConsultarWeatherForecast(),
+                ConsultarDatabaseNative(simulateException: false),
+                ConsultarDatabaseNative(simulateException: true),
+                ConsultarDatabaseComEntityFramework(simulateException: false),
+                ConsultarDatabaseComEntityFramework(simulateException: true)
+            };
+            Task.WaitAll(tasks.ToArray());
+        }
+        else
+        {
+            // --- Execução sequencial ---
+            await CalcularEmLote(simulateException: false);
+            await ConsultarCep("01153000"); // ok
+            await ConsultarCep("01153988"); // status: 200, erro: true
+            await ConsultarCep("011539xx"); // status: 400
+            await ConsultarWeatherForecast();
+            await ConsultarDatabaseNative(simulateException: false);
+            await ConsultarDatabaseNative(simulateException: true);
+            await ConsultarDatabaseComEntityFramework(simulateException: false);
+            await ConsultarDatabaseComEntityFramework(simulateException: true);
+        }
 
+        // --- Outros testes ---
+        //Calcular(10, 2, "somar");
+        //Calcular(15, 3, "subtrair");
+        //Calcular(15, 3, "teste");
+    }
+    catch (Exception) { }
+}
 tracerProvider.ForceFlush();
 tracerProvider.Shutdown();
 
-Thread.Sleep(1000);
+// ----- Consulta com Entity Framework -----
+async Task ConsultarDatabaseComEntityFramework(bool simulateException)
+{
+    // Se não criar o span, a requisição http ainda é trackeada, porém ficam como dois processo root sem vinculo neste exemplo
+    using var span = _myActivitySource.StartActivity("consultar-database-com-entity-framework")!;
+    try
+    {
+        var options = new DbContextOptionsBuilder().UseNpgsql(ConnectionString).Options;
+        using var conn = new TesteContext(options);
+        if (simulateException)
+            await conn.PessoasSimulateException.ToArrayAsync();
+        else
+            await conn.Pessoas.ToArrayAsync();
+        span.SetStatus(Status.Ok);
+    }
+    catch (Exception ex)
+    {
+        span.SetStatus(ActivityStatusCode.Error, ex.Message);
+        //span.RecordException(ex); // Gravado automaticamente pela instrumentação do PG
+    }
+}
+
+// ----- Consulta SQL Nativa -----
+async Task ConsultarDatabaseNative(bool simulateException)
+{
+    // Se não criar o span, a requisição http ainda é trackeada, porém ficam como dois processo root sem vinculo neste exemplo
+    using var span = _myActivitySource.StartActivity("consultar-database-native")!;
+    try
+    {
+        using var conn = new NpgsqlConnection(ConnectionString);
+        await conn.OpenAsync();
+        using var cmd = conn.CreateCommand();
+        cmd.CommandText = simulateException ? @"select * from pessoa_aaaaaaaa" : @"select * from pessoa";
+        using var reader = await cmd.ExecuteReaderAsync();
+        while (reader.Read()) ;
+        span.SetStatus(Status.Ok);
+    }
+    catch (Exception ex)
+    {
+        span.SetStatus(ActivityStatusCode.Error, ex.Message);
+        //span.RecordException(ex); // Gravado automaticamente pela instrumentação do PG
+    }
+}
 
 // ----- Consumir open-telemetry-web-api-playground ----
 async Task ConsultarWeatherForecast()
@@ -91,8 +176,8 @@ async Task ConsultarWeatherForecast()
     }
     catch (Exception ex)
     {
-        span.SetStatus(ActivityStatusCode.Error);
-        span.RecordException(ex);
+        span.SetStatus(ActivityStatusCode.Error, ex.Message);
+        //span.RecordException(ex); // Gravado automaticamente pela configuração da instrumentação
     }
 }
 
@@ -110,7 +195,7 @@ async Task ConsultarCep(string cep)
             var body = (await response.Content.ReadFromJsonAsync<CepResponse>())!;
 
             if (body.erro)
-                span.SetStatus(ActivityStatusCode.Error);
+                span.SetStatus(ActivityStatusCode.Error, "Cep não encontrado");
             else
             {
                 _logger.LogInformation($"Cidade: {body.localidade}");
@@ -118,7 +203,7 @@ async Task ConsultarCep(string cep)
             }
         }
         else
-            span.SetStatus(ActivityStatusCode.Error);
+            span.SetStatus(ActivityStatusCode.Error, "Cep em formato inválido");
     }
     catch (Exception ex)
     {
@@ -129,7 +214,7 @@ async Task ConsultarCep(string cep)
 
 // ----- Cálculos -----
 
-Task CalcularEmLote(bool simulateError) => Task.Run(() =>
+Task CalcularEmLote(bool simulateException) => Task.Run(() =>
 {
     using var span = _myActivitySource.StartActivity("lote-operacoes")!;
     try
@@ -137,7 +222,7 @@ Task CalcularEmLote(bool simulateError) => Task.Run(() =>
         var task = Task.Run(() => Calcular(5, 6, "somar"));
         Calcular(2, 3, "somar");
         Calcular(5, 3, "subtrair");
-        if (simulateError)
+        if (simulateException)
             Calcular(15, 3, "teste");
         task.Wait();
         span.SetStatus(Status.Ok);
@@ -175,7 +260,6 @@ void Calcular(int a, int b, string op)
     catch (Exception ex)
     {
         _logger.LogCritical(ex, "Erro ao calcular");
-        //span.SetStatus(ActivityStatusCode.Error);
         span.SetStatus(ActivityStatusCode.Error, ex.Message);
         span.RecordException(ex);
         throw;

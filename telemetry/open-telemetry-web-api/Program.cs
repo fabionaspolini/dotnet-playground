@@ -17,8 +17,8 @@ builder.Services.AddOpenTelemetry()
     .WithTracing(builder => builder
         .AddSource(DiagnosticsConfig.ActivitySource.Name)
         .ConfigureResource(resource => resource.AddService(DiagnosticsConfig.ServiceName, serviceVersion: DiagnosticsConfig.ServiceVersion))
-        .AddHttpClientInstrumentation()
-        .AddAspNetCoreInstrumentation()
+        .AddHttpClientInstrumentation(opts => opts.RecordException = true)
+        .AddAspNetCoreInstrumentation(opts => opts.RecordException = true)
         .AddOtlpExporter(opts => opts.Endpoint = new Uri("http://localhost:4317"))
         .AddConsoleExporter());
 
