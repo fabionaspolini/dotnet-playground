@@ -24,7 +24,7 @@ var loggerFactory = LoggerFactory.Create(builder => builder
     .AddConsole());
 
 var _logger = loggerFactory.CreateLogger<Program>();
-var _httpClient = new HttpClient()!;
+HttpClient _httpClient = new HttpClient();
 
 using var tracerProvider = Sdk.CreateTracerProviderBuilder()
     .AddSource(ServiceName)
@@ -65,10 +65,11 @@ try
     //Calcular(10, 2, "somar");
     //Calcular(15, 3, "subtrair");
     //Calcular(15, 3, "teste");
-    await CalcularEmLote(simulateError: true);
-    await ConsultarCep("01153000"); // ok
-    await ConsultarCep("01153988"); // status: 200, erro: true
-    await ConsultarCep("011539xx"); // status: 400
+    //await CalcularEmLote(simulateError: true);
+    //await ConsultarCep("01153000"); // ok
+    //await ConsultarCep("01153988"); // status: 200, erro: true
+    //await ConsultarCep("011539xx"); // status: 400
+    await ConsultarWeatherForecast();
 }
 catch (Exception) { }
 
@@ -77,11 +78,29 @@ tracerProvider.Shutdown();
 
 Thread.Sleep(1000);
 
+// ----- Consumir open-telemetry-web-api-playground ----
+async Task ConsultarWeatherForecast()
+{
+    // Se não criar o span, a requisição http ainda é trackeada, porém ficam como dois processo root sem vinculo neste exemplo
+    using var span = _myActivitySource.StartActivity("consultar-weather-forecast")!;
+    try
+    {
+        var html = await _httpClient.GetStringAsync("https://example.com/");
+        var response = await _httpClient.GetAsync("http://localhost:5237/WeatherForecast");
+        span.SetStatus(response.IsSuccessStatusCode ? Status.Ok : Status.Error);
+    }
+    catch (Exception ex)
+    {
+        span.SetStatus(ActivityStatusCode.Error);
+        span.RecordException(ex);
+    }
+}
+
 
 // ----- Http Client -----
 async Task ConsultarCep(string cep)
 {
-    using var span = _myActivitySource.StartActivity("consultar-cep");
+    using var span = _myActivitySource.StartActivity("consultar-cep")!;
     try
     {
         //var response = await httpClient.GetAsync($"https://viacep.com.br/ws/{cep}/json/");
@@ -91,20 +110,20 @@ async Task ConsultarCep(string cep)
             var body = (await response.Content.ReadFromJsonAsync<CepResponse>())!;
 
             if (body.erro)
-                span?.SetStatus(ActivityStatusCode.Error);
+                span.SetStatus(ActivityStatusCode.Error);
             else
             {
                 _logger.LogInformation($"Cidade: {body.localidade}");
-                span?.SetStatus(Status.Ok);
+                span.SetStatus(Status.Ok);
             }
         }
         else
-            span?.SetStatus(ActivityStatusCode.Error);
+            span.SetStatus(ActivityStatusCode.Error);
     }
     catch (Exception ex)
     {
-        span?.SetStatus(ActivityStatusCode.Error, ex.Message);
-        span?.RecordException(ex);
+        span.SetStatus(ActivityStatusCode.Error, ex.Message);
+        span.RecordException(ex);
     }
 }
 
@@ -112,7 +131,7 @@ async Task ConsultarCep(string cep)
 
 Task CalcularEmLote(bool simulateError) => Task.Run(() =>
 {
-    using var span = _myActivitySource.StartActivity("lote-operacoes");
+    using var span = _myActivitySource.StartActivity("lote-operacoes")!;
     try
     {
         var task = Task.Run(() => Calcular(5, 6, "somar"));
@@ -125,8 +144,8 @@ Task CalcularEmLote(bool simulateError) => Task.Run(() =>
     }
     catch (Exception ex)
     {
-        span?.SetStatus(ActivityStatusCode.Error, ex.Message);
-        span?.RecordException(ex); // Salvar na seção "logs" do Jaeger (events OTLP)
+        span.SetStatus(ActivityStatusCode.Error, ex.Message);
+        span.RecordException(ex); // Salvar na seção "logs" do Jaeger (events OTLP)
         //throw;
     }
 });
@@ -158,7 +177,7 @@ void Calcular(int a, int b, string op)
         _logger.LogCritical(ex, "Erro ao calcular");
         //span.SetStatus(ActivityStatusCode.Error);
         span.SetStatus(ActivityStatusCode.Error, ex.Message);
-        span?.RecordException(ex);
+        span.RecordException(ex);
         throw;
     }
 }

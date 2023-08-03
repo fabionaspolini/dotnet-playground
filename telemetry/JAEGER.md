@@ -52,15 +52,7 @@ Jaeger UI: <http://localhost:16686>
 
 Lista de cada endpoint: <https://www.jaegertracing.io/docs/1.47/getting-started/#all-in-one>
 
-```
-docker run \
-  --rm \
-  --link jaeger \
-  --env OTEL_EXPORTER_JAEGER_ENDPOINT=http://jaeger:14268/api/traces \
-  -p8080-8083:8080-8083 \
-  jaegertracing/example-hotrod:latest \
-  all
-```
+## Zipkin
 
 docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
 

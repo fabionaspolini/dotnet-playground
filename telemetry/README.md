@@ -1,4 +1,4 @@
-# Telemetria & Tracing
+# Telemetria
 
 - [OpenTelemetry](https://github.com/open-telemetry/opentelemetry-specification) é o sucessor do [Open Tracing](https://github.com/opentracing/specification/blob/master/specification.md).
 - Padrão OTLP (OpenTelemetry Protocol) é suportado por outras ferramentas além do Jaeger, bastando apenas alterar o endpoint para sincronização dos dados.
@@ -22,3 +22,4 @@
 
 - [Getting Started OpenTracing](https://opentelemetry.io/docs/instrumentation/net/getting-started/)
 - [Cart sample](https://opentelemetry.io/docs/demo/services/cart/)
+- `OpenTelemetry.Trace.SemanticConventions`: Classe com convensões padrões

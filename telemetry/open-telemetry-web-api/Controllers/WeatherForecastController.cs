@@ -1,5 +1,6 @@
 using jaeger_playground;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 using System.Net.Http;
 
 namespace OpenTelemetryWebApiPlayground.Controllers;
@@ -30,9 +31,12 @@ public class WeatherForecastController : ControllerBase
         //activity?.SetTag("bar", "Hello, World!");
         //activity?.SetTag("baz", new int[] { 1, 2, 3 });
 
+        var teste = Activity.Current;
+
         _logger.LogInformation("Teste");
 
         var html = await _httpClient.GetStringAsync("https://example.com/");
+        var html2 = await _httpClient.GetStringAsync("https://example.com/");
 
 
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast

@@ -16,10 +16,10 @@ builder.Services.AddHttpClient();
 builder.Services.AddOpenTelemetry()
     .WithTracing(builder => builder
         .AddSource(DiagnosticsConfig.ActivitySource.Name)
-        .ConfigureResource(resource => resource.AddService(DiagnosticsConfig.ServiceName))
+        .ConfigureResource(resource => resource.AddService(DiagnosticsConfig.ServiceName, serviceVersion: DiagnosticsConfig.ServiceVersion))
         .AddHttpClientInstrumentation()
         .AddAspNetCoreInstrumentation()
-        .AddJaegerExporter()
+        .AddOtlpExporter(opts => opts.Endpoint = new Uri("http://localhost:4317"))
         .AddConsoleExporter());
 
 var app = builder.Build();
@@ -41,6 +41,7 @@ app.Run();
 
 public static class DiagnosticsConfig
 {
-    public const string ServiceName = "open-telemetry-playground";
-    public static ActivitySource ActivitySource = new(ServiceName);
+    public const string ServiceName = "open-telemetry-web-api-playground";
+    public const string ServiceVersion = "1.0.0";
+    public static readonly ActivitySource ActivitySource = new(ServiceName, ServiceVersion);
 }
