@@ -97,7 +97,7 @@ Nas avaliações de frameworks concorrentes, estará indicado com :heart: a pref
 dotnet new console -n <nome-exemplo>-playground -o <nome-exemplo>
 
 # Exemplo
-dotnet new console -n BasicRedisPlayground -o Basic
+dotnet new console -n basic-redis-playground -o Basic
 ```
 
 2. Ajustar RootNamespace do csproj para PascalCase ("NomeExemploPlayground").
