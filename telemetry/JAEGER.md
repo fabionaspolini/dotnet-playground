@@ -57,3 +57,4 @@ Lista de cada endpoint: <https://www.jaegertracing.io/docs/1.47/getting-started/
 docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
 
 docker run --rm -d -p 9511:9411 --name zipkin openzipkin/zipkin
+

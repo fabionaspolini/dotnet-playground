@@ -98,7 +98,7 @@ using (var rootSpan = _myActivitySource.StartActivity("execute")) // Somente par
         else
         {
             // --- Execução sequencial ---
-            await CalcularEmLote(simulateException: false);
+            await CalcularEmLote(simulateException: true);
             await ConsultarCep("01153000"); // ok
             await ConsultarCep("01153988"); // status: 200, erro: true
             await ConsultarCep("011539xx"); // status: 400
@@ -188,7 +188,6 @@ async Task ConsultarCep(string cep)
     using var span = _myActivitySource.StartActivity("consultar-cep")!;
     try
     {
-        //var response = await httpClient.GetAsync($"https://viacep.com.br/ws/{cep}/json/");
         var response = await _httpClient.GetAsync($"https://viacep.com.br/ws/{cep}/json/");
         if (response.IsSuccessStatusCode)
         {
@@ -242,10 +241,13 @@ void Calcular(int a, int b, string op)
     {
         span.SetTag(nameof(a), a);
         span.SetTag(nameof(b), b);
-        span.SetTag(nameof(b), b);
+        span.SetTag(nameof(op), op);
         span.AddBaggage("root-baggage", "xxxxxxxxx");
 
         _logger.LogInformation("Iniciando...");
+
+        var evento = new ActivityEvent("before-calculo", tags: new ActivityTagsCollection { { "sample-key", "sample-value" } });
+        span.AddEvent(evento);
 
         var result = op switch
         {
@@ -253,6 +255,9 @@ void Calcular(int a, int b, string op)
             "subtrair" => Subtrair(a, b),
             _ => throw new ArgumentOutOfRangeException(nameof(op), $"Operação não suportada: {op}")
         };
+
+        span.AddEvent(new("after-calculo"));
+
         span.SetTag("resultado", result);
         span.SetStatus(Status.Ok);
         _logger.LogInformation("Concluído");
@@ -275,7 +280,7 @@ int Somar(int a, int b)
     span.AddBaggage("teste", "aaa");
     span.AddBaggage("teste-2", "bbb");
     Thread.Sleep(Random.Shared.Next(50, 500));
-    span.AddEvent(new ActivityEvent("mensagem de log"));
+    span.AddEvent(new ActivityEvent("soma realizada"));
     span.SetStatus(Status.Ok);
     return a + b;
 }
