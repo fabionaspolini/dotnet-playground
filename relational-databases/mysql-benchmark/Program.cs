@@ -1,12 +1,12 @@
 ﻿using Dapper;
-using MySql.Data.MySqlClient;
+using MySqlConnector;
 using System.Diagnostics;
 
 Console.WriteLine(".:: MySQL Playground - Benchmark ::.");
 
 // Calibração do teste
 TimeSpan TotalTestTime = TimeSpan.FromSeconds(10);
-const int Threads = 1;
+const int Threads = 100;
 var appName = AppDomain.CurrentDomain.FriendlyName;
 // --
 
@@ -28,7 +28,7 @@ Console.WriteLine("Fim");
 Task<int> StartWorkerTask(int taskId) => Task.Run(async () =>
 {
     // PostgreSQL não suporta multiplos comandos por conexão, sendo necessário abrir uma connection em cada thread.
-    var conn = new MySqlConnection("Server=127.0.0.1;Port=3306;Database=teste;Uid=root;Pwd=admin;");
+    var conn = new MySqlConnection($"Server=127.0.0.1;Port=3306;Database=teste;Uid=root;Pwd=admin;ApplicationName={appName};"); // MySql.Data
     await conn.OpenAsync();
     var warmUpResult = await conn.QueryFirstAsync<Pessoa>("select * from pessoa where id = @id", new { id = 1 }); // Aquecer para libraries serem carregas para memória
 

@@ -9,10 +9,14 @@ Setup:
 - Framework para consultas: Dapper
 - Tempo: 10 segundos
 
-| Engine        | 1 Thread                        | 10 Threads                      | 100 Threads                       |
-|---------------|---------------------------------|---------------------------------|-----------------------------------|
-| PostgreSQL 14 | Total: 26.202 - 2.620,2 op/sec  | Total: 27.711 - 2.771,1 op/sec  | Total: 30.744 - 3.074,4 op/sec123    |
-| MySQL 8       | Total: 5.381 - 538,1 op/sec     |
+| Engine        | Driver         | 1 Thread                 | 10 Threads               | 100 Threads                |
+|---------------|----------------|--------------------------|--------------------------|----------------------------|
+| PostgreSQL 14 | Npgsql         | 25.787 - 2.578,7 op/sec  | 28.209 - 2.820,9 op/sec  | 29.410 - 2.941,0 op/sec    |
+| MySQL 8       | MySqlConnector | 13.018 - 1.301,8 op/sec  | 12.756 - 1.275,6 op/sec  | 13.013 - 1.301,3 op/sec    |
+| MySQL 8       | MySql.Data     | 5.381 - 538,1 op/sec     | Instável com burst test  | Instável com burst test    |
+
+- [Npgsql](https://www.npgsql.org/doc/connection-string-parameters.html)
+- [MySqlConnector Driver](https://mysqlconnector.net/connection-options/)
 
 ### Create database script
 
