@@ -74,4 +74,7 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
     .AddHttpClientInstrumentation(opts => opts.RecordException = true)  // Telemetria de saída HTTP com registro de detalhes de exceptions
     .AddNpgsql()                                                        // Telemtria de PostgreSQL
 ```
+
+Perceba convenção da tag `otel.library.name` indicando a library com métricas coletadas.
+
 ![http-request-and-db-query.png](assets/04-http-request-and-db-query.png)
