@@ -6,7 +6,7 @@ Console.WriteLine(".:: SQL Server Playground - Benchmark ::.");
 
 // Calibração do teste
 TimeSpan TotalTestTime = TimeSpan.FromSeconds(10);
-const int Threads = 100;
+const int Threads = 1;
 var appName = AppDomain.CurrentDomain.FriendlyName;
 // --
 
