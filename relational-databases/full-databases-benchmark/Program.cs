@@ -1,13 +1,13 @@
 ﻿using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Jobs;
+using BenchmarkDotNet.Order;
 using BenchmarkDotNet.Running;
 using Dapper;
 using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Logging;
 using MySqlConnector;
 using Npgsql;
 using System.Data;
-using System.Diagnostics;
 
 public class Program
 {
@@ -33,7 +33,12 @@ public enum DatabaseEngine
     SqlServer
 }
 
+//[DryJob]
+//[SimpleJob(RuntimeMoniker.Net70), AllStatisticsColumn, RPlotExporter]
+//[SimpleJob(runtimeMoniker: RuntimeMoniker.Net70, runStrategy: RunStrategy.Monitoring, launchCount: 1, warmupCount: 2, iterationCount: 1_000), AllStatisticsColumn, RPlotExporter]
 [ShortRunJob(RuntimeMoniker.Net70), AllStatisticsColumn, RPlotExporter]
+[Orderer(SummaryOrderPolicy.FastestToSlowest)]
+[GroupBenchmarksBy(BenchmarkLogicalGroupRule.ByMethod)]
 public class DatabaseBenchmark
 {
     private IDbConnection _connection = default!;
