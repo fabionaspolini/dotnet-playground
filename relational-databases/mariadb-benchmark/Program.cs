@@ -30,7 +30,7 @@ Console.WriteLine("Fim");
 Task<int> StartWorkerTask_RunAsync(int taskId) => Task.Run(async () =>
 {
     // MariaDB não suporta multiplos comandos por conexão, sendo necessário abrir uma connection em cada thread.
-    var conn = new MySqlConnection($"Server=127.0.0.1;Port=3307;Database=teste;Uid=root;Pwd=admin;ApplicationName={appName};"); // MySql.Data
+    var conn = new MySqlConnection($"Server=127.0.0.1;Port=3307;Database=teste;Uid=root;Pwd=admin;ApplicationName={appName};");
     await conn.OpenAsync();
     var warmUpResult = await conn.QueryFirstAsync<Pessoa>("select * from pessoa where id = @id", new { id = 1 }); // Aquecer para libraries serem carregas para memória
 
@@ -51,7 +51,7 @@ Task<int> StartWorkerTask_RunAsync(int taskId) => Task.Run(async () =>
 Task<int> StartWorkerTask_RunSync(int taskId) => Task.Run(() =>
 {
     // MariaDB não suporta multiplos comandos por conexão, sendo necessário abrir uma connection em cada thread.
-    var conn = new MySqlConnection($"Server=127.0.0.1;Port=3307;Database=teste;Uid=root;Pwd=admin;ApplicationName={appName};"); // MySql.Data
+    var conn = new MySqlConnection($"Server=127.0.0.1;Port=3307;Database=teste;Uid=root;Pwd=admin;ApplicationName={appName};");
     conn.Open();
     var warmUpResult = conn.QueryFirst<Pessoa>("select * from pessoa where id = @id", new { id = 1 }); // Aquecer para libraries serem carregas para memória
 
