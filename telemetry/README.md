@@ -59,7 +59,7 @@ O tempo apresentado no log é automaticamente calculado pelo OpenTracing e é re
 
 Outros exemplos de instrumentações realizadas automaticamente por libraries já prontas.
 
-Neste exemplo é realizado duas operações:
+Neste exemplo são realizadas duas operações:
 
 - Http Request (saída da aplicação): Consultado um CEP em `https://viacep.com.br/ws/{cep}/json/`.
 - Database Query: Consultado a tabela `pessoa` no banco de dados `teste` do tipo PostgreSQL.
