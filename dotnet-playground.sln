@@ -145,6 +145,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "basic-grpc-benchmark-playgr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mysql-benchmark-playground", "relational-databases\mysql-benchmark\mysql-benchmark-playground.csproj", "{69C88418-CAAF-40DF-896E-9B99C6EFAADE}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mariadb-benchmark-playground", "relational-databases\mariadb-benchmark\mariadb-benchmark-playground.csproj", "{3BFA5456-E9DD-4B5B-8CA2-DCF81CE16727}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -671,6 +673,18 @@ Global
 		{69C88418-CAAF-40DF-896E-9B99C6EFAADE}.Release|x64.Build.0 = Release|Any CPU
 		{69C88418-CAAF-40DF-896E-9B99C6EFAADE}.Release|x86.ActiveCfg = Release|Any CPU
 		{69C88418-CAAF-40DF-896E-9B99C6EFAADE}.Release|x86.Build.0 = Release|Any CPU
+		{3BFA5456-E9DD-4B5B-8CA2-DCF81CE16727}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BFA5456-E9DD-4B5B-8CA2-DCF81CE16727}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BFA5456-E9DD-4B5B-8CA2-DCF81CE16727}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3BFA5456-E9DD-4B5B-8CA2-DCF81CE16727}.Debug|x64.Build.0 = Debug|Any CPU
+		{3BFA5456-E9DD-4B5B-8CA2-DCF81CE16727}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3BFA5456-E9DD-4B5B-8CA2-DCF81CE16727}.Debug|x86.Build.0 = Debug|Any CPU
+		{3BFA5456-E9DD-4B5B-8CA2-DCF81CE16727}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BFA5456-E9DD-4B5B-8CA2-DCF81CE16727}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BFA5456-E9DD-4B5B-8CA2-DCF81CE16727}.Release|x64.ActiveCfg = Release|Any CPU
+		{3BFA5456-E9DD-4B5B-8CA2-DCF81CE16727}.Release|x64.Build.0 = Release|Any CPU
+		{3BFA5456-E9DD-4B5B-8CA2-DCF81CE16727}.Release|x86.ActiveCfg = Release|Any CPU
+		{3BFA5456-E9DD-4B5B-8CA2-DCF81CE16727}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -721,6 +735,7 @@ Global
 		{73D44C22-F0CF-48EF-BA1D-2261B8341C33} = {FB5443C3-0FCB-446F-BA10-0780B31C0316}
 		{A52D933B-6208-4722-8958-7F00C9A790E5} = {FB5443C3-0FCB-446F-BA10-0780B31C0316}
 		{69C88418-CAAF-40DF-896E-9B99C6EFAADE} = {D7ABB895-D2DB-4A6D-8955-36F92E077C07}
+		{3BFA5456-E9DD-4B5B-8CA2-DCF81CE16727} = {D7ABB895-D2DB-4A6D-8955-36F92E077C07}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {168EC689-C008-4589-95F0-6030A3264703}
