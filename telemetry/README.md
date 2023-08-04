@@ -31,13 +31,13 @@
 
 ## Exemplos de processo com telemetria
 
-#### Visão geral do processo de cálculo
+### Visão geral do processo de cálculo
 
 Dentro de `lote-operacoes` foram feitos três calculos, sendo duas somas em paralelo e uma subtração.
 
 ![overview.png](assets/01-overview.png)
 
-#### Recurso de tags e logs
+### Recurso de tags e logs
 
 Utilizado **tags** para armazenar os valores do processo e **logs** para os eventos `before-calculo` e `after-calculo`.
 
@@ -45,7 +45,7 @@ O tempo apresentado no log é automaticamente calculado pelo OpenTracing e é re
 
 ![tags-and-logs.png](assets/02-tags-and-logs.png)
 
-#### Erros
+### Erros
 
 - Para indicar erro no processo, deve-se utilizar o método `span.SetStatus(ActivityStatusCode.Error, ex.Message);` para definir os valores de tags.
 	- `otel.status_code`: Primeiro argumento. Isso que informa ao tracing para criar o simbolo de erro em vermelho.
@@ -55,7 +55,7 @@ O tempo apresentado no log é automaticamente calculado pelo OpenTracing e é re
 
 ![error.png](assets/03-error.png)
 
-#### Http Request e Database Query
+### Http Request e Database Query
 
 Outros exemplos de instrumentações realizadas automaticamente por libraries já prontas.
 
