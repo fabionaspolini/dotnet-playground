@@ -45,6 +45,8 @@ Consumo de CPU e RAM no async é menor.
 
 ### Resultados full-databases-benchmark com BenchmarkDotNet
 
+**DatabaseBenchmark - Single Thread**
+
 ```
 
 BenchmarkDotNet v0.13.6, Windows 11 (10.0.22621.1992/22H2/2022Update/SunValley2)
@@ -68,6 +70,39 @@ LaunchCount=1  WarmupCount=3
 | AsyncQuery |    MariaDb | 390.8 μs |  58.68 μs | 3.22 μs | 1.86 μs | 387.1 μs | 389.8 μs | 392.5 μs | 392.7 μs | 392.8 μs | 2,558.9 |
 | AsyncQuery |      MySql | 430.0 μs | 120.04 μs | 6.58 μs | 3.80 μs | 424.1 μs | 426.5 μs | 428.8 μs | 433.0 μs | 437.1 μs | 2,325.5 |
 | AsyncQuery |  SqlServer | 449.3 μs |  49.34 μs | 2.70 μs | 1.56 μs | 446.6 μs | 447.9 μs | 449.1 μs | 450.6 μs | 452.0 μs | 2,225.8 |
+
+
+**MultiThreadDatabaseBenchmark - Multi Thread**
+
+> Simulação multi thread não é fiel a um burst test. BenchmarkDotNet não possui feature para multi threads adequadas.  
+> Estão sendo criadas 10 threads por iteração do BenchmarkDotNet, e cada thread realiza conexão com o DB + 1000 consultas.  
+> Portando, o resultado final de operações por segundo deve ser multiplicado x 10 x 1000.  
+>
+> O número real de operações por segundo é na faixa de 14.000 a 22.000 aproximadamente (Formatação de decimal americada com ".").
+
+```
+
+BenchmarkDotNet v0.13.6, Windows 11 (10.0.22621.1992/22H2/2022Update/SunValley2)
+AMD Ryzen 5 5600G with Radeon Graphics, 1 CPU, 12 logical and 6 physical cores
+.NET SDK 7.0.304
+  [Host]     : .NET 7.0.9 (7.0.923.32018), X64 RyuJIT AVX2 [AttachedDebugger]
+  Job-UOMVIQ : .NET 7.0.9 (7.0.923.32018), X64 RyuJIT AVX2
+
+Runtime=.NET 7.0  IterationCount=10  LaunchCount=1  
+WarmupCount=2  
+
+```
+|     Method |     Engine | Threads | ConsultasPorThread |     Mean |    Error |   StdDev |  StdErr |      Min |       Q1 |   Median |       Q3 |      Max |  Op/s |
+|----------- |----------- |-------- |------------------- |---------:|---------:|---------:|--------:|---------:|---------:|---------:|---------:|---------:|------:|
+|  SyncQuery | PostgreSql |      10 |               1000 | 451.1 ms |  7.18 ms |  4.75 ms | 1.50 ms | 444.0 ms | 447.8 ms | 452.0 ms | 454.1 ms | 458.9 ms | 2.217 |
+|  SyncQuery |    MariaDb |      10 |               1000 | 588.8 ms |  9.77 ms |  5.81 ms | 1.94 ms | 578.6 ms | 585.3 ms | 588.9 ms | 590.5 ms | 597.0 ms | 1.698 |
+|  SyncQuery |  SqlServer |      10 |               1000 | 668.6 ms | 25.97 ms | 15.45 ms | 5.15 ms | 656.2 ms | 658.1 ms | 663.9 ms | 670.8 ms | 703.5 ms | 1.496 |
+|  SyncQuery |      MySql |      10 |               1000 | 695.4 ms |  7.78 ms |  5.15 ms | 1.63 ms | 690.6 ms | 691.0 ms | 693.5 ms | 698.4 ms | 703.6 ms | 1.438 |
+|            |            |         |                    |          |          |          |         |          |          |          |          |          |       |
+| AsyncQuery | PostgreSql |      10 |               1000 | 530.3 ms |  8.27 ms |  4.33 ms | 1.53 ms | 524.0 ms | 526.5 ms | 531.9 ms | 532.8 ms | 536.4 ms | 1.886 |
+| AsyncQuery |  SqlServer |      10 |               1000 | 750.1 ms | 39.48 ms | 23.49 ms | 7.83 ms | 732.9 ms | 735.7 ms | 741.6 ms | 743.0 ms | 803.8 ms | 1.333 |
+| AsyncQuery |    MariaDb |      10 |               1000 | 754.3 ms | 13.68 ms |  8.14 ms | 2.71 ms | 747.7 ms | 748.4 ms | 751.9 ms | 754.0 ms | 769.7 ms | 1.326 |
+| AsyncQuery |      MySql |      10 |               1000 | 880.3 ms | 11.92 ms |  6.23 ms | 2.20 ms | 872.7 ms | 875.0 ms | 879.1 ms | 886.6 ms | 888.1 ms | 1.136 |
 
 
 ### Create database script
