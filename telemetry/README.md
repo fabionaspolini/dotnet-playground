@@ -71,9 +71,7 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
     .AddSource(ServiceName)
     .SetResourceBuilder(ResourceBuilder.CreateDefault()
         .AddService(serviceName: ServiceName, serviceVersion: ServiceVersion))
-    .AddHttpClientInstrumentation(opts => opts.RecordException = true)	// Telemetria de saída HTTP com registro de detalhes de exceptions
-    .AddNpgsql()														// Telemtria de PostgreSQL
-....
+    .AddHttpClientInstrumentation(opts => opts.RecordException = true)  // Telemetria de saída HTTP com registro de detalhes de exceptions
+    .AddNpgsql()                                                        // Telemtria de PostgreSQL
 ```
-
 ![http-request-and-db-query.png](assets/04-http-request-and-db-query.png)
