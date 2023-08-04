@@ -1,12 +1,12 @@
 ﻿using Dapper;
-using MySqlConnector;
+using Microsoft.Data.SqlClient;
 using System.Diagnostics;
 
-Console.WriteLine(".:: MariaDB Playground - Benchmark ::.");
+Console.WriteLine(".:: SQL Server Playground - Benchmark ::.");
 
 // Calibração do teste
 TimeSpan TotalTestTime = TimeSpan.FromSeconds(10);
-const int Threads = 1;
+const int Threads = 100;
 var appName = AppDomain.CurrentDomain.FriendlyName;
 // --
 
@@ -27,8 +27,8 @@ Console.WriteLine("Fim");
 
 Task<int> StartWorkerTask(int taskId) => Task.Run(async () =>
 {
-    // MariaDB não suporta multiplos comandos por conexão, sendo necessário abrir uma connection em cada thread.
-    var conn = new MySqlConnection($"Server=127.0.0.1;Port=3307;Database=teste;Uid=root;Pwd=admin;ApplicationName={appName};"); // MySql.Data
+    // Teste sem multiplos comandos por conexão
+    var conn = new SqlConnection($"Server=127.0.0.1;Database=teste;User Id=sa;Password=Pass123456;Application Name={appName};TrustServerCertificate=True;");
     await conn.OpenAsync();
     var warmUpResult = await conn.QueryFirstAsync<Pessoa>("select * from pessoa where id = @id", new { id = 1 }); // Aquecer para libraries serem carregas para memória
 
