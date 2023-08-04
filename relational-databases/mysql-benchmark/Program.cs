@@ -1,8 +1,8 @@
 ﻿using Dapper;
-using Npgsql;
+using MySql.Data.MySqlClient;
 using System.Diagnostics;
 
-Console.WriteLine(".:: PostgreSQL Playground - Benchmark ::.");
+Console.WriteLine(".:: MySQL Playground - Benchmark ::.");
 
 // Calibração do teste
 TimeSpan TotalTestTime = TimeSpan.FromSeconds(10);
@@ -28,15 +28,15 @@ Console.WriteLine("Fim");
 Task<int> StartWorkerTask(int taskId) => Task.Run(async () =>
 {
     // PostgreSQL não suporta multiplos comandos por conexão, sendo necessário abrir uma connection em cada thread.
-    var conn = new NpgsqlConnection($"Server=127.0.0.1;Port=5432;Database=teste;User Id=postgres;Password=123456;MaxPoolSize=200;ApplicationName={appName};");
+    var conn = new MySqlConnection("Server=127.0.0.1;Port=3306;Database=teste;Uid=root;Pwd=admin;");
     await conn.OpenAsync();
-    var warmUpResult = await conn.QueryFirstAsync<Pessoa>("select * from pessoa where id = :id", new { id = 1 }); // Aquecer para libraries serem carregas para memória
+    var warmUpResult = await conn.QueryFirstAsync<Pessoa>("select * from pessoa where id = @id", new { id = 1 }); // Aquecer para libraries serem carregas para memória
 
     var watch = Stopwatch.StartNew();
     var count = 0;
     while (watch.Elapsed < TotalTestTime)
     {
-        var result = await conn.QueryFirstAsync<Pessoa>("select * from pessoa where id = :id", new { id = 1 });
+        var result = await conn.QueryFirstAsync<Pessoa>("select * from pessoa where id = @id", new { id = 1 });
         count++;
         if (count % 1_000 == 0)
             Console.WriteLine($"Task {taskId}: {count:N0} - {watch.Elapsed}");
