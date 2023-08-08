@@ -12,6 +12,8 @@ service Greeter {
 message HelloRequest {
   string name = 1;
   int32 count = 2;
+  bool upperResult = 3;
+  bool lowerResult = 4;
 }
 
 message HelloReply {

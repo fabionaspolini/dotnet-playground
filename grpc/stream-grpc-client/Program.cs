@@ -35,7 +35,13 @@ async Task ReponseStreamTest()
     try
     {
         var count = 0;
-        var request = new HelloRequest { Name = "Teste", Count = 1_000_000 };
+        var request = new HelloRequest
+        {
+            Name = "Teste",
+            Count = 1_000_000,
+            UpperResult = false,
+            LowerResult = false
+        };
         var watch = Stopwatch.StartNew();
         using var streamingCall = client.SayHello(request);
         await foreach (var response in streamingCall.ResponseStream.ReadAllAsync())

@@ -23,8 +23,10 @@ public class GreeterService : Greeter.GreeterBase
         for (var i = 0; i < request.Count; i++)
         {
             await responseStream.WriteAsync(new HelloReply { Index = i, Message = $"{i:N0} -> Hello {request.Name}" });
-            await responseStream.WriteAsync(new HelloReply { Index = i, Message = $"{i:N0} -> Hello {request.Name.ToUpper()}" });
-            await responseStream.WriteAsync(new HelloReply { Index = i, Message = $"{i:N0} -> Hello {request.Name.ToLower()}" });
+            if (request.UpperResult)
+                await responseStream.WriteAsync(new HelloReply { Index = i, Message = $"{i:N0} -> Hello {request.Name.ToUpper()}" });
+            if (request.LowerResult)
+                await responseStream.WriteAsync(new HelloReply { Index = i, Message = $"{i:N0} -> Hello {request.Name.ToLower()}" });
         }
     }
 }
