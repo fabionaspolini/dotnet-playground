@@ -1,5 +1,4 @@
 using Grpc.Core;
-using StreamGrpcServerPlayground;
 
 namespace StreamGrpcServerPlayground.Services;
 
@@ -11,11 +10,21 @@ public class GreeterService : Greeter.GreeterBase
         _logger = logger;
     }
 
-    public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
+    /*public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
     {
         return Task.FromResult(new HelloReply
         {
             Message = "Hello " + request.Name
         });
+    }*/
+
+    public override async Task SayHello(HelloRequest request, IServerStreamWriter<HelloReply> responseStream, ServerCallContext context)
+    {
+        for (var i = 0; i < request.Count; i++)
+        {
+            await responseStream.WriteAsync(new HelloReply { Index = i, Message = $"{i:N0} -> Hello {request.Name}" });
+            await responseStream.WriteAsync(new HelloReply { Index = i, Message = $"{i:N0} -> Hello {request.Name.ToUpper()}" });
+            await responseStream.WriteAsync(new HelloReply { Index = i, Message = $"{i:N0} -> Hello {request.Name.ToLower()}" });
+        }
     }
 }

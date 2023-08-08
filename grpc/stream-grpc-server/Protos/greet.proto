@@ -5,13 +5,15 @@ option csharp_namespace = "StreamGrpcServerPlayground";
 package greet;
 
 service Greeter {
-  rpc SayHello (HelloRequest) returns (HelloReply);
+  rpc SayHello (HelloRequest) returns (stream HelloReply);
 }
 
 message HelloRequest {
   string name = 1;
+  int32 count = 2;
 }
 
 message HelloReply {
   string message = 1;
+  int32 index = 2;
 }

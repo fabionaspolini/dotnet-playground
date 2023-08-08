@@ -1,7 +1,7 @@
 ﻿using StreamGrpcClientPlayground;
 using Grpc.Core;
 using Grpc.Net.Client;
-using System.Xml.Linq;
+using System.Diagnostics;
 
 Console.WriteLine(".:: gRPC Playground - Stream Client ::.");
 
@@ -18,33 +18,39 @@ if (Protocol == "HTTPS")
 }
 else
 {
-    /*var channelOptions = new GrpcChannelOptions
-    {
-        HttpHandler = new SocketsHttpHandler
-        {
-            PooledConnectionIdleTimeout = Timeout.InfiniteTimeSpan,
-            EnableMultipleHttp2Connections = true,
-            UseCookies = false,
-            PreAuthenticate = false,
-        }
-    };
-    channel = GrpcChannel.ForAddress("http://localhost:5155", channelOptions);*/
     channel = GrpcChannel.ForAddress("http://localhost:5155");
 }
 
 Console.WriteLine($"Protocolo: {Protocol}");
 
-// Tests
-var client = new Greeter.GreeterClient(channel);
-try
-{
-    var response = await client.SayHelloAsync(new HelloRequest { Name = "Teste" });
-    Console.WriteLine($"Response: {response.Message}");
-}
-catch (RpcException ex)
-{
-    Console.WriteLine("gRPC test response: " + ex.StatusCode);
-    Console.WriteLine(ex.ToString());
-}
+Greeter.GreeterClient client = new Greeter.GreeterClient(channel);
 
-Console.WriteLine("Fim");
+// Tests
+await ReponseStreamTest();
+
+
+
+async Task ReponseStreamTest()
+{
+    try
+    {
+        var count = 0;
+        var request = new HelloRequest { Name = "Teste", Count = 1_000_000 };
+        var watch = Stopwatch.StartNew();
+        using var streamingCall = client.SayHello(request);
+        await foreach (var response in streamingCall.ResponseStream.ReadAllAsync())
+        {
+            count++;
+            if (response.Index % 100_000 == 0)
+                Console.WriteLine($"Response: {response.Message}");
+        }
+
+        watch.Stop();
+        Console.WriteLine($"Concluído - {count:N0} itens em {watch.Elapsed}");
+    }
+    catch (RpcException ex)
+    {
+        Console.WriteLine("gRPC test response: " + ex.StatusCode);
+        Console.WriteLine(ex.ToString());
+    }
+}
