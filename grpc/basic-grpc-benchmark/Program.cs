@@ -4,7 +4,7 @@ using Grpc.Net.Client;
 using System.Diagnostics;
 using System.Net.Http.Json;
 
-Console.WriteLine(".:: gRPC Playground - Basic Client ::.");
+Console.WriteLine(".:: gRPC Playground -  Basic Benchmark ::.");
 
 const string Protocol = "HTTP";
 
@@ -13,7 +13,7 @@ const string httpPostUrl = "http://localhost:5225/say-hello";
 
 // Setup clients
 GrpcChannel channel;
-HttpClient http;
+HttpClient httpClient;
 string postUrl;
 if (Protocol == "HTTPS")
 {
@@ -31,7 +31,7 @@ if (Protocol == "HTTPS")
         {
             return true;
         };
-    http = new HttpClient(handler);
+    httpClient = new HttpClient(handler);
     postUrl = httpsPostUrl;
 }
 else
@@ -49,8 +49,8 @@ else
     };
     channel = GrpcChannel.ForAddress("http://localhost:5155", channelOptions);
 
-    // http
-    http = new HttpClient();
+    // rest
+    httpClient = new HttpClient();
     postUrl = httpPostUrl;
 }
 
@@ -59,18 +59,19 @@ else
 var client = new Greeter.GreeterClient(channel);
 
 var reply = await client.SayHelloAsync(new HelloRequest { Name = "Teste" });
-Console.WriteLine("gRPC test response: " + reply.Message);
+Console.WriteLine("gRPC test response: OK");
 
-var httpResponse = await http.PostAsJsonAsync(postUrl, new HelloRequest { Name = "Teste" });
-Console.WriteLine("HTTP test response: " + httpResponse.StatusCode);
+var httpResponse = await httpClient.PostAsJsonAsync(postUrl, new HelloRequest { Name = "Teste" });
+Console.WriteLine("REST test response: " + httpResponse.StatusCode);
 Console.WriteLine();
 
 if (!httpResponse.IsSuccessStatusCode)
-    throw new Exception("Erro teste HTTP!");
+    throw new Exception("Erro teste REST!");
 
 var TotalBenchmarkTime = TimeSpan.FromSeconds(2);
 
 Console.WriteLine($"Protocolo: {Protocol}");
+Console.WriteLine();
 
 // gRPC benchmark
 var grpcCount = 0;
@@ -82,23 +83,22 @@ while (watch.Elapsed <= TotalBenchmarkTime)
 }
 watch.Stop();
 
-Console.WriteLine($"{grpcCount} requisições gRPC em {watch.Elapsed}");
+Console.WriteLine($"gRPC -> {grpcCount} requisições em {watch.Elapsed}");
 
-// HTTP benchmark
-var httpCount = 0;
+// REST benchmark
+var restCount = 0;
 watch = Stopwatch.StartNew();
 while (watch.Elapsed <= TotalBenchmarkTime)
 {
-    var response = await http.PostAsJsonAsync(httpPostUrl, new HelloRequest { Name = "Teste" });
+    var response = await httpClient.PostAsJsonAsync(httpPostUrl, new HelloRequest { Name = "Teste" });
     if (!response.IsSuccessStatusCode)
-        throw new Exception("Erro benchmark HTTP!");
+        throw new Exception("Erro benchmark REST!");
 
-    httpCount++;
+    restCount++;
 }
 watch.Stop();
 
-Console.WriteLine($"{httpCount} requisições HTTP em {watch.Elapsed}");
+Console.WriteLine($"REST -> {restCount} requisições em {watch.Elapsed}");
 
 // Fim
-Console.WriteLine("Press any key to exit...");
-Console.ReadKey();
+Console.WriteLine("Fim");
