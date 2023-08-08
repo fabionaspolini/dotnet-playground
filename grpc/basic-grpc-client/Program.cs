@@ -1,5 +1,7 @@
 ﻿using BasicGrpcClientPlayground;
+using Grpc.Core;
 using Grpc.Net.Client;
+using System.Xml.Linq;
 
 Console.WriteLine(".:: gRPC Playground - Basic Client ::.");
 
@@ -30,17 +32,19 @@ else
     channel = GrpcChannel.ForAddress("http://localhost:5155");
 }
 
+Console.WriteLine($"Protocolo: {Protocol}");
 
 // Tests
 var client = new Greeter.GreeterClient(channel);
-
-var reply = await client.SayHelloAsync(new HelloRequest { Name = "Teste" });
-Console.WriteLine("gRPC test response: " + reply.Message);
-
-Console.WriteLine($"Protocolo: {Protocol}");
-
-// gRPC benchmark
-var response = await client.SayHelloAsync(new HelloRequest { Name = "Teste" });
-Console.WriteLine($"Response: {response.Message}");
+try
+{
+    var response = await client.SayHelloAsync(new HelloRequest { Name = "Teste" });
+    Console.WriteLine($"Response: {response.Message}");
+}
+catch (RpcException ex)
+{
+    Console.WriteLine("gRPC test response: " + ex.StatusCode);
+    Console.WriteLine(ex.ToString());
+}
 
 Console.WriteLine("Fim");
