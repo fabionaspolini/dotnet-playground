@@ -6,7 +6,7 @@ using System.Net.Http.Json;
 
 Console.WriteLine(".:: gRPC Playground -  Basic Benchmark ::.");
 
-const string Protocol = "HTTP";
+const string Protocol = "HTTPS";
 
 const string httpsPostUrl = "https://localhost:7081/say-hello";
 const string httpPostUrl = "http://localhost:5225/say-hello";
@@ -20,7 +20,7 @@ if (Protocol == "HTTPS")
     // grpc
     var httpHandler = new HttpClientHandler();
     httpHandler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
-    var channelOptions = new GrpcChannelOptions { HttpHandler = httpHandler };
+    var channelOptions = new GrpcChannelOptions { HttpHandler = httpHandler, UnsafeUseInsecureChannelCallCredentials=true };
     channel = GrpcChannel.ForAddress("https://localhost:7130", channelOptions);
 
     // http
@@ -45,7 +45,7 @@ else
             EnableMultipleHttp2Connections = true,
             UseCookies = false,
             PreAuthenticate = false,
-        }
+        },
     };
     channel = GrpcChannel.ForAddress("http://localhost:5155", channelOptions);
 
@@ -56,7 +56,7 @@ else
 
 
 // Tests
-var client = new Greeter.GreeterClient(channel);
+Greeter.GreeterClient client = new Greeter.GreeterClient(channel);
 
 var reply = await client.SayHelloAsync(new HelloRequest { Name = "Teste" });
 Console.WriteLine("gRPC test response: OK");
@@ -68,37 +68,79 @@ Console.WriteLine();
 if (!httpResponse.IsSuccessStatusCode)
     throw new Exception("Erro teste REST!");
 
-var TotalBenchmarkTime = TimeSpan.FromSeconds(2);
+// ------------- Parâmetros -------------
+var TotalBenchmarkTime = TimeSpan.FromSeconds(5);
+const int Threads = 5;
+// --------------------------------------
 
 Console.WriteLine($"Protocolo: {Protocol}");
 Console.WriteLine();
 
-// gRPC benchmark
-var grpcCount = 0;
-var watch = Stopwatch.StartNew();
-while (watch.Elapsed <= TotalBenchmarkTime)
-{
-    await client.SayHelloAsync(new HelloRequest { Name = "Teste" });
-    grpcCount++;
-}
-watch.Stop();
+// Tasks
+var grpcTasks = new List<Task<int>>();
+var restTasks = new List<Task<int>>();
 
+var watch = Stopwatch.StartNew();
+for (var i = 0; i < Threads; i++)
+    grpcTasks.Add(StartGrpcTask());
+    //grpcTasks.Add(StartGrpcTaskAsync());
+Task.WaitAll(grpcTasks.ToArray());
+watch.Stop();
+var grpcCount = grpcTasks.Sum(x => x.Result);
 Console.WriteLine($"gRPC -> {grpcCount} requisições em {watch.Elapsed}");
 
-// REST benchmark
-var restCount = 0;
 watch = Stopwatch.StartNew();
-while (watch.Elapsed <= TotalBenchmarkTime)
-{
-    var response = await httpClient.PostAsJsonAsync(httpPostUrl, new HelloRequest { Name = "Teste" });
-    if (!response.IsSuccessStatusCode)
-        throw new Exception("Erro benchmark REST!");
-
-    restCount++;
-}
+for (var i = 0; i < Threads; i++)
+    restTasks.Add(StartRestTask());
+Task.WaitAll(restTasks.ToArray());
 watch.Stop();
+var restCount = restTasks.Sum(x => x.Result);
 
 Console.WriteLine($"REST -> {restCount} requisições em {watch.Elapsed}");
 
 // Fim
 Console.WriteLine("Fim");
+
+
+Task<int> StartGrpcTask() => Task.Run(() =>
+{
+    //Greeter.GreeterClient client2 = new Greeter.GreeterClient(channel);
+    var count = 0;
+    var watch = Stopwatch.StartNew();
+    while (watch.Elapsed <= TotalBenchmarkTime)
+    {
+        client.SayHello(new HelloRequest { Name = "Teste" });
+        count++;
+    }
+    watch.Stop();
+    return count;
+});
+
+Task<int> StartGrpcTaskAsync() => Task.Run(async () =>
+{
+    //Greeter.GreeterClient client2 = new Greeter.GreeterClient(channel);
+    var count = 0;
+    var watch = Stopwatch.StartNew();
+    while (watch.Elapsed <= TotalBenchmarkTime)
+    {
+        await client.SayHelloAsync(new HelloRequest { Name = "Teste" });
+        count++;
+    }
+    watch.Stop();
+    return count;
+});
+
+Task<int> StartRestTask() => Task.Run(async () =>
+{
+    var count = 0;
+    var watch = Stopwatch.StartNew();
+    while (watch.Elapsed <= TotalBenchmarkTime)
+    {
+        var response = await httpClient.PostAsJsonAsync(httpPostUrl, new HelloRequest { Name = "Teste" });
+        if (!response.IsSuccessStatusCode)
+            throw new Exception("Erro benchmark REST!");
+        count++;
+    }
+    watch.Stop();
+    return count;
+});
