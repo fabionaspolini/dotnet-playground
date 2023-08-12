@@ -1,6 +1,7 @@
 ﻿using BasicGrpcClientPlayground;
 using Grpc.Core;
 using Grpc.Net.Client;
+using System.Diagnostics;
 using System.Xml.Linq;
 
 Console.WriteLine(".:: gRPC Playground - Basic Client ::.");
@@ -38,8 +39,12 @@ Console.WriteLine($"Protocolo: {Protocol}");
 var client = new Greeter.GreeterClient(channel);
 try
 {
+    var warmup = await client.SayHelloAsync(new HelloRequest { Name = "Teste" });
+
+    var watch = Stopwatch.StartNew();
     var response = await client.SayHelloAsync(new HelloRequest { Name = "Teste" });
-    Console.WriteLine($"Response: {response.Message}");
+    watch.Stop();
+    Console.WriteLine($"Response: {response.Message} - {watch.Elapsed}");
 }
 catch (RpcException ex)
 {
