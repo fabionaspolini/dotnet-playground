@@ -5,7 +5,7 @@ using System.Diagnostics;
 
 Console.WriteLine(".:: gRPC Playground - Stream Client ::.");
 
-const string Protocol = "HTTP";
+const string Protocol = "HTTPS";
 
 // Setup clients
 GrpcChannel channel;
@@ -18,17 +18,30 @@ if (Protocol == "HTTPS")
 }
 else
 {
+    /*var channelOptions = new GrpcChannelOptions
+    {
+        HttpHandler = new SocketsHttpHandler
+        {
+            PooledConnectionIdleTimeout = Timeout.InfiniteTimeSpan,
+            EnableMultipleHttp2Connections = true,
+            UseCookies = false,
+            PreAuthenticate = false,
+        },
+    };
+    channel = GrpcChannel.ForAddress("http://localhost:5155", channelOptions);*/
     channel = GrpcChannel.ForAddress("http://localhost:5155");
 }
 
 Console.WriteLine($"Protocolo: {Protocol}");
 
-Greeter.GreeterClient client = new Greeter.GreeterClient(channel); // 
+Greeter.GreeterClient client = new Greeter.GreeterClient(channel);
 
 // Tests
-//await ServerStreamingCallTest();
+await ServerStreamingCallTest();
 //await ClientStreamingCallTest();
-await BidirectionalStreamingCallTest();
+//await BidirectionalStreamingCallTest();
+
+
 
 async Task ServerStreamingCallTest()
 {
