@@ -7,6 +7,7 @@ package greet;
 service Greeter {
   rpc SayHello (HelloRequest) returns (stream HelloReply);
   rpc AddItem(stream ItemRequest) returns (ItensResume);
+  rpc PingBidirectional(stream PingRequest) returns (stream PongResponse);
 }
 
 message HelloRequest {
@@ -31,4 +32,12 @@ message ItensResume {
 	int32 itens = 1;
 	int32 quantidadeTotal = 2;
 	float valorTotal = 3;
+}
+
+message PingRequest {
+	int32 responseCount = 1;
+}
+
+message PongResponse {
+	int32 responseIndex = 1;
 }

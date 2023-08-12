@@ -27,9 +27,8 @@ Greeter.GreeterClient client = new Greeter.GreeterClient(channel); //
 
 // Tests
 //await ServerStreamingCallTest();
-await ClientStreamingCallTest();
-
-
+//await ClientStreamingCallTest();
+await BidirectionalStreamingCallTest();
 
 async Task ServerStreamingCallTest()
 {
@@ -89,6 +88,39 @@ async Task ClientStreamingCallTest()
     catch (RpcException ex)
     {
         Console.WriteLine("ClientStreamingCallTest response: " + ex.StatusCode);
+        Console.WriteLine(ex.ToString());
+    }
+}
+
+async Task BidirectionalStreamingCallTest()
+{
+    try
+    {
+        using var call = client.PingBidirectional();
+        var readTask = Task.Run(async () =>
+        {
+            await foreach (var response in call.ResponseStream.ReadAllAsync())
+                Console.WriteLine($"> Pong response index: {response.ResponseIndex:N0}");
+        });
+
+        while (true)
+        {
+            Console.Write("Ping - Quantidade de respostas: ");
+            var input = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(input))
+                break;
+
+            await call.RequestStream.WriteAsync(new PingRequest { ResponseCount = int.Parse(input) });
+            Thread.Sleep(1000);
+        }
+
+        await call.RequestStream.CompleteAsync();
+        await readTask;
+    }
+    catch (RpcException ex)
+    {
+        Console.WriteLine("BidirectionalStreamingCallTest response: " + ex.StatusCode);
         Console.WriteLine(ex.ToString());
     }
 }

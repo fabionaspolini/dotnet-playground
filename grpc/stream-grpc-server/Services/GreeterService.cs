@@ -45,4 +45,13 @@ public class GreeterService : Greeter.GreeterBase
         }
         return response;
     }
+
+    public async override Task PingBidirectional(IAsyncStreamReader<PingRequest> requestStream, IServerStreamWriter<PongResponse> responseStream, ServerCallContext context)
+    {
+        await foreach (var item in requestStream.ReadAllAsync())
+        {
+            for (int i = 0; i < item.ResponseCount; i++)
+                await responseStream.WriteAsync(new PongResponse { ResponseIndex = i });
+        }
+    }
 }
