@@ -3,6 +3,8 @@
 - [Tutorial para criar server e client](https://learn.microsoft.com/en-us/aspnet/core/tutorials/grpc/grpc-start?view=aspnetcore-7.0&tabs=visual-studio)
 - [Performance gRPC](https://learn.microsoft.com/en-us/aspnet/core/grpc/performance?view=aspnetcore-7.0)
 - [Status code](https://grpc.github.io/grpc/core/md_doc_statuscodes.html) / [From Google](https://developers.google.com/maps-booking/reference/grpc-api/status_codes?hl=pt-br)
+- [protobuf data types](https://protobuf.dev/programming-guides/proto3/)
+- [.net decimal support](https://learn.microsoft.com/en-us/dotnet/architecture/grpc-for-wcf-developers/protobuf-data-types)
 
 ## Stream Sample
 

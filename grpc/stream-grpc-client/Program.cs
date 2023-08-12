@@ -23,15 +23,17 @@ else
 
 Console.WriteLine($"Protocolo: {Protocol}");
 
-Greeter.GreeterClient client = new Greeter.GreeterClient(channel);
+Greeter.GreeterClient client = new Greeter.GreeterClient(channel); // 
 
 // Tests
-await ReponseStreamTest();
+//await ServerStreamingCallTest();
+await ClientStreamingCallTest();
 
 
 
-async Task ReponseStreamTest()
+async Task ServerStreamingCallTest()
 {
+    // Inicia com requisição do cliente e servidor response vários itens
     try
     {
         var count = 0;
@@ -43,8 +45,8 @@ async Task ReponseStreamTest()
             LowerResult = false
         };
         var watch = Stopwatch.StartNew();
-        using var streamingCall = client.SayHello(request);
-        await foreach (var response in streamingCall.ResponseStream.ReadAllAsync())
+        using var call = client.SayHello(request);
+        await foreach (var response in call.ResponseStream.ReadAllAsync())
         {
             count++;
             if (response.Index % 100_000 == 0)
@@ -56,7 +58,37 @@ async Task ReponseStreamTest()
     }
     catch (RpcException ex)
     {
-        Console.WriteLine("gRPC test response: " + ex.StatusCode);
+        Console.WriteLine("ServerStreamingCallTest response: " + ex.StatusCode);
+        Console.WriteLine(ex.ToString());
+    }
+}
+
+async Task ClientStreamingCallTest()
+{
+    // Client envia vários itens e obtém resultado após conlusão
+    try
+    {
+        const int count = 10_000;
+        var request = new ItemRequest
+        {
+            Nome = "Teste",
+            Quantidade = 2,
+            Valor = 13
+        };
+        var watch = Stopwatch.StartNew();
+        using var call = client.AddItem();
+        for (int i = 0; i < count; i++)
+            await call.RequestStream.WriteAsync(request);
+        await call.RequestStream.CompleteAsync();
+        var response = await call;
+        watch.Stop();
+
+        Console.WriteLine($"Concluído - {count:N0} itens em {watch.Elapsed}");
+        Console.WriteLine($"Response -> Itens: {response.Itens:N0}, QuantidadeTotal: {response.QuantidadeTotal:N0}, ValorTotal: {response.ValorTotal:N2}");
+    }
+    catch (RpcException ex)
+    {
+        Console.WriteLine("ClientStreamingCallTest response: " + ex.StatusCode);
         Console.WriteLine(ex.ToString());
     }
 }

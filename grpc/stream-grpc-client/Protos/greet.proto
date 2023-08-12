@@ -5,8 +5,8 @@ option csharp_namespace = "StreamGrpcClientPlayground";
 package greet;
 
 service Greeter {
-  // rpc GetWeatherStream (google.protobuf.Empty) returns (stream WeatherData);
   rpc SayHello (HelloRequest) returns (stream HelloReply);
+  rpc AddItem(stream ItemRequest) returns (ItensResume);
 }
 
 message HelloRequest {
@@ -19,4 +19,16 @@ message HelloRequest {
 message HelloReply {
   string message = 1;
   int32 index = 2;
+}
+
+message ItemRequest {
+	string nome = 1;
+	int32 quantidade = 2;
+	float valor = 3;
+}
+
+message ItensResume {
+	int32 itens = 1;
+	int32 quantidadeTotal = 2;
+	float valorTotal = 3;
 }
