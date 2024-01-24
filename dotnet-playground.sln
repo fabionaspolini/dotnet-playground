@@ -52,6 +52,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "quartz-playground", "scheduler\quartz\quartz-playground.csproj", "{A791365C-04A4-4064-AE95-F4974BB8CB34}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "command-line-interface", "command-line-interface", "{C0023841-3C73-40CE-AE16-F83C512781AE}"
+	ProjectSection(SolutionItems) = preProject
+		command-line-interface\README.md = command-line-interface\README.md
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "command-line-parser-playground", "command-line-interface\command-line-parser\command-line-parser-playground.csproj", "{7FEC01F2-B120-4628-90E3-1642BBDEC54B}"
 EndProject
