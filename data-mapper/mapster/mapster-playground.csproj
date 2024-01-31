@@ -32,8 +32,8 @@
   </Target>
 
   <ItemGroup>
-    <PackageReference Include="Mapster" Version="7.3.0" />
-    <PackageReference Include="Mapster.Core" Version="1.2.0" />
+    <PackageReference Include="Mapster" Version="7.4.0" />
+    <PackageReference Include="Mapster.Core" Version="1.2.1" />
   </ItemGroup>
 
 </Project>
