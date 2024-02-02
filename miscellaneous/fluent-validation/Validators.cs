@@ -28,11 +28,11 @@ namespace FluentValidationPlayground
                 .When(x => x.Tipo == TipoPessoa.Juridica)
                 .WithMessage("'Documento' deve ter 14 caracteres quando o 'Tipo' é 'Juridica'.");
 
-            RuleFor(x => x.CidadeId)
+            /*RuleFor(x => x.CidadeId)
                 .NotEmpty()
                 //.Must(cidadeId => Program.Cidades.Any(c => c.Id == cidadeId)) // Extension method CidadeIdByPredicate() criado para abstrair essa implementação
                 .CidadeIdByPredicate()
-                .WithMessage("'Cidade Id' não encontrada (by Predicate).");
+                .WithMessage("'Cidade Id' não encontrada (by Predicate).");*/
 
             // Ou validação com classe implementada CidadeIdValidator
             RuleFor(x => x.CidadeId)

@@ -16,7 +16,7 @@ namespace FluentValidationPlayground
             ValidatorOptions.Global.CascadeMode = CascadeMode.StopOnFirstFailure;
 
             var test = new Program();
-            test.Validar("Todos os dados em vazios", new Pessoa());
+            test.Validar("Todos os dados vazios", new Pessoa());
 
             test.Validar("Pessoa com id inválido de cidade", new Pessoa
             {
