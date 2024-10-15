@@ -30,6 +30,9 @@ public class ConcurrentDictionaryString
     public void TryGetValue() => collection.TryGetValue(FindValue, out _);
 
     [Benchmark]
+    public void GetValueOrDefault() => collection.GetValueOrDefault(FindValue);
+
+    [Benchmark]
     public void Contains() => collection.ContainsKey(FindValue);
 
     [Benchmark]

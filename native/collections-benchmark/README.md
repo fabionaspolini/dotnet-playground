@@ -28,53 +28,64 @@ Análise detalhada: <https://tutorials.eu/c-sharp-collections-performance/#:~:te
 
 ## String
 
+Pesquisa em coleção com 1 milhão de strings.
+
 ### ConcurrentDictionary\<string, integer\>
 
-| Method      | FindValue     | Mean      | Error | StdErr   | StdDev   | Min       | Q1        | Median    | Q3        | Max       | Op/s          | Allocated |
-|------------ |-------------- |----------:|------:|---------:|---------:|----------:|----------:|----------:|----------:|----------:|--------------:|----------:|
-| TryGetValue | Teste 1       |  9.196 ns |    NA | 0.000 ns | 0.000 ns |  9.196 ns |  9.196 ns |  9.196 ns |  9.196 ns |  9.196 ns | 108,737,806.7 |         - |
-| TryGetValue | Teste 568452  |  9.747 ns |    NA | 0.000 ns | 0.000 ns |  9.747 ns |  9.747 ns |  9.747 ns |  9.747 ns |  9.747 ns | 102,599,638.5 |         - |
-| TryGetValue | Teste 1000000 |  9.775 ns |    NA | 0.000 ns | 0.000 ns |  9.775 ns |  9.775 ns |  9.775 ns |  9.775 ns |  9.775 ns | 102,306,023.8 |         - |
-|             |               |           |       |          |          |           |           |           |           |           |               |           |
-| Contains    | Teste 1       |  9.136 ns |    NA | 0.000 ns | 0.000 ns |  9.136 ns |  9.136 ns |  9.136 ns |  9.136 ns |  9.136 ns | 109,460,785.2 |         - |
-| Contains    | Teste 568452  |  9.506 ns |    NA | 0.000 ns | 0.000 ns |  9.506 ns |  9.506 ns |  9.506 ns |  9.506 ns |  9.506 ns | 105,201,510.3 |         - |
-| Contains    | Teste 1000000 |  9.745 ns |    NA | 0.000 ns | 0.000 ns |  9.745 ns |  9.745 ns |  9.745 ns |  9.745 ns |  9.745 ns | 102,620,206.9 |         - |
-|             |               |           |       |          |          |           |           |           |           |           |               |           |
-| IndexValue  | Teste 1       | 10.016 ns |    NA | 0.000 ns | 0.000 ns | 10.016 ns | 10.016 ns | 10.016 ns | 10.016 ns | 10.016 ns |  99,838,871.5 |         - |
-| IndexValue  | Teste 1000000 | 10.381 ns |    NA | 0.000 ns | 0.000 ns | 10.381 ns | 10.381 ns | 10.381 ns | 10.381 ns | 10.381 ns |  96,331,661.0 |         - |
-| IndexValue  | Teste 568452  | 10.422 ns |    NA | 0.000 ns | 0.000 ns | 10.422 ns | 10.422 ns | 10.422 ns | 10.422 ns | 10.422 ns |  95,951,775.9 |         - |
+| Method            | FindValue     | Mean      | Error | StdErr   | StdDev   | Min       | Q1        | Median    | Q3        | Max       | Op/s          | Allocated |
+|------------------ |-------------- |----------:|------:|---------:|---------:|----------:|----------:|----------:|----------:|----------:|--------------:|----------:|
+| TryGetValue       | Teste 1       |  8.880 ns |    NA | 0.000 ns | 0.000 ns |  8.880 ns |  8.880 ns |  8.880 ns |  8.880 ns |  8.880 ns | 112,607,947.6 |         - |
+| TryGetValue       | Teste 568452  |  9.379 ns |    NA | 0.000 ns | 0.000 ns |  9.379 ns |  9.379 ns |  9.379 ns |  9.379 ns |  9.379 ns | 106,616,488.9 |         - |
+| TryGetValue       | Teste 1000000 |  9.675 ns |    NA | 0.000 ns | 0.000 ns |  9.675 ns |  9.675 ns |  9.675 ns |  9.675 ns |  9.675 ns | 103,355,346.2 |         - |
+|                   |               |           |       |          |          |           |           |           |           |           |               |           |
+| GetValueOrDefault | Teste 1       |  9.237 ns |    NA | 0.000 ns | 0.000 ns |  9.237 ns |  9.237 ns |  9.237 ns |  9.237 ns |  9.237 ns | 108,254,595.4 |         - |
+| GetValueOrDefault | Teste 568452  |  9.749 ns |    NA | 0.000 ns | 0.000 ns |  9.749 ns |  9.749 ns |  9.749 ns |  9.749 ns |  9.749 ns | 102,574,500.0 |         - |
+| GetValueOrDefault | Teste 1000000 | 10.035 ns |    NA | 0.000 ns | 0.000 ns | 10.035 ns | 10.035 ns | 10.035 ns | 10.035 ns | 10.035 ns |  99,651,065.4 |         - |
+|                   |               |           |       |          |          |           |           |           |           |           |               |           |
+| Contains          | Teste 1       |  8.874 ns |    NA | 0.000 ns | 0.000 ns |  8.874 ns |  8.874 ns |  8.874 ns |  8.874 ns |  8.874 ns | 112,693,476.8 |         - |
+| Contains          | Teste 568452  |  9.430 ns |    NA | 0.000 ns | 0.000 ns |  9.430 ns |  9.430 ns |  9.430 ns |  9.430 ns |  9.430 ns | 106,039,811.3 |         - |
+| Contains          | Teste 1000000 |  9.651 ns |    NA | 0.000 ns | 0.000 ns |  9.651 ns |  9.651 ns |  9.651 ns |  9.651 ns |  9.651 ns | 103,612,261.6 |         - |
+|                   |               |           |       |          |          |           |           |           |           |           |               |           |
+| IndexValue        | Teste 1       |  9.605 ns |    NA | 0.000 ns | 0.000 ns |  9.605 ns |  9.605 ns |  9.605 ns |  9.605 ns |  9.605 ns | 104,109,314.3 |         - |
+| IndexValue        | Teste 1000000 | 10.287 ns |    NA | 0.000 ns | 0.000 ns | 10.287 ns | 10.287 ns | 10.287 ns | 10.287 ns | 10.287 ns |  97,207,351.1 |         - |
+| IndexValue        | Teste 568452  | 10.372 ns |    NA | 0.000 ns | 0.000 ns | 10.372 ns | 10.372 ns | 10.372 ns | 10.372 ns | 10.372 ns |  96,408,979.8 |         - |
+
 
 ### Dictionary\<string, int\>
 
-| Method      | FindValue     | Mean      | Error | StdErr   | StdDev   | Min       | Q1        | Median    | Q3        | Max       | Op/s          | Allocated |
-|------------ |-------------- |----------:|------:|---------:|---------:|----------:|----------:|----------:|----------:|----------:|--------------:|----------:|
-| TryGetValue | Teste 568452  |  9.887 ns |    NA | 0.000 ns | 0.000 ns |  9.887 ns |  9.887 ns |  9.887 ns |  9.887 ns |  9.887 ns | 101,145,832.4 |         - |
-| TryGetValue | Teste 1       |  9.947 ns |    NA | 0.000 ns | 0.000 ns |  9.947 ns |  9.947 ns |  9.947 ns |  9.947 ns |  9.947 ns | 100,529,702.1 |         - |
-| TryGetValue | Teste 1000000 | 10.276 ns |    NA | 0.000 ns | 0.000 ns | 10.276 ns | 10.276 ns | 10.276 ns | 10.276 ns | 10.276 ns |  97,316,922.3 |         - |
-|             |               |           |       |          |          |           |           |           |           |           |               |           |
-| Contains    | Teste 568452  |  9.903 ns |    NA | 0.000 ns | 0.000 ns |  9.903 ns |  9.903 ns |  9.903 ns |  9.903 ns |  9.903 ns | 100,982,066.1 |         - |
-| Contains    | Teste 1000000 |  9.972 ns |    NA | 0.000 ns | 0.000 ns |  9.972 ns |  9.972 ns |  9.972 ns |  9.972 ns |  9.972 ns | 100,284,156.7 |         - |
-| Contains    | Teste 1       | 11.153 ns |    NA | 0.000 ns | 0.000 ns | 11.153 ns | 11.153 ns | 11.153 ns | 11.153 ns | 11.153 ns |  89,661,334.7 |         - |
-|             |               |           |       |          |          |           |           |           |           |           |               |           |
-| IndexValue  | Teste 1       | 10.566 ns |    NA | 0.000 ns | 0.000 ns | 10.566 ns | 10.566 ns | 10.566 ns | 10.566 ns | 10.566 ns |  94,645,658.8 |         - |
-| IndexValue  | Teste 568452  | 10.749 ns |    NA | 0.000 ns | 0.000 ns | 10.749 ns | 10.749 ns | 10.749 ns | 10.749 ns | 10.749 ns |  93,028,592.9 |         - |
-| IndexValue  | Teste 1000000 | 10.809 ns |    NA | 0.000 ns | 0.000 ns | 10.809 ns | 10.809 ns | 10.809 ns | 10.809 ns | 10.809 ns |  92,514,630.5 |         - |
+| Method            | FindValue     | Mean      | Error | StdErr   | StdDev   | Min       | Q1        | Median    | Q3        | Max       | Op/s          | Allocated |
+|------------------ |-------------- |----------:|------:|---------:|---------:|----------:|----------:|----------:|----------:|----------:|--------------:|----------:|
+| TryGetValue       | Teste 1       |  9.750 ns |    NA | 0.000 ns | 0.000 ns |  9.750 ns |  9.750 ns |  9.750 ns |  9.750 ns |  9.750 ns | 102,561,143.8 |         - |
+| TryGetValue       | Teste 568452  | 10.017 ns |    NA | 0.000 ns | 0.000 ns | 10.017 ns | 10.017 ns | 10.017 ns | 10.017 ns | 10.017 ns |  99,832,247.4 |         - |
+| TryGetValue       | Teste 1000000 | 10.140 ns |    NA | 0.000 ns | 0.000 ns | 10.140 ns | 10.140 ns | 10.140 ns | 10.140 ns | 10.140 ns |  98,622,312.2 |         - |
+|                   |               |           |       |          |          |           |           |           |           |           |               |           |
+| GetValueOrDefault | Teste 568452  | 11.124 ns |    NA | 0.000 ns | 0.000 ns | 11.124 ns | 11.124 ns | 11.124 ns | 11.124 ns | 11.124 ns |  89,894,457.0 |         - |
+| GetValueOrDefault | Teste 1       | 11.202 ns |    NA | 0.000 ns | 0.000 ns | 11.202 ns | 11.202 ns | 11.202 ns | 11.202 ns | 11.202 ns |  89,269,725.1 |         - |
+| GetValueOrDefault | Teste 1000000 | 11.452 ns |    NA | 0.000 ns | 0.000 ns | 11.452 ns | 11.452 ns | 11.452 ns | 11.452 ns | 11.452 ns |  87,318,470.9 |         - |
+|                   |               |           |       |          |          |           |           |           |           |           |               |           |
+| Contains          | Teste 1       |  9.884 ns |    NA | 0.000 ns | 0.000 ns |  9.884 ns |  9.884 ns |  9.884 ns |  9.884 ns |  9.884 ns | 101,174,347.9 |         - |
+| Contains          | Teste 568452  |  9.941 ns |    NA | 0.000 ns | 0.000 ns |  9.941 ns |  9.941 ns |  9.941 ns |  9.941 ns |  9.941 ns | 100,597,862.1 |         - |
+| Contains          | Teste 1000000 |  9.965 ns |    NA | 0.000 ns | 0.000 ns |  9.965 ns |  9.965 ns |  9.965 ns |  9.965 ns |  9.965 ns | 100,354,640.3 |         - |
+|                   |               |           |       |          |          |           |           |           |           |           |               |           |
+| IndexValue        | Teste 1       | 10.754 ns |    NA | 0.000 ns | 0.000 ns | 10.754 ns | 10.754 ns | 10.754 ns | 10.754 ns | 10.754 ns |  92,991,248.3 |         - |
+| IndexValue        | Teste 568452  | 10.797 ns |    NA | 0.000 ns | 0.000 ns | 10.797 ns | 10.797 ns | 10.797 ns | 10.797 ns | 10.797 ns |  92,619,892.8 |         - |
+| IndexValue        | Teste 1000000 | 10.820 ns |    NA | 0.000 ns | 0.000 ns | 10.820 ns | 10.820 ns | 10.820 ns | 10.820 ns | 10.820 ns |  92,425,312.4 |         - |
 
 ### HashSet\<string\>
 
 | Method         | FindValue     | Mean             | Error | StdErr   | StdDev   | Min              | Q1               | Median           | Q3               | Max              | Op/s          | Gen0   | Allocated |
 |--------------- |-------------- |-----------------:|------:|---------:|---------:|-----------------:|-----------------:|-----------------:|-----------------:|-----------------:|--------------:|-------:|----------:|
-| TryGetValue    | Teste 1000000 |         7.785 ns |    NA | 0.000 ns | 0.000 ns |         7.785 ns |         7.785 ns |         7.785 ns |         7.785 ns |         7.785 ns | 128,448,489.8 |      - |         - |
-| TryGetValue    | Teste 1       |        10.485 ns |    NA | 0.000 ns | 0.000 ns |        10.485 ns |        10.485 ns |        10.485 ns |        10.485 ns |        10.485 ns |  95,375,772.8 |      - |         - |
-| TryGetValue    | Teste 568452  |        10.852 ns |    NA | 0.000 ns | 0.000 ns |        10.852 ns |        10.852 ns |        10.852 ns |        10.852 ns |        10.852 ns |  92,149,354.5 |      - |         - |
+| TryGetValue    | Teste 1       |        10.459 ns |    NA | 0.000 ns | 0.000 ns |        10.459 ns |        10.459 ns |        10.459 ns |        10.459 ns |        10.459 ns |  95,609,161.5 |      - |         - |
+| TryGetValue    | Teste 568452  |        10.503 ns |    NA | 0.000 ns | 0.000 ns |        10.503 ns |        10.503 ns |        10.503 ns |        10.503 ns |        10.503 ns |  95,208,433.5 |      - |         - |
+| TryGetValue    | Teste 1000000 |        10.577 ns |    NA | 0.000 ns | 0.000 ns |        10.577 ns |        10.577 ns |        10.577 ns |        10.577 ns |        10.577 ns |  94,542,123.7 |      - |         - |
 |                |               |                  |       |          |          |                  |                  |                  |                  |                  |               |        |           |
-| Contains       | Teste 1000000 |         7.110 ns |    NA | 0.000 ns | 0.000 ns |         7.110 ns |         7.110 ns |         7.110 ns |         7.110 ns |         7.110 ns | 140,638,169.9 |      - |         - |
-| Contains       | Teste 1       |         9.763 ns |    NA | 0.000 ns | 0.000 ns |         9.763 ns |         9.763 ns |         9.763 ns |         9.763 ns |         9.763 ns | 102,422,473.7 |      - |         - |
-| Contains       | Teste 568452  |         9.831 ns |    NA | 0.000 ns | 0.000 ns |         9.831 ns |         9.831 ns |         9.831 ns |         9.831 ns |         9.831 ns | 101,714,633.7 |      - |         - |
+| Contains       | Teste 568452  |         9.462 ns |    NA | 0.000 ns | 0.000 ns |         9.462 ns |         9.462 ns |         9.462 ns |         9.462 ns |         9.462 ns | 105,687,061.8 |      - |         - |
+| Contains       | Teste 1       |         9.831 ns |    NA | 0.000 ns | 0.000 ns |         9.831 ns |         9.831 ns |         9.831 ns |         9.831 ns |         9.831 ns | 101,720,184.0 |      - |         - |
+| Contains       | Teste 1000000 |        10.480 ns |    NA | 0.000 ns | 0.000 ns |        10.480 ns |        10.480 ns |        10.480 ns |        10.480 ns |        10.480 ns |  95,422,261.7 |      - |         - |
 |                |               |                  |       |          |          |                  |                  |                  |                  |                  |               |        |           |
-| FirstOrDefault | Teste 1       |        24.753 ns |    NA | 0.000 ns | 0.000 ns |        24.753 ns |        24.753 ns |        24.753 ns |        24.753 ns |        24.753 ns |  40,399,749.4 | 0.0124 |     104 B |
-| FirstOrDefault | Teste 568452  | 4,005,480.469 ns |    NA | 0.000 ns | 0.000 ns | 4,005,480.469 ns | 4,005,480.469 ns | 4,005,480.469 ns | 4,005,480.469 ns | 4,005,480.469 ns |         249.7 |      - |     110 B |
-| FirstOrDefault | Teste 1000000 | 4,826,250.000 ns |    NA | 0.000 ns | 0.000 ns | 4,826,250.000 ns | 4,826,250.000 ns | 4,826,250.000 ns | 4,826,250.000 ns | 4,826,250.000 ns |         207.2 |      - |     116 B |
+| FirstOrDefault | Teste 1       |        17.613 ns |    NA | 0.000 ns | 0.000 ns |        17.613 ns |        17.613 ns |        17.613 ns |        17.613 ns |        17.613 ns |  56,777,072.1 | 0.0124 |     104 B |
+| FirstOrDefault | Teste 568452  | 3,793,210.938 ns |    NA | 0.000 ns | 0.000 ns | 3,793,210.938 ns | 3,793,210.938 ns | 3,793,210.938 ns | 3,793,210.938 ns | 3,793,210.938 ns |         263.6 |      - |     110 B |
+| FirstOrDefault | Teste 1000000 | 4,594,320.312 ns |    NA | 0.000 ns | 0.000 ns | 4,594,320.312 ns | 4,594,320.312 ns | 4,594,320.312 ns | 4,594,320.312 ns | 4,594,320.312 ns |         217.7 |      - |     116 B |
 
 ### HashTable (string)
 
@@ -122,19 +133,23 @@ Análise detalhada: <https://tutorials.eu/c-sharp-collections-performance/#:~:te
 
 ### SortedList\<string, integer\>
 
-| Method      | FindValue     | Mean     | Error | StdErr | StdDev | Min      | Q1       | Median   | Q3       | Max      | Op/s        | Allocated |
-|------------ |-------------- |---------:|------:|-------:|-------:|---------:|---------:|---------:|---------:|---------:|------------:|----------:|
-| TryGetValue | Teste 1       | 677.5 ns |    NA | 0.0 ns | 0.0 ns | 677.5 ns | 677.5 ns | 677.5 ns | 677.5 ns | 677.5 ns | 1,476,098.4 |         - |
-| TryGetValue | Teste 1000000 | 702.3 ns |    NA | 0.0 ns | 0.0 ns | 702.3 ns | 702.3 ns | 702.3 ns | 702.3 ns | 702.3 ns | 1,423,985.6 |         - |
-| TryGetValue | Teste 568452  | 817.1 ns |    NA | 0.0 ns | 0.0 ns | 817.1 ns | 817.1 ns | 817.1 ns | 817.1 ns | 817.1 ns | 1,223,831.9 |         - |
-|             |               |          |       |        |        |          |          |          |          |          |             |           |
-| Contains    | Teste 1       | 664.4 ns |    NA | 0.0 ns | 0.0 ns | 664.4 ns | 664.4 ns | 664.4 ns | 664.4 ns | 664.4 ns | 1,505,047.0 |         - |
-| Contains    | Teste 1000000 | 679.5 ns |    NA | 0.0 ns | 0.0 ns | 679.5 ns | 679.5 ns | 679.5 ns | 679.5 ns | 679.5 ns | 1,471,702.7 |         - |
-| Contains    | Teste 568452  | 806.3 ns |    NA | 0.0 ns | 0.0 ns | 806.3 ns | 806.3 ns | 806.3 ns | 806.3 ns | 806.3 ns | 1,240,248.5 |         - |
-|             |               |          |       |        |        |          |          |          |          |          |             |           |
-| IndexValue  | Teste 1       | 665.0 ns |    NA | 0.0 ns | 0.0 ns | 665.0 ns | 665.0 ns | 665.0 ns | 665.0 ns | 665.0 ns | 1,503,745.8 |         - |
-| IndexValue  | Teste 1000000 | 692.7 ns |    NA | 0.0 ns | 0.0 ns | 692.7 ns | 692.7 ns | 692.7 ns | 692.7 ns | 692.7 ns | 1,443,597.0 |         - |
-| IndexValue  | Teste 568452  | 797.3 ns |    NA | 0.0 ns | 0.0 ns | 797.3 ns | 797.3 ns | 797.3 ns | 797.3 ns | 797.3 ns | 1,254,281.1 |         - |
+| Method            | FindValue     | Mean     | Error | StdErr | StdDev | Min      | Q1       | Median   | Q3       | Max      | Op/s        | Allocated |
+|------------------ |-------------- |---------:|------:|-------:|-------:|---------:|---------:|---------:|---------:|---------:|------------:|----------:|
+| TryGetValue       | Teste 1000000 | 656.7 ns |    NA | 0.0 ns | 0.0 ns | 656.7 ns | 656.7 ns | 656.7 ns | 656.7 ns | 656.7 ns | 1,522,779.7 |         - |
+| TryGetValue       | Teste 1       | 670.2 ns |    NA | 0.0 ns | 0.0 ns | 670.2 ns | 670.2 ns | 670.2 ns | 670.2 ns | 670.2 ns | 1,492,059.0 |         - |
+| TryGetValue       | Teste 568452  | 952.1 ns |    NA | 0.0 ns | 0.0 ns | 952.1 ns | 952.1 ns | 952.1 ns | 952.1 ns | 952.1 ns | 1,050,342.9 |         - |
+|                   |               |          |       |        |        |          |          |          |          |          |             |           |
+| GetValueOrDefault | Teste 1       | 661.9 ns |    NA | 0.0 ns | 0.0 ns | 661.9 ns | 661.9 ns | 661.9 ns | 661.9 ns | 661.9 ns | 1,510,899.0 |         - |
+| GetValueOrDefault | Teste 1000000 | 782.4 ns |    NA | 0.0 ns | 0.0 ns | 782.4 ns | 782.4 ns | 782.4 ns | 782.4 ns | 782.4 ns | 1,278,131.4 |         - |
+| GetValueOrDefault | Teste 568452  | 887.6 ns |    NA | 0.0 ns | 0.0 ns | 887.6 ns | 887.6 ns | 887.6 ns | 887.6 ns | 887.6 ns | 1,126,636.3 |         - |
+|                   |               |          |       |        |        |          |          |          |          |          |             |           |
+| Contains          | Teste 1       | 664.2 ns |    NA | 0.0 ns | 0.0 ns | 664.2 ns | 664.2 ns | 664.2 ns | 664.2 ns | 664.2 ns | 1,505,542.4 |         - |
+| Contains          | Teste 1000000 | 689.2 ns |    NA | 0.0 ns | 0.0 ns | 689.2 ns | 689.2 ns | 689.2 ns | 689.2 ns | 689.2 ns | 1,450,945.7 |         - |
+| Contains          | Teste 568452  | 840.9 ns |    NA | 0.0 ns | 0.0 ns | 840.9 ns | 840.9 ns | 840.9 ns | 840.9 ns | 840.9 ns | 1,189,178.1 |         - |
+|                   |               |          |       |        |        |          |          |          |          |          |             |           |
+| IndexValue        | Teste 1       | 652.8 ns |    NA | 0.0 ns | 0.0 ns | 652.8 ns | 652.8 ns | 652.8 ns | 652.8 ns | 652.8 ns | 1,531,810.9 |         - |
+| IndexValue        | Teste 1000000 | 704.6 ns |    NA | 0.0 ns | 0.0 ns | 704.6 ns | 704.6 ns | 704.6 ns | 704.6 ns | 704.6 ns | 1,419,232.6 |         - |
+| IndexValue        | Teste 568452  | 818.0 ns |    NA | 0.0 ns | 0.0 ns | 818.0 ns | 818.0 ns | 818.0 ns | 818.0 ns | 818.0 ns | 1,222,495.1 |         - |
 
 ## Integer
 
@@ -156,6 +171,7 @@ Análise detalhada: <https://tutorials.eu/c-sharp-collections-performance/#:~:te
 
 ## Legends
 
+```
 FindValue : Value of the 'FindValue' parameter
 Mean      : Arithmetic mean of all measurements
 Error     : Half of 99.9% confidence interval
@@ -169,3 +185,17 @@ Max       : Maximum
 Op/s      : Operation per second
 Allocated : Allocated memory per single operation (managed only, inclusive, 1KB = 1024B)
 1 ns      : 1 Nanosecond (0.000000001 sec)
+```
+
+**Summary**
+
+```
+BenchmarkDotNet v0.14.0, Windows 11 (10.0.22631.4317/23H2/2023Update/SunValley3)
+AMD Ryzen 5 5600G with Radeon Graphics, 1 CPU, 12 logical and 6 physical cores
+.NET SDK 8.0.403
+  [Host]            : .NET 8.0.10 (8.0.1024.46610), X64 RyuJIT AVX2 [AttachedDebugger]
+  ShortRun-.NET 8.0 : .NET 8.0.10 (8.0.1024.46610), X64 RyuJIT AVX2
+
+Job=ShortRun-.NET 8.0  Runtime=.NET 8.0  IterationCount=1  
+LaunchCount=1  WarmupCount=3  
+```
