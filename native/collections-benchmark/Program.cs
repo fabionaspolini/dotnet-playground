@@ -8,6 +8,7 @@ Console.WriteLine(".:: Collections Playground Benchmark ::.");
 //BenchmarkRunner.Run<DictionaryString>();
 //BenchmarkRunner.Run<HashSetInteger>();
 BenchmarkRunner.Run<HashSetString>();
+//BenchmarkRunner.Run<HashTableString>();
 //BenchmarkRunner.Run<LinkedListString>();
 //BenchmarkRunner.Run<ListString>();
 //BenchmarkRunner.Run<SortedListString>();

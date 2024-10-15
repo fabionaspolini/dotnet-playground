@@ -1,9 +1,11 @@
 # Collections
 
+- [TL;DR;](#tldr)
 - [String](#string)
-  - [Dictionary\<string, int\>](#dictionarystring-int)
   - [ConcurrentDictionary\<string, integer\>](#concurrentdictionarystring-integer)
+  - [Dictionary\<string, int\>](#dictionarystring-int)
   - [HashSet\<string\>](#hashsetstring)
+  - [HashTable (string)](#hashtable-string)
   - [LinkedList\<string\>](#linkedliststring)
   - [List\<string\>](#liststring)
   - [SortedList\<string, integer\>](#sortedliststring-integer)
@@ -13,23 +15,18 @@
 
 Análise detalhada: <https://tutorials.eu/c-sharp-collections-performance/#:~:text=The%20performance%20of%20C%23%20collections,be%20added%20or%20removed%20frequently>
 
+## TL;DR;
+
+| Classe                                | Escolher quando |
+|---------------------------------------|-----------------|
+| ConcurrentDictionary\<TKey, TValue\>  | Elementos únicos que precisam ser acessados com frequência, e de forma concorrente entre threads  |
+| Dictionary\<TKey, TValue\>            | Elementos únicos que precisam ser acessados com frequência |
+| HashSet\<T\>                          | Elementos únicos que precisam ser adicionados, recuperados ou pesquisados ​​com frequência |
+| LinkedList\<T\>                       | Inserção ou exclusão rápida de elementos no meio da lista |
+| List\<T\>                             | Inserção, exclusão e acesso por index rápida, mas a pesquisa é lenta  |
+| SortedList\<TKey, TValue\>            | Elementos únicos com inserção rápida, mas a pesquisa pode ser lenta |
+
 ## String
-
-### Dictionary\<string, int\>
-
-| Method      | FindValue     | Mean      | Error | StdErr   | StdDev   | Min       | Q1        | Median    | Q3        | Max       | Op/s          | Allocated |
-|------------ |-------------- |----------:|------:|---------:|---------:|----------:|----------:|----------:|----------:|----------:|--------------:|----------:|
-| TryGetValue | Teste 568452  |  9.887 ns |    NA | 0.000 ns | 0.000 ns |  9.887 ns |  9.887 ns |  9.887 ns |  9.887 ns |  9.887 ns | 101,145,832.4 |         - |
-| TryGetValue | Teste 1       |  9.947 ns |    NA | 0.000 ns | 0.000 ns |  9.947 ns |  9.947 ns |  9.947 ns |  9.947 ns |  9.947 ns | 100,529,702.1 |         - |
-| TryGetValue | Teste 1000000 | 10.276 ns |    NA | 0.000 ns | 0.000 ns | 10.276 ns | 10.276 ns | 10.276 ns | 10.276 ns | 10.276 ns |  97,316,922.3 |         - |
-|             |               |           |       |          |          |           |           |           |           |           |               |           |
-| Contains    | Teste 568452  |  9.903 ns |    NA | 0.000 ns | 0.000 ns |  9.903 ns |  9.903 ns |  9.903 ns |  9.903 ns |  9.903 ns | 100,982,066.1 |         - |
-| Contains    | Teste 1000000 |  9.972 ns |    NA | 0.000 ns | 0.000 ns |  9.972 ns |  9.972 ns |  9.972 ns |  9.972 ns |  9.972 ns | 100,284,156.7 |         - |
-| Contains    | Teste 1       | 11.153 ns |    NA | 0.000 ns | 0.000 ns | 11.153 ns | 11.153 ns | 11.153 ns | 11.153 ns | 11.153 ns |  89,661,334.7 |         - |
-|             |               |           |       |          |          |           |           |           |           |           |               |           |
-| IndexValue  | Teste 1       | 10.566 ns |    NA | 0.000 ns | 0.000 ns | 10.566 ns | 10.566 ns | 10.566 ns | 10.566 ns | 10.566 ns |  94,645,658.8 |         - |
-| IndexValue  | Teste 568452  | 10.749 ns |    NA | 0.000 ns | 0.000 ns | 10.749 ns | 10.749 ns | 10.749 ns | 10.749 ns | 10.749 ns |  93,028,592.9 |         - |
-| IndexValue  | Teste 1000000 | 10.809 ns |    NA | 0.000 ns | 0.000 ns | 10.809 ns | 10.809 ns | 10.809 ns | 10.809 ns | 10.809 ns |  92,514,630.5 |         - |
 
 ### ConcurrentDictionary\<string, integer\>
 
@@ -47,6 +44,22 @@ Análise detalhada: <https://tutorials.eu/c-sharp-collections-performance/#:~:te
 | IndexValue  | Teste 1000000 | 10.381 ns |    NA | 0.000 ns | 0.000 ns | 10.381 ns | 10.381 ns | 10.381 ns | 10.381 ns | 10.381 ns |  96,331,661.0 |         - |
 | IndexValue  | Teste 568452  | 10.422 ns |    NA | 0.000 ns | 0.000 ns | 10.422 ns | 10.422 ns | 10.422 ns | 10.422 ns | 10.422 ns |  95,951,775.9 |         - |
 
+### Dictionary\<string, int\>
+
+| Method      | FindValue     | Mean      | Error | StdErr   | StdDev   | Min       | Q1        | Median    | Q3        | Max       | Op/s          | Allocated |
+|------------ |-------------- |----------:|------:|---------:|---------:|----------:|----------:|----------:|----------:|----------:|--------------:|----------:|
+| TryGetValue | Teste 568452  |  9.887 ns |    NA | 0.000 ns | 0.000 ns |  9.887 ns |  9.887 ns |  9.887 ns |  9.887 ns |  9.887 ns | 101,145,832.4 |         - |
+| TryGetValue | Teste 1       |  9.947 ns |    NA | 0.000 ns | 0.000 ns |  9.947 ns |  9.947 ns |  9.947 ns |  9.947 ns |  9.947 ns | 100,529,702.1 |         - |
+| TryGetValue | Teste 1000000 | 10.276 ns |    NA | 0.000 ns | 0.000 ns | 10.276 ns | 10.276 ns | 10.276 ns | 10.276 ns | 10.276 ns |  97,316,922.3 |         - |
+|             |               |           |       |          |          |           |           |           |           |           |               |           |
+| Contains    | Teste 568452  |  9.903 ns |    NA | 0.000 ns | 0.000 ns |  9.903 ns |  9.903 ns |  9.903 ns |  9.903 ns |  9.903 ns | 100,982,066.1 |         - |
+| Contains    | Teste 1000000 |  9.972 ns |    NA | 0.000 ns | 0.000 ns |  9.972 ns |  9.972 ns |  9.972 ns |  9.972 ns |  9.972 ns | 100,284,156.7 |         - |
+| Contains    | Teste 1       | 11.153 ns |    NA | 0.000 ns | 0.000 ns | 11.153 ns | 11.153 ns | 11.153 ns | 11.153 ns | 11.153 ns |  89,661,334.7 |         - |
+|             |               |           |       |          |          |           |           |           |           |           |               |           |
+| IndexValue  | Teste 1       | 10.566 ns |    NA | 0.000 ns | 0.000 ns | 10.566 ns | 10.566 ns | 10.566 ns | 10.566 ns | 10.566 ns |  94,645,658.8 |         - |
+| IndexValue  | Teste 568452  | 10.749 ns |    NA | 0.000 ns | 0.000 ns | 10.749 ns | 10.749 ns | 10.749 ns | 10.749 ns | 10.749 ns |  93,028,592.9 |         - |
+| IndexValue  | Teste 1000000 | 10.809 ns |    NA | 0.000 ns | 0.000 ns | 10.809 ns | 10.809 ns | 10.809 ns | 10.809 ns | 10.809 ns |  92,514,630.5 |         - |
+
 ### HashSet\<string\>
 
 | Method         | FindValue     | Mean             | Error | StdErr   | StdDev   | Min              | Q1               | Median           | Q3               | Max              | Op/s          | Gen0   | Allocated |
@@ -62,6 +75,18 @@ Análise detalhada: <https://tutorials.eu/c-sharp-collections-performance/#:~:te
 | FirstOrDefault | Teste 1       |        24.753 ns |    NA | 0.000 ns | 0.000 ns |        24.753 ns |        24.753 ns |        24.753 ns |        24.753 ns |        24.753 ns |  40,399,749.4 | 0.0124 |     104 B |
 | FirstOrDefault | Teste 568452  | 4,005,480.469 ns |    NA | 0.000 ns | 0.000 ns | 4,005,480.469 ns | 4,005,480.469 ns | 4,005,480.469 ns | 4,005,480.469 ns | 4,005,480.469 ns |         249.7 |      - |     110 B |
 | FirstOrDefault | Teste 1000000 | 4,826,250.000 ns |    NA | 0.000 ns | 0.000 ns | 4,826,250.000 ns | 4,826,250.000 ns | 4,826,250.000 ns | 4,826,250.000 ns | 4,826,250.000 ns |         207.2 |      - |     116 B |
+
+### HashTable (string)
+
+| Method     | FindValue     | Mean     | Error | StdErr  | StdDev  | Min      | Q1       | Median   | Q3       | Max      | Op/s         | Allocated |
+|----------- |-------------- |---------:|------:|--------:|--------:|---------:|---------:|---------:|---------:|---------:|-------------:|----------:|
+| Contains   | Teste 1       | 11.03 ns |    NA | 0.00 ns | 0.00 ns | 11.03 ns | 11.03 ns | 11.03 ns | 11.03 ns | 11.03 ns | 90,663,407.7 |         - |
+| Contains   | Teste 568452  | 14.16 ns |    NA | 0.00 ns | 0.00 ns | 14.16 ns | 14.16 ns | 14.16 ns | 14.16 ns | 14.16 ns | 70,628,999.2 |         - |
+| Contains   | Teste 1000000 | 17.13 ns |    NA | 0.00 ns | 0.00 ns | 17.13 ns | 17.13 ns | 17.13 ns | 17.13 ns | 17.13 ns | 58,387,489.6 |         - |
+|            |               |          |       |         |         |          |          |          |          |          |              |           |
+| IndexValue | Teste 1       | 11.22 ns |    NA | 0.00 ns | 0.00 ns | 11.22 ns | 11.22 ns | 11.22 ns | 11.22 ns | 11.22 ns | 89,146,030.1 |         - |
+| IndexValue | Teste 568452  | 17.88 ns |    NA | 0.00 ns | 0.00 ns | 17.88 ns | 17.88 ns | 17.88 ns | 17.88 ns | 17.88 ns | 55,938,606.7 |         - |
+| IndexValue | Teste 1000000 | 55.99 ns |    NA | 0.00 ns | 0.00 ns | 55.99 ns | 55.99 ns | 55.99 ns | 55.99 ns | 55.99 ns | 17,858,853.5 |         - |
 
 ### LinkedList\<string\>
 
