@@ -43,7 +43,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/command-line-interface/command-line-parser/command-line-parser-Sample.csproj",
+                "${workspaceFolder}/command-line-interface/command-line-parser/command-line-parser-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -55,7 +55,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/command-line-interface/command-line-utils/command-line-utils-Sample.csproj",
+                "${workspaceFolder}/command-line-interface/command-line-utils/command-line-utils-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -67,7 +67,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/data/cache-manager/cache-manager-Sample.csproj",
+                "${workspaceFolder}/data/cache-manager/cache-manager-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -79,7 +79,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/data/EFCore-ZExtensions/EFCore-ZExtensions-Sample.csproj",
+                "${workspaceFolder}/data/EFCore-ZExtensions/EFCore-ZExtensions-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -91,7 +91,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/data/fluent-validation/fluent-validation-Sample.csproj",
+                "${workspaceFolder}/data/fluent-validation/fluent-validation-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -103,7 +103,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/data/nhibernate/nhibernate-Sample.csproj",
+                "${workspaceFolder}/data/nhibernate/nhibernate-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -115,7 +115,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/data-mapper/auto-mapper/auto-mapper-Sample.csproj",
+                "${workspaceFolder}/data-mapper/auto-mapper/auto-mapper-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -127,7 +127,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/data-mapper/Mapster/Mapster-Sample.csproj",
+                "${workspaceFolder}/data-mapper/Mapster/Mapster-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -139,7 +139,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/http-client/flurl-http/flurl-http-Sample.csproj",
+                "${workspaceFolder}/http-client/flurl-http/flurl-http-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -151,7 +151,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/http-client/nswag-studio/nswag-studio-Sample.csproj",
+                "${workspaceFolder}/http-client/nswag-studio/nswag-studio-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -163,7 +163,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/http-client/refit/refit-Sample.csproj",
+                "${workspaceFolder}/http-client/refit/refit-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -175,7 +175,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/native-features\language-features/LanguageFeatures-Sample.csproj",
+                "${workspaceFolder}/native-features\language-features/LanguageFeatures-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -188,7 +188,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/logs/microsoft-logging/microsoft-logging-Sample.csproj",
+                "${workspaceFolder}/logs/microsoft-logging/microsoft-logging-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -200,7 +200,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/logs/NLog/NLog-Sample.csproj",
+                "${workspaceFolder}/logs/NLog/NLog-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -212,7 +212,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/logs/NLogAsMicrosoftProxy/NLogAsMicrosoftProxy-Sample.csproj",
+                "${workspaceFolder}/logs/NLogAsMicrosoftProxy/NLogAsMicrosoftProxy-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -224,7 +224,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/logs/Serilog/Serilog-Sample.csproj",
+                "${workspaceFolder}/logs/Serilog/Serilog-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -236,7 +236,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/logs/SerilogAsMicrosoftProxy/SerilogAsMicrosoftProxy-Sample.csproj",
+                "${workspaceFolder}/logs/SerilogAsMicrosoftProxy/SerilogAsMicrosoftProxy-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -248,7 +248,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/miscellaneous/polly/polly-Sample.csproj",
+                "${workspaceFolder}/miscellaneous/polly/polly-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -260,7 +260,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/scheduler/quartz/quartz-Sample.csproj",
+                "${workspaceFolder}/scheduler/quartz/quartz-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -272,7 +272,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/source-generator/data-builder-generator/data-builder-generator-Sample.csproj",
+                "${workspaceFolder}/source-generator/data-builder-generator/data-builder-generator-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -284,7 +284,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/source-generator/maestria-type-providers/maestria-type-providers-Sample.csproj",
+                "${workspaceFolder}/source-generator/maestria-type-providers/maestria-type-providers-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -296,7 +296,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/source-generator/primary-constructor/primary-constructor-Sample.csproj",
+                "${workspaceFolder}/source-generator/primary-constructor/primary-constructor-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -308,7 +308,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/syntax-sugar/fluent-date-time/fluent-date-time-Sample.csproj",
+                "${workspaceFolder}/syntax-sugar/fluent-date-time/fluent-date-time-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -320,7 +320,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/syntax-sugar/humanizer/humanizer-Sample.csproj",
+                "${workspaceFolder}/syntax-sugar/humanizer/humanizer-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -332,7 +332,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/syntax-sugar/maestria-extensions/maestria-extensions-Sample.csproj",
+                "${workspaceFolder}/syntax-sugar/maestria-extensions/maestria-extensions-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -344,7 +344,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/syntax-sugar/maestria-fluent-cast/maestria-fluent-cast-Sample.csproj",
+                "${workspaceFolder}/syntax-sugar/maestria-fluent-cast/maestria-fluent-cast-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -356,7 +356,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/template-engine/Mustache/Mustache-Sample.csproj",
+                "${workspaceFolder}/template-engine/Mustache/Mustache-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -368,7 +368,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/template-engine/Liquid/Liquid-Sample.csproj",
+                "${workspaceFolder}/template-engine/Liquid/Liquid-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
