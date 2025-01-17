@@ -57,7 +57,7 @@ Consumo de CPU e RAM no async é menor.
       at Program.<>c__DisplayClass0_1.<<<Main>$>b__3>d.MoveNext() in C:\Sources\samples\dotnet-playground\relational-databases\mysql-benchmark\Program.cs:line 35
     </details>
 
-### Resultados full-databases-benchmark com BenchmarkDotNet
+### Resultados all-databases-benchmark com BenchmarkDotNet
 
 **DatabaseBenchmark - Single Thread**
 
