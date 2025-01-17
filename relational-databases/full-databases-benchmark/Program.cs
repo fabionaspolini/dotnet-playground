@@ -15,8 +15,8 @@ public class Program
     public static void Main(string[] args)
     {
         Console.WriteLine(".:: Full Databases Playground - Benchmark ::.");
-        //BenchmarkRunner.Run<DatabaseBenchmark>();
-        BenchmarkRunner.Run<MultiThreadDatabaseBenchmark>();
+        BenchmarkRunner.Run<DatabaseBenchmark>();
+        // BenchmarkRunner.Run<MultiThreadDatabaseBenchmark>();
     }
 }
 
@@ -42,9 +42,10 @@ record Pessoa(int Id, string Nome);
 [ShortRunJob(RuntimeMoniker.Net70), AllStatisticsColumn, RPlotExporter]
 [Orderer(SummaryOrderPolicy.FastestToSlowest)]
 [GroupBenchmarksBy(BenchmarkLogicalGroupRule.ByMethod)]
+[MemoryDiagnoser]
 public class DatabaseBenchmark
 {
-    private IDbConnection _connection = default!;
+    private IDbConnection _connection = null!;
 
     [Params(DatabaseEngine.MariaDb, DatabaseEngine.MySql, DatabaseEngine.PostgreSql, DatabaseEngine.SqlServer)]
     public DatabaseEngine Engine;
@@ -54,6 +55,13 @@ public class DatabaseBenchmark
     {
         _connection = CreateConnection();
         _connection.Open();
+    }
+
+    [GlobalCleanup]
+    public void Cleanup()
+    {
+        _connection.Close();
+        _connection.Dispose();
     }
 
     [Benchmark]
@@ -88,6 +96,7 @@ public class DatabaseBenchmark
 //[ShortRunJob(RuntimeMoniker.Net70), AllStatisticsColumn, RPlotExporter]
 [Orderer(SummaryOrderPolicy.FastestToSlowest)]
 [GroupBenchmarksBy(BenchmarkLogicalGroupRule.ByMethod)]
+[MemoryDiagnoser]
 public class MultiThreadDatabaseBenchmark
 {
     [Params(DatabaseEngine.MariaDb, DatabaseEngine.MySql, DatabaseEngine.PostgreSql, DatabaseEngine.SqlServer)]
