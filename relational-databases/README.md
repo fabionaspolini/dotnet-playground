@@ -41,7 +41,21 @@ Consumo de CPU e RAM no async é menor.
 
 - Driver SQL Server enviou muito mais queries para o DB no modo assincrono do que os demais.
 - SQL Server na versão 2019 Developer for Linux
-- Driver MySql.Data apresenta erros com alta concorrência multi thread
+- Driver MySql.Data apresenta erros com alta concorrência multi thread.
+    <details>
+      <summary>Show exception</summary>
+  
+      (Operations that change non-concurrent collections must have exclusive access.
+       A concurrent update was performed on this collection and corrupted its state.
+       The collection's state is no longer correct.)
+      (An item with the same key has already been added. Key: server=127.0.0.1;port=3306;database=teste;user id=root;password=admin)
+      ---> System.InvalidOperationException: Operations that change non-concurrent collections must have exclusive access. A concurrent update was performed on this collection and corrupted its state. The collection's state is no longer correct.
+      at System.Collections.Generic.Dictionary`2.TryInsert(TKey key, TValue value, InsertionBehavior behavior)
+         at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)
+      at MySql.Data.MySqlClient.MySqlPoolManager.GetPoolAsync(MySqlConnectionStringBuilder settings, Boolean execAsync, CancellationToken cancellationToken)
+      at MySql.Data.MySqlClient.MySqlConnection.OpenAsync(Boolean execAsync, CancellationToken cancellationToken)
+      at Program.<>c__DisplayClass0_1.<<<Main>$>b__3>d.MoveNext() in C:\Sources\samples\dotnet-playground\relational-databases\mysql-benchmark\Program.cs:line 35
+    </details>
 
 ### Resultados full-databases-benchmark com BenchmarkDotNet
 

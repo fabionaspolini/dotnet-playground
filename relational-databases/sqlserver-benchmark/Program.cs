@@ -5,8 +5,9 @@ using System.Diagnostics;
 Console.WriteLine(".:: SQL Server Playground - Benchmark ::.");
 
 // Calibração do teste
-TimeSpan TotalTestTime = TimeSpan.FromSeconds(10);
+const bool IsAsync = true;
 const int Threads = 10;
+TimeSpan totalTestTime = TimeSpan.FromSeconds(10);
 var appName = AppDomain.CurrentDomain.FriendlyName;
 // --
 
@@ -14,29 +15,30 @@ Console.WriteLine("Iniciando tasks...");
 var realTime = Stopwatch.StartNew();
 var tasks = new List<Task<int>>();
 foreach (var i in Enumerable.Range(1, Threads))
-    tasks.Add(StartWorkerTask_RunSync(i));
+    tasks.Add(IsAsync ? StartWorkerTaskAsync(i) : StartWorkerTaskSync(i));
 
 Task.WaitAll(tasks.ToArray());
 realTime.Stop();
 var totalOperations = tasks.Sum(x => x.Result);
 
 Console.WriteLine();
-Console.WriteLine($"Total: {totalOperations:N0} - {totalOperations / TotalTestTime.TotalSeconds:N1} op/sec");
-Console.WriteLine($"Tempo: {TotalTestTime} (real: {realTime.Elapsed})");
+Console.WriteLine($"IsAsync: {IsAsync}");
+Console.WriteLine($"Total: {totalOperations:N0} - {totalOperations / totalTestTime.TotalSeconds:N1} op/sec");
+Console.WriteLine($"Tempo: {totalTestTime} (real: {realTime.Elapsed})");
 
 Console.WriteLine();
 Console.WriteLine("Fim");
 
-Task<int> StartWorkerTask_RunAsync(int taskId) => Task.Run(async () =>
+Task<int> StartWorkerTaskAsync(int taskId) => Task.Run(async () =>
 {
     // Teste sem multiplos comandos por conexão
-    var conn = new SqlConnection($"Server=127.0.0.1;Database=teste;User Id=sa;Password=Pass123456;Application Name={appName};TrustServerCertificate=True;");
+    await using var conn = new SqlConnection($"Server=127.0.0.1;Database=teste;User Id=sa;Password=Pass123456;Application Name={appName};TrustServerCertificate=True;");
     await conn.OpenAsync();
     var warmUpResult = await conn.QueryFirstAsync<Pessoa>("select * from pessoa where id = @id", new { id = 1 }); // Aquecer para libraries serem carregas para memória
 
     var watch = Stopwatch.StartNew();
     var count = 0;
-    while (watch.Elapsed < TotalTestTime)
+    while (watch.Elapsed < totalTestTime)
     {
         var result = await conn.QueryFirstAsync<Pessoa>("select * from pessoa where id = @id", new { id = 1 });
         count++;
@@ -48,16 +50,16 @@ Task<int> StartWorkerTask_RunAsync(int taskId) => Task.Run(async () =>
     return count;
 });
 
-Task<int> StartWorkerTask_RunSync(int taskId) => Task.Run(() =>
+Task<int> StartWorkerTaskSync(int taskId) => Task.Run(() =>
 {
     // Teste sem multiplos comandos por conexão
-    var conn = new SqlConnection($"Server=127.0.0.1;Database=teste;User Id=sa;Password=Pass123456;Application Name={appName};TrustServerCertificate=True;");
+    using var conn = new SqlConnection($"Server=127.0.0.1;Database=teste;User Id=sa;Password=Pass123456;Application Name={appName};TrustServerCertificate=True;");
     conn.Open();
     var warmUpResult = conn.QueryFirst<Pessoa>("select * from pessoa where id = @id", new { id = 1 }); // Aquecer para libraries serem carregas para memória
 
     var watch = Stopwatch.StartNew();
     var count = 0;
-    while (watch.Elapsed < TotalTestTime)
+    while (watch.Elapsed < totalTestTime)
     {
         var result = conn.QueryFirst<Pessoa>("select * from pessoa where id = @id", new { id = 1 });
         count++;
