@@ -38,7 +38,7 @@ Console.WriteLine();
 const string RedisKey = "multi-thread-sample";
 const bool SetValueTest = true;
 const bool FireAndForgetTest = true; // CommandFlags.FireAndForget / CommandFlags.None
-TimeSpan TotalTestTime = TimeSpan.FromSeconds(10);
+var TotalTestTime = TimeSpan.FromSeconds(10);
 const int Threads = 10;
 
 await db.KeyDeleteAsync(RedisKey);

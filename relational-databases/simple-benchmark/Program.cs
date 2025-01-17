@@ -2,6 +2,8 @@
 using Npgsql;
 using System.Diagnostics;
 
+[module: DapperAot(enabled: true)]
+
 Console.WriteLine(".:: PostgreSQL Playground - Benchmark ::.");
 
 // Calibração do teste
