@@ -38,8 +38,8 @@ public enum DatabaseEngine
 record Pessoa(int Id, string Nome);
 
 //[DryJob]
-//[SimpleJob(RuntimeMoniker.Net70), AllStatisticsColumn, RPlotExporter]
-[ShortRunJob(RuntimeMoniker.Net70), AllStatisticsColumn, RPlotExporter]
+//[SimpleJob(RuntimeMoniker.Net90), AllStatisticsColumn, RPlotExporter]
+[ShortRunJob(RuntimeMoniker.Net90), AllStatisticsColumn, RPlotExporter]
 [Orderer(SummaryOrderPolicy.FastestToSlowest)]
 [GroupBenchmarksBy(BenchmarkLogicalGroupRule.ByMethod)]
 [MemoryDiagnoser]
@@ -92,8 +92,8 @@ public class DatabaseBenchmark
 /// Portando, o resultado final de operações por segundo deve ser multiplicado x 10 x 1000.
 /// </summary>
 //[DryJob]
-[SimpleJob(RuntimeMoniker.Net70, launchCount: 1, warmupCount: 2, iterationCount: 10), AllStatisticsColumn, RPlotExporter]
-//[ShortRunJob(RuntimeMoniker.Net70), AllStatisticsColumn, RPlotExporter]
+[SimpleJob(RuntimeMoniker.Net90, launchCount: 1, warmupCount: 2, iterationCount: 10), AllStatisticsColumn, RPlotExporter]
+//[ShortRunJob(RuntimeMoniker.Net90), AllStatisticsColumn, RPlotExporter]
 [Orderer(SummaryOrderPolicy.FastestToSlowest)]
 [GroupBenchmarksBy(BenchmarkLogicalGroupRule.ByMethod)]
 [MemoryDiagnoser]
