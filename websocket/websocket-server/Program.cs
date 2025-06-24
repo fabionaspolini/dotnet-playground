@@ -41,4 +41,6 @@ app.MapGet("/ws", async context =>
     }
 });
 
+app.MapGet("/", () => "Servidor WebSocket rodando. Conecte-se em /ws");
+
 app.Run();
