@@ -5,7 +5,7 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RootNamespace>PostgreSqlBenchmarkPlayground</RootNamespace>
+    <RootNamespace>postgresql_benchmark_playground</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

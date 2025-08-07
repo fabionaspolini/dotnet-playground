@@ -5,7 +5,7 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RootNamespace>SqlServerBenchmarkPlayground</RootNamespace>
+    <RootNamespace>sqlserver_benchmark_playground</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
