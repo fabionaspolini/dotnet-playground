@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>CacheManagerPlayground</RootNamespace>
+    <RootNamespace>cache_manager_playground</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

@@ -93,11 +93,12 @@ Nas avaliações de frameworks concorrentes, estará indicado com :heart: a pref
 1. Criar projeto dentro da pasta adequada ao assunto no padrão kebab-case.
 
 ```bash
-# Layout
 dotnet new console -n <nome-exemplo>-playground -o <nome-exemplo>
-
-# Exemplo
-dotnet new console -n basic-redis-playground -o Basic
 ```
 
-2. Ajustar RootNamespace do csproj para PascalCase ("NomeExemploPlayground").
+Argumentos:
+
+```txt
+-n: Nome do arquivo csproj. O name space será o mesmo nome no padrão "snake_case", matenha-o dessa forma.
+-o: Nome da pasta onde o projeto será criado.
+```
