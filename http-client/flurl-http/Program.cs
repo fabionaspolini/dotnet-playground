@@ -4,6 +4,7 @@ using Flurl.Http;
 using static System.Console;
 using Maestria.Extensions;
 using Flurl.Http.Configuration;
+using Flurl.Http.Newtonsoft;
 using QuickType;
 using Microsoft.Extensions.Configuration;
 
@@ -24,12 +25,16 @@ var privateKey = config.GetValue<string>("privateKey");
 var publicKey = config.GetValue<string>("publicKey");
 
 // Realizando customizações para deserealização de acordo com o código gerado automaticamente e definindo eventos globais para tratamento de erro e log de requisições
-FlurlHttp.Configure(settings =>
-{
-    settings.JsonSerializer = new NewtonsoftJsonSerializer(QuickType.Converter.Settings);
-    settings.BeforeCall += (FlurlCall call) => WriteLine($"My custom before call event intercept => {call.Request.Url}");
-    settings.OnError += (FlurlCall call) => WriteLine($"My custom error event intercept => {call.Exception.GetAllMessages()}");
-});
+FlurlHttp.ConfigureClientForUrl(url).WithSettings(settings =>
+    {
+        settings.JsonSerializer = new NewtonsoftJsonSerializer(QuickType.Converter.Settings);
+    })
+    .BeforeCall(call => WriteLine($"My custom before call event intercept => {call.Request.Url}"))
+    .OnError(call => WriteLine($"My custom error event intercept => {call.Exception}"));
+
+var cepResponse = await "https://viacep.com.br/ws/01001000/json/".GetJsonAsync<ViaCepResponse>();
+WriteLine($"ViaCep: {cepResponse.Cep} - {cepResponse.Logradouro}, {cepResponse.Bairro}, {cepResponse.Localidade}/{cepResponse.Uf}");
+WriteLine();
 
 var ts = Guid.NewGuid();
 WriteLine("Consultando personagens...");
@@ -52,3 +57,16 @@ WriteLine($"|{"Nome",-40}|{"Atualizado",-27}|{"Comics",10}|{"Series",10}|{"Stori
 WriteLine(new string('-', 114));
 foreach (var item in personagens.Data.Results)
     WriteLine($"|{item.Name.LimitLen(40),-40}|{item.Modified,-27}|{item.Comics.Available,10}|{item.Series.Available,10}|{item.Stories.Available,10}|{item.Events.Available,10}|");
+
+
+record ViaCepResponse(
+    string Cep,
+    string Logradouro,
+    string Complemento,
+    string Bairro,
+    string Localidade,
+    string Uf,
+    string Ibge,
+    string Gia,
+    string Ddd,
+    string Siafi);
