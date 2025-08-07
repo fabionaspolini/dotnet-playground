@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="CacheManager.Core" Version="2.0.0" />
-    <PackageReference Include="CacheManager.Microsoft.Extensions.Logging" Version="1.2.0" />
+<!--    <PackageReference Include="CacheManager.Microsoft.Extensions.Logging" Version="1.2.0" />-->
     <PackageReference Include="CacheManager.Serialization.Json" Version="2.0.0" />
     <PackageReference Include="CacheManager.StackExchange.Redis" Version="2.0.0" />
     <PackageReference Include="CacheManager.SystemRuntimeCaching" Version="2.0.0" />

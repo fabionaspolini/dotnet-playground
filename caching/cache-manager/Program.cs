@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using CacheManager.Core;
 using Microsoft.Extensions.Logging;
 
+// https://cachemanager.michaco.net/
+
 var loggerFactory = LoggerFactory.Create(builder => builder
     .AddFilter("CacheManager", LogLevel.Trace)
     .AddFilter("CacheReflectionHelper", LogLevel.Trace)
@@ -15,12 +17,14 @@ var loggerFactory = LoggerFactory.Create(builder => builder
 var logger = loggerFactory.CreateLogger("CachaSample");
 logger.LogInformation(".:: Cache Manager Samples ::.");
 
-// Criando configuração de log reaproveitável para N objetos de cache
-var config = new ConfigurationBuilder()
-    .WithUpdateMode(CacheUpdateMode.Up)
+// Criando configuração de log reaproveitável para N objetos de cache.
+// Caso fosse apenas uma simples configuração poderia fazer de forma simples com
+//      var manager = CacheFactory.Build<string>(p => p.WithSystemRuntimeCacheHandle());
+var config = new CacheConfigurationBuilder()
+    .WithUpdateMode(CacheUpdateMode.Up) // Up para sincronizar cache de memória RAM com o redis
     .WithJsonSerializer()
     .WithRedisConfiguration("redis", "localhost:6379,ssl=false")
-    .WithMicrosoftLogging(loggerFactory)
+    // .WithMicrosoftLogging(loggerFactory)
     .WithSystemRuntimeCacheHandle("memory")
         .WithExpiration(ExpirationMode.Sliding, TimeSpan.FromSeconds(5)) // Sliding => Expirar cache após 5 segundos sem acesso
     .And.WithRedisCacheHandle("redis")
@@ -87,7 +91,7 @@ var cacheConfiguradoInline = CacheFactory.Build<Pessoa>(settings => settings
     .WithUpdateMode(CacheUpdateMode.Up)
     .WithJsonSerializer()
     .WithRedisConfiguration("redis", "localhost:6379,ssl=false")
-    .WithMicrosoftLogging(loggerFactory)
+    // .WithMicrosoftLogging(loggerFactory)
     .WithSystemRuntimeCacheHandle("memory")
         .WithExpiration(ExpirationMode.Sliding, TimeSpan.FromSeconds(5))
     .And.WithRedisCacheHandle("redis")
