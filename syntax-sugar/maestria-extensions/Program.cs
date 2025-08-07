@@ -4,14 +4,9 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Maestria.Extensions;
-using Maestria.Extensions.DataTypes;
 using static System.Console;
 
 WriteLine(".:: Maestria Extensions ::.");
-
-string teste = null;
-int? teste2 = null;
-var lower = teste2.Value + 1;
 
 // Variável de apoio
 IEnumerable<int> list = new List<int>() { 10, 20, 30 };
@@ -137,7 +132,6 @@ WriteLine();
 var resultado = numero
     .LimitMaxAt(9)
     .OutVar(out var numeroLimitado)
-    .DetachedInvoke(value => WriteLine($"    {value}"))
     .IfLessOrEqual(3).Then(-1);
 WriteLine($"pipeline.OutVar(out var numeroLimitado).pipeline()"); // Expressão "OutVar" não modifica nada, simplesmente atributi o valor atual para uma variável fora do escopo do pipeline
 WriteLine($"pipeline.DetachedInvoke(value => ...).pipeline()"); // Expressão "DetachedInvoke" faz uma chamada avulsa no pipeline e continuam a execução com o mesmo valor de entrada
@@ -265,7 +259,7 @@ SimpleResult<int> ConverterParaInt(string texto)
 WriteLine("=====> Try <=====");
 // O tipo Try<TSuccess, TFailure> serve para enriquecimento do dominio, permitindo expressar uma função com dois tipos de retornos diferentes para sucesso e falha.
 var result = TentarIntegrarPessoa("maestria");
-if (result) // Implicit cast para result.Successfully
+if (result) // Implicit cast para result.Success
 {
     int id = result; // Implicit cast para result.Success
     WriteLine($"Sucesso ao integrar pessoa, id: {id}");

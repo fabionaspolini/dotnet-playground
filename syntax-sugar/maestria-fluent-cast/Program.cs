@@ -1,11 +1,11 @@
 ﻿using System.Globalization;
-using Maestria.FluentCast;
+using Maestria.Extensions.FluentCast;
 using static System.Console;
 
 WriteLine(".:: Maestria Fluent Cast ::.");
 
 // Possibilidade de configuração de cultura padrão para número e data
-Maestria.FluentCast.GlobalSettings.Configure(cfg => cfg
+Maestria.Extensions.FluentCast.GlobalSettings.Configure(cfg => cfg
     .NumberCulture(CultureInfo.InvariantCulture)
     .DateTimeCulture(CultureInfo.GetCultureInfo("pt-BR")));
 
