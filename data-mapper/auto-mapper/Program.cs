@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapperPlayground;
+using Microsoft.Extensions.Logging.Abstractions;
 
 var config = new MapperConfiguration(cfg =>
 {
@@ -15,7 +16,7 @@ var config = new MapperConfiguration(cfg =>
     cfg.CreateMap<Person, PersonModelDifReadonly>() // Construtor readonly com nomes diferentes, precisa de customização
         .ConstructUsing(s => new(s.Id, s.Name))
         .ForAllMembers(otps => otps.Ignore());
-});
+}, NullLoggerFactory.Instance);
 
 // Validar configuração para evitar erros de mapeamento em runtime e antecipar a descoberta de incompatbilidades causadas por mudanças no código.
 // Você será alertado no startup da aplicação quando:
