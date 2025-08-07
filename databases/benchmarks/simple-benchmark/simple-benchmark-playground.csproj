@@ -18,14 +18,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Dapper" Version="2.1.35"/>
-        <PackageReference Include="Dapper.AOT" Version="1.0.31"/>
+        <PackageReference Include="Dapper" Version="2.1.66" />
+        <PackageReference Include="Dapper.AOT" Version="1.0.48" />
     </ItemGroup>
 
     <ItemGroup Label="Database packages">
-        <PackageReference Include="MySqlConnector" Version="2.4.0" Condition="'$(DefineConstants.Contains(MARIADB))' or '$(DefineConstants.Contains(MYSQL))'"/>
-        <PackageReference Include="Npgsql" Version="9.0.2" Condition="'$(DefineConstants.Contains(POSTGRESQL))'"/>
-        <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.0" Condition="'$(DefineConstants.Contains(SQLSERVER))'"/>
+        <PackageReference Include="MySqlConnector" Version="2.4.0" Condition="'$(DefineConstants.Contains(MARIADB))' or '$(DefineConstants.Contains(MYSQL))'" />
+        <PackageReference Include="Npgsql" Version="9.0.3" Condition="'$(DefineConstants.Contains(POSTGRESQL))'" />
+        <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.0" Condition="'$(DefineConstants.Contains(SQLSERVER))'" />
     </ItemGroup>
 
     <PropertyGroup Label="Dapper AOT settings">

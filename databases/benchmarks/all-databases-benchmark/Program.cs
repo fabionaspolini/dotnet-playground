@@ -78,8 +78,8 @@ public class DatabaseBenchmark
 
     private IDbConnection CreateConnection() => Engine switch
     {
-        DatabaseEngine.MariaDb => new MySqlConnection($"Server=127.0.0.1;Port=3307;Database=teste;Uid=root;Pwd=admin;ApplicationName={TestParams.AppName};"),
-        DatabaseEngine.MySql => new MySqlConnection($"Server=127.0.0.1;Port=3306;Database=teste;Uid=root;Pwd=admin;ApplicationName={TestParams.AppName};"),
+        DatabaseEngine.MariaDb => new MySqlConnection($"Server=127.0.0.1;Port=3307;Database=teste;Uid=123456;Pwd=admin;ApplicationName={TestParams.AppName};"),
+        DatabaseEngine.MySql => new MySqlConnection($"Server=127.0.0.1;Port=3306;Database=teste;Uid=root;Pwd=123456;ApplicationName={TestParams.AppName};"),
         DatabaseEngine.PostgreSql => new NpgsqlConnection($"Server=127.0.0.1;Port=5432;Database=teste;User Id=postgres;Password=123456;MaxPoolSize=200;ApplicationName={TestParams.AppName};"),
         DatabaseEngine.SqlServer => new SqlConnection($"Server=127.0.0.1;Database=teste;User Id=sa;Password=Pass123456;Application Name={TestParams.AppName};TrustServerCertificate=True;"),
         _ => throw new NotSupportedException($"Database engine não suportado: {Engine}")

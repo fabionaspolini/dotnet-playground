@@ -14,9 +14,9 @@
 
   <ItemGroup>
     <PackageReference Include="FluentMigrator.NHibernate" Version="1.0.0.17" />
-    <PackageReference Include="FluentNHibernate" Version="3.1.0" />
-    <PackageReference Include="NHibernate" Version="5.3.11" />
-    <PackageReference Include="Npgsql" Version="6.0.3" />
+    <PackageReference Include="FluentNHibernate" Version="3.4.1" />
+    <PackageReference Include="NHibernate" Version="5.5.2" />
+    <PackageReference Include="Npgsql" Version="9.0.3" />
   </ItemGroup>
 
 </Project>

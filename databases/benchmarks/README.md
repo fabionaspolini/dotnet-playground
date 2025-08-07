@@ -125,7 +125,7 @@ WarmupCount=2
 create database teste;
 
 CREATE TABLE pessoa (
-    id int4 NOT NULL,
+    id int NOT NULL,
     nome varchar(60) NOT NULL,
     CONSTRAINT pessoa_pk PRIMARY KEY (id)
 );
