@@ -2,7 +2,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>FluentDateTimePlayground</RootNamespace>
+    <RootNamespace>fluent_date_time_playground</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="FluentDateTime" Version="2.0.0" />

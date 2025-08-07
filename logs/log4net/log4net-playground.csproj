@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>Log4NetPlayground</RootNamespace>
+    <RootNamespace>log4net_playground</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

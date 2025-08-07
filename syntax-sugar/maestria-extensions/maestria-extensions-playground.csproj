@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>MaestriaExtensionsPlayground</RootNamespace>
+    <RootNamespace>maestria_extensions_playground</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

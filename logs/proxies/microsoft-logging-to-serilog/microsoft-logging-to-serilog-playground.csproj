@@ -5,7 +5,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RootNamespace>MicrosoftLoggingToSerilogPlayground</RootNamespace>
+    <RootNamespace>microsoft_logging_to_serilog_playground</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

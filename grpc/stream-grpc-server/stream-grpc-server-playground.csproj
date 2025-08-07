@@ -4,7 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>StreamGrpcServerPlayground</RootNamespace>
+    <RootNamespace>stream_grpc_server_playground</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

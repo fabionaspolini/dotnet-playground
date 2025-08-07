@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>FlurlHttpPlayground</RootNamespace>
+    <RootNamespace>flurl_http_playground</RootNamespace>
     <UserSecretsId>1a38f28a-eaf9-461f-a976-c1050e70fcd0</UserSecretsId>
   </PropertyGroup>
 

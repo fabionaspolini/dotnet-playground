@@ -5,7 +5,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RootNamespace>BasicRedisPlayground</RootNamespace>
+    <RootNamespace>basic_redis_playground</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net7.0</TargetFramework>
-    <RootNamespace>QuartzPlayground</RootNamespace>
+    <RootNamespace>quartz_playground</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

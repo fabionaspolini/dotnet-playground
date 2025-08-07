@@ -47,7 +47,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nlog-playground", "logs\nlo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "microsoft-logging-playground", "logs\microsoft-logging\microsoft-logging-playground.csproj", "{32E37ECF-DFA0-4D5C-89F5-4136B466A322}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "log4net-playgroud", "logs\log4net\log4net-playgroud.csproj", "{0B035BEC-7492-4D1D-90FE-FEB6CD681900}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "log4net-playground", "logs\log4net\log4net-playground.csproj", "{0B035BEC-7492-4D1D-90FE-FEB6CD681900}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "serilog-playground", "logs\serilog\serilog-playground.csproj", "{73A41427-9EDF-4A24-B145-86BA6799F014}"
 EndProject
@@ -161,6 +161,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "collections-benchmark-playground", "native\collections-benchmark\collections-benchmark-playground.csproj", "{F85F1579-31A1-441F-9C76-68FD4C5A293A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "websocket", "websocket", "{AF67B17C-3BF7-4B2C-A209-969B3C8C72AB}"
+	ProjectSection(SolutionItems) = preProject
+		websocket\README.md = websocket\README.md
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "websocket-server-playground", "websocket\websocket-server\websocket-server-playground.csproj", "{243CC317-1D57-46BB-BB0E-23DFE5231C79}"
 EndProject
