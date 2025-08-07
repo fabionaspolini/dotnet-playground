@@ -1,6 +1,6 @@
 ﻿using FluentBuilder;
 
-namespace FluentBuilderPlayground;
+namespace fluent_builder_playground;
 
 [AutoGenerateBuilder]
 public class Person

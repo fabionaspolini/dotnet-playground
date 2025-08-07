@@ -1,5 +1,8 @@
 ﻿using M31.FluentApi.Attributes;
+
 //var person = Create
+
+namespace m31_fluentapi_playground;
 
 [FluentApi]
 public class Person

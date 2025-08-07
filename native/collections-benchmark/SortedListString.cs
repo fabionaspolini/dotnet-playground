@@ -4,6 +4,8 @@ using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Order;
 
 //[DryJob(RuntimeMoniker.Net80)]
+namespace collections_benchmark_playground;
+
 [ShortRunJob(RuntimeMoniker.Net80)]
 [Orderer(SummaryOrderPolicy.FastestToSlowest), AllStatisticsColumn, RPlotExporter]
 [GroupBenchmarksBy(BenchmarkLogicalGroupRule.ByMethod)]

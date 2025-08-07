@@ -1,4 +1,4 @@
-namespace OpenTelemetryWebApiPlayground;
+namespace open_telemetry_web_api_playground;
 
 public class WeatherForecast
 {

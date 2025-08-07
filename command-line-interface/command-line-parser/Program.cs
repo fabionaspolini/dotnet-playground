@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using CommandLine;
+﻿using CommandLine;
 using CommandLine.Text;
 
 [Verb("add", HelpText = "Add file contents to the index.")]

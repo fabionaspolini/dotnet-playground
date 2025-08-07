@@ -5,7 +5,7 @@ using System.Diagnostics;
 
 Console.WriteLine(".:: gRPC Playground - Stream Client ::.");
 
-const string Protocol = "HTTPS";
+const string Protocol = "HTTP";
 
 // Setup clients
 GrpcChannel channel;

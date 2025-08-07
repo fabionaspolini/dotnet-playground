@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace EFCore_ZExtensionsPlayground.Migrations
+namespace efcore_zextensions_playground.Migrations
 {
     public partial class Inicio : Migration
     {

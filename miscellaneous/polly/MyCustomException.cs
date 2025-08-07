@@ -1,12 +1,11 @@
 using System;
 
-namespace PollyPlayground
-{
-    public class MyCustomException : Exception
+namespace polly_playground;
+
+public class MyCustomException : Exception
 {
 
     public MyCustomException(string message) : base(message)
     {
     }
-}
 }

@@ -5,9 +5,8 @@ using System.Diagnostics;
 using Microsoft.Extensions.Logging;
 using System.Net.Http.Json;
 using Npgsql;
-using System.Security.Cryptography;
-using OpenTelemetryConsolePlayground;
 using Microsoft.EntityFrameworkCore;
+using open_telemetry_console_playground;
 
 Console.WriteLine(".:: Open Telemetry ::.");
 

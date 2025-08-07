@@ -1,7 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
-using System;
+﻿using System;
+using Microsoft.Extensions.Logging;
 
-namespace MicrosoftLoggingPlayground;
+namespace microsoft_logging_playground;
 
 class Teste
 {

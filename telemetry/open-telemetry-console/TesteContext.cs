@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
-namespace OpenTelemetryConsolePlayground;
+namespace open_telemetry_console_playground;
 
 internal class TesteContext : DbContext
 {

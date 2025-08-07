@@ -1,7 +1,5 @@
 ﻿using System;
 using Humanizer;
-using Humanizer.Configuration;
-using Humanizer.DateTimeHumanizeStrategy;
 using static System.Console;
 
 WriteLine(".:: Humanizer Samples ::.");

@@ -1,31 +1,30 @@
 using System;
 using Microsoft.Extensions.Logging;
 
-namespace LanguageFeaturesPlayground
+namespace miscellaneous_features_playground;
+
+public class Exceptions
 {
-    public class Exceptions
+    private ILogger<Exceptions> _logger;
+
+    public Exceptions(ILogger<Exceptions> logger)
     {
-        private ILogger<Exceptions> _logger;
+        _logger = logger;
+    }
 
-        public Exceptions(ILogger<Exceptions> logger)
+    public void Execute()
+    {
+        try
         {
-            _logger = logger;
+            int.Parse("a");
         }
-
-        public void Execute()
+        catch (FormatException e)
         {
-            try
-            {
-                int.Parse("a");
-            }
-            catch (FormatException e)
-            {
-                int.Parse("b");
-            }
-            catch (Exception e)
-            {
-                _logger.LogCritical(e, "Erro inesperado");
-            }
+            int.Parse("b");
+        }
+        catch (Exception e)
+        {
+            _logger.LogCritical(e, "Erro inesperado");
         }
     }
 }

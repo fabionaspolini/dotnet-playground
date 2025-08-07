@@ -1,6 +1,4 @@
-﻿using System;
-using FluentBuilder;
-using FluentBuilderPlayground;
+﻿using fluent_builder_playground;
 
 //var user = new FluentBuilderPlayground.UserBuilder()
 //    .WithFirstName("Test")

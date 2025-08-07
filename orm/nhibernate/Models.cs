@@ -1,4 +1,4 @@
-namespace NHibernatePlayground;
+namespace nhibernate_playground;
 
 public class Pessoa
 {

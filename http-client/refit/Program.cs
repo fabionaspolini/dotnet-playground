@@ -1,12 +1,11 @@
 ﻿using System;
 using static System.Console;
 using Maestria.Extensions;
-using QuickType;
 using Microsoft.Extensions.Configuration;
 using Refit;
 using System.Net.Http;
 using System.Threading.Tasks;
-using RefitPlayground;
+using refit_playground;
 
 // 1 - Exemplo utilizando a API pública da Marvel https://developer.marvel.com/docs
 // 2 - Cadastre-se gratuitamente e obtenha a chave publica e privada para executar este demo https://developer.marvel.com/account
@@ -29,7 +28,7 @@ var publicKey = config.GetValue<string>("publicKey");
 var httpClient = new HttpClient(new HttpLoggingHandler()) { BaseAddress = new Uri(url) };
 var settings = new RefitSettings
 {
-    ContentSerializer = new NewtonsoftJsonContentSerializer(QuickType.Converter.Settings),
+    ContentSerializer = new NewtonsoftJsonContentSerializer(Converter.Settings),
     ExceptionFactory = httpResponse =>
     {
         if (httpResponse.IsSuccessStatusCode)

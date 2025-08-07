@@ -1,5 +1,4 @@
-﻿using System;
-using DasMulli.DataBuilderGenerator;
+﻿using DasMulli.DataBuilderGenerator;
 using DataBuilderGeneratorPlayground;
 using static System.Console;
 

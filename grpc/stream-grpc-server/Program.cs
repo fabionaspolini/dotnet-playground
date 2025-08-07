@@ -1,4 +1,4 @@
-using StreamGrpcServerPlayground.Services;
+using stream_grpc_server_playground.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,4 +1,4 @@
-namespace AutoMapperPlayground;
+namespace auto_mapper_playground;
 
 public class PersonModel
 {

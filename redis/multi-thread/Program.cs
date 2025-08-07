@@ -1,6 +1,5 @@
 ﻿using StackExchange.Redis;
 using System.Diagnostics;
-using System.Threading.Tasks;
 
 Console.WriteLine(".:: Redis Playground - Multi Thread ::.");
 

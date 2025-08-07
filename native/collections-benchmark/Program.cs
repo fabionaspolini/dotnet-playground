@@ -1,4 +1,5 @@
 ﻿using BenchmarkDotNet.Running;
+using collections_benchmark_playground;
 
 Console.WriteLine(".:: Collections Playground Benchmark ::.");
 

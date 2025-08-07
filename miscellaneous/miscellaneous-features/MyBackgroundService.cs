@@ -3,14 +3,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 
-namespace LanguageFeaturesPlayground
+namespace miscellaneous_features_playground;
+
+public class MyBackgroundService : BackgroundService
 {
-    public class MyBackgroundService : BackgroundService
+    protected override Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        protected override Task ExecuteAsync(CancellationToken stoppingToken)
-        {
-            Console.WriteLine($"MyBackgroundService {DateTime.Now}");
-            return Task.CompletedTask;
-        }
+        Console.WriteLine($"MyBackgroundService {DateTime.Now}");
+        return Task.CompletedTask;
     }
 }

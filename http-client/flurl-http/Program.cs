@@ -1,11 +1,10 @@
 ﻿using System;
+using flurl_http_playground;
 using Flurl;
 using Flurl.Http;
 using static System.Console;
 using Maestria.Extensions;
-using Flurl.Http.Configuration;
 using Flurl.Http.Newtonsoft;
-using QuickType;
 using Microsoft.Extensions.Configuration;
 
 // 1 - Exemplo utilizando a API pública da Marvel https://developer.marvel.com/docs
@@ -27,7 +26,7 @@ var publicKey = config.GetValue<string>("publicKey");
 // Realizando customizações para deserealização de acordo com o código gerado automaticamente e definindo eventos globais para tratamento de erro e log de requisições
 FlurlHttp.ConfigureClientForUrl(url).WithSettings(settings =>
     {
-        settings.JsonSerializer = new NewtonsoftJsonSerializer(QuickType.Converter.Settings);
+        settings.JsonSerializer = new NewtonsoftJsonSerializer(Converter.Settings);
     })
     .BeforeCall(call => WriteLine($"My custom before call event intercept => {call.Request.Url}"))
     .OnError(call => WriteLine($"My custom error event intercept => {call.Exception}"));

@@ -1,15 +1,14 @@
-﻿using Serilog.Core;
+﻿using System.Diagnostics;
+using Serilog.Core;
 using Serilog.Events;
-using System.Diagnostics;
 
-namespace MicrosoftLoggingToSerilogPlayground
+namespace microsoft_logging_to_serilog_playground;
+
+class ActivityIdEnricher : ILogEventEnricher
 {
-    class ActivityIdEnricher : ILogEventEnricher
+    public void Enrich(LogEvent logEvent, ILogEventPropertyFactory propertyFactory)
     {
-        public void Enrich(LogEvent logEvent, ILogEventPropertyFactory propertyFactory)
-        {
-            logEvent.AddPropertyIfAbsent(propertyFactory.CreateProperty(
-                    "ActivityId", Trace.CorrelationManager.ActivityId));
-        }
+        logEvent.AddPropertyIfAbsent(propertyFactory.CreateProperty(
+            "ActivityId", Trace.CorrelationManager.ActivityId));
     }
 }

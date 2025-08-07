@@ -1,12 +1,12 @@
-﻿using Serilog;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Serilog;
 using Serilog.Formatting.Json;
 using static System.Console;
 
-namespace SerilogPlayground;
+namespace serilog_playground;
 
 class Program
 {

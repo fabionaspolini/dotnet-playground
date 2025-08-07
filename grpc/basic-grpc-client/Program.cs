@@ -2,7 +2,6 @@
 using Grpc.Core;
 using Grpc.Net.Client;
 using System.Diagnostics;
-using System.Xml.Linq;
 
 Console.WriteLine(".:: gRPC Playground - Basic Client ::.");
 

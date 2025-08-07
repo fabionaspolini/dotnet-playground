@@ -1,5 +1,4 @@
-using BasicGrpcServerPlayground.Services;
-using Microsoft.AspNetCore.Server.Kestrel.Core;
+using basic_grpc_server_playground.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

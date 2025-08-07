@@ -1,14 +1,12 @@
 using Jaeger.Samplers;
 using Jaeger.Senders.Thrift;
-using Jaeger.Senders;
 using Jaeger;
-using OpenTracing.Util;
 using OpenTracing;
 using Jaeger.Reporters;
 using OpenTracing.Contrib.NetCore.Configuration;
 
 // #######################################################
-// #####   NÃO USAR ESTE CÓDIGO PARA NOVOS PROJETO   #####
+// #####   Nï¿½O USAR ESTE Cï¿½DIGO PARA NOVOS PROJETO   #####
 // #####   UTILIZE SDK DO OPEN TELEMETRY             #####
 // #######################################################
 

@@ -1,8 +1,7 @@
-using jaeger_playground;
 using Microsoft.AspNetCore.Mvc;
 using OpenTracing;
 
-namespace JaegerWebApiPlayground.Controllers;
+namespace jaeger_web_api_playground.Controllers;
 
 [ApiController]
 [Route("[controller]")]

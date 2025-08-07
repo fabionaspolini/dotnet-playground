@@ -1,38 +1,37 @@
-﻿using log4net;
-using System;
+﻿using System;
+using log4net;
 
-namespace Log4NetPlayground
+namespace log4net_playground;
+
+class Teste
 {
-    class Teste
-    {
-        private static readonly ILog Logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+    private static readonly ILog Logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public int ConverterParaInt(string value, bool fatal)
+    public int ConverterParaInt(string value, bool fatal)
+    {
+        Logger.Debug($"Iniciando conversão. value: {value} | fatal: {fatal}");
+        try
         {
-            Logger.Debug($"Iniciando conversão. value: {value} | fatal: {fatal}");
-            try
+            Logger.Info($"Convertendo {value} para int");
+            return int.Parse(value);
+        }
+        catch (Exception e)
+        {
+            // Usar "Error" quando a exception é capturada mas o processo segue, "Fatal" quando a thread é abortada
+            if (fatal)
             {
-                Logger.Info($"Convertendo {value} para int");
-                return int.Parse(value);
+                Logger.Fatal($"Erro ao converter {value} para int", e);
+                throw;
             }
-            catch (Exception e)
+            else
             {
-                // Usar "Error" quando a exception é capturada mas o processo segue, "Fatal" quando a thread é abortada
-                if (fatal)
-                {
-                    Logger.Fatal($"Erro ao converter {value} para int", e);
-                    throw;
-                }
-                else
-                {
-                    Logger.Error($"Erro ao converter {value} para int", e);
-                    return 0;
-                }
+                Logger.Error($"Erro ao converter {value} para int", e);
+                return 0;
             }
-            finally
-            {
-                Logger.Debug("Finalizando");
-            }
+        }
+        finally
+        {
+            Logger.Debug("Finalizando");
         }
     }
 }

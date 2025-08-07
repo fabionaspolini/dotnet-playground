@@ -1,9 +1,9 @@
-﻿using NLog;
-using System;
+﻿using System;
 using System.Diagnostics;
+using NLog;
 using static System.Console;
 
-namespace NLogPlayground;
+namespace nlog_playground;
 
 class Program
 {

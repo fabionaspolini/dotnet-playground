@@ -1,4 +1,4 @@
-namespace jaeger_playground;
+namespace jaeger_web_api_playground;
 
 public class WeatherForecast
 {

@@ -1,9 +1,9 @@
-﻿using System.Threading.Tasks;
-using System;
+﻿using System;
+using System.Threading.Tasks;
 using Quartz;
 using Quartz.Impl;
 
-namespace QuartzPlayground;
+namespace quartz_playground;
 
 class Program
 {

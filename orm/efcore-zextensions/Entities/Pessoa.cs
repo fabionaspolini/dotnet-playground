@@ -1,4 +1,4 @@
-﻿namespace EFCore_ZExtensionsPlayground.Entities;
+﻿namespace efcore_zextensions_playground.Entities;
 
 public class Pessoa
 {

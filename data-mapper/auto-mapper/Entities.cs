@@ -1,6 +1,4 @@
-using System;
-
-namespace AutoMapperPlayground;
+namespace auto_mapper_playground;
 
 public class Person
 {

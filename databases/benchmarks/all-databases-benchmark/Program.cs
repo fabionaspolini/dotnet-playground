@@ -1,14 +1,15 @@
-﻿using BenchmarkDotNet.Attributes;
+﻿using System.Data;
+using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Order;
-using BenchmarkDotNet.Reports;
 using BenchmarkDotNet.Running;
 using Dapper;
 using Microsoft.Data.SqlClient;
 using MySqlConnector;
 using Npgsql;
-using System.Data;
+
+namespace all_databases_benchmark_playground;
 
 public class Program
 {

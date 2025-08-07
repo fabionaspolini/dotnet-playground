@@ -1,8 +1,8 @@
-﻿using EFCore_ZExtensionsPlayground.Entities;
+﻿using efcore_zextensions_playground.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace EFCore_ZExtensionsPlayground.Infra.Mappings;
+namespace efcore_zextensions_playground.Infra.Mappings;
 
 public class PessoaMap : IEntityTypeConfiguration<Pessoa>
 {

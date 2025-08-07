@@ -1,13 +1,16 @@
-﻿using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Jobs;
-using BenchmarkDotNet.Running;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text.Encodings.Web;
+using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Jobs;
+using BenchmarkDotNet.Running;
+using microsoft_logging_web_api_playground;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+
+namespace microsoft_logging_benchmark_playground;
 
 public class Program
 {
@@ -164,10 +167,10 @@ public static class Startup
 
                 // Adicionar scope no log com o traceId gerado com new Activity("...")
                 builder.Configure(x => x.ActivityTrackingOptions = ActivityTrackingOptions.SpanId |
-                    ActivityTrackingOptions.TraceId |
-                    ActivityTrackingOptions.ParentId |
-                    ActivityTrackingOptions.Tags |
-                    ActivityTrackingOptions.Baggage);
+                                                                   ActivityTrackingOptions.TraceId |
+                                                                   ActivityTrackingOptions.ParentId |
+                                                                   ActivityTrackingOptions.Tags |
+                                                                   ActivityTrackingOptions.Baggage);
                 //builder.Configure(x => x.ActivityTrackingOptions = ActivityTrackingOptions.None);
 
                 if (loggerProvider == LoggerProvider.Console)
@@ -208,5 +211,5 @@ public static class Startup
                         };
                     });
             })
-           .BuildServiceProvider();
+            .BuildServiceProvider();
 }

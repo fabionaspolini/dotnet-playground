@@ -1,24 +1,22 @@
-﻿using Microsoft.Extensions.Logging.Abstractions;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Console;
-using Microsoft.Extensions.Options;
+﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
-using System.Runtime.InteropServices;
-using System.Text.Json;
-using System.Text;
-using System;
 using System.Linq;
-using System.Diagnostics;
-using MicrosoftLoggingPlayground.MyJsonConsoleLoggerFormat;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Text.Json;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
+using Microsoft.Extensions.Logging.Console;
+using Microsoft.Extensions.Options;
 
-namespace MicrosoftLoggingPlayground.MyJsonConsoleLoggerFormat
+namespace microsoft_logging_web_api_playground
 {
-
     // Exemplo baseado no código do formatter sealed Microsoft.Extensions.Logging.Console.JsonConsoleFormatter
-    // https://github.com/dotnet/runtime/blob/main/src/libraries/Microsoft.Extensions.Logging.Console/src/JsonConsoleFormatter.cs
+// https://github.com/dotnet/runtime/blob/main/src/libraries/Microsoft.Extensions.Logging.Console/src/JsonConsoleFormatter.cs
 
     public class MyJsonConsoleFormatter : ConsoleFormatter, IDisposable
     {
@@ -263,10 +261,6 @@ namespace MicrosoftLoggingPlayground.MyJsonConsoleLoggerFormat
             _optionsReloadToken?.Dispose();
         }
     }
-}
-
-namespace Microsoft.Extensions.Logging
-{
 
     public static class MyJsonConsoleFormatterExtensions
     {

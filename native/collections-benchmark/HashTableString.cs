@@ -1,10 +1,12 @@
-﻿using BenchmarkDotNet.Attributes;
+﻿using System.Collections;
+using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Order;
-using System.Collections;
 
 //[DryJob(RuntimeMoniker.Net80)]
+namespace collections_benchmark_playground;
+
 [ShortRunJob(RuntimeMoniker.Net80)]
 [Orderer(SummaryOrderPolicy.FastestToSlowest), AllStatisticsColumn, RPlotExporter]
 [GroupBenchmarksBy(BenchmarkLogicalGroupRule.ByMethod)]

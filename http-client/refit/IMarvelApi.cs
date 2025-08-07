@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
-using QuickType;
 using Refit;
+
+namespace refit_playground;
 
 [Headers("User-Agent: My-dotnet-Client")]
 public interface IMarvelApi

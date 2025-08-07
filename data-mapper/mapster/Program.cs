@@ -1,5 +1,5 @@
-﻿using Mapster;
-using MapsterPlayground;
+﻿using mapster_playground;
+using Mapster;
 
 // Obrigar que todos os mapeamentos estejam registrados
 TypeAdapterConfig.GlobalSettings.RequireExplicitMapping = true;
@@ -58,15 +58,18 @@ Console.WriteLine($"[person2] PersonModel    => {personModel.Id}: {personModel.N
 Console.WriteLine($"[person2] PersonModelDif => {personModelDif.Codigo}: {personModelDif.Nome}");
 
 // Feature de geração de código, não obirgatório
-public class CodeGenerationConfig : ICodeGenerationRegister
+namespace mapster_playground
 {
-    public void Register(Mapster.CodeGenerationConfig config)
+    public class CodeGenerationConfig : ICodeGenerationRegister
     {
-        // No arquivo .csproj existem tasks para geração de código automática, mas deixei desativadas por padrão.
-        // Executar manual "dotnet msbuild -t:Mapster" para criar as classes DTO e Mappers com o sufixo de "Test" configuradas abaixo.
-        config.AdaptTo("[name]ModelTest")
-            .ForType<Person>();
-        config.GenerateMapper("[name]MapperTest")
-            .ForType<Person>();
+        public void Register(Mapster.CodeGenerationConfig config)
+        {
+            // No arquivo .csproj existem tasks para geração de código automática, mas deixei desativadas por padrão.
+            // Executar manual "dotnet msbuild -t:Mapster" para criar as classes DTO e Mappers com o sufixo de "Test" configuradas abaixo.
+            config.AdaptTo("[name]ModelTest")
+                .ForType<Person>();
+            config.GenerateMapper("[name]MapperTest")
+                .ForType<Person>();
+        }
     }
 }

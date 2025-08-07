@@ -1,6 +1,7 @@
+using BasicGrpcServerPlayground;
 using Grpc.Core;
 
-namespace BasicGrpcServerPlayground.Services;
+namespace basic_grpc_server_playground.Services;
 
 public class GreeterService : Greeter.GreeterBase
 {

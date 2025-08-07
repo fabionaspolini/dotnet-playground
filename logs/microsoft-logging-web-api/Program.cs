@@ -1,5 +1,4 @@
-using Microsoft.Extensions.Logging;
-using System.Text.Encodings.Web;
+using microsoft_logging_web_api_playground;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +15,7 @@ builder.Logging.Configure(opts => opts.ActivityTrackingOptions = ActivityTrackin
     x.IncludeScopes = true;
     x.JsonWriterOptions = new()
     {
-        Indented = true, // Indentação causa muita queda de performance
+        Indented = true, // Indentaï¿½ï¿½o causa muita queda de performance
         Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
     };
 });*/

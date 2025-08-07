@@ -1,16 +1,16 @@
-﻿using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Diagnostics;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Logging;
 
-namespace MicrosoftLoggingPlayground.MyLogger;
+namespace microsoft_logging_playground.MyLogger;
 
 // https://learn.microsoft.com/en-us/dotnet/core/extensions/custom-logging-provider
 // https://www.treinaweb.com.br/blog/criando-um-provider-customizado-para-o-microsoft-extensions-logging

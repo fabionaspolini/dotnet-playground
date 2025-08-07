@@ -3,20 +3,19 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 
-namespace LanguageFeaturesPlayground
-{
-    public class MyHostedService : IHostedService
-    {
-        public Task StartAsync(CancellationToken cancellationToken)
-        {
-            Console.WriteLine($"MyHostedService Start {DateTime.Now}");
-            return Task.CompletedTask;
-        }
+namespace miscellaneous_features_playground;
 
-        public Task StopAsync(CancellationToken cancellationToken)
-        {
-            Console.WriteLine($"MyHostedService Stop {DateTime.Now}");
-            return Task.CompletedTask;
-        }
+public class MyHostedService : IHostedService
+{
+    public Task StartAsync(CancellationToken cancellationToken)
+    {
+        Console.WriteLine($"MyHostedService Start {DateTime.Now}");
+        return Task.CompletedTask;
+    }
+
+    public Task StopAsync(CancellationToken cancellationToken)
+    {
+        Console.WriteLine($"MyHostedService Stop {DateTime.Now}");
+        return Task.CompletedTask;
     }
 }

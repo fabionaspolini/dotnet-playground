@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics;
-using EFCore_ZExtensionsPlayground.Entities;
-using EFCore_ZExtensionsPlayground.Infra;
+using efcore_zextensions_playground.Entities;
+using efcore_zextensions_playground.Infra;
 using Microsoft.EntityFrameworkCore;
 
-namespace EFCore_ZExtensionsPlayground;
+namespace efcore_zextensions_playground;
 
 class Program
 {

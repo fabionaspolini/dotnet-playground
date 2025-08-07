@@ -1,4 +1,6 @@
-﻿class CepResponse
+﻿namespace open_telemetry_console_playground;
+
+class CepResponse
 {
     public bool erro { get; set; }
     public string? cep { get; set; }

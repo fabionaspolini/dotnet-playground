@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace OpenTelemetryWebApiPlayground.Controllers;
+namespace open_telemetry_web_api_playground.Controllers;
 
 [ApiController]
 [Route("[controller]")]

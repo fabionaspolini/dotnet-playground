@@ -1,10 +1,9 @@
 ﻿using System;
-using static System.Console;
 
 Console.WriteLine(".:: Primary Constructor ::.");
 
 // Lib não suporta classes top level statements
-namespace PrimaryConstructorPlayground
+namespace primary_constructor_playground
 {
     class PessoaRepository { }
 

@@ -1,13 +1,13 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System;
+using System.Diagnostics;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NLog;
 using NLog.Extensions.Logging;
-using System;
-using System.Diagnostics;
 using static System.Console;
 
-namespace MicrosoftLoggingToNLogPlayground;
+namespace microsoft_logging_to_nlog_playground;
 
 class Program
 {

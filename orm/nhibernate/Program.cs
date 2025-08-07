@@ -1,10 +1,9 @@
 ﻿using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
+using nhibernate_playground;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
-using NHibernatePlayground;
-using NHibernatePlayground;
 
 ISessionFactory CreateSessionFactory()
 {

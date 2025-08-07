@@ -1,5 +1,5 @@
-﻿using AutoMapper;
-using AutoMapperPlayground;
+﻿using auto_mapper_playground;
+using AutoMapper;
 using Microsoft.Extensions.Logging.Abstractions;
 
 var config = new MapperConfiguration(cfg =>
