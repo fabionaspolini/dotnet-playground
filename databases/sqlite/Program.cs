@@ -26,5 +26,3 @@ while (reader.Read())
 
 Console.WriteLine();
 Console.WriteLine("Fim");
-
-// conn.CreateCommand()
