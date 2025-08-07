@@ -178,6 +178,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "websocket-server-playground
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "websocket-client-playground", "websocket\websocket-client-dotnet\websocket-client-playground.csproj", "{F63F7B4B-A692-4BA0-8F69-4A0168BF3F9D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "databases", "databases", "{548093BD-BC47-4A1F-BC74-58EE2DE6ADE4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sqlite-playground", "databases\sqlite\sqlite-playground.csproj", "{44F27601-2144-4327-A7E9-F4F0C8FBE7CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -836,6 +840,18 @@ Global
 		{F63F7B4B-A692-4BA0-8F69-4A0168BF3F9D}.Release|x64.Build.0 = Release|Any CPU
 		{F63F7B4B-A692-4BA0-8F69-4A0168BF3F9D}.Release|x86.ActiveCfg = Release|Any CPU
 		{F63F7B4B-A692-4BA0-8F69-4A0168BF3F9D}.Release|x86.Build.0 = Release|Any CPU
+		{44F27601-2144-4327-A7E9-F4F0C8FBE7CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44F27601-2144-4327-A7E9-F4F0C8FBE7CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44F27601-2144-4327-A7E9-F4F0C8FBE7CA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{44F27601-2144-4327-A7E9-F4F0C8FBE7CA}.Debug|x64.Build.0 = Debug|Any CPU
+		{44F27601-2144-4327-A7E9-F4F0C8FBE7CA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{44F27601-2144-4327-A7E9-F4F0C8FBE7CA}.Debug|x86.Build.0 = Debug|Any CPU
+		{44F27601-2144-4327-A7E9-F4F0C8FBE7CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44F27601-2144-4327-A7E9-F4F0C8FBE7CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44F27601-2144-4327-A7E9-F4F0C8FBE7CA}.Release|x64.ActiveCfg = Release|Any CPU
+		{44F27601-2144-4327-A7E9-F4F0C8FBE7CA}.Release|x64.Build.0 = Release|Any CPU
+		{44F27601-2144-4327-A7E9-F4F0C8FBE7CA}.Release|x86.ActiveCfg = Release|Any CPU
+		{44F27601-2144-4327-A7E9-F4F0C8FBE7CA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -897,6 +913,7 @@ Global
 		{8DABBE4E-A382-4EFF-BD05-9EBE995E823D} = {D7ABB895-D2DB-4A6D-8955-36F92E077C07}
 		{243CC317-1D57-46BB-BB0E-23DFE5231C79} = {AF67B17C-3BF7-4B2C-A209-969B3C8C72AB}
 		{F63F7B4B-A692-4BA0-8F69-4A0168BF3F9D} = {AF67B17C-3BF7-4B2C-A209-969B3C8C72AB}
+		{44F27601-2144-4327-A7E9-F4F0C8FBE7CA} = {548093BD-BC47-4A1F-BC74-58EE2DE6ADE4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {168EC689-C008-4589-95F0-6030A3264703}
