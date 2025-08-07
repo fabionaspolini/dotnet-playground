@@ -12,8 +12,9 @@ namespace FluentValidationPlayground
         static void Main(string[] args)
         {
             WriteLine(".:: FluentValidation Samples ::.");
-
-            ValidatorOptions.Global.CascadeMode = CascadeMode.StopOnFirstFailure;
+            
+            // ValidatorOptions.Global.DefaultClassLevelCascadeMode = CascadeMode.Stop;
+            // ValidatorOptions.Global.DefaultRuleLevelCascadeMode = CascadeMode.Stop;
 
             var test = new Program();
             test.Validar("Todos os dados vazios", new Pessoa());
