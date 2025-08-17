@@ -2,24 +2,24 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "command-line-interface/command-line-parser",
+            "name": "user-interfaces/cli/command-line-parser",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build-command-line-interface/command-line-parser",
-            "program": "${workspaceFolder}/command-line-interface/command-line-parser/bin/Debug/net6.0/command-line-parser-playground.dll",
+            "preLaunchTask": "build-user-interfaces/cli/command-line-parser",
+            "program": "${workspaceFolder}/user-interfaces/cli/command-line-parser/bin/Debug/net6.0/command-line-parser-playground.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/command-line-interface/command-line-parser",
+            "cwd": "${workspaceFolder}/user-interfaces/cli/command-line-parser",
             "console": "internalConsole",
             "stopAtEntry": false
         },
         {
-            "name": "command-line-interface/command-line-utils",
+            "name": "user-interfaces/cli/command-line-utils",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build-command-line-interface/command-line-utils",
-            "program": "${workspaceFolder}/command-line-interface/command-line-utils/bin/Debug/net6.0/command-line-utils-playground.dll",
+            "preLaunchTask": "build-user-interfaces/cli/command-line-utils",
+            "program": "${workspaceFolder}/user-interfaces/cli/command-line-utils/bin/Debug/net6.0/command-line-utils-playground.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/command-line-interface/command-line-utils",
+            "cwd": "${workspaceFolder}/user-interfaces/cli/command-line-utils",
             "console": "internalConsole",
             "stopAtEntry": false
         },

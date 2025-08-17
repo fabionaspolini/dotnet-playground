@@ -38,24 +38,24 @@
             }
         },
         {
-            "label": "build-command-line-interface/command-line-parser",
+            "label": "build-user-interfaces/cli/command-line-parser",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/command-line-interface/command-line-parser/command-line-parser-playground.csproj",
+                "${workspaceFolder}/user-interfaces/cli/command-line-parser/command-line-parser-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "build-command-line-interface/command-line-utils",
+            "label": "build-user-interfaces/cli/command-line-utils",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/command-line-interface/command-line-utils/command-line-utils-playground.csproj",
+                "${workspaceFolder}/user-interfaces/cli/command-line-utils/command-line-utils-playground.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
