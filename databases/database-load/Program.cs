@@ -59,7 +59,7 @@ var op = AnsiConsole.Prompt(
             "5.5) Insert with copy -> 10 milhões em pacotes de 50 mil",
             "x) Bulkt insert"));
 
-AnsiConsole.MarkupLine($"Opção selecionada: [bold]{op.Replace("  ", " ")}[/]");
+AnsiConsole.MarkupLine($"Opção selecionada: [bold]{op}[/]");
 
 switch (op.SubstringBeforeFirstOccurrence(")"))
 {

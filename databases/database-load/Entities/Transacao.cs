@@ -23,7 +23,31 @@ public static class TransacaoFactory
     
     public static List<Transacao> Generate(int count)
     {
-        AnsiConsole.Markup("[gray]Gerar dados fake...[/]");
+        const int chunkSize = 10_000;
+        var result = new List<Transacao>(count);
+        
+        AnsiConsole.Progress()
+            .Start(ctx =>
+            {
+                var task = ctx.AddTask("[gray]Gerar dados fake...[/]", maxValue: count);
+                while (!ctx.IsFinished)
+                {
+                    while (result.Count + chunkSize < count)
+                    {
+                        result.AddRange(Faker.Generate(chunkSize));
+                        task.Increment(chunkSize); 
+                    }
+                    if (result.Count < count)
+                    {
+                        var lastChunk = count - result.Count;
+                        result.AddRange(Faker.Generate(lastChunk));
+                        task.Increment(lastChunk); 
+                    }
+                }
+            });
+        return result;
+
+        /*AnsiConsole.Markup("[gray]Gerar dados fake...[/]");
         try
         {
             return Faker.Generate(count);
@@ -31,6 +55,6 @@ public static class TransacaoFactory
         finally
         {
             AnsiConsole.MarkupLine("[gray]OK[/]");
-        }
+        }*/
     }
 }
