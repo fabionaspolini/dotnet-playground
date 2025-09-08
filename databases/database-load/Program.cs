@@ -54,6 +54,9 @@ var op = AnsiConsole.Prompt(
             "4) Parallel insert (WTF!)",
             "5.1) Insert with copy -> 1 milhão",
             "5.2) Insert with copy -> 1 milhão em pacotes de 5 mil",
+            "5.3) Insert with copy -> 10 milhões",
+            "5.4) Insert with copy -> 10 milhões em pacotes de 5 mil",
+            "5.5) Insert with copy -> 10 milhões em pacotes de 50 mil",
             "x) Bulkt insert"));
 
 AnsiConsole.MarkupLine($"Opção selecionada: [bold]{op.Replace("  ", " ")}[/]");
@@ -80,6 +83,15 @@ switch (op.SubstringBeforeFirstOccurrence(")"))
         break;
     case "5.2":
         await InsertWithCopyUseCase.ExecuteAsync(1_000_000, 5_000);
+        break;
+    case "5.3":
+        await InsertWithCopyUseCase.ExecuteAsync(10_000_000);
+        break;
+    case "5.4":
+        await InsertWithCopyUseCase.ExecuteAsync(10_000_000, 5_000);
+        break;
+    case "5.5":
+        await InsertWithCopyUseCase.ExecuteAsync(10_000_000, 50_000);
         break;
     default:
         AnsiConsole.MarkupLine("[red]Opção inválida![/]");

@@ -57,6 +57,9 @@ dotnet ef migrations remove
 | 4) Parallel insert (WTF!)                                         | Algoritmo ruim não escala, não adianta paralelizar!                                         |
 | 5.1) Insert with copy -> 1 milhão                                 | 2,4 segundos, há um pico de CPU, mas afeta menos o ambiente devido a velocidade de inserção |
 | 5.2) Insert with copy -> 1 milhão em pacotes de 5 mil             | 2,8 segundos, com picos menores de CPU                                                      |
+| 5.3) Insert with copy -> 10 milhões                               | 55 segundos, CPU de 27% a 85%                                                               |
+| 5.4) Insert with copy -> 10 milhões em pacotes de 5 mil           | 48 segundos, CPU de 21% a 85%                                                               |
+| 5.5) Insert with copy -> 10 milhões em pacotes de 50 mil          | 29 segundos, CPU em 77%                                                                     |
 
 Notas:
 - 1 e 2: Também utilizam muito CPU, mas devido a lentidão de envio do comando pro DB, não chega a bater 100%.

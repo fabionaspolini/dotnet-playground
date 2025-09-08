@@ -10,7 +10,7 @@ public static class ClearDatabaseUseCase
         AnsiConsole.Markup("[gray]Limpar banco de dados...[/]");
         await using var conn = await DbFactory.CreateConnectionAsync();
         await using var cmd = conn.CreateCommand();
-        cmd.CommandText = "delete from transacao";
+        cmd.CommandText = "truncate transacao";
         await cmd.ExecuteNonQueryAsync();
         AnsiConsole.MarkupLine("[gray]OK[/]");
         
