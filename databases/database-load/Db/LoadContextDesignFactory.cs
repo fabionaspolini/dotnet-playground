@@ -11,7 +11,9 @@ public class LoadContextDesignFactory : IDesignTimeDbContextFactory<LoadContext>
     public LoadContext CreateDbContext(string[] args)
     {
         var optionsBuilder = new DbContextOptionsBuilder<LoadContext>();
-        optionsBuilder.UseNpgsql(Consts.ConnectionString);
+        optionsBuilder
+            .UseNpgsql(Consts.ConnectionString)
+            .UseSnakeCaseNamingConvention();
         return new LoadContext(optionsBuilder.Options);
     }
 }

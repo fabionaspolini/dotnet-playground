@@ -22,26 +22,34 @@ namespace database_load_playground.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("database_load_playground.Entities.Movimentacao", b =>
+            modelBuilder.Entity("database_load_playground.Entities.Transacao", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
 
                     b.Property<Guid>("ClienteId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("cliente_id");
 
                     b.Property<string>("Descricao")
-                        .HasColumnType("text");
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("character varying(40)")
+                        .HasColumnName("descricao");
 
                     b.Property<decimal>("Valor")
-                        .HasColumnType("numeric");
+                        .HasColumnType("numeric")
+                        .HasColumnName("valor");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_transacao");
 
-                    b.HasIndex("ClienteId");
+                    b.HasIndex("ClienteId")
+                        .HasDatabaseName("ix_transacao_cliente_id");
 
-                    b.ToTable("movimentacao", (string)null);
+                    b.ToTable("transacao", (string)null);
                 });
 #pragma warning restore 612, 618
         }

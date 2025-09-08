@@ -14,10 +14,10 @@ public class LoadContext : DbContext
     {
     }
 
-    public DbSet<Movimentacao> Movimentacoes { get; set; }
+    public DbSet<Transacao> Transacoes { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfiguration(new MovimentacaoMap());
+        modelBuilder.ApplyConfiguration(new TransacaoConfig());
     }
 }

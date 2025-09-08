@@ -1,0 +1,24 @@
+﻿using Bogus;
+using Maestria.Extensions;
+
+namespace database_load_playground.Entities;
+
+public class Transacao
+{
+    public Guid Id { get; set; }
+    public Guid ClienteId { get; set; }
+    public decimal Valor { get; set; }
+    public string Descricao { get; set; } = null!;
+}
+
+public static class TransacaoFactory
+{
+    public static Faker<Transacao> Faker { get; } = new Faker<Transacao>()
+        .StrictMode(true)
+        .RuleFor(x => x.Id, f => Guid.CreateVersion7())
+        .RuleFor(x => x.ClienteId, f => Guid.CreateVersion7())
+        .RuleFor(x => x.Valor, f => f.Finance.Amount(0.01m, 10_000m))
+        .RuleFor(x=> x.Descricao, f => f.Lorem.Text().Truncate(40));
+    
+    public static List<Transacao> Generate(int count = 10_000) => Faker.Generate(count);
+}

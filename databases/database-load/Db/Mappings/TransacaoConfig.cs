@@ -4,12 +4,14 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace database_load_playground.Db.Mappings;
 
-public class MovimentacaoMap : IEntityTypeConfiguration<Movimentacao>
+public class TransacaoConfig : IEntityTypeConfiguration<Transacao>
 {
-    public void Configure(EntityTypeBuilder<Movimentacao> builder)
+    public void Configure(EntityTypeBuilder<Transacao> builder)
     {
-        builder.ToTable("movimentacao");
+        builder.ToTable("transacao");
         builder.HasKey(x => x.Id);
         builder.HasIndex(x => x.ClienteId);
+        
+        builder.Property(x => x.Descricao).HasMaxLength(40);
     }
 }

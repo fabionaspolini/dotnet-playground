@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using McMaster.Extensions.CommandLineUtils;
 
-namespace CommandLineUtilsPlayground;
+namespace command_line_utils_playground;
 
 public class Program
 {
