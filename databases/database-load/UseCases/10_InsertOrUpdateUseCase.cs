@@ -39,7 +39,7 @@ public static class InsertOrUpdateUseCase
             Border = BoxBorder.Heavy,
         };
         AnsiConsole.Write(rule);
-        var items = await InsertWithCopyUseCase.ExecuteAsync(count);
+        var items = await InsertWithCopyUseCase.ExecuteAsync(count, 50_000);
         AnsiConsole.WriteLine();
 
         rule.Title = "[red]Executando teste de insert or update[/]";
