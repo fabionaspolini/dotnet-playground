@@ -16,11 +16,12 @@ public static class InsertWithTransactionUseCase
         var items = TransacaoFactory.Generate(count);
         
         await using var conn = await DbFactory.CreateConnectionAsync();
+        
+        var watch = Stopwatch.StartNew();
         await using var transaction = await conn.BeginTransactionAsync();
         await using var cmd = conn.CreateCommand();
         cmd.CommandText = Sql;
-
-        var watch = Stopwatch.StartNew();
+        
         foreach (var item in items)
         {
             cmd.Parameters.Clear();

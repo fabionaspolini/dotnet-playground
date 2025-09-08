@@ -21,7 +21,10 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/UseCases/ClearDatabaseUseCase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/63bcd64b0f014a379d5ce40f4970d19615d000/76/23519002/NpgsqlBinaryImporter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2058e264c45cd8b991a5ec6d3ef65e54c8d1966cad31c3f8f85b94fb77e6/NpgsqlBinaryImporter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bf9021a960b74107a7e141aa06bc9d8a0a53c929178c2fb95b1597be8af8dc/ExceptionDispatchInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d2111b753d9c981f6ce76ee8efd9915ad46ff28e7b67bd7865a1661f9b64c43/NpgsqlConnection.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo"><![CDATA[{
@@ -38,7 +41,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    ".NET Project.database-load-playground.executor": "Debug",
+    ".NET Project.database-load-playground.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -92,7 +95,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1757299748332</updated>
-      <workItem from="1757299750102" duration="3058000" />
+      <workItem from="1757299750102" duration="5179000" />
     </task>
     <task id="LOCAL-00001" summary="database load test">
       <option name="closed" value="true" />
@@ -118,7 +121,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757301695787</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="database load test">
+      <option name="closed" value="true" />
+      <created>1757302857501</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1757302857501</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,17 +170,17 @@
           <option name="timeStamp" value="3" />
         </breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Program.cs</url>
-          <line>55</line>
-          <properties documentPath="$PROJECT_DIR$/Program.cs" containingFunctionPresentation="">
+          <url>file://$PROJECT_DIR$/UseCases/5_CopyUseCase.cs</url>
+          <line>20</line>
+          <properties documentPath="$PROJECT_DIR$/UseCases/5_CopyUseCase.cs" containingFunctionPresentation="Method 'ExecuteAsync'">
             <startOffsets>
-              <option value="1944" />
+              <option value="586" />
             </startOffsets>
             <endOffsets>
-              <option value="2023" />
+              <option value="649" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="9" />
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

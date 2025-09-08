@@ -47,13 +47,16 @@ dotnet ef migrations remove
 
 ## Resultado
 
-| Use case                                                      | Resultado                            |
-|---------------------------------------------------------------|--------------------------------------|
-| 1) Insert without transaction -> 10 mil                       | 6 segundos                           |
-| 2) Insert with transaction -> 10 mil                          | 1,28 segundos                        |
-| 3.1) Insert with multiples values -> 10 mil                   | 0,11 segundos                        |
-| 3.2) Insert with multiples values -> 1 mi                     | 9,6 segundos e 100% de CPU do DB     |
-| 3.3) Insert with multiples values -> 1 mi em pacotes de 5 mil | 9 seg, mas ainda com muito CPU do DB | 
+| Use case                                                          | Resultado                                                                                   |
+|-------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
+| 1) Insert without transaction -> 10 mil                           | 6 segundos                                                                                  |
+| 2) Insert with transaction -> 10 mil                              | 1,28 segundos                                                                               |
+| 3.1) Insert with multiples values -> 10 mil                       | 0,11 segundos                                                                               |
+| 3.2) Insert with multiples values -> 1 milhão                     | 9,6 segundos e 100% de CPU do DB. Começa a ficar péssimo para ambiente de alta concorrência |
+| 3.3) Insert with multiples values -> 1 milhão em pacotes de 5 mil | 9 seg, mas ainda com muito CPU do DB                                                        |
+| 4) Parallel insert (WTF!)                                         | Algoritmo ruim não escala, não adianta paralelizar!                                         |
+| 5.1) Insert with copy -> 1 milhão                                 | 2,4 segundos, há um pico de CPU, mas afeta menos o ambiente devido a velocidade de inserção |
+| 5.2) Insert with copy -> 1 milhão em pacotes de 5 mil             | 2,8 segundos, com picos menores de CPU                                                      |
 
 Notas:
 - 1 e 2: Também utilizam muito CPU, mas devido a lentidão de envio do comando pro DB, não chega a bater 100%.

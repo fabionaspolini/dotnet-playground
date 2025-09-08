@@ -1,5 +1,6 @@
 ﻿using Bogus;
 using Maestria.Extensions;
+using Spectre.Console;
 
 namespace database_load_playground.Entities;
 
@@ -20,5 +21,16 @@ public static class TransacaoFactory
         .RuleFor(x => x.Valor, f => f.Finance.Amount(0.01m, 10_000m))
         .RuleFor(x=> x.Descricao, f => f.Lorem.Text().Truncate(40));
     
-    public static List<Transacao> Generate(int count) => Faker.Generate(count);
+    public static List<Transacao> Generate(int count)
+    {
+        AnsiConsole.Markup("[gray]Gerar dados fake...[/]");
+        try
+        {
+            return Faker.Generate(count);
+        }
+        finally
+        {
+            AnsiConsole.MarkupLine("[gray]OK[/]");
+        }
+    }
 }

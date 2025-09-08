@@ -12,6 +12,8 @@ public static class InsertWithMultiplesValuesUseCase
         var items = TransacaoFactory.Generate(count);
         var chunk = items.Chunk(chunkSize > 0 ? chunkSize : items.Count);
 
+        await using var conn = await DbFactory.CreateConnectionAsync();
+        
         var watch = Stopwatch.StartNew();
         foreach (var part in chunk)
         {
@@ -26,8 +28,7 @@ public static class InsertWithMultiplesValuesUseCase
                                $"{item.Descricao.ToSqlValue()}" +
                                $"),");
             sql.Remove(sql.Length - 2, 2);
-
-            await using var conn = await DbFactory.CreateConnectionAsync();
+            
             await using var transaction = await conn.BeginTransactionAsync();
             await using var cmd = conn.CreateCommand();
 
