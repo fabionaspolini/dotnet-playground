@@ -46,28 +46,31 @@ var op = AnsiConsole.Prompt(
     new SelectionPrompt<string>()
         .Title("Qual caso de uso executar?")
         .AddChoices(
-            "1) Insert without transaction",
-            "2) Insert with transaction",
-            "3) Insert with multiples values",
-            "4) Insert with multiples values -> 1 mi",
+            "1) Insert without transaction     -> 10 mil",
+            "2) Insert with transaction        -> 10 mil",
+            "3.1) Insert with multiples values -> 10 mil",
+            "3.2) Insert with multiples values -> 1 mi",
+            "3.3) Insert with multiples values -> 1 mi em pacotes de 5 mil",
             "x) Bulkt insert"));
 
-AnsiConsole.MarkupLine($"Opção selecionada: [bold]{op}[/]");
-AnsiConsole.WriteLine();
+AnsiConsole.MarkupLine($"Opção selecionada: [bold]{op.Replace("  ", " ")}[/]");
 
 switch (op.SubstringBeforeFirstOccurrence(")"))
 {
     case "1":
-        await InsertUseCase.ExecuteAsync();
+        await InsertUseCase.ExecuteAsync(10_000);
         break;
     case "2":
-        await InsertWithTransactionUseCase.ExecuteAsync();
+        await InsertWithTransactionUseCase.ExecuteAsync(10_000);
         break;
-    case "3":
-        await InsertWithMultiplesValuesUseCase.ExecuteAsync();
+    case "3.1":
+        await InsertWithMultiplesValuesUseCase.ExecuteAsync(10_000);
         break;
-    case "4":
+    case "3.2":
         await InsertWithMultiplesValuesUseCase.ExecuteAsync(1_000_000);
+        break;
+    case "3.3":
+        await InsertWithMultiplesValuesUseCase.ExecuteAsync(1_000_000, 5_000);
         break;
     default:
         AnsiConsole.MarkupLine("[red]Opção inválida![/]");

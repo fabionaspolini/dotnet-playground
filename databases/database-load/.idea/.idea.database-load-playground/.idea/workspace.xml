@@ -38,7 +38,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    ".NET Project.database-load-playground.executor": "Run",
+    ".NET Project.database-load-playground.executor": "Debug",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -92,7 +92,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1757299748332</updated>
-      <workItem from="1757299750102" duration="1939000" />
+      <workItem from="1757299750102" duration="3058000" />
     </task>
     <task id="LOCAL-00001" summary="database load test">
       <option name="closed" value="true" />
@@ -110,7 +110,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757301118525</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="database load test">
+      <option name="closed" value="true" />
+      <created>1757301695787</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1757301695787</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,6 +158,19 @@
           <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="3" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Program.cs</url>
+          <line>55</line>
+          <properties documentPath="$PROJECT_DIR$/Program.cs" containingFunctionPresentation="">
+            <startOffsets>
+              <option value="1944" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2023" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

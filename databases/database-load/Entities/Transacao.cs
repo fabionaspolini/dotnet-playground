@@ -20,5 +20,5 @@ public static class TransacaoFactory
         .RuleFor(x => x.Valor, f => f.Finance.Amount(0.01m, 10_000m))
         .RuleFor(x=> x.Descricao, f => f.Lorem.Text().Truncate(40));
     
-    public static List<Transacao> Generate(int count = 10_000) => Faker.Generate(count);
+    public static List<Transacao> Generate(int count) => Faker.Generate(count);
 }

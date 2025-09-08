@@ -11,9 +11,9 @@ public static class InsertUseCase
         insert into transacao (id, cliente_id, valor, descricao)
         values (@id, @cliente_id, @valor, @descricao)
         """;
-    public static async Task ExecuteAsync()
+    public static async Task ExecuteAsync(int count)
     {
-        var items = TransacaoFactory.Generate();
+        var items = TransacaoFactory.Generate(count);
         
         await using var conn = await DbFactory.CreateConnectionAsync();
         await using var cmd = conn.CreateCommand();
