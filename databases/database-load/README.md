@@ -65,3 +65,7 @@ Notas:
 - 1 e 2: Também utilizam muito CPU, mas devido a lentidão de envio do comando pro DB, não chega a bater 100%.
 Porém, não significa que é bom, o tempo total do usuário é muito maior, e se for algo em paralelo, conseguirá bater 100% de CPU.
 - 3.x: Todos em transaction.
+- 5.x:
+  - Atenção com formato de dados, tentar escrever um número num campo string pode ocorrer exception, ou no pior dos casos, causar corrupção de dados.
+  - De preferência por utilizar o overload que informa o tipo de dados.
+  - Mais informações em https://www.npgsql.org/doc/copy.html
