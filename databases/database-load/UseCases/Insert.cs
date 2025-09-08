@@ -31,9 +31,10 @@ public class InsertUseCase
             cmd.Parameters.AddWithValue("cliente_id", item.ClienteId);
             cmd.Parameters.AddWithValue("valor", item.Valor);
             cmd.Parameters.AddWithValue("descricao", item.Descricao);
-            await cmd.ExecuteNonQueryAsync();
+            cmd.ExecuteNonQuery();
         }
         watch.Stop();
-        AnsiConsole.MarkupLine($"[green]{itens.Count:N0}[/] registros inseridos em [green]{watch.Elapsed}[/]");
+        
+        UseCaseExtensions.PrintStatistics(itens.Count, watch.Elapsed);
     }
 }

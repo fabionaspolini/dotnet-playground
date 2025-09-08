@@ -46,3 +46,7 @@ dotnet ef migrations remove
 ```
 
 ## Resultado
+
+| Use case | Resultado       |
+|----------|-----------------|
+| Insert   | 6 a 17 segundos |
