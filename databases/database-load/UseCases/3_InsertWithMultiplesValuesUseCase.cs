@@ -7,9 +7,9 @@ namespace database_load_playground.UseCases;
 
 public static class InsertWithMultiplesValuesUseCase
 {
-    public static async Task ExecuteAsync()
+    public static async Task ExecuteAsync(int count = 10_000)
     {
-        var items = TransacaoFactory.Generate();
+        var items = TransacaoFactory.Generate(count);
 
         var sql = new StringBuilder();
         sql.AppendLine("insert into transacao (id, cliente_id, valor, descricao)");

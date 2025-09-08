@@ -47,8 +47,13 @@ dotnet ef migrations remove
 
 ## Resultado
 
-| Use case                        | Resultado      |
-|---------------------------------|----------------|
-| 1) Insert without transaction   | 6 segundos     |
-| 2) Insert with transaction      | 1,28 segundos  |
-| 3) Insert with multiples values | 0,091 segundos |
+| Use case                                | Resultado                        |
+|-----------------------------------------|----------------------------------|
+| 1) Insert without transaction           | 6 segundos                       |
+| 2) Insert with transaction              | 1,28 segundos                    |
+| 3) Insert with multiples values         | 0,095 segundos                   |
+| 4) Insert with multiples values -> 1 mi | 9,5 segundos e 100% de CPU do DB |
+
+Notas:
+- 1 e 2 também utilizam muito CPU, mas devido a lentidão de envio do comando pro DB, não chega a bater 100%.
+Porém, não significa que é bom, o tempo total do usuário é muito maior, e se for algo em paralelo, conseguirá bater 100% de CPU.

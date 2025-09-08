@@ -13,7 +13,7 @@ public static class InsertWithTransactionUseCase
         """;
     public static async Task ExecuteAsync()
     {
-        var items = TransacaoFactory.Generate();
+        var items = TransacaoFactory.Generate(100_000);
         
         await using var conn = await DbFactory.CreateConnectionAsync();
         await using var transaction = await conn.BeginTransactionAsync();
