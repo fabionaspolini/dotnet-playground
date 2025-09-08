@@ -1,0 +1,36 @@
+using System.Diagnostics;
+using database_load_playground.Db;
+using database_load_playground.Entities;
+
+namespace database_load_playground.UseCases;
+
+public static class InsertUseCase
+{
+    private const string Sql =
+        """
+        insert into transacao (id, cliente_id, valor, descricao)
+        values (@id, @cliente_id, @valor, @descricao)
+        """;
+    public static async Task ExecuteAsync()
+    {
+        var items = TransacaoFactory.Generate();
+        
+        await using var conn = await DbFactory.CreateConnectionAsync();
+        await using var cmd = conn.CreateCommand();
+        cmd.CommandText = Sql;
+
+        var watch = Stopwatch.StartNew();
+        foreach (var item in items)
+        {
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("id", item.Id);
+            cmd.Parameters.AddWithValue("cliente_id", item.ClienteId);
+            cmd.Parameters.AddWithValue("valor", item.Valor);
+            cmd.Parameters.AddWithValue("descricao", item.Descricao);
+            await cmd.ExecuteNonQueryAsync();
+        }
+        watch.Stop();
+        
+        UseCaseExtensions.PrintStatistics(items.Count, watch.Elapsed);
+    }
+}

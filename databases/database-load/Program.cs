@@ -37,6 +37,8 @@ await using (var conn2 = await DbFactory.CreateConnectionAsync())
     }
 }
 AnsiConsole.MarkupLine("[gray]OK[/]");
+
+await ClearDatabaseUseCase.ExecuteAsync();
 AnsiConsole.WriteLine();
 
 // Menu
@@ -44,7 +46,7 @@ var op = AnsiConsole.Prompt(
     new SelectionPrompt<string>()
         .Title("Qual caso de uso executar?")
         .AddChoices(
-            "1) Insert",
+            "1) Insert without transaction",
             "2) Insert with transaction",
             "3) Insert with multiples values",
             "4) Bulkt insert"));
@@ -55,11 +57,11 @@ AnsiConsole.WriteLine();
 switch (op.SubstringBeforeFirstOccurrence(")"))
 {
     case "1":
-        await new InsertUseCase().ExecuteAsync();
+        await InsertUseCase.ExecuteAsync();
         break;
-    // case "2":
-    //     await UseCases.InsertWithTransaction.Execute(conn);
-    //     break;
+    case "2":
+        await InsertWithTransactionUseCase.ExecuteAsync();
+        break;
     // case "3":
     //     await UseCases.InsertWithMultiplesValues.Execute(conn);
     //     break;
@@ -70,8 +72,6 @@ switch (op.SubstringBeforeFirstOccurrence(")"))
         AnsiConsole.MarkupLine("[red]Opção inválida![/]");
         break;
 }
-
-AnsiConsole.WriteLine("Fim");
 
 namespace database_load_playground
 {

@@ -47,6 +47,7 @@ dotnet ef migrations remove
 
 ## Resultado
 
-| Use case | Resultado       |
-|----------|-----------------|
-| Insert   | 6 a 17 segundos |
+| Use case                      | Resultado     |
+|-------------------------------|---------------|
+| 1) Insert without transaction | 6 segundos    |
+| 2) Insert with transaction    | 1,28 segundos |
