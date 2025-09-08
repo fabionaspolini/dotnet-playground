@@ -60,6 +60,8 @@ dotnet ef migrations remove
 | 5.3) Insert with copy -> 10 milhões                               | 55 segundos, CPU de 27% a 85%                                                               |
 | 5.4) Insert with copy -> 10 milhões em pacotes de 5 mil           | 48 segundos, CPU de 21% a 85%                                                               |
 | 5.5) Insert with copy -> 10 milhões em pacotes de 50 mil          | 29 segundos, CPU em 77%                                                                     |
+| 10) Insert or update -> 10 mil                                    | 8 segundos                                                                                  |
+
 
 Notas:
 - 1 e 2: Também utilizam muito CPU, mas devido a lentidão de envio do comando pro DB, não chega a bater 100%.

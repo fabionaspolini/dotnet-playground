@@ -94,6 +94,9 @@ switch (op.SubstringBeforeFirstOccurrence(")"))
     case "5.5":
         await InsertWithCopyUseCase.ExecuteAsync(10_000_000, 50_000);
         break;
+    case "10":
+        await InsertOrUpdateUseCase.ExecuteAsync(10_000);
+        break;
     default:
         AnsiConsole.MarkupLine("[red]Opção inválida![/]");
         break;

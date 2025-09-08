@@ -1,4 +1,5 @@
-﻿using Bogus;
+﻿using System.Diagnostics;
+using Bogus;
 using Maestria.Extensions;
 using Spectre.Console;
 
@@ -28,7 +29,9 @@ public static class TransacaoFactory
         const int chunkSize = 10_000;
         var result = new List<Transacao>(count);
         
+        var watch = Stopwatch.StartNew();
         AnsiConsole.Progress()
+            .AutoClear(true)
             .Start(ctx =>
             {
                 var task = ctx.AddTask("[gray]Gerando dados fake[/]", maxValue: count);
@@ -47,6 +50,8 @@ public static class TransacaoFactory
                     }
                 }
             });
+        watch.Stop();
+        AnsiConsole.MarkupLine($"[gray]{count:N0} dados fake gerados em {watch.Elapsed}[/]");
         return result;
 
         /*AnsiConsole.Markup("[gray]Gerar dados fake...[/]");

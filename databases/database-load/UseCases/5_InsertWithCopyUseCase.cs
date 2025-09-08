@@ -13,7 +13,7 @@ public static class InsertWithCopyUseCase
         COPY transacao (id, data, cliente_id, valor, descricao)
         FROM STDIN (FORMAT binary)
         """;
-    public static async Task ExecuteAsync(int count, int chunkSize = 0)
+    public static async Task<List<Transacao>> ExecuteAsync(int count, int chunkSize = 0)
     {
         var items = TransacaoFactory.Generate(count);
         var chunk = items.Chunk(chunkSize > 0 ? chunkSize : items.Count);
@@ -29,7 +29,7 @@ public static class InsertWithCopyUseCase
             {
                 await writer.StartRowAsync();
                 await writer.WriteAsync(item.Id, NpgsqlDbType.Uuid);
-                await writer.WriteAsync(item.Data, NpgsqlDbType.Date);
+                await writer.WriteAsync(item.Data, NpgsqlDbType.Timestamp);
                 await writer.WriteAsync(item.ClienteId, NpgsqlDbType.Uuid);
                 await writer.WriteAsync(item.Valor, NpgsqlDbType.Numeric);
                 await writer.WriteAsync(item.Descricao, NpgsqlDbType.Varchar);
@@ -42,5 +42,6 @@ public static class InsertWithCopyUseCase
         watch.Stop();
         
         UseCaseExtensions.PrintStatistics(items.Count, watch.Elapsed);
+        return items;
     }
 }
