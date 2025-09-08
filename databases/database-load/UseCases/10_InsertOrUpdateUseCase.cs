@@ -4,13 +4,14 @@ using database_load_playground.Entities;
 
 namespace database_load_playground.UseCases;
 
-public static class InsertWithTransactionUseCase
+public static class InsertOrUpdateUseCase
 {
-    private const string Sql =
+    private const string InsertSql =
         """
         insert into transacao (id, data, cliente_id, valor, descricao)
         values (@id, @data, @cliente_id, @valor, @descricao)
         """;
+    
     public static async Task ExecuteAsync(int count)
     {
         var items = TransacaoFactory.Generate(count);
@@ -18,9 +19,8 @@ public static class InsertWithTransactionUseCase
         await using var conn = await DbFactory.CreateConnectionAsync();
         
         var watch = Stopwatch.StartNew();
-        await using var transaction = await conn.BeginTransactionAsync();
         await using var cmd = conn.CreateCommand();
-        cmd.CommandText = Sql;
+        cmd.CommandText = InsertSql;
         
         foreach (var item in items)
         {
@@ -32,8 +32,6 @@ public static class InsertWithTransactionUseCase
             cmd.Parameters.AddWithValue("descricao", item.Descricao);
             await cmd.ExecuteNonQueryAsync();
         }
-
-        await transaction.CommitAsync();
         watch.Stop();
         
         UseCaseExtensions.PrintStatistics(items.Count, watch.Elapsed);

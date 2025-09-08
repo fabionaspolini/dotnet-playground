@@ -18,11 +18,12 @@ public static class InsertWithMultiplesValuesUseCase
         foreach (var part in chunk)
         {
             var sql = new StringBuilder();
-            sql.AppendLine("insert into transacao (id, cliente_id, valor, descricao)");
+            sql.AppendLine("insert into transacao (id, data, cliente_id, valor, descricao)");
             sql.AppendLine("values");
             foreach (var item in part)
                 sql.AppendLine($"(" +
                                $"{item.Id.ToSqlValue()}, " +
+                               $"{item.Data.ToSqlValue()}, " +
                                $"{item.ClienteId.ToSqlValue()}, " +
                                $"{item.Valor.ToSqlValue()}, " +
                                $"{item.Descricao.ToSqlValue()}" +

@@ -57,7 +57,8 @@ var op = AnsiConsole.Prompt(
             "5.3) Insert with copy -> 10 milhões",
             "5.4) Insert with copy -> 10 milhões em pacotes de 5 mil",
             "5.5) Insert with copy -> 10 milhões em pacotes de 50 mil",
-            "x) Bulkt insert"));
+            "10) Insert or update -> 10 mil"
+        ));
 
 AnsiConsole.MarkupLine($"Opção selecionada: [bold]{op}[/]");
 

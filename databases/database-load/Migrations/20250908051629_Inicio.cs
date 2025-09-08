@@ -16,8 +16,9 @@ namespace database_load_playground.Migrations
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
+                    data = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     cliente_id = table.Column<Guid>(type: "uuid", nullable: false),
-                    valor = table.Column<decimal>(type: "numeric", nullable: false),
+                    valor = table.Column<decimal>(type: "numeric(12,2)", precision: 12, scale: 2, nullable: false),
                     descricao = table.Column<string>(type: "character varying(40)", maxLength: 40, nullable: false)
                 },
                 constraints: table =>

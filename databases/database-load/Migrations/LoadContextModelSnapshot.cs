@@ -33,6 +33,10 @@ namespace database_load_playground.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("cliente_id");
 
+                    b.Property<DateTime>("Data")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("data");
+
                     b.Property<string>("Descricao")
                         .IsRequired()
                         .HasMaxLength(40)
@@ -40,7 +44,8 @@ namespace database_load_playground.Migrations
                         .HasColumnName("descricao");
 
                     b.Property<decimal>("Valor")
-                        .HasColumnType("numeric")
+                        .HasPrecision(12, 2)
+                        .HasColumnType("numeric(12,2)")
                         .HasColumnName("valor");
 
                     b.HasKey("Id")

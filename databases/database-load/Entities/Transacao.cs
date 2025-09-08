@@ -7,6 +7,7 @@ namespace database_load_playground.Entities;
 public class Transacao
 {
     public Guid Id { get; set; }
+    public DateTime Data { get; set; }
     public Guid ClienteId { get; set; }
     public decimal Valor { get; set; }
     public string Descricao { get; set; } = null!;
@@ -17,6 +18,7 @@ public static class TransacaoFactory
     public static Faker<Transacao> Faker { get; } = new Faker<Transacao>()
         .StrictMode(true)
         .RuleFor(x => x.Id, f => Guid.CreateVersion7())
+        .RuleFor(x => x.Data, f => f.Date.Past(yearsToGoBack: 1))
         .RuleFor(x => x.ClienteId, f => Guid.CreateVersion7())
         .RuleFor(x => x.Valor, f => f.Finance.Amount(0.01m, 10_000m))
         .RuleFor(x=> x.Descricao, f => f.Lorem.Text().Truncate(40));
@@ -29,7 +31,7 @@ public static class TransacaoFactory
         AnsiConsole.Progress()
             .Start(ctx =>
             {
-                var task = ctx.AddTask("[gray]Gerar dados fake...[/]", maxValue: count);
+                var task = ctx.AddTask("[gray]Gerando dados fake[/]", maxValue: count);
                 while (!ctx.IsFinished)
                 {
                     while (result.Count + chunkSize < count)

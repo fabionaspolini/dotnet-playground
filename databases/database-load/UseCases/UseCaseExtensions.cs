@@ -10,5 +10,6 @@ public static class UseCaseExtensions
     
     public static string ToSqlValue(this string value) => $"'{value}'";
     public static string ToSqlValue(this Guid value) => value.ToString().ToSqlValue();
+    public static string ToSqlValue(this DateTime value) => value.ToString(CultureInfo.InvariantCulture).ToSqlValue();
     public static string ToSqlValue(this decimal value) => value.ToString(CultureInfo.InvariantCulture);
 }

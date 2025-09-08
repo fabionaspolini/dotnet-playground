@@ -8,8 +8,8 @@ public static class InsertUseCase
 {
     private const string Sql =
         """
-        insert into transacao (id, cliente_id, valor, descricao)
-        values (@id, @cliente_id, @valor, @descricao)
+        insert into transacao (id, data, cliente_id, valor, descricao)
+        values (@id, @data, @cliente_id, @valor, @descricao)
         """;
     public static async Task ExecuteAsync(int count)
     {
@@ -25,6 +25,7 @@ public static class InsertUseCase
         {
             cmd.Parameters.Clear();
             cmd.Parameters.AddWithValue("id", item.Id);
+            cmd.Parameters.AddWithValue("data", item.Data);
             cmd.Parameters.AddWithValue("cliente_id", item.ClienteId);
             cmd.Parameters.AddWithValue("valor", item.Valor);
             cmd.Parameters.AddWithValue("descricao", item.Descricao);

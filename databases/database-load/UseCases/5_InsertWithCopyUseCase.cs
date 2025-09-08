@@ -10,7 +10,7 @@ public static class InsertWithCopyUseCase
 {
     private const string Sql = 
         """
-        COPY transacao (id, cliente_id, valor, descricao)
+        COPY transacao (id, data, cliente_id, valor, descricao)
         FROM STDIN (FORMAT binary)
         """;
     public static async Task ExecuteAsync(int count, int chunkSize = 0)
@@ -29,6 +29,7 @@ public static class InsertWithCopyUseCase
             {
                 await writer.StartRowAsync();
                 await writer.WriteAsync(item.Id, NpgsqlDbType.Uuid);
+                await writer.WriteAsync(item.Data, NpgsqlDbType.Date);
                 await writer.WriteAsync(item.ClienteId, NpgsqlDbType.Uuid);
                 await writer.WriteAsync(item.Valor, NpgsqlDbType.Numeric);
                 await writer.WriteAsync(item.Descricao, NpgsqlDbType.Varchar);
