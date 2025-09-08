@@ -17,7 +17,6 @@ public static class InsertWithTransactionUseCase
         
         await using var conn = await DbFactory.CreateConnectionAsync();
         await using var transaction = await conn.BeginTransactionAsync();
-        
         await using var cmd = conn.CreateCommand();
         cmd.CommandText = Sql;
 

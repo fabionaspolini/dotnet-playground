@@ -62,12 +62,9 @@ switch (op.SubstringBeforeFirstOccurrence(")"))
     case "2":
         await InsertWithTransactionUseCase.ExecuteAsync();
         break;
-    // case "3":
-    //     await UseCases.InsertWithMultiplesValues.Execute(conn);
-    //     break;
-    // case "4":
-    //     await UseCases.BulkInsert.Execute(conn);
-    //     break;
+    case "3":
+        await InsertWithMultiplesValuesUseCase.ExecuteAsync();
+        break;
     default:
         AnsiConsole.MarkupLine("[red]Opção inválida![/]");
         break;
