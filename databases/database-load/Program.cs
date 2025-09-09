@@ -60,56 +60,27 @@ var op = AnsiConsole.Prompt(
             "10.1) Insert or update -> 10 mil",
             "10.2) Insert or update -> 50 mil"
         ));
+// Pendentes
+// upsert
+// bulk upsert com tabela temporária
+// particionamento de tabela
+// copy para extrair dados
 
 AnsiConsole.MarkupLine($"Opção selecionada: [bold]{op}[/]");
 
 switch (op.SubstringBeforeFirstOccurrence(")"))
 {
-    case "1":
-        await InsertUseCase.ExecuteAsync(10_000);
-        break;
-    case "2":
-        await InsertWithTransactionUseCase.ExecuteAsync(10_000);
-        break;
-    case "3.1":
-        await InsertWithMultiplesValuesUseCase.ExecuteAsync(10_000);
-        break;
-    case "3.2":
-        await InsertWithMultiplesValuesUseCase.ExecuteAsync(1_000_000);
-        break;
-    case "3.3":
-        await InsertWithMultiplesValuesUseCase.ExecuteAsync(1_000_000, 5_000);
-        break;
-    case "5.1":
-        await InsertWithCopyUseCase.ExecuteAsync(1_000_000);
-        break;
-    case "5.2":
-        await InsertWithCopyUseCase.ExecuteAsync(1_000_000, 5_000);
-        break;
-    case "5.3":
-        await InsertWithCopyUseCase.ExecuteAsync(10_000_000);
-        break;
-    case "5.4":
-        await InsertWithCopyUseCase.ExecuteAsync(10_000_000, 5_000);
-        break;
-    case "5.5":
-        await InsertWithCopyUseCase.ExecuteAsync(10_000_000, 50_000);
-        break;
-    case "10.1":
-        await InsertOrUpdateUseCase.ExecuteAsync(10_000);
-        break;
-    case "10.2":
-        await InsertOrUpdateUseCase.ExecuteAsync(50_000);
-        break;
-    default:
-        AnsiConsole.MarkupLine("[red]Opção inválida![/]");
-        break;
-}
-
-namespace database_load_playground
-{
-    public static class Consts
-    {
-        public const string ConnectionString = "Server=localhost;Port=5432;Database=load-playground;User Id=postgres;Password=123456;";
-    }
+    case "1": await InsertUseCase.ExecuteAsync(10_000); break;
+    case "2": await InsertWithTransactionUseCase.ExecuteAsync(10_000); break;
+    case "3.1": await InsertWithMultiplesValuesUseCase.ExecuteAsync(10_000); break;
+    case "3.2": await InsertWithMultiplesValuesUseCase.ExecuteAsync(1_000_000); break;
+    case "3.3": await InsertWithMultiplesValuesUseCase.ExecuteAsync(1_000_000, 5_000); break;
+    case "5.1": await InsertWithCopyUseCase.ExecuteAsync(1_000_000); break;
+    case "5.2": await InsertWithCopyUseCase.ExecuteAsync(1_000_000, 5_000); break;
+    case "5.3": await InsertWithCopyUseCase.ExecuteAsync(10_000_000); break;
+    case "5.4": await InsertWithCopyUseCase.ExecuteAsync(10_000_000, 5_000); break;
+    case "5.5": await InsertWithCopyUseCase.ExecuteAsync(10_000_000, 50_000); break;
+    case "10.1": await InsertOrUpdateUseCase.ExecuteAsync(10_000); break;
+    case "10.2": await InsertOrUpdateUseCase.ExecuteAsync(50_000); break;
+    default: AnsiConsole.MarkupLine("[red]Opção inválida![/]"); break;
 }
