@@ -37,50 +37,73 @@ await using (var conn2 = await DbFactory.CreateConnectionAsync())
     }
 }
 AnsiConsole.MarkupLine("[gray]OK[/]");
-
-await ClearDatabaseUseCase.ExecuteAsync();
 AnsiConsole.WriteLine();
 
-// Menu
-var op = AnsiConsole.Prompt(
-    new SelectionPrompt<string>()
-        .Title("Qual caso de uso executar?")
-        .AddChoices(
-            "1) Insert without transaction -> 10 mil",
-            "2) Insert with transaction -> 10 mil",
-            "3.1) Insert with multiples values -> 10 mil",
-            "3.2) Insert with multiples values -> 1 milhão",
-            "3.3) Insert with multiples values -> 1 milhão em pacotes de 5 mil",
-            "4) Parallel insert (WTF!)",
-            "5.1) Insert with copy -> 1 milhão",
-            "5.2) Insert with copy -> 1 milhão em pacotes de 5 mil",
-            "5.3) Insert with copy -> 10 milhões",
-            "5.4) Insert with copy -> 10 milhões em pacotes de 5 mil",
-            "5.5) Insert with copy -> 10 milhões em pacotes de 50 mil",
-            "10.1) Insert or update -> 10 mil",
-            "10.2) Insert or update -> 50 mil"
-        ));
-// Pendentes
-// upsert
-// bulk upsert com tabela temporária
-// particionamento de tabela
-// copy para extrair dados
-
-AnsiConsole.MarkupLine($"Opção selecionada: [bold]{op}[/]");
-
-switch (op.SubstringBeforeFirstOccurrence(")"))
+const string menuSair = "Sair";
+string op;
+do
 {
-    case "1": await InsertUseCase.ExecuteAsync(10_000); break;
-    case "2": await InsertWithTransactionUseCase.ExecuteAsync(10_000); break;
-    case "3.1": await InsertWithMultiplesValuesUseCase.ExecuteAsync(10_000); break;
-    case "3.2": await InsertWithMultiplesValuesUseCase.ExecuteAsync(1_000_000); break;
-    case "3.3": await InsertWithMultiplesValuesUseCase.ExecuteAsync(1_000_000, 5_000); break;
-    case "5.1": await InsertWithCopyUseCase.ExecuteAsync(1_000_000); break;
-    case "5.2": await InsertWithCopyUseCase.ExecuteAsync(1_000_000, 5_000); break;
-    case "5.3": await InsertWithCopyUseCase.ExecuteAsync(10_000_000); break;
-    case "5.4": await InsertWithCopyUseCase.ExecuteAsync(10_000_000, 5_000); break;
-    case "5.5": await InsertWithCopyUseCase.ExecuteAsync(10_000_000, 50_000); break;
-    case "10.1": await InsertOrUpdateUseCase.ExecuteAsync(10_000); break;
-    case "10.2": await InsertOrUpdateUseCase.ExecuteAsync(50_000); break;
-    default: AnsiConsole.MarkupLine("[red]Opção inválida![/]"); break;
+    PrintLine("Selecione o caso de teste");
+    AnsiConsole.WriteLine();
+    
+    // Menu
+    op = AnsiConsole.Prompt(
+        new SelectionPrompt<string>()
+            // .Title("Selecione o caso de teste")
+            .AddChoices(
+                "1) Insert without transaction -> 10 mil",
+                "2) Insert with transaction -> 10 mil",
+                "3.1) Insert with multiples values -> 10 mil",
+                "3.2) Insert with multiples values -> 1 milhão",
+                "3.3) Insert with multiples values -> 1 milhão em pacotes de 5 mil",
+                "4) Parallel insert (WTF!)",
+                "5.1) Insert with copy -> 1 milhão",
+                "5.2) Insert with copy -> 1 milhão em pacotes de 5 mil",
+                "5.3) Insert with copy -> 10 milhões",
+                "5.4) Insert with copy -> 10 milhões em pacotes de 5 mil",
+                "5.5) Insert with copy -> 10 milhões em pacotes de 50 mil",
+                "10.1) Insert or update -> 10 mil",
+                "10.2) Insert or update -> 50 mil",
+                menuSair
+            ));
+    // Pendentes
+    // upsert
+    // bulk upsert com tabela temporária
+    // particionamento de tabela
+    // copy para extrair dados
+    
+    AnsiConsole.MarkupLine($"Opção selecionada: [bold]{op}[/]");
+    if (op != menuSair)
+    {
+        await ClearDatabaseUseCase.ExecuteAsync();
+        
+        switch (op.SubstringBeforeFirstOccurrence(")"))
+        {
+            case "1": await InsertUseCase.ExecuteAsync(10_000); break;
+            case "2": await InsertWithTransactionUseCase.ExecuteAsync(10_000); break;
+            case "3.1": await InsertWithMultiplesValuesUseCase.ExecuteAsync(10_000); break;
+            case "3.2": await InsertWithMultiplesValuesUseCase.ExecuteAsync(1_000_000); break;
+            case "3.3": await InsertWithMultiplesValuesUseCase.ExecuteAsync(1_000_000, 5_000); break;
+            case "5.1": await InsertWithCopyUseCase.ExecuteAsync(1_000_000); break;
+            case "5.2": await InsertWithCopyUseCase.ExecuteAsync(1_000_000, 5_000); break;
+            case "5.3": await InsertWithCopyUseCase.ExecuteAsync(10_000_000); break;
+            case "5.4": await InsertWithCopyUseCase.ExecuteAsync(10_000_000, 5_000); break;
+            case "5.5": await InsertWithCopyUseCase.ExecuteAsync(10_000_000, 50_000); break;
+            case "10.1": await InsertOrUpdateUseCase.ExecuteAsync(10_000); break;
+            case "10.2": await InsertOrUpdateUseCase.ExecuteAsync(50_000); break;
+            default: AnsiConsole.MarkupLine("[red]Opção inválida![/]"); break;
+        }
+
+        AnsiConsole.WriteLine();
+    }
+} while(op != menuSair);
+
+void PrintLine(string text)
+{
+    var rule = new Rule($"[blue]{text}[/]")
+    {
+        Justification = Justify.Left,
+        Border = BoxBorder.Heavy,
+    };
+    AnsiConsole.Write(rule);
 }
