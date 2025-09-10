@@ -1,35 +1,24 @@
 using System.Diagnostics;
 using database_load_playground.Db;
 using database_load_playground.Entities;
+using Maestria.Extensions;
 using Spectre.Console;
 
 namespace database_load_playground.UseCases;
 
-public static class InsertOrUpdateUseCase
+public static class UpsertUseCase
 {
-    private const string InsertSql =
+    private const string UpSertSql =
         """
         insert into transacao (id, data, cliente_id, valor, descricao)
         values (@id, @data, @cliente_id, @valor, @descricao)
+        on conflict (id) do update
+        set data = excluded.data,
+            cliente_id = excluded.cliente_id,
+            valor = excluded.valor,
+            descricao = excluded.descricao
         """;
-    
-    private const string UpdateSql =
-        """
-        update transacao
-        set data = @data,
-            cliente_id = @cliente_id,
-            valor = @valor,
-            descricao = @descricao
-        where id = @id
-        """;
-    
-    private const string CheckExistsSql =
-        """
-        select 1
-        from transacao
-        where id = @id
-        """;
-    
+
     public static async Task ExecuteAsync(int count)
     {
         // var items = TransacaoFactory.Generate(count);
@@ -42,33 +31,29 @@ public static class InsertOrUpdateUseCase
         var items = await InsertWithCopyUseCase.ExecuteAsync(count, 50_000);
         AnsiConsole.WriteLine();
 
-        rule.Title = "[red]Executando teste de insert or update[/]";
+        rule.Title = "[red]Executando teste de upsert[/]";
         AnsiConsole.Write(rule);
-        
+
         // Deixar somente metade dos registros, e gerar novos para outra metade
         // a ideia é gerar 50% de insert, e 50% de update nesse teste
         var half = count / 2;
-        items.RemoveRange(half, count - half);
+        items.RemoveRange(0, half);
+        items.ForEach(x => x.Descricao = $"{x.Descricao} (atualizado)".Truncate(40));
         var newItems = TransacaoFactory.Generate(half);
         items.AddRange(newItems);
-            
+        AnsiConsole.MarkupLine($"[gray]{newItems.Count:N0} novos dados para inserts[/]");
+        AnsiConsole.MarkupLine($"[gray]{count - half:N0} com PK existente para updates[/]");
+
         // Executar
         await using var conn = await DbFactory.CreateConnectionAsync();
-        
+
         var watch = Stopwatch.StartNew();
         await using var transaction = await conn.BeginTransactionAsync();
         await using var cmd = conn.CreateCommand();
-        
+        cmd.CommandText = UpSertSql;
+
         foreach (var item in items)
         {
-            // Check exists
-            cmd.CommandText = CheckExistsSql;
-            cmd.Parameters.Clear();
-            cmd.Parameters.AddWithValue("id", item.Id);
-            var exists = await cmd.ExecuteScalarAsync();
-            
-            // Insert or update
-            cmd.CommandText = exists != null ? UpdateSql : InsertSql;
             cmd.Parameters.Clear();
             cmd.Parameters.AddWithValue("id", item.Id);
             cmd.Parameters.AddWithValue("data", item.Data);
@@ -77,10 +62,10 @@ public static class InsertOrUpdateUseCase
             cmd.Parameters.AddWithValue("descricao", item.Descricao);
             await cmd.ExecuteNonQueryAsync();
         }
-        
+
         await transaction.CommitAsync();
         watch.Stop();
-        
+
         UseCaseExtensions.PrintStatistics(items.Count, watch.Elapsed, "inseridos ou atualizados");
     }
 }

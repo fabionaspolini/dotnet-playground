@@ -64,6 +64,9 @@ do
                 "5.5) Insert with copy -> 10 milhões em pacotes de 50 mil",
                 "10.1) Insert or update -> 10 mil",
                 "10.2) Insert or update -> 50 mil",
+                "10.3) Insert or update -> 200 mil",
+                "11.1) Upsert -> 50 mil",
+                "11.2) Upsert -> 200 mil",
                 menuSair
             ));
     // Pendentes
@@ -91,6 +94,9 @@ do
             case "5.5": await InsertWithCopyUseCase.ExecuteAsync(10_000_000, 50_000); break;
             case "10.1": await InsertOrUpdateUseCase.ExecuteAsync(10_000); break;
             case "10.2": await InsertOrUpdateUseCase.ExecuteAsync(50_000); break;
+            case "10.3": await InsertOrUpdateUseCase.ExecuteAsync(200_000); break;
+            case "11.1": await UpsertUseCase.ExecuteAsync(50_000); break;
+            case "11.2": await UpsertUseCase.ExecuteAsync(200_000); break;
             default: AnsiConsole.MarkupLine("[red]Opção inválida![/]"); break;
         }
 

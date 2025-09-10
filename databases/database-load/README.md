@@ -60,14 +60,17 @@ dotnet ef migrations remove
 | 5.3) Insert with copy -> 10 milhões                               | 55 segundos, CPU de 27% a 85%                                                               |
 | 5.4) Insert with copy -> 10 milhões em pacotes de 5 mil           | 48 segundos, CPU de 21% a 85%                                                               |
 | 5.5) Insert with copy -> 10 milhões em pacotes de 50 mil          | 29 segundos, CPU em 77%                                                                     |
-| 10.1) Insert or update -> 10 mil                                  | 8 segundos                                                                                  |
-| 10.2) Insert or update -> 50 mil                                  | 40 segundos, CPU em 30%. Processo lento, se paralelizar topa DB                             |
+| 10.1) Insert or update -> 10 mil                                  | 2 segundos                                                                                  |
+| 10.2) Insert or update -> 50 mil                                  | 11 segundos, CPU em 56% CPU                                                                 |
+| 10.3) Insert or update -> 200 mil                                 | 49 segundos, CPU em 56% CPU                                                                 |
+| 11.1) Upsert -> 50 mil                                            | 6 segundos                                                                                  | 
+| 11.2) Upsert -> 200 mil                                           | 25 segundos, CPU em 56%                                                                     | 
 
 
 Notas:
 - 1 e 2: Também utilizam muito CPU, mas devido a lentidão de envio do comando pro DB, não chega a bater 100%.
 Porém, não significa que é bom, o tempo total do usuário é muito maior, e se for algo em paralelo, conseguirá bater 100% de CPU.
-- 3.x: Todos em transaction.
+- 3.x+: Todos em transaction.
 - 5.x:
   - Atenção com formato de dados, tentar escrever um número num campo string pode ocorrer exception, ou no pior dos casos, causar corrupção de dados.
   - De preferência por utilizar o overload que informa o tipo de dados.
