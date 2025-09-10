@@ -100,7 +100,7 @@ do
 
 void PrintLine(string text)
 {
-    var rule = new Rule($"[blue]{text}[/]")
+    var rule = new Rule($"[blue][b]{text}[/][/]")
     {
         Justification = Justify.Left,
         Border = BoxBorder.Heavy,
