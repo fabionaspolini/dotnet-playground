@@ -21,14 +21,13 @@ public static class UpsertUseCase
 
     public static async Task ExecuteAsync(int count)
     {
-        // var items = TransacaoFactory.Generate(count);
         var rule = new Rule("[red]Inserindo dados iniciais na tabela[/]")
         {
             Justification = Justify.Left,
             Border = BoxBorder.Heavy,
         };
         AnsiConsole.Write(rule);
-        var items = await InsertWithCopyUseCase.ExecuteAsync(count, 50_000);
+        var insertedItems = await InsertWithCopyUseCase.ExecuteAsync(count, 50_000);
         AnsiConsole.WriteLine();
 
         rule.Title = "[red]Executando teste de upsert[/]";
@@ -37,14 +36,14 @@ public static class UpsertUseCase
         // Deixar somente metade dos registros, e gerar novos para outra metade
         // a ideia é gerar 50% de insert, e 50% de update nesse teste
         var half = count / 2;
-        items.RemoveRange(0, half);
+        var items = insertedItems.Take(half).ToList();
         items.ForEach(x => x.Descricao = $"(atualizado) {x.Descricao}".Truncate(40));
-        var newItems = TransacaoFactory.Generate(half);
-        items.AddRange(newItems);
-        AnsiConsole.MarkupLine($"[gray]{newItems.Count:N0} novos dados para inserts[/]");
-        AnsiConsole.MarkupLine($"[gray]{count - half:N0} com PK existente para updates[/]");
+        var newItemsToInsert = TransacaoFactory.Generate(half);
+        AnsiConsole.MarkupLine($"[gray]{newItemsToInsert.Count:N0} novos dados para inserts[/]");
+        AnsiConsole.MarkupLine($"[gray]{items.Count:N0} com PK existente para updates[/]");
+        items.AddRange(newItemsToInsert);
 
-        // Executar
+        // Início do processo com DB
         await using var conn = await DbFactory.CreateConnectionAsync();
 
         var watch = Stopwatch.StartNew();

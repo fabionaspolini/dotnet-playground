@@ -36,7 +36,7 @@ public static class BulkUpsertUseCase
             Border = BoxBorder.Heavy,
         };
         AnsiConsole.Write(rule);
-        var items = await InsertWithCopyUseCase.ExecuteAsync(count, 50_000);
+        var insertedItems = await InsertWithCopyUseCase.ExecuteAsync(count, 50_000);
         AnsiConsole.WriteLine();
 
         rule.Title = "[red]Executando teste de upsert[/]";
@@ -45,14 +45,14 @@ public static class BulkUpsertUseCase
         // Deixar somente metade dos registros, e gerar novos para outra metade
         // a ideia é gerar 50% de insert, e 50% de update nesse teste
         var half = count / 2;
-        items.RemoveRange(0, half);
+        var items = insertedItems.Take(half).ToList();
         items.ForEach(x => x.Descricao = $"(atualizado) {x.Descricao}".Truncate(40));
-        var newItems = TransacaoFactory.Generate(half);
-        items.AddRange(newItems);
-        AnsiConsole.MarkupLine($"[gray]{newItems.Count:N0} novos dados para inserts[/]");
-        AnsiConsole.MarkupLine($"[gray]{count - half:N0} com PK existente para updates[/]");
+        var newItemsToInsert = TransacaoFactory.Generate(half);
+        AnsiConsole.MarkupLine($"[gray]{newItemsToInsert.Count:N0} novos dados para inserts[/]");
+        AnsiConsole.MarkupLine($"[gray]{items.Count:N0} com PK existente para updates[/]");
+        items.AddRange(newItemsToInsert);
 
-        // Executar
+        // Início do processo de bulk upsert
         await using var conn = await DbFactory.CreateConnectionAsync();
 
         var watch = Stopwatch.StartNew();
@@ -64,7 +64,7 @@ public static class BulkUpsertUseCase
         await cmd.ExecuteNonQueryAsync();
         await InternalBulkInsertUseCase.ExecuteAsync(conn, items, "transacao_temp", partialMessage: "inseridos na tabela temporária");
         
-        // Insert ou update na tabela definitiva
+        // Copiar dados da tabela temporária para a tabela principal com upsert
         cmd.CommandText = UpsertSql;
         await cmd.ExecuteNonQueryAsync();
 
@@ -72,6 +72,6 @@ public static class BulkUpsertUseCase
         await transaction.CommitAsync();
         watch.Stop();
 
-        UseCaseExtensions.PrintStatistics(items.Count, watch.Elapsed, "inseridos ou atualizados");
+        UseCaseExtensions.PrintStatistics(items.Count, watch.Elapsed, "inseridos ou atualizados na tabela oficial");
     }
 }
