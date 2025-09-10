@@ -69,6 +69,9 @@ dotnet ef migrations remove
 | 12.1) Bulk upsert -> 10 mil                                            | 0,11 segundos                                                                               | 
 | 12.2) Bulk upsert -> 200 mil                                           | 1,15 segundos, CPU em 60%                                                                   | 
 | 12.3) Bulk upsert -> 1 milhão                                          | 6 segundos, CPU em 60%                                                                      | 
+| 12.3) Bulk upsert -> 1 milhão                                          | 6 segundos, CPU em 60%                                                                      |
+| 20.1) Bulk upsert partitioned table -> 200 mil                         | 1,15 segundos, CPU em 60%                                                                   |
+| 20.2) Bulk upsert partitioned table -> 1 milhão                        | 6 segundos, CPU em 60%                                                                      | 
 
 
 Notas:

@@ -28,7 +28,8 @@ public static class BulkInsertWithMultiplesValuesUseCase
                                $"{item.Valor.ToSqlValue()}, " +
                                $"{item.Descricao.ToSqlValue()}" +
                                $"),");
-            sql.Remove(sql.Length - 2, 2);
+            var lastCommaIndexOf = sql.ToString().LastIndexOf(',');
+            sql.Remove(lastCommaIndexOf, sql.Length - lastCommaIndexOf);
             
             await using var transaction = await conn.BeginTransactionAsync();
             await using var cmd = conn.CreateCommand();

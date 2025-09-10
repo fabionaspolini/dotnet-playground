@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Globalization;
 using database_load_playground;
 using database_load_playground.Db;
 using database_load_playground.UseCases;
@@ -71,18 +72,23 @@ do
                 "12.1) Bulk upsert -> 10 mil",
                 "12.2) Bulk upsert -> 200 mil",
                 "12.3) Bulk upsert -> 1 milhão",
+                "20.1) Bulk upsert partitioned table -> 200 mil",
+                "20.2) Bulk upsert partitioned table -> 1 milhão",
                 menuSair
             ));
     // Pendentes
-    // particionamento de tabela
     // copy para extrair dados
     
     AnsiConsole.MarkupLine($"Opção selecionada: [bold]{op}[/]");
     if (op != menuSair)
     {
-        await ClearDatabaseUseCase.ExecuteAsync();
+        var opNumberText = op.SubstringBeforeFirstOccurrence(")");
+        var opNumberValue = Convert.ToDecimal(opNumberText, CultureInfo.InvariantCulture);
+        await ClearDatabaseUseCase.ExecuteAsync(
+            clearTransacao: opNumberValue < 20,
+            clearTransacaoPart: opNumberValue >= 20);
         
-        switch (op.SubstringBeforeFirstOccurrence(")"))
+        switch (opNumberText)
         {
             case "1": await InsertUseCase.ExecuteAsync(10_000); break;
             case "2": await InsertWithTransactionUseCase.ExecuteAsync(10_000); break;
@@ -103,6 +109,8 @@ do
             case "12.1": await BulkUpsertUseCase.ExecuteAsync(10_000); break;
             case "12.2": await BulkUpsertUseCase.ExecuteAsync(200_000); break;
             case "12.3": await BulkUpsertUseCase.ExecuteAsync(1_000_000); break;
+            case "20.1": await BulkUpsertPartitionedTableUseCase.ExecuteAsync(200_000); break;
+            case "20.2": await BulkUpsertPartitionedTableUseCase.ExecuteAsync(1_000_000); break;
             default: AnsiConsole.MarkupLine("[red]Opção inválida![/]"); break;
         }
 
