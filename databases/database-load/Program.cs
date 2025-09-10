@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics;
 using System.Globalization;
-using database_load_playground;
 using database_load_playground.Db;
 using database_load_playground.UseCases;
 using Maestria.Extensions;
@@ -15,22 +14,23 @@ if (Debugger.IsAttached)
 
 AnsiConsole.MarkupLine("[bold yellow].:: Database Load Playground ::.[/]");
 
-var optionsBuilder = new DbContextOptionsBuilder<LoadContext>();
-optionsBuilder.UseNpgsql(Consts.ConnectionString).UseSnakeCaseNamingConvention();
+// var optionsBuilder = new DbContextOptionsBuilder<LoadContext>();
+// optionsBuilder.UseNpgsql(Consts.ConnectionString).UseSnakeCaseNamingConvention();
 // optionsBuilder.LogTo(Console.WriteLine);
 
 // Usar EF Migrations para criar banco de dados e tabelas
 AnsiConsole.Markup("[gray]Aplicando Migrations...[/]");
-await using var conn = new LoadContext(optionsBuilder.Options);
-await conn.Database.MigrateAsync();
+// await using var conn = new LoadContext(optionsBuilder.Options);
+await using var dbContext = DbFactory.CreateEfContext();
+await dbContext.Database.MigrateAsync();
 AnsiConsole.MarkupLine("[gray]OK[/]");
 
 // Warm up test
 AnsiConsole.Markup("[gray]Warm up frameworks...[/]");
-await conn.Transacoes.FirstOrDefaultAsync();
-await using (var conn2 = await DbFactory.CreateConnectionAsync())
+await dbContext.Transacoes.FirstOrDefaultAsync();
+await using (var conn = await DbFactory.CreateConnectionAsync())
 {
-    await using var cmd = conn2.CreateCommand();
+    await using var cmd = conn.CreateCommand();
     cmd.CommandText = "select * from transacao limit 10";
     await using var reader = await cmd.ExecuteReaderAsync();
     while (await reader.ReadAsync())
@@ -73,6 +73,7 @@ do
                 "12.1) Bulk upsert -> 10 mil",
                 "12.2) Bulk upsert -> 200 mil",
                 "12.3) Bulk upsert -> 1 milhão",
+                "13.1) Bulk upsert com EF -> 1 milhão em pacotes de 50 mil",
                 "20.1) Bulk upsert partitioned table -> 200 mil",
                 "20.2) Bulk upsert partitioned table -> 1 milhão",
                 menuSair
@@ -111,6 +112,7 @@ do
             case "12.1": await BulkUpsertUseCase.ExecuteAsync(10_000); break;
             case "12.2": await BulkUpsertUseCase.ExecuteAsync(200_000); break;
             case "12.3": await BulkUpsertUseCase.ExecuteAsync(1_000_000); break;
+            case "13.1": await BulkUpsertEntityFrameworkUseCase.ExecuteAsync(1_000_00, 50_000); break;
             case "20.1": await BulkUpsertPartitionedTableUseCase.ExecuteAsync(200_000); break;
             case "20.2": await BulkUpsertPartitionedTableUseCase.ExecuteAsync(1_000_000); break;
             default: AnsiConsole.MarkupLine("[red]Opção inválida![/]"); break;
