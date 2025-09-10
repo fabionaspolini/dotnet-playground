@@ -8,6 +8,13 @@ namespace database_load_playground.UseCases;
 
 public static class BulkUpsertUseCase
 {
+    private const string CreateTemporaryTableSql =
+        """
+        create temp table transacao_temp
+        on commit drop
+        as table transacao with no data
+        """;
+    
     private const string UpsertSql =
         """
         insert into transacao
@@ -52,13 +59,16 @@ public static class BulkUpsertUseCase
         await using var transaction = await conn.BeginTransactionAsync();
         await using var cmd = conn.CreateCommand();
 
-        cmd.CommandText = "create temp table transacao_temp on commit drop as table transacao with no data";
+        // Criar e inserir dados na tabela temporária
+        cmd.CommandText = CreateTemporaryTableSql;
         await cmd.ExecuteNonQueryAsync();
         await InternalBulkInsertUseCase.ExecuteAsync(conn, items, "transacao_temp", partialMessage: "inseridos na tabela temporária");
         
+        // Insert ou update na tabela definitiva
         cmd.CommandText = UpsertSql;
         await cmd.ExecuteNonQueryAsync();
 
+        // Commit da transação apaga automaticamente a tabela temporária devido a cláusula "on commit drop"
         await transaction.CommitAsync();
         watch.Stop();
 
