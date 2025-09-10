@@ -63,6 +63,7 @@ do
                 "5.3) Bulk insert with copy -> 10 milhões",
                 "5.4) Bulk insert with copy -> 10 milhões em pacotes de 5 mil",
                 "5.5) Bulk insert with copy -> 10 milhões em pacotes de 50 mil",
+                "5.6) Bulk insert with copy -> + 5 milhões em pacotes de 50 mil (sem limpar dados)",
                 "10.1) Insert or update -> 10 mil",
                 "10.2) Insert or update -> 50 mil",
                 "10.3) Insert or update -> 200 mil",
@@ -85,7 +86,7 @@ do
         var opNumberText = op.SubstringBeforeFirstOccurrence(")");
         var opNumberValue = Convert.ToDecimal(opNumberText, CultureInfo.InvariantCulture);
         await ClearDatabaseUseCase.ExecuteAsync(
-            clearTransacao: opNumberValue < 20,
+            clearTransacao: opNumberValue < 20 && opNumberText != "5.6",
             clearTransacaoPart: opNumberValue >= 20);
         
         switch (opNumberText)
@@ -100,6 +101,7 @@ do
             case "5.3": await BulkInsertWithCopyUseCase.ExecuteAsync(10_000_000); break;
             case "5.4": await BulkInsertWithCopyUseCase.ExecuteAsync(10_000_000, 5_000); break;
             case "5.5": await BulkInsertWithCopyUseCase.ExecuteAsync(10_000_000, 50_000); break;
+            case "5.6": await BulkInsertWithCopyUseCase.ExecuteAsync(5_000_000, 50_000); break;
             case "10.1": await InsertOrUpdateUseCase.ExecuteAsync(10_000); break;
             case "10.2": await InsertOrUpdateUseCase.ExecuteAsync(50_000); break;
             case "10.3": await InsertOrUpdateUseCase.ExecuteAsync(200_000); break;
