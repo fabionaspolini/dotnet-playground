@@ -47,26 +47,28 @@ dotnet ef migrations remove
 
 ## Resultado
 
-| Use case                                                          | Resultado                                                                                   |
-|-------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
-| 1) Insert without transaction -> 10 mil                           | 6 segundos                                                                                  |
-| 2) Insert with transaction -> 10 mil                              | 1,28 segundos                                                                               |
-| 3.1) Insert with multiples values -> 10 mil                       | 0,11 segundos                                                                               |
-| 3.2) Insert with multiples values -> 1 milhão                     | 9,6 segundos e 100% de CPU do DB. Começa a ficar péssimo para ambiente de alta concorrência |
-| 3.3) Insert with multiples values -> 1 milhão em pacotes de 5 mil | 9 seg, mas ainda com muito CPU do DB                                                        |
-| 4) Parallel insert (WTF!)                                         | Algoritmo ruim não escala, não adianta paralelizar!                                         |
-| 5.1) Insert with copy -> 1 milhão                                 | 2,4 segundos, há um pico de CPU, mas afeta menos o ambiente devido a velocidade de inserção |
-| 5.2) Insert with copy -> 1 milhão em pacotes de 5 mil             | 2,8 segundos, com picos menores de CPU                                                      |
-| 5.3) Insert with copy -> 10 milhões                               | 55 segundos, CPU de 27% a 85%                                                               |
-| 5.4) Insert with copy -> 10 milhões em pacotes de 5 mil           | 48 segundos, CPU de 21% a 85%                                                               |
-| 5.5) Insert with copy -> 10 milhões em pacotes de 50 mil          | 29 segundos, CPU em 77%                                                                     |
-| 10.1) Insert or update -> 10 mil                                  | 2 segundos                                                                                  |
-| 10.2) Insert or update -> 50 mil                                  | 11 segundos, CPU em 56% CPU                                                                 |
-| 10.3) Insert or update -> 200 mil                                 | 49 segundos, CPU em 56% CPU                                                                 |
-| 11.1) Upsert -> 50 mil                                            | 6 segundos                                                                                  | 
-| 11.2) Upsert -> 200 mil                                           | 25 segundos, CPU em 56%                                                                     | 
-| 12.1) Bulk upsert -> 200 mil                                      | 1,15 segundos, CPU em 60%                                                                   | 
-| 12.2) Bulk upsert -> 1 milhão                                     | 6 segundos, CPU em 60%                                                                      | 
+| Use case                                                               | Resultado                                                                                   |
+|------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
+| 1) Insert without transaction -> 10 mil                                | 6 segundos                                                                                  |
+| 2) Insert with transaction -> 10 mil                                   | 1,28 segundos                                                                               |
+| 3.1) Bulk Insert with multiples values -> 10 mil                       | 0,11 segundos                                                                               |
+| 3.2) Bulk Insert with multiples values -> 1 milhão                     | 9,6 segundos e 100% de CPU do DB. Começa a ficar péssimo para ambiente de alta concorrência |
+| 3.3) Bulk Insert with multiples values -> 1 milhão em pacotes de 5 mil | 9 seg, mas ainda com muito CPU do DB                                                        |
+| 4) Parallel insert (WTF!)                                              | Algoritmo ruim não escala, não adianta paralelizar!                                         |
+| 5.1) Bulk insert with copy -> 1 milhão                                 | 2,4 segundos, há um pico de CPU, mas afeta menos o ambiente devido a velocidade de inserção |
+| 5.2) Bulk insert with copy -> 1 milhão em pacotes de 5 mil             | 2,8 segundos, com picos menores de CPU                                                      |
+| 5.3) Bulk insert with copy -> 10 milhões                               | 55 segundos, CPU de 27% a 85%                                                               |
+| 5.4) Bulk insert with copy -> 10 milhões em pacotes de 5 mil           | 48 segundos, CPU de 21% a 85%                                                               |
+| 5.5) Bulk insert with copy -> 10 milhões em pacotes de 50 mil          | 29 segundos, CPU em 77%                                                                     |
+| 10.1) Insert or update -> 10 mil                                       | 2,3 segundos                                                                                |
+| 10.2) Insert or update -> 50 mil                                       | 11 segundos, CPU em 56% CPU                                                                 |
+| 10.3) Insert or update -> 200 mil                                      | 49 segundos, CPU em 56% CPU                                                                 |
+| 11.1) Upsert -> 10 mil                                                 | 1,3 segundos                                                                                | 
+| 11.2) Upsert -> 50 mil                                                 | 6 segundos                                                                                  | 
+| 11.3) Upsert -> 200 mil                                                | 25 segundos, CPU em 56%                                                                     | 
+| 12.1) Bulk upsert -> 10 mil                                            | 0,11 segundos                                                                               | 
+| 12.2) Bulk upsert -> 200 mil                                           | 1,15 segundos, CPU em 60%                                                                   | 
+| 12.3) Bulk upsert -> 1 milhão                                          | 6 segundos, CPU em 60%                                                                      | 
 
 
 Notas:

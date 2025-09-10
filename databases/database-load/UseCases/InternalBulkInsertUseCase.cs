@@ -1,8 +1,5 @@
 using System.Diagnostics;
-using System.Text;
-using database_load_playground.Db;
 using database_load_playground.Entities;
-using Maestria.Extensions;
 using Npgsql;
 using NpgsqlTypes;
 

@@ -5,7 +5,7 @@ using database_load_playground.Entities;
 
 namespace database_load_playground.UseCases;
 
-public static class InsertWithMultiplesValuesUseCase
+public static class BulkInsertWithMultiplesValuesUseCase
 {
     public static async Task ExecuteAsync(int count, int chunkSize = 0)
     {

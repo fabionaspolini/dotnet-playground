@@ -27,7 +27,7 @@ public static class UpsertUseCase
             Border = BoxBorder.Heavy,
         };
         AnsiConsole.Write(rule);
-        var insertedItems = await InsertWithCopyUseCase.ExecuteAsync(count, 50_000);
+        var insertedItems = await BulkInsertWithCopyUseCase.ExecuteAsync(count, 50_000);
         AnsiConsole.WriteLine();
 
         rule.Title = "[red]Executando teste de upsert[/]";

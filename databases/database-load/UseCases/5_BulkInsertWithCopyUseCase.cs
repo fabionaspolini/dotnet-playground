@@ -1,12 +1,11 @@
 using System.Diagnostics;
-using System.Text;
 using database_load_playground.Db;
 using database_load_playground.Entities;
 using NpgsqlTypes;
 
 namespace database_load_playground.UseCases;
 
-public static class InsertWithCopyUseCase
+public static class BulkInsertWithCopyUseCase
 {
     private const string Sql = 
         """
