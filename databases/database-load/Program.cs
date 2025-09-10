@@ -67,6 +67,8 @@ do
                 "10.3) Insert or update -> 200 mil",
                 "11.1) Upsert -> 50 mil",
                 "11.2) Upsert -> 200 mil",
+                "12.1) Bulk upsert -> 200 mil",
+                "12.2) Bulk upsert -> 1 milhão",
                 menuSair
             ));
     // Pendentes
@@ -97,6 +99,8 @@ do
             case "10.3": await InsertOrUpdateUseCase.ExecuteAsync(200_000); break;
             case "11.1": await UpsertUseCase.ExecuteAsync(50_000); break;
             case "11.2": await UpsertUseCase.ExecuteAsync(200_000); break;
+            case "12.1": await BulkUpsertUseCase.ExecuteAsync(200_000); break;
+            case "12.2": await BulkUpsertUseCase.ExecuteAsync(1_000_000); break;
             default: AnsiConsole.MarkupLine("[red]Opção inválida![/]"); break;
         }
 

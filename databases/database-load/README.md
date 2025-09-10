@@ -65,6 +65,8 @@ dotnet ef migrations remove
 | 10.3) Insert or update -> 200 mil                                 | 49 segundos, CPU em 56% CPU                                                                 |
 | 11.1) Upsert -> 50 mil                                            | 6 segundos                                                                                  | 
 | 11.2) Upsert -> 200 mil                                           | 25 segundos, CPU em 56%                                                                     | 
+| 12.1) Bulk upsert -> 200 mil                                      | 1,15 segundos, CPU em 60%                                                                   | 
+| 12.2) Bulk upsert -> 1 milhão                                     | 6 segundos, CPU em 60%                                                                      | 
 
 
 Notas:

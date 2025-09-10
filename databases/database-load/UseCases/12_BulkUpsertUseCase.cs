@@ -6,17 +6,18 @@ using Spectre.Console;
 
 namespace database_load_playground.UseCases;
 
-public static class UpsertUseCase
+public static class BulkUpsertUseCase
 {
-    private const string UpSertSql =
+    private const string UpsertSql =
         """
-        insert into transacao (id, data, cliente_id, valor, descricao)
-        values (@id, @data, @cliente_id, @valor, @descricao)
+        insert into transacao
+        select * from transacao_temp
         on conflict (id) do update
-        set data = excluded.data,
-            cliente_id = excluded.cliente_id,
-            valor = excluded.valor,
-            descricao = excluded.descricao
+        set
+        	"data" = excluded."data",
+        	cliente_id = excluded.cliente_id,
+        	valor = excluded.valor,
+        	descricao = excluded.descricao;
         """;
 
     public static async Task ExecuteAsync(int count)
@@ -50,18 +51,13 @@ public static class UpsertUseCase
         var watch = Stopwatch.StartNew();
         await using var transaction = await conn.BeginTransactionAsync();
         await using var cmd = conn.CreateCommand();
-        cmd.CommandText = UpSertSql;
 
-        foreach (var item in items)
-        {
-            cmd.Parameters.Clear();
-            cmd.Parameters.AddWithValue("id", item.Id);
-            cmd.Parameters.AddWithValue("data", item.Data);
-            cmd.Parameters.AddWithValue("cliente_id", item.ClienteId);
-            cmd.Parameters.AddWithValue("valor", item.Valor);
-            cmd.Parameters.AddWithValue("descricao", item.Descricao);
-            await cmd.ExecuteNonQueryAsync();
-        }
+        cmd.CommandText = "create temp table transacao_temp on commit drop as table transacao with no data";
+        await cmd.ExecuteNonQueryAsync();
+        await InternalBulkInsertUseCase.ExecuteAsync(conn, items, "transacao_temp", partialMessage: "inseridos na tabela temporária");
+        
+        cmd.CommandText = UpsertSql;
+        await cmd.ExecuteNonQueryAsync();
 
         await transaction.CommitAsync();
         watch.Stop();

@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using database_load_playground.Db;
 using database_load_playground.Entities;
+using Maestria.Extensions;
 using Spectre.Console;
 
 namespace database_load_playground.UseCases;
@@ -48,9 +49,12 @@ public static class InsertOrUpdateUseCase
         // Deixar somente metade dos registros, e gerar novos para outra metade
         // a ideia é gerar 50% de insert, e 50% de update nesse teste
         var half = count / 2;
-        items.RemoveRange(half, count - half);
+        items.RemoveRange(0, half);
+        items.ForEach(x => x.Descricao = $"(atualizado) {x.Descricao}".Truncate(40));
         var newItems = TransacaoFactory.Generate(half);
         items.AddRange(newItems);
+        AnsiConsole.MarkupLine($"[gray]{newItems.Count:N0} novos dados para inserts[/]");
+        AnsiConsole.MarkupLine($"[gray]{count - half:N0} com PK existente para updates[/]");
             
         // Executar
         await using var conn = await DbFactory.CreateConnectionAsync();
