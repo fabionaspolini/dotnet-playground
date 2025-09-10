@@ -37,6 +37,10 @@ namespace database_load_playground.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("data");
 
+                    b.Property<DateTime?>("DataAtualizacao")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("data_atualizacao");
+
                     b.Property<string>("Descricao")
                         .IsRequired()
                         .HasMaxLength(40)
@@ -53,6 +57,9 @@ namespace database_load_playground.Migrations
 
                     b.HasIndex("ClienteId")
                         .HasDatabaseName("ix_transacao_cliente_id");
+
+                    b.HasIndex("DataAtualizacao")
+                        .HasDatabaseName("ix_transacao_data_atualizacao");
 
                     b.ToTable("transacao", (string)null);
                 });

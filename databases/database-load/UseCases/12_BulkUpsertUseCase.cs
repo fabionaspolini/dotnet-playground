@@ -24,7 +24,8 @@ public static class BulkUpsertUseCase
         	"data" = excluded."data",
         	cliente_id = excluded.cliente_id,
         	valor = excluded.valor,
-        	descricao = excluded.descricao;
+        	descricao = excluded.descricao,
+        	data_atualizacao = current_timestamp
         """;
 
     public static async Task ExecuteAsync(int count)

@@ -11,6 +11,7 @@ public class TransacaoConfig : IEntityTypeConfiguration<Transacao>
         builder.ToTable("transacao");
         builder.HasKey(x => x.Id);
         builder.HasIndex(x => x.ClienteId);
+        builder.HasIndex(x => x.DataAtualizacao);
         
         builder.Property(x => x.Valor).HasPrecision(12, 2);
         builder.Property(x => x.Descricao).HasMaxLength(40);

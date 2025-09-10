@@ -12,6 +12,7 @@ public class Transacao
     public Guid ClienteId { get; set; }
     public decimal Valor { get; set; }
     public string Descricao { get; set; } = null!;
+    public DateTime? DataAtualizacao { get; set; }
 }
 
 public static class TransacaoFactory
@@ -22,7 +23,8 @@ public static class TransacaoFactory
         .RuleFor(x => x.Data, f => f.Date.Past(yearsToGoBack: 1))
         .RuleFor(x => x.ClienteId, f => Guid.CreateVersion7())
         .RuleFor(x => x.Valor, f => f.Finance.Amount(0.01m, 10_000m))
-        .RuleFor(x => x.Descricao, f => f.Lorem.Text().Truncate(40));
+        .RuleFor(x => x.Descricao, f => f.Lorem.Text().Truncate(40))
+        .Ignore(x => x.DataAtualizacao);
 
     public static List<Transacao> Generate(int count)
     {
