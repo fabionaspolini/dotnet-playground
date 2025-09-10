@@ -12,7 +12,7 @@ using database_load_playground.Db;
 namespace database_load_playground.Migrations
 {
     [DbContext(typeof(LoadContext))]
-    [Migration("20250910033714_Inicio")]
+    [Migration("20250910035653_Inicio")]
     partial class Inicio
     {
         /// <inheritdoc />
@@ -60,6 +60,9 @@ namespace database_load_playground.Migrations
 
                     b.HasIndex("ClienteId")
                         .HasDatabaseName("ix_transacao_cliente_id");
+
+                    b.HasIndex("Data")
+                        .HasDatabaseName("ix_transacao_data");
 
                     b.HasIndex("DataAtualizacao")
                         .HasDatabaseName("ix_transacao_data_atualizacao");

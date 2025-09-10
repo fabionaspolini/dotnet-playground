@@ -58,6 +58,9 @@ namespace database_load_playground.Migrations
                     b.HasIndex("ClienteId")
                         .HasDatabaseName("ix_transacao_cliente_id");
 
+                    b.HasIndex("Data")
+                        .HasDatabaseName("ix_transacao_data");
+
                     b.HasIndex("DataAtualizacao")
                         .HasDatabaseName("ix_transacao_data_atualizacao");
 

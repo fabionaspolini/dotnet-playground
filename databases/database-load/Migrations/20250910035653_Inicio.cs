@@ -33,6 +33,11 @@ namespace database_load_playground.Migrations
                 column: "cliente_id");
 
             migrationBuilder.CreateIndex(
+                name: "ix_transacao_data",
+                table: "transacao",
+                column: "data");
+
+            migrationBuilder.CreateIndex(
                 name: "ix_transacao_data_atualizacao",
                 table: "transacao",
                 column: "data_atualizacao");
