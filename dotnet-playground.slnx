@@ -1,0 +1,121 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/caching/">
+    <Project Path="caching/cache-manager/cache-manager-playground.csproj" />
+  </Folder>
+  <Folder Name="/data-mapper/">
+    <Project Path="data-mapper/auto-mapper/auto-mapper-playground.csproj" />
+    <Project Path="data-mapper/mapster/mapster-playground.csproj" />
+  </Folder>
+  <Folder Name="/databases/">
+    <Project Path="databases/sqlite/sqlite-playground.csproj" />
+  </Folder>
+  <Folder Name="/databases/benchmarks/">
+    <File Path="databases/benchmarks/README.md" />
+    <Project Path="databases/benchmarks/all-databases-benchmark/all-databases-benchmark-playground.csproj" />
+    <Project Path="databases/benchmarks/mariadb-benchmark/mariadb-benchmark-playground.csproj" />
+    <Project Path="databases/benchmarks/mysql-benchmark/mysql-benchmark-playground.csproj" />
+    <Project Path="databases/benchmarks/postgresql-benchmark/postgresql-benchmark-playground.csproj" />
+    <Project Path="databases/benchmarks/simple-benchmark/simple-benchmark-playground.csproj" />
+    <Project Path="databases/benchmarks/sqlserver-benchmark/sqlserver-benchmark-playground.csproj" />
+  </Folder>
+  <Folder Name="/grpc/">
+    <File Path="grpc/README.md" />
+    <Project Path="grpc/basic-grpc-benchmark/basic-grpc-benchmark-playground.csproj" />
+    <Project Path="grpc/basic-grpc-client/basic-grpc-client-playground.csproj" />
+    <Project Path="grpc/basic-grpc-server/basic-grpc-server-playground.csproj" />
+    <Project Path="grpc/basic-web-api-to-grpc-benchmark/basic-web-api-to-grpc-benchmark-playground.csproj" />
+    <Project Path="grpc/stream-grpc-client/stream-grpc-client-playground.csproj" />
+    <Project Path="grpc/stream-grpc-server/stream-grpc-server-playground.csproj" />
+  </Folder>
+  <Folder Name="/http-client/">
+    <Project Path="http-client/flurl-http/flurl-http-playground.csproj" />
+    <Project Path="http-client/nswag-studio/nswag-studio-playground.csproj" />
+    <Project Path="http-client/refit/refit-playground.csproj" />
+  </Folder>
+  <Folder Name="/logs/">
+    <File Path="logs/README.md" />
+    <Project Path="logs/log4net/log4net-playground.csproj" />
+    <Project Path="logs/microsoft-logging-web-api/microsoft-logging-web-api-playground.csproj" />
+    <Project Path="logs/microsoft-logging/microsoft-logging-playground.csproj" />
+    <Project Path="logs/nlog/nlog-playground.csproj" />
+    <Project Path="logs/serilog/serilog-playground.csproj" />
+  </Folder>
+  <Folder Name="/logs/benchmarks/">
+    <Project Path="logs/benchmarks/microsoft-logging-benchmark/microsoft-logging-benchmark-playground.csproj" />
+  </Folder>
+  <Folder Name="/logs/proxies/">
+    <Project Path="logs/proxies/microsoft-logging-to-nlog/microsoft-logging-to-nlog-playground.csproj" />
+    <Project Path="logs/proxies/microsoft-logging-to-serilog/microsoft-logging-to-serilog-playground.csproj" />
+  </Folder>
+  <Folder Name="/miscellaneous/">
+    <Project Path="miscellaneous/fluent-validation/fluent-validation-playground.csproj" />
+    <Project Path="miscellaneous/miscellaneous-features/miscellaneous-features-playground.csproj" />
+    <Project Path="miscellaneous/polly/polly-playground.csproj" />
+  </Folder>
+  <Folder Name="/native/">
+    <Project Path="native/collections-benchmark/collections-benchmark-playground.csproj" />
+  </Folder>
+  <Folder Name="/orm/">
+    <Project Path="orm/efcore-zextensions/efcore-zextensions-playground.csproj" />
+    <Project Path="orm/nhibernate/nhibernate-playground.csproj" />
+  </Folder>
+  <Folder Name="/redis/">
+    <File Path="redis/README.md" />
+    <Project Path="redis/basic/basic-redis-playground.csproj" />
+    <Project Path="redis/multi-thread/multi-thread-redis-playground.csproj" />
+  </Folder>
+  <Folder Name="/scheduler/">
+    <Project Path="scheduler/quartz/quartz-playground.csproj" />
+  </Folder>
+  <Folder Name="/secrets/">
+    <Project Path="secrets/vault/vault-playground.csproj" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+    <File Path="Directory.Build.props" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/source-generator/">
+    <File Path="source-generator/README.md" />
+    <Project Path="source-generator/data-builder-generator/data-builder-generator-playground.csproj" />
+    <Project Path="source-generator/fluent-builder/FluentBuilderPlayground.csproj" />
+    <Project Path="source-generator/m31-fluentapi/m31-fluentapi-playground.csproj" />
+    <Project Path="source-generator/maestria-type-providers/maestria-type-providers-playground.csproj" />
+    <Project Path="source-generator/primary-constructor/primary-constructor-playground.csproj" />
+  </Folder>
+  <Folder Name="/syntax-sugar/">
+    <Project Path="syntax-sugar/fluent-date-time/fluent-date-time-playground.csproj" />
+    <Project Path="syntax-sugar/humanizer/humanizer-playground.csproj" />
+    <Project Path="syntax-sugar/maestria-extensions/maestria-extensions-playground.csproj" />
+    <Project Path="syntax-sugar/maestria-fluent-cast/maestria-fluent-cast-playground.csproj" />
+  </Folder>
+  <Folder Name="/telemetry/">
+    <File Path="telemetry/JAEGER.md" />
+    <File Path="telemetry/README.md" />
+    <File Path="telemetry/SIGNOZ.md" />
+    <Project Path="telemetry/jaeger-console/jaeger-console-playground.csproj" />
+    <Project Path="telemetry/jaeger-web-api/jaeger-web-api-playground.csproj" />
+    <Project Path="telemetry/open-telemetry-console/open-telemetry-console-playground.csproj" />
+    <Project Path="telemetry/open-telemetry-web-api/open-telemetry-web-api-playground.csproj" />
+  </Folder>
+  <Folder Name="/template-engine/">
+    <Project Path="template-engine/liquid/liquid-playground.csproj" />
+    <Project Path="template-engine/mustache/mustache-playground.csproj" />
+  </Folder>
+  <Folder Name="/user-interfaces/" />
+  <Folder Name="/user-interfaces/cli/">
+    <File Path="user-interfaces/cli/README.md" />
+    <Project Path="user-interfaces/cli/command-line-parser/command-line-parser-playground.csproj" />
+    <Project Path="user-interfaces/cli/command-line-utils/command-line-utils-playground.csproj" />
+  </Folder>
+  <Folder Name="/websocket/">
+    <File Path="websocket/README.md" />
+    <Project Path="websocket/websocket-client-dotnet/websocket-client-playground.csproj" />
+    <Project Path="websocket/websocket-server/websocket-server-playground.csproj" />
+  </Folder>
+</Solution>

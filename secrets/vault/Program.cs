@@ -10,6 +10,23 @@ vaultClient.SetToken("myroot");
 
 try
 {
+    await StoreKeyValueTestAsync();
+    await Task.Delay(200);
+    
+    await StoreCubbyholeAsync();
+    // await Task.Delay(200);
+}
+catch (VaultApiException e)
+{
+    Console.WriteLine("Failed to read secret with message {0}\n\n{1}", e.Message, e);
+}
+
+return;
+
+async Task StoreKeyValueTestAsync()
+{
+    Console.WriteLine("Key value test...");
+    
     var secretData = new Dictionary<string, string>
     {
         { "clientId", "teste" },
@@ -18,14 +35,19 @@ try
 
     // Write a secret
     var kvRequestData = new KvV2WriteRequest(secretData);
-
-    vaultClient.Secrets.KvV2Write("mypath", kvRequestData, kvV2MountPath: "kv");
-
+    
+    await vaultClient.Secrets.KvV2WriteAsync("mypath/mysecret", kvRequestData, kvV2MountPath: "secret");
+    
     // Read a secret
-    var resp = vaultClient.Secrets.KvV2Read("mypath", kvV2MountPath: "kv");
+    var resp = await vaultClient.Secrets.KvV2ReadAsync("mypath/mysecret", kvV2MountPath: "secret");
     Console.WriteLine(resp.Data.Data);
+    Console.WriteLine();
 }
-catch (VaultApiException e)
+
+async Task StoreCubbyholeAsync()
 {
-    Console.WriteLine("Failed to read secret with message {0}", e.Message);
+    Console.WriteLine("Cubby hole test...");
+    var resp = await vaultClient.Secrets.CubbyholeReadAsync("teste");
+    Console.WriteLine(resp.Data);
+    Console.WriteLine();
 }
