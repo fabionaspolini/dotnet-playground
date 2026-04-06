@@ -9,5 +9,5 @@
 var person = new PersonBuilder()
     .WithFirstName("Fábio")
     .WithLastName("Naspolini")
-    .Build(true);
+    .Build(false);
 Console.WriteLine(person.GetFullName());
